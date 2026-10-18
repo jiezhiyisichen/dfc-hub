@@ -77,7 +77,7 @@ Cloudflare Dashboard → 右上头像 → **My Profile** → **API Tokens** → 
 | Secret | `CLOUDFLARE_API_TOKEN` | 上一步的 Token |
 | Secret | `CLOUDFLARE_ACCOUNT_ID` | 账户 ID |
 | Variable（可选） | `CLOUDFLARE_PROJECT_NAME` | `dfc-hub` |
-| Variable（可选） | `UPSTREAM_MAP_REPO` | `owner/repo`，地图单独放仓库时才需要 |
+| Variable（可选） | `UPSTREAM_MAP_REPO` | 地图仓库，默认就是本仓库 `jiezhiyisichen/dfc-hub` |
 
 ### 3. 触发
 
@@ -114,7 +114,9 @@ Cloudflare Dashboard → 右上头像 → **My Profile** → **API Tokens** → 
 | `.zip` / `.7z` / `.rar` | 地图整合包 | 下载整合包 |
 
 同一个 Release 里同时挂 jar 和 zip 时，两个文件会并列展示、各自独立下载。
-**地图整合包不需要改代码**：把 `.zip` 传到任意一个 Release 的附件里，下一次同步就会自动出现在下载中心和首页卡片。
+**地图整合包不需要改代码**：把 `.zip` 传到 Release 附件里，下一次同步就会自动出现在下载中心和首页卡片。
+默认从本仓库（`jiezhiyisichen/dfc-hub`）的 Release 找 zip，工具 jar 仍从上游 `DFC-Map-Creation-Tool` 取；
+所以推荐直接在本仓库发一个 Release，例如 `v1.0`，附上 `DFC-Map-v1.0.zip` 即可。
 
 下载链接直接使用 API 返回的 `browser_download_url`，不做转存、不加中转参数，所以不会因为站点迁移而失效。
 
@@ -133,7 +135,7 @@ Cloudflare Dashboard → 右上头像 → **My Profile** → **API Tokens** → 
     "release": { /* 最新正式版 */ },
     "beta": null,
     "preview": null,
-    "map": null,          // 没有任何 zip 资产时为 null，页面显示「未发布」
+    "map": null,          // 没有任何 zip 资产时为 null，页面显示「待上线」
     "tool": { /* 最新带 jar 的版本 */ }
   },
   "releases": [
