@@ -625,6 +625,32 @@ ul {
   z-index: -1;
 }
 
+/* 简洁版首屏：个人分享页，居中窄栏、大留白 */
+.hero--simple {
+  text-align: center;
+  padding: clamp(56px, 9vw, 104px) 0 clamp(30px, 5vw, 60px);
+}
+
+.hero-simple {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.hero--simple .hero-tag {
+  margin-bottom: 14px;
+}
+
+.hero--simple .hero-lede {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 40ch;
+}
+
+.hero--simple .hero-cta {
+  justify-content: center;
+  margin-top: 32px;
+}
+
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
@@ -2360,6 +2386,10 @@ ul {
 
   .hero {
     padding-top: 26px;
+  }
+
+  .hero--simple {
+    padding-top: 44px;
   }
 
   .hero-title {
