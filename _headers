@@ -1,9 +1,13 @@
 # Cloudflare Pages headers
 # 文档：https://developers.cloudflare.com/pages/configuration/headers/
 #
-# 注意：Cloudflare 对匹配到的多条规则是「追加」响应头，不是覆盖。
-# 所以每个路径只能命中一条 Cache-Control，别写 /assets/* 这种兜底，
-# 否则会出现 "max-age=0, must-revalidate, public, max-age=604800" 这种混合值。
+# 两条铁律：
+# 1. Cloudflare 对匹配到的多条规则是「追加」响应头，不是覆盖。
+#    所以每个路径只能命中一条 Cache-Control，别写 /assets/* 这种兜底，
+#    否则会出现 "max-age=0, must-revalidate, public, max-age=604800" 这种混合值，
+#    浏览器按长缓存处理，页面就会一直显示旧版本号。
+# 2. HTML 与版本数据一律 no-store（不落盘、不复用），保证任何人打开都是当次部署的内容。
+#    脚本/样式靠 dist 里的 ?v=<构建指纹> 破缓存，所以可以留 must-revalidate 走 304。
 
 /*
   X-Content-Type-Options: nosniff
@@ -12,35 +16,46 @@
   Permissions-Policy: geolocation=(), microphone=(), camera=()
   Cross-Origin-Opener-Policy: same-origin-allow-popups
 
+# ── 页面：完全不缓存 ─────────────────────────────────────────────
 /
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: no-store
 
 /index.html
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: no-store
+
+/downloads
+  Cache-Control: no-store
 
 /downloads.html
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: no-store
+
+/404
+  Cache-Control: no-store
 
 /404.html
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: no-store
 
-# 版本数据：必须每次校验，否则首页会显示过期版本号
-/assets/data/*
-  Cache-Control: public, max-age=0, must-revalidate
+/build-info.json
+  Cache-Control: no-store
 
+# ── 版本数据：完全不缓存（首页版本号靠它）──────────────────────
 /data/*
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: no-store
 
-# 脚本与样式：文件名没有指纹，不能长缓存
+/assets/data/*
+  Cache-Control: no-store
+
+# ── 脚本与样式：每次校验（构建时已带 ?v= 指纹）──────────────────
 /assets/js/*
   Cache-Control: public, max-age=0, must-revalidate
 
 /assets/css/*
   Cache-Control: public, max-age=0, must-revalidate
 
-# 图片可以放心长缓存
+# ── 图片可以放心长缓存 ──────────────────────────────────────────
 /assets/img/*
   Cache-Control: public, max-age=2592000, immutable
 
+# ── 本地发布包 ─────────────────────────────────────────────────
 /downloads/*
   Cache-Control: public, max-age=86400

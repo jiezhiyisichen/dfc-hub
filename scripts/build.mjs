@@ -24,6 +24,34 @@ const ROOT_FILES = [
   "_headers",
 ];
 
+/** 每次构建一个指纹：优先用提交 SHA，本地构建用时间戳 */
+const BUILD_ID = (process.env.GITHUB_SHA || "").slice(0, 7) || Date.now().toString(36);
+
+/**
+ * 给 dist 里页面上的本地资源引用加 ?v=<BUILD_ID>。
+ * 目的：部署一次换一次 URL，让浏览器里已经存下的旧条目（哪怕是以前按 7 天缓存的）
+ * 直接失效，不需要访客手动 Ctrl+F5。只改 dist，不动仓库里的源文件。
+ */
+async function stampAssets() {
+  const pages = ["index.html", "downloads.html", "404.html"];
+  const re = /(\s(?:src|href)=")((?:assets|data)\/[^"?#]+)(")/g;
+  let touched = 0;
+
+  for (const page of pages) {
+    const p = join(DIST, page);
+    if (!existsSync(p)) continue;
+
+    const html = await readFile(p, "utf8");
+    const stamped = html.replace(re, (_m, pre, url, post) => `${pre}${url}?v=${BUILD_ID}${post}`);
+    if (stamped !== html) {
+      await writeFile(p, stamped, "utf8");
+      touched++;
+    }
+  }
+
+  console.log(`[build] 资源指纹 ?v=${BUILD_ID}，已写入 ${touched} 个页面`);
+}
+
 /** data/config.json → data/config.js；data/releases.json → data/releases.js */
 async function compileDataShims() {
   const pairs = [
@@ -72,6 +100,9 @@ async function main() {
     copied++;
   }
 
+  /* 资源指纹：破掉访客浏览器里的旧缓存 */
+  await stampAssets();
+
   /* public/ 下的文件铺到站点根：public/downloads → dist/downloads */
   const publicDir = resolve(ROOT, "public");
   if (existsSync(publicDir)) {
@@ -84,8 +115,11 @@ async function main() {
   // 记录构建时间，便于线上确认版本
   await writeFile(
     join(DIST, "build-info.json"),
-    JSON.stringify({ builtAt: new Date().toISOString(), commit: process.env.GITHUB_SHA || null }, null, 2) +
-      "\n",
+    JSON.stringify(
+      { buildId: BUILD_ID, builtAt: new Date().toISOString(), commit: process.env.GITHUB_SHA || null },
+      null,
+      2
+    ) + "\n",
     "utf8"
   );
 
