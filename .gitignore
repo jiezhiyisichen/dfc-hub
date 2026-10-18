@@ -20,6 +20,9 @@ Thumbs.db
 .env
 .env.local
 
+# workbuddy project data
+.workbuddy/
+
 # local preview / debug scratch files
 .preview/
 __preview.html
