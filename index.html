@@ -11,6 +11,7 @@
     <meta name="theme-color" content="#05070f" />
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="data/config.js"></script>
     <meta property="og:type" content="website" />
     <meta property="og:title" content="DFC Hub · 节枝 DFC 地图与特效工具" />
     <meta property="og:description" content="Minecraft 1.12.2 HBM 诅咒版 DFC 地图与节枝特效工具，附实机演示视频。" />
@@ -35,16 +36,16 @@
     <!-- ================= TOP TICKER ================= -->
     <div class="ticker">
       <div class="wrap ticker-inner">
-        <span class="ticker-badge">SYNC</span>
+        <span class="ticker-badge" data-cfg="site.tickerBadge">SYNC</span>
         <p>
           <span
-            >上游最新正式版
+            ><span data-cfg="site.tickerLabel">上游最新正式版</span>
             <b data-latest-version>v3.6</b>
           </span>
           <span class="sep hide-sm"></span>
-          <span class="hide-sm">与 GitHub Release 每 6 小时自动同步</span>
+          <span class="hide-sm" data-cfg="site.tickerNote">与 GitHub Release 每 6 小时自动同步</span>
           <span class="sep hide-sm"></span>
-          <a href="downloads.html">前往下载中心 →</a>
+          <a href="downloads.html" data-cfg="site.tickerLinkText">前往下载中心 →</a>
         </p>
       </div>
     </div>
@@ -61,8 +62,8 @@
             </svg>
           </span>
           <span class="brand-text">
-            <strong>DFC HUB</strong>
-            <em>地图与特效工具</em>
+            <strong data-cfg="site.brandName">DFC HUB</strong>
+            <em data-cfg="site.brandSub">地图与特效工具</em>
           </span>
         </a>
 
@@ -90,26 +91,26 @@
       <section class="hero hero--simple">
         <div class="wrap">
           <div class="hero-simple">
-            <p class="hero-tag">Minecraft 1.12.2 · HBM 诅咒版 · DFC</p>
+            <p class="hero-tag" data-cfg="hero.tag">Minecraft 1.12.2 · HBM 诅咒版 · DFC</p>
 
-            <h1 class="hero-title">DFC 地图与节枝特效工具</h1>
+            <h1 class="hero-title" data-cfg="hero.title">DFC 地图与节枝特效工具</h1>
 
-            <p class="hero-lede">一张围绕暗核聚变堆的 Minecraft 地图，和一套做屏幕与特效的小工具。</p>
+            <p class="hero-lede" data-cfg="hero.lede">一张围绕暗核聚变堆的 Minecraft 地图，和一套做屏幕与特效的小工具。</p>
 
             <div class="hero-cta">
               <a class="btn btn-primary btn-lg" href="downloads.html">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 19h16" />
                 </svg>
-                前往下载中心
+                <span data-cfg="hero.primaryText">前往下载中心</span>
               </a>
-              <a class="btn btn-ghost btn-lg" href="https://space.bilibili.com/3494363348863838" target="_blank" rel="noopener noreferrer">
+              <a class="btn btn-ghost btn-lg" href="https://space.bilibili.com/3494363348863838" data-cfg-href="links.bilibiliSpace" target="_blank" rel="noopener noreferrer">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M7 4 9.5 7M17 4l-2.5 3" />
                   <rect x="3" y="7" width="18" height="13" rx="3" />
                   <path d="M8.5 12.2v1.6M15.5 12.2v1.6" />
                 </svg>
-                作者 B 站主页
+                <span data-cfg="hero.secondaryText">作者 B 站主页</span>
               </a>
             </div>
           </div>
@@ -128,17 +129,17 @@
                       <path d="M9.2 5.6v12.8L20 12 9.2 5.6Z" />
                     </svg>
                   </span>
-                  <strong>DFC 地图 × 节枝特效工具 · 实机演示</strong>
-                  <span class="vf-sub">bilibili · BV1VRYe6gEga</span>
+                  <strong data-cfg="video.title">DFC 地图 × 节枝特效工具 · 实机演示</strong>
+                  <span class="vf-sub" data-cfg="video.sub">bilibili · BV1VRYe6gEga</span>
                 </span>
               </button>
             </div>
             <div class="video-meta">
               <span class="badge badge--muted">BILIBILI</span>
-              <span>UP 主：树上的节枝</span>
+              <span data-cfg="video.upName">UP 主：树上的节枝</span>
               <span class="spacer"></span>
-              <a class="btn btn-quiet" href="https://www.bilibili.com/video/BV1VRYe6gEga/" target="_blank" rel="noopener noreferrer">
-                在 B 站打开 ↗
+              <a class="btn btn-quiet" href="https://www.bilibili.com/video/BV1VRYe6gEga/" data-cfg-href="links.video" target="_blank" rel="noopener noreferrer">
+                <span data-cfg="video.externalText">在 B 站打开 ↗</span>
               </a>
             </div>
           </div>
@@ -159,36 +160,37 @@
                 </svg>
               </span>
               <span class="brand-text">
-                <strong>DFC HUB</strong>
-                <em>地图与特效工具</em>
+                <strong data-cfg="site.brandName">DFC HUB</strong>
+                <em data-cfg="site.brandSub">地图与特效工具</em>
               </span>
             </a>
-            <p>由「树上的节枝」维护的个人分享站。文件托管于 GitHub Release，站点本身是纯静态页面。</p>
+            <p data-cfg="footer.note">由「树上的节枝」维护的个人分享站。文件托管于 GitHub Release，站点本身是纯静态页面。</p>
           </div>
 
           <div class="footer-col">
-            <h4>导航</h4>
-            <a href="./">首页</a>
-            <a href="downloads.html">下载中心</a>
+            <h4 data-cfg="footer.navTitle">导航</h4>
+            <a href="./" data-cfg="footer.navHome">首页</a>
+            <a href="downloads.html" data-cfg="footer.navDownloads">下载中心</a>
           </div>
 
           <div class="footer-col">
-            <h4>资源</h4>
-            <a href="https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool" target="_blank" rel="noopener noreferrer">工具源码</a>
-            <a href="https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases" target="_blank" rel="noopener noreferrer">全部 Release</a>
-            <a href="https://space.bilibili.com/3494363348863838" target="_blank" rel="noopener noreferrer">B 站主页</a>
-            <a href="https://www.bilibili.com/video/BV1VRYe6gEga/" target="_blank" rel="noopener noreferrer">宣传视频</a>
+            <h4 data-cfg="footer.resourcesTitle">资源</h4>
+            <a href="https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool" data-cfg-href="links.toolRepo" target="_blank" rel="noopener noreferrer" data-cfg="footer.linkToolRepo">工具源码</a>
+            <a href="https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases" data-cfg-href="links.toolReleases" target="_blank" rel="noopener noreferrer" data-cfg="footer.linkReleases">全部 Release</a>
+            <a href="https://space.bilibili.com/3494363348863838" data-cfg-href="links.bilibiliSpace" target="_blank" rel="noopener noreferrer" data-cfg="footer.linkBilibili">B 站主页</a>
+            <a href="https://www.bilibili.com/video/BV1VRYe6gEga/" data-cfg-href="links.video" target="_blank" rel="noopener noreferrer" data-cfg="footer.linkVideo">宣传视频</a>
           </div>
         </div>
 
         <div class="footer-bottom">
-          <span>© <span data-year>2026</span> 树上的节枝 · 转载 / 二创请保留署名，禁止商业使用。</span>
+          <span>© <span data-year>2026</span> <span data-cfg="footer.copyright">树上的节枝 · 转载 / 二创请保留署名，禁止商业使用。</span></span>
           <span class="mono" data-sync-line>DATA SYNC · —</span>
         </div>
       </div>
     </footer>
 
     <script src="assets/data/releases.js" defer></script>
+    <script src="assets/js/content.js" defer></script>
     <script src="assets/js/site.js" defer></script>
   </body>
 </html>

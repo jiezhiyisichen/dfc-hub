@@ -2,9 +2,12 @@
 /**
  * build.mjs — 组装可部署目录 dist/
  * 纯静态站点，只做「挑文件 + 拷贝」，不做压缩混淆，方便排查线上问题。
+ *
+ * 会先把 data/*.json 编译成同名 .js（静态站用 <script> 直接引入），
+ * 再把 public/ 下的内容铺到 dist 根目录：public/downloads/x.zip → /downloads/x.zip
  */
 
-import { cp, mkdir, rm, readdir, stat, writeFile } from "node:fs/promises";
+import { cp, mkdir, rm, readdir, stat, writeFile, readFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { dirname, resolve, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -21,10 +24,33 @@ const ROOT_FILES = [
   "_headers",
 ];
 
+/** data/config.json → data/config.js；data/releases.json → data/releases.js */
+async function compileDataShims() {
+  const pairs = [
+    { json: "config.json", js: "config.js", global: "__DFC_CONFIG__" },
+    { json: "releases.json", js: "releases.js", global: "__DFC_LOCAL__" },
+  ];
+
+  for (const pair of pairs) {
+    const jsonPath = resolve(ROOT, "data", pair.json);
+    if (!existsSync(jsonPath)) continue;
+
+    const raw = await readFile(jsonPath, "utf8");
+    const data = JSON.parse(raw);
+    const body =
+      `/* AUTO-GENERATED from data/${pair.json} — 由 npm run build / 管理后台生成。 */\n` +
+      `window.${pair.global} = ${JSON.stringify(data, null, 2)};\n`;
+    await writeFile(resolve(ROOT, "data", pair.js), body, "utf8");
+    console.log(`[build] data/${pair.js} 已从 ${pair.json} 生成`);
+  }
+}
+
 async function main() {
   if (!existsSync(resolve(ROOT, "assets/data/releases.js"))) {
     console.warn("[build][warn] 缺少 assets/data/releases.js，请先运行 npm run sync");
   }
+
+  await compileDataShims();
 
   await rm(DIST, { recursive: true, force: true });
   await mkdir(DIST, { recursive: true });
@@ -39,6 +65,21 @@ async function main() {
 
   await cp(resolve(ROOT, "assets"), join(DIST, "assets"), { recursive: true });
   copied++;
+
+  /* 站点文案与本地发布清单 */
+  if (existsSync(resolve(ROOT, "data"))) {
+    await cp(resolve(ROOT, "data"), join(DIST, "data"), { recursive: true });
+    copied++;
+  }
+
+  /* public/ 下的文件铺到站点根：public/downloads → dist/downloads */
+  const publicDir = resolve(ROOT, "public");
+  if (existsSync(publicDir)) {
+    for (const entry of await readdir(publicDir)) {
+      await cp(join(publicDir, entry), join(DIST, entry), { recursive: true });
+      copied++;
+    }
+  }
 
   // 记录构建时间，便于线上确认版本
   await writeFile(

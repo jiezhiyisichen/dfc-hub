@@ -13,13 +13,26 @@ Minecraft **1.12.2 · HBM 诅咒版 · DFC** 地图与节枝特效工具的发�
 
 ```
 dfc-hub/
-├── index.html                  首页：Hero / 项目简介 / B站视频 / 截图墙 / 快速下载
+├── index.html                  首页：标题 / 视频 / 下载入口 / 作者主页
 ├── downloads.html              下载中心：版本看板 / 搜索 / 通道筛选 / 资产列表 / 安装说明
 ├── 404.html                    错误页（复用同一套样式）
+├── data/                       ★ 站点内容（由本地后台读写）
+│   ├── config.json             全部可编辑文案
+│   ├── config.js               ← 自动生成：window.__DFC_CONFIG__
+│   ├── releases.json           本地手动发布的下载包清单
+│   └── releases.js             ← 自动生成：window.__DFC_LOCAL__
+├── public/
+│   └── downloads/              ★ 后台上传的 .jar / .zip，部署后映射到 /downloads/*
+├── admin-server.js             ★ 本地管理后台服务（Express）
+├── admin/
+│   ├── index.html              后台界面
+│   ├── admin.css
+│   └── admin.js
 ├── assets/
 │   ├── css/style.css           全部样式（设计变量 / 组件 / 响应式 / 动效）
 │   ├── js/
-│   │   ├── site.js             公共交互：导航、滚动揭示、灯箱、视频门面、版本号回填
+│   │   ├── content.js          把 config 绑定到 data-cfg 元素
+│   │   ├── site.js             公共交互：导航、滚动揭示、视频门面、版本号回填
 │   │   └── downloads.js        下载页：搜索、筛选、卡片渲染、URL 状态同步
 │   ├── data/
 │   │   ├── releases.json       ← 自动生成：上游 Release 归一化数据
@@ -27,14 +40,15 @@ dfc-hub/
 │   └── img/                    游戏内截图 + favicon
 ├── scripts/
 │   ├── sync-releases.mjs       拉取 GitHub Release → 生成数据
-│   ├── build.mjs               组装 dist/
+│   ├── build.mjs               组装 dist/（含 data/ 与 public/）
 │   └── dev-server.mjs          零依赖本地预览服务器
 ├── .github/workflows/deploy.yml  定时同步 + Cloudflare Pages 部署
 ├── _headers                    Cloudflare Pages 缓存与安全响应头
-└── package.json                npm run sync / build / dev
+└── package.json                npm run admin / dev / sync / build
 ```
 
 > `assets/data/*` 是构建产物，**不要手改** —— 下一次定时任务会覆盖它。
+> `data/*.json` 是站点内容，可以手改，但推荐用后台改（保存时会同步生成 `.js`）。
 
 ---
 
@@ -52,6 +66,62 @@ npm run dev      # http://127.0.0.1:5173
 
 > 未配置 `GITHUB_TOKEN` 时，GitHub API 的匿名额度是 60 次/小时/IP，一般够用；
 > 报 403 时设置环境变量 `GITHUB_TOKEN=ghp_xxx` 再跑一次。
+
+---
+
+## 本地管理后台
+
+改文案、传下载包、一键发布，都不用再改代码。
+
+### 安装与启动
+
+```bash
+npm install          # 安装 express 与 multer（只有后台需要）
+npm run admin        # 启动后台
+```
+
+打开 <http://127.0.0.1:4310/admin/>，站点预览在 <http://127.0.0.1:4310/>。
+端口被占用时换一个：`PORT=4311 npm run admin`。
+
+> 只监听 `127.0.0.1`，外部设备访问不到；写操作会校验请求来源，防止其他网页跨站调用。
+
+### 三个页签
+
+| 页签 | 做什么 | 写到哪 |
+| --- | --- | --- |
+| 文案 | 按分组编辑站点标题、首屏、视频、下载页、页脚、链接 | `data/config.json` → `data/config.js` |
+| 下载包 | 上传 `.jar` / `.zip`，填版本号、通道、说明；可编辑 / 删除条目 | 文件进 `public/downloads/`，条目进 `data/releases.json` |
+| 发布上线 | 执行 `git add .` → `git commit -m ...` → `git push origin main`，日志实时显示 | Git 仓库 |
+
+### 下载包怎么变成下载链接
+
+上传后条目形如：
+
+```jsonc
+{
+  "tag": "v1.0",
+  "name": "DFC 地图整合包 v1.0",
+  "kind": "map",
+  "fileName": "dfc-map-v1.0.zip",
+  "url": "downloads/dfc-map-v1.0.zip"
+}
+```
+
+`npm run build` 会把 `public/downloads/` 铺到 `dist/downloads/`，所以线上地址是
+`https://dfc-hub.pages.dev/downloads/dfc-map-v1.0.zip`。
+下载中心会把本地条目和上游 Release 混排，本地条目带 `LOCAL` 标记、不显示 GitHub 链接。
+
+### 注意：单文件 25MB
+
+Cloudflare Pages 单个文件上限是 **25MB**，超过会导致部署失败。
+后台在上传时会提示，但不会强行拦截。地图整合包超过这个体积时，建议走 GitHub Release
+（在上游仓库发 Release 附 zip，定时任务会自动同步过来）。
+
+### 关于 `git push`
+
+后台只是帮你在项目目录里执行 git 命令，凭据沿用本机已配置的 Git 账号。
+本机若因证书吊销检查导致 push 失败，后台会自动关闭本次 SSL 校验重试一次；
+遇到 `non-fast-forward` 会先 `pull --rebase` 再推。
 
 ---
 

@@ -26,5 +26,8 @@
 /assets/img/*
   Cache-Control: public, max-age=2592000, immutable
 
+/downloads/*
+  Cache-Control: public, max-age=86400
+
 /404.html
   Cache-Control: public, max-age=0, must-revalidate

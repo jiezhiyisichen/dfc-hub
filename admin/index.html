@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DFC Hub · 本地管理后台</title>
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-main">
+        <div class="logo">
+          <span class="logo-mark" aria-hidden="true"></span>
+          <div>
+            <strong>DFC HUB</strong>
+            <em>本地管理后台</em>
+          </div>
+        </div>
+
+        <div class="topbar-meta" id="topbarMeta">
+          <span class="chip" id="chipBranch">—</span>
+          <span class="chip" id="chipCommit">—</span>
+          <span class="chip" id="chipDirty">检查中</span>
+        </div>
+
+        <div class="topbar-actions">
+          <a class="btn btn-quiet" href="/" target="_blank" rel="noopener">预览站点 ↗</a>
+          <button class="btn btn-quiet" id="btnRefresh" type="button">重新读取</button>
+        </div>
+      </div>
+
+      <nav class="tabs" role="tablist">
+        <button class="tab is-on" data-tab="content" type="button" role="tab" aria-selected="true">文案</button>
+        <button class="tab" data-tab="packages" type="button" role="tab" aria-selected="false">下载包</button>
+        <button class="tab" data-tab="publish" type="button" role="tab" aria-selected="false">发布上线</button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ==================== 文案 ==================== -->
+      <section class="panel is-on" id="panel-content">
+        <div class="panel-head">
+          <div>
+            <h1>站点文案</h1>
+            <p>内容写入 <code>data/config.json</code>，保存后立即生成 <code>data/config.js</code>，本地预览刷新即可看到效果。</p>
+          </div>
+          <button class="btn btn-primary" id="btnSaveConfig" type="button">保存文案</button>
+        </div>
+
+        <div id="configForm" class="form-stack">
+          <div class="loading">读取中…</div>
+        </div>
+
+        <div class="sticky-save">
+          <span id="configHint" class="hint">尚未修改</span>
+          <button class="btn btn-primary" id="btnSaveConfigBottom" type="button">保存文案</button>
+        </div>
+      </section>
+
+      <!-- ==================== 下载包 ==================== -->
+      <section class="panel" id="panel-packages">
+        <div class="panel-head">
+          <div>
+            <h1>下载包</h1>
+            <p>上传的 <code>.jar</code> / <code>.zip</code> 存在 <code>public/downloads/</code>，条目写入 <code>data/releases.json</code>。</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <!-- 新增 -->
+          <div class="card">
+            <h2>上传新包</h2>
+            <form id="pkgForm" class="stack">
+              <label class="drop" id="dropZone">
+                <input type="file" id="pkgFile" name="file" accept=".jar,.zip" hidden />
+                <span class="drop-icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5" />
+                    <path d="M4 16v2.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V16" />
+                  </svg>
+                </span>
+                <span class="drop-title" id="dropTitle">点击选择，或把 .jar / .zip 拖到这里</span>
+                <span class="drop-sub" id="dropSub">单个文件上限 100MB · 建议不超过 25MB</span>
+              </label>
+
+              <div class="row">
+                <label class="field">
+                  <span>版本号 / Tag</span>
+                  <input type="text" id="pkgTag" placeholder="v1.0" required />
+                </label>
+                <label class="field">
+                  <span>通道</span>
+                  <select id="pkgChannel">
+                    <option value="release">正式版</option>
+                    <option value="beta">测试版</option>
+                    <option value="preview">预览版</option>
+                  </select>
+                </label>
+              </div>
+
+              <label class="field">
+                <span>显示名称</span>
+                <input type="text" id="pkgName" placeholder="例如：DFC 地图整合包 v1.0" />
+              </label>
+
+              <label class="field">
+                <span>更新说明（可选）</span>
+                <textarea id="pkgNotes" rows="3" placeholder="这一版改了什么"></textarea>
+              </label>
+
+              <div class="form-actions">
+                <button class="btn btn-primary" id="btnUpload" type="submit">上传并记入清单</button>
+                <span class="hint" id="pkgHint"></span>
+              </div>
+            </form>
+          </div>
+
+          <!-- 清单 -->
+          <div class="card">
+            <div class="card-head">
+              <h2>本地发布清单</h2>
+              <span class="chip" id="pkgCount">0 项</span>
+            </div>
+            <div id="pkgList" class="pkg-list">
+              <div class="loading">读取中…</div>
+            </div>
+            <p class="footnote">
+              这里只放你手动上传的包。工具版本号仍由上游 GitHub Release 自动同步，两者在下载页合并展示。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 发布 ==================== -->
+      <section class="panel" id="panel-publish">
+        <div class="panel-head">
+          <div>
+            <h1>发布上线</h1>
+            <p>依次执行 <code>git add .</code>、<code>git commit</code>、<code>git push origin main</code>，触发 GitHub Actions 与 Cloudflare Pages 部署。</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h2>待提交的改动</h2>
+            <div id="gitFiles" class="git-files">
+              <div class="loading">读取中…</div>
+            </div>
+
+            <label class="field" style="margin-top: 18px">
+              <span>提交信息</span>
+              <input type="text" id="commitMsg" value="Update via local admin panel" />
+            </label>
+
+            <div class="form-actions">
+              <button class="btn btn-primary" id="btnPublish" type="button">发布上线</button>
+              <button class="btn btn-quiet" id="btnSync" type="button">刷新上游 Release</button>
+            </div>
+            <p class="footnote">
+              推送成功后，Actions 大约 1–2 分钟完成构建与部署。发布日志见下方。
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <h2>执行日志</h2>
+              <button class="btn btn-quiet btn-xs" id="btnClearLog" type="button">清空</button>
+            </div>
+            <pre class="log" id="publishLog">等待操作…</pre>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="admin.js"></script>
+  </body>
+</html>

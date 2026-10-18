@@ -6,6 +6,7 @@
   "use strict";
 
   var DATA = window.__DFC_DATA__ || null;
+  var LOCAL = window.__DFC_LOCAL__ || null;
   var listEl = document.getElementById("releaseList");
   var emptyEl = document.getElementById("emptyState");
   var resultLine = document.querySelector("[data-result-line]");
@@ -70,10 +71,45 @@
   }
 
   function releaseUrl(release) {
+    if (release.source === "local") return "";
     return (
       release.url ||
       "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/tag/" + release.tag
     );
+  }
+
+  /* ------------------------------------------------- 本地手动上传的包
+   * data/releases.json 里由管理后台上传的条目，结构比 Release 简单，
+   * 这里转成同一套形状，和上游数据混排。 */
+
+  function manualToRelease(item) {
+    return {
+      id: item.id,
+      tag: item.tag,
+      version: String(item.tag || "").replace(/^v/i, ""),
+      channel: item.channel || "release",
+      name: item.name || item.fileName,
+      publishedAt: item.publishedAt,
+      url: "",
+      source: "local",
+      assets: [
+        {
+          name: item.fileName,
+          kind: item.kind === "tool" ? "tool" : "map",
+          size: item.size || 0,
+          downloads: 0,
+          url: item.url,
+        },
+      ],
+      notesHtml: item.notes ? "<p>" + esc(item.notes) + "</p>" : "",
+      notesText: item.notes || "",
+    };
+  }
+
+  function allReleases() {
+    var upstream = DATA && Array.isArray(DATA.releases) ? DATA.releases : [];
+    var local = LOCAL && Array.isArray(LOCAL.items) ? LOCAL.items : [];
+    return local.map(manualToRelease).concat(upstream);
   }
 
   /** Release 标题通常以 Tag 开头（"v3.6 · 自定义屏…"），卡片左侧已经单独展示 Tag，这里去掉重复部分 */
@@ -115,6 +151,8 @@
     if (asset.size) meta.push(fmtBytes(asset.size));
     if (asset.downloads) meta.push("↓ " + asset.downloads);
 
+    var isLocal = release.source === "local";
+
     return (
       '<div class="asset">' +
       '<div class="asset-kind" data-kind="' +
@@ -142,11 +180,13 @@
       '<path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 19h16" /></svg>' +
       label +
       "</a>" +
-      '<a class="btn btn-ghost btn-sm" href="' +
-      esc(releaseUrl(release)) +
-      '" target="_blank" rel="noopener noreferrer" title="在 GitHub 查看">' +
-      "GitHub ↗" +
-      "</a>" +
+      (isLocal
+        ? ""
+        : '<a class="btn btn-ghost btn-sm" href="' +
+          esc(releaseUrl(release)) +
+          '" target="_blank" rel="noopener noreferrer" title="在 GitHub 查看">' +
+          "GitHub ↗" +
+          "</a>") +
       "</div>" +
       "</div>"
     );
@@ -154,8 +194,9 @@
 
   function releaseCard(release, index) {
     var channel = release.channel || "release";
+    var isLocal = release.source === "local";
     var latestTag = DATA && DATA.latest && DATA.latest.release ? DATA.latest.release.tag : null;
-    var isLatest = latestTag === release.tag;
+    var isLatest = !isLocal && latestTag === release.tag;
 
     var assets = (release.assets || []).filter(function (a) {
       if (state.type === "all") return a.kind === "tool" || a.kind === "map";
@@ -176,6 +217,7 @@
       CHANNEL_LABEL[channel] +
       "</span>";
     if (isLatest) badges += '<span class="badge badge--muted">LATEST</span>';
+    if (isLocal) badges += '<span class="badge badge--muted">LOCAL</span>';
 
     var totalSize = assets.reduce(function (sum, a) {
       return sum + (a.size || 0);
@@ -206,9 +248,11 @@
       (totalSize ? " · " + fmtBytes(totalSize) : "") +
       "</span>" +
       '<span class="sep"></span>' +
-      '<a href="' +
-      esc(releaseUrl(release)) +
-      '" target="_blank" rel="noopener noreferrer">发布页 ↗</a>' +
+      (isLocal
+        ? "<span>本地文件</span>"
+        : '<a href="' +
+          esc(releaseUrl(release)) +
+          '" target="_blank" rel="noopener noreferrer">发布页 ↗</a>') +
       "</div>" +
       "</div>" +
       '<div class="release-badges">' +
@@ -266,7 +310,9 @@
 
   /* --------------------------------------------------------------- render */
   function render() {
-    if (!DATA || !Array.isArray(DATA.releases)) {
+    var pool = allReleases();
+
+    if (!pool.length) {
       if (resultLine) resultLine.textContent = "版本数据未能载入";
       listEl.innerHTML = "";
       if (emptyEl) {
@@ -290,7 +336,7 @@
     }
 
     var q = state.q.trim().toLowerCase();
-    var filtered = DATA.releases.filter(function (r) {
+    var filtered = pool.filter(function (r) {
       if (state.channel !== "all" && r.channel !== state.channel) return false;
       if (state.type !== "all" && !firstAsset(r, state.type)) return false;
       return matchesQuery(r, q);
@@ -462,9 +508,7 @@
 
   /* ----------------------------------------------------------------- boot */
   function boot() {
-    if (DATA && Array.isArray(DATA.releases)) {
-      updateCounts(DATA.releases);
-    }
+    updateCounts(allReleases());
     readUrl();
     applyChips();
     bindFilters();

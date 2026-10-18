@@ -33,6 +33,11 @@ const server = createServer(async (req, res) => {
     const urlPath = decodeURIComponent((req.url || "/").split("?")[0]);
     let filePath = join(ROOT, normalize(urlPath).replace(/^(\.\.[/\\])+/, ""));
 
+    /* 管理后台上传的包放在 public/downloads/，本地预览时映射到 /downloads/* */
+    if (urlPath.startsWith("/downloads/")) {
+      filePath = join(ROOT, "public", normalize(urlPath));
+    }
+
     if (!filePath.startsWith(ROOT)) {
       res.writeHead(403).end("Forbidden");
       return;

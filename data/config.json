@@ -1,0 +1,82 @@
+{
+  "site": {
+    "title": "DFC Hub · 节枝 DFC 地图与特效工具",
+    "description": "Minecraft 1.12.2 HBM 诅咒版 DFC 地图与节枝特效工具（JiezhiMod）的下载页，附实机演示视频。",
+    "brandName": "DFC HUB",
+    "brandSub": "地图与特效工具",
+    "tickerBadge": "SYNC",
+    "tickerLabel": "上游最新正式版",
+    "tickerNote": "与 GitHub Release 每 6 小时自动同步",
+    "tickerLinkText": "前往下载中心 →"
+  },
+  "hero": {
+    "tag": "Minecraft 1.12.2 · HBM 诅咒版 · DFC",
+    "title": "DFC 地图与节枝特效工具",
+    "lede": "一张围绕暗核聚变堆的 Minecraft 地图，和一套做屏幕与特效的小工具。",
+    "primaryText": "前往下载中心",
+    "secondaryText": "作者 B 站主页"
+  },
+  "video": {
+    "title": "DFC 地图 × 节枝特效工具 · 实机演示",
+    "sub": "bilibili · BV1VRYe6gEga",
+    "upName": "UP 主：树上的节枝",
+    "externalText": "在 B 站打开 ↗"
+  },
+  "downloadsPage": {
+    "title": "下载中心",
+    "lede": "工具（.jar）与地图整合包（.zip）分开提供。版本按 Tag 自动归类：含 -beta 为测试版，含 -preview 为预览版，其余为正式版。",
+    "boardLatest": "最新正式版",
+    "boardMap": "地图整合包",
+    "boardSync": "数据同步",
+    "boardSyncNote": "自动任务每 6 小时拉取一次上游 Release",
+    "installEyebrow": "Installation",
+    "installTitle": "三分钟装好开档",
+    "installSub": "工具与地图互不依赖，但一起装才有完整效果。以下路径以官方启动器为例。",
+    "installSteps": [
+      {
+        "title": "装 Forge 1.12.2",
+        "text": "安装 [c]Forge 14.23.5.2864[/c]（1.12.2 的任意 14.23.x 均可），启动一次游戏生成 [c].minecraft/mods[/c] 目录。"
+      },
+      {
+        "title": "放入工具 jar",
+        "text": "把下载到的 [c]jiezhi-1.12.2-dfcmaptools-x.x.jar[/c] 直接丢进 [c].minecraft/mods/[/c]。不需要解压。"
+      },
+      {
+        "title": "解压地图整合包",
+        "text": "把整合包内的存档目录解压到 [c].minecraft/saves/[/c]，启动器里选择该存档进入即可。首次进入请允许命令方块运行。"
+      },
+      {
+        "title": "校准 DFC 显示器",
+        "text": "放下 DFC 显示器搭成 4×3 多方块，手持 DFC 遥控器右键核心绑定，屏幕会自动完成开机自检。"
+      },
+      {
+        "title": "没装 HBM？",
+        "text": "屏幕会显示 [c]NO LINK[/c] 而不是崩溃。特效类指令（抖屏 / 白屏 / 倒计时）不受影响，可单独使用。"
+      },
+      {
+        "title": "联机注意",
+        "text": "工具在服务端注册指令、客户端负责渲染，两侧都要装同一个版本，否则指令可用但看不到特效。"
+      }
+    ]
+  },
+  "footer": {
+    "note": "由「树上的节枝」维护的个人分享站。文件托管于 GitHub Release，站点本身是纯静态页面。",
+    "copyright": "树上的节枝 · 转载 / 二创请保留署名，禁止商业使用。",
+    "navTitle": "导航",
+    "navHome": "首页",
+    "navDownloads": "下载中心",
+    "resourcesTitle": "资源",
+    "linkToolRepo": "工具源码",
+    "linkReleases": "全部 Release",
+    "linkBilibili": "B 站主页",
+    "linkVideo": "宣传视频"
+  },
+  "links": {
+    "bilibiliSpace": "https://space.bilibili.com/3494363348863838",
+    "video": "https://www.bilibili.com/video/BV1VRYe6gEga/",
+    "toolRepo": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool",
+    "toolReleases": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases",
+    "toolDocs": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/tree/main/docs",
+    "siteRepo": "https://github.com/jiezhiyisichen/dfc-hub"
+  }
+}
