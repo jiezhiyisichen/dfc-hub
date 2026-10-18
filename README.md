@@ -99,23 +99,25 @@ npm run admin        # 启动后台
 
 ```jsonc
 {
-  "tag": "v1.0",
-  "name": "DFC 地图整合包 v1.0",
-  "kind": "map",
-  "fileName": "dfc-map-v1.0.zip",
-  "url": "downloads/dfc-map-v1.0.zip"
+  "tag": "v3.8-hotfix",
+  "name": "节枝特效工具 热修包",
+  "kind": "tool",
+  "fileName": "jiezhi-hotfix.jar",
+  "url": "downloads/jiezhi-hotfix.jar"
 }
 ```
 
 `npm run build` 会把 `public/downloads/` 铺到 `dist/downloads/`，所以线上地址是
-`https://dfc-hub.pages.dev/downloads/dfc-map-v1.0.zip`。
+`https://dfc-hub.pages.dev/downloads/jiezhi-hotfix.jar`。
 下载中心会把本地条目和上游 Release 混排，本地条目带 `LOCAL` 标记、不显示 GitHub 链接。
+
+> 地图整合包**不放本地、也不放 Release**，统一放在 123 云盘：
+> `data/config.json` 里的 `links.mapPan`。后台「文案 → 链接」里可以直接改这个地址。
 
 ### 注意：单文件 25MB
 
 Cloudflare Pages 单个文件上限是 **25MB**，超过会导致部署失败。
-后台在上传时会提示，但不会强行拦截。地图整合包超过这个体积时，建议走 GitHub Release
-（在上游仓库发 Release 附 zip，定时任务会自动同步过来）。
+后台在上传时会提示，但不会强行拦截。大体积的地图整合包不适合走这里，放 123 云盘更合适。
 
 ### 关于 `git push`
 
@@ -147,7 +149,6 @@ Cloudflare Dashboard → 右上头像 → **My Profile** → **API Tokens** → 
 | Secret | `CLOUDFLARE_API_TOKEN` | 上一步的 Token |
 | Secret | `CLOUDFLARE_ACCOUNT_ID` | 账户 ID |
 | Variable（可选） | `CLOUDFLARE_PROJECT_NAME` | `dfc-hub` |
-| Variable（可选） | `UPSTREAM_MAP_REPO` | 地图仓库，默认就是本仓库 `jiezhiyisichen/dfc-hub` |
 
 ### 3. 触发
 
@@ -181,14 +182,10 @@ Cloudflare Dashboard → 右上头像 → **My Profile** → **API Tokens** → 
 | 文件后缀 | 归类 | 下载按钮 |
 | --- | --- | --- |
 | `.jar` | 工具 | 下载 .jar |
-| `.zip` / `.7z` / `.rar` | 地图整合包 | 下载整合包 |
+| 其它（含 `.zip`） | 忽略 | — |
 
-同一个 Release 里同时挂 jar 和 zip 时，两个文件会并列展示、各自独立下载。
-**地图整合包不需要改代码**：把 `.zip` 传到 Release 附件里，下一次同步就会自动出现在下载中心和首页卡片。
-默认从本仓库（`jiezhiyisichen/dfc-hub`）的 Release 找 zip，工具 jar 仍从上游 `DFC-Map-Creation-Tool` 取；
-所以推荐直接在本仓库发一个 Release，例如 `v1.0`，附上 `DFC-Map-v1.0.zip` 即可。
-
-下载链接直接使用 API 返回的 `browser_download_url`，不做转存、不加中转参数，所以不会因为站点迁移而失效。
+**地图整合包不走 Release**：只认 `links.mapPan`（123 云盘），同步脚本不再扫描任何仓库的 zip。
+工具下载链接直接使用 API 返回的 `browser_download_url`，不做转存、不加中转参数，所以不会因为站点迁移而失效。
 
 ---
 
@@ -199,13 +196,12 @@ Cloudflare Dashboard → 右上头像 → **My Profile** → **API Tokens** → 
 ```jsonc
 {
   "generatedAt": "2026-10-18T09:20:00.000Z",
-  "source": { "tool": "owner/repo", "map": "owner/repo", "api": "https://api.github.com" },
-  "counts": { "all": 3, "release": 3, "beta": 0, "preview": 0 },
+  "source": { "tool": "owner/repo", "api": "https://api.github.com" },
+  "counts": { "all": 4, "release": 4, "beta": 0, "preview": 0 },
   "latest": {
     "release": { /* 最新正式版 */ },
     "beta": null,
     "preview": null,
-    "map": null,          // 没有任何 zip 资产时为 null，页面显示「待上线」
     "tool": { /* 最新带 jar 的版本 */ }
   },
   "releases": [

@@ -11,7 +11,6 @@
 #            CLOUDFLARE_ACCOUNT_ID   Cloudflare 账户 ID
 #   Variables（可选）
 #            CLOUDFLARE_PROJECT_NAME Pages 项目名，默认 dfc-hub
-#            UPSTREAM_MAP_REPO       地图仓库，默认与工具仓库相同
 # =============================================================================
 
 name: Sync Releases & Deploy
@@ -40,9 +39,6 @@ concurrency:
 
 env:
   UPSTREAM_TOOL_REPO: jiezhiyisichen/DFC-Map-Creation-Tool
-  # 地图整合包（.zip）发布在本站仓库的 Release 里；如需换仓库，在仓库
-  # Settings → Variables 里设置 UPSTREAM_MAP_REPO 覆盖即可。
-  UPSTREAM_MAP_REPO: ${{ vars.UPSTREAM_MAP_REPO || 'jiezhiyisichen/dfc-hub' }}
   NODE_VERSION: "20"
 
 jobs:
@@ -72,7 +68,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           UPSTREAM_TOOL_REPO: ${{ env.UPSTREAM_TOOL_REPO }}
-          UPSTREAM_MAP_REPO: ${{ env.UPSTREAM_MAP_REPO }}
         run: node scripts/sync-releases.mjs
 
       # ---------------------------------------------------------------------

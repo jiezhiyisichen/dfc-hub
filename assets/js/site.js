@@ -52,7 +52,6 @@
   function applyData() {
     if (!DATA) return;
     var latest = (DATA.latest && DATA.latest.release) || null;
-    var mapLatest = (DATA.latest && DATA.latest.map) || null;
 
     $$("[data-latest-version]").forEach(function (el) {
       el.textContent = latest ? latest.tag : "—";
@@ -68,25 +67,6 @@
 
     $$("[data-release-count]").forEach(function (el) {
       el.textContent = String((DATA.releases || []).length);
-    });
-
-    $$("[data-map-version]").forEach(function (el) {
-      el.textContent = mapLatest ? mapLatest.tag : "待上线";
-    });
-
-    $$("[data-map-note]").forEach(function (el) {
-      el.textContent = mapLatest
-        ? mapLatest.name || "DFC 事件流程自动化地图"
-        : "发布 .zip 到 Release 后自动上架";
-    });
-
-    $$("[data-map-release-link]").forEach(function (el) {
-      var repo = (DATA.source && DATA.source.map) || "jiezhiyisichen/dfc-hub";
-      el.setAttribute("href", "https://github.com/" + repo + "/releases");
-    });
-
-    $$("[data-map-date]").forEach(function (el) {
-      el.textContent = mapLatest ? formatDate(mapLatest.publishedAt) + " 发布" : "";
     });
 
     $$("[data-sync-time]").forEach(function (el) {
@@ -113,30 +93,6 @@
     $$("[data-tool-file]").forEach(function (el) {
       if (toolAsset) {
         el.textContent = toolAsset.name + (toolAsset.size ? " · " + formatBytes(toolAsset.size) : "");
-      }
-    });
-
-    /* home: map download card */
-    var mapAsset = mapLatest ? firstOfKind(mapLatest, "map") : null;
-    $$("[data-map-download]").forEach(function (el) {
-      if (mapAsset) {
-        el.setAttribute("href", mapAsset.url);
-        el.setAttribute("rel", "noopener noreferrer");
-      } else {
-        el.setAttribute("href", "downloads.html");
-        el.classList.add("is-disabled");
-      }
-    });
-
-    $$("[data-map-cta]").forEach(function (el) {
-      el.textContent = mapAsset ? "下载整合包" : "整合包待发布";
-    });
-
-    $$("[data-map-file]").forEach(function (el) {
-      if (mapAsset) {
-        el.textContent = mapAsset.name + (mapAsset.size ? " · " + formatBytes(mapAsset.size) : "");
-      } else {
-        el.textContent = "整合包资产发布后自动出现在这里";
       }
     });
 

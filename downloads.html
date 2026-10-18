@@ -6,7 +6,7 @@
     <title>下载中心 · DFC Hub</title>
     <meta
       name="description"
-      content="DFC 地图整合包与节枝特效工具（JiezhiMod）全部版本下载。按预览版 / 测试版 / 正式版分类，支持搜索与筛选，所有链接直连 GitHub Release。"
+      content="DFC 地图整合包与节枝特效工具（JiezhiMod）下载。工具按预览版 / 测试版 / 正式版分类，支持搜索与筛选；地图整合包放在 123 云盘。"
     />
     <meta name="theme-color" content="#05070f" />
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
@@ -14,7 +14,7 @@
     <script src="data/config.js"></script>
     <meta property="og:type" content="website" />
     <meta property="og:title" content="下载中心 · DFC Hub" />
-    <meta property="og:description" content="地图整合包与特效工具独立下载，版本与上游 GitHub Release 实时同步。" />
+    <meta property="og:description" content="特效工具按版本直接下载，地图整合包在 123 云盘，点击新标签页打开。" />
   </head>
   <body>
     <div class="bg-fx" aria-hidden="true"></div>
@@ -29,7 +29,7 @@
             <b data-latest-version>v3.6</b>
           </span>
           <span class="sep hide-sm"></span>
-          <span class="hide-sm">下载直连 GitHub Release · 不经网盘</span>
+          <span class="hide-sm">工具直连 GitHub Release · 地图在 123 云盘</span>
           <span class="sep hide-sm"></span>
           <a href="#install">安装说明 →</a>
         </p>
@@ -78,7 +78,7 @@
           <span class="eyebrow">Download Center</span>
           <h1 data-cfg="downloadsPage.title">下载中心</h1>
           <p class="lede" data-cfg="downloadsPage.lede">
-            工具（.jar）与地图整合包（.zip）分开提供。版本按 Tag 自动归类：含 -beta 为测试版，含 -preview 为预览版，其余为正式版。
+            工具（.jar）在下方按版本列出，直接下载；地图整合包放在 123 云盘。版本按 Tag 自动归类：含 -beta 为测试版，含 -preview 为预览版，其余为正式版。
           </p>
 
           <div class="version-board">
@@ -92,11 +92,15 @@
             </div>
             <div class="vb-cell">
               <div class="vb-label"><span class="dot" style="color: var(--magenta)"></span> <span data-cfg="downloadsPage.boardMap">地图整合包</span></div>
-              <div class="vb-value" data-map-slot>
-                <span data-map-version>待上线</span>
-                <small data-map-date></small>
+              <div class="vb-action">
+                <a class="btn btn-primary btn-sm" href="https://1824933551.share.123pan.cn/123pan/9O42jv-Aebdh" data-cfg-href="links.mapPan" target="_blank" rel="noopener noreferrer">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 19h16" />
+                  </svg>
+                  <span data-cfg="downloadsPage.mapCta">前往网盘下载地图</span>
+                </a>
               </div>
-              <p class="vb-note" data-map-note>发布 .zip 到 Release 后自动上架</p>
+              <p class="vb-note" data-cfg="downloadsPage.mapNote">123 云盘 · 新标签页打开</p>
             </div>
             <div class="vb-cell">
               <div class="vb-label"><span class="dot" style="color: var(--cyan)"></span> <span data-cfg="downloadsPage.boardSync">数据同步</span></div>
@@ -148,7 +152,6 @@
             <div class="filter-group" role="group" aria-label="按资产类型筛选">
               <button class="chip-btn is-on" data-filter="type" data-value="all" type="button">全部资产</button>
               <button class="chip-btn" data-filter="type" data-value="tool" type="button">工具 .jar</button>
-              <button class="chip-btn" data-filter="type" data-value="map" type="button">地图 .zip</button>
             </div>
           </div>
         </div>
@@ -208,7 +211,7 @@
             <div class="step reveal" data-delay="2">
               <h3>解压地图整合包</h3>
               <p>
-                把整合包内的存档目录解压到 <code>.minecraft/saves/</code>，启动器里选择该存档进入即可。
+                地图整合包在 123 云盘（见页面上方）。下载后把里面的存档目录解压到 <code>.minecraft/saves/</code>，启动器里选择该存档进入即可。
                 首次进入请允许命令方块运行。
               </p>
             </div>
@@ -240,9 +243,9 @@
               </svg>
             </span>
             <p>
-              <b>关于下载链接失效：</b>本站所有下载按钮都直接指向 GitHub Release 的
-              <code class="mono">browser_download_url</code>，不做二次转存。若某个版本被作者删除，按钮会退回该版本的发布页。
-              遇到下载慢可尝试 GitHub 加速工具，或直接在 Release 页手动下载同名文件。
+              <b>关于下载链接：</b>工具按钮直接指向 GitHub Release 的
+              <code class="mono">browser_download_url</code>，不做二次转存；地图整合包放在 123 云盘，点击后在新标签页打开。
+              若某个工具版本被作者删除，按钮会退回该版本的发布页。
             </p>
           </div>
         </div>

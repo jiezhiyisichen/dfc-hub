@@ -14,7 +14,6 @@
  * 环境变量：
  *   GITHUB_TOKEN         可选，提高 API 速率限制（GitHub Actions 自动提供）
  *   UPSTREAM_TOOL_REPO   工具仓库，默认 jiezhiyisichen/DFC-Map-Creation-Tool
- *   UPSTREAM_MAP_REPO    地图仓库（若地图整合包单独发在别的仓库）
  * ---------------------------------------------------------------------------
  */
 
@@ -30,7 +29,6 @@ const OUT_JS = resolve(OUT_DIR, "releases.js");
 
 const TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN || "";
 const TOOL_REPO = process.env.UPSTREAM_TOOL_REPO || "jiezhiyisichen/DFC-Map-Creation-Tool";
-const MAP_REPO = process.env.UPSTREAM_MAP_REPO || "";
 const API = "https://api.github.com";
 
 const MAX_NOTES = 6000;
@@ -92,11 +90,11 @@ function detectChannel(tag, prerelease) {
   return "release";
 }
 
-/** 资产归类：.jar → tool，.zip/.7z/.rar → map，其它忽略 */
+/** 资产归类：只收 .jar → tool。
+ *  地图整合包已改为走 123 云盘，Release 里的 zip 一律忽略。 */
 function detectKind(name) {
   const n = String(name || "").toLowerCase();
   if (n.endsWith(".jar")) return "tool";
-  if (/\.(zip|7z|rar)$/.test(n)) return "map";
   return "other";
 }
 
@@ -354,7 +352,6 @@ function pickLatestWithAsset(releases, kind) {
 
 async function main() {
   const repos = [TOOL_REPO];
-  if (MAP_REPO && MAP_REPO !== TOOL_REPO) repos.push(MAP_REPO);
 
   let releases = [];
   let failed = false;
@@ -408,13 +405,11 @@ async function main() {
   const latestRelease = pickLatest(releases, "release");
   const latestBeta = pickLatest(releases, "beta");
   const latestPreview = pickLatest(releases, "preview");
-  const latestMap = pickLatestWithAsset(releases, "map");
 
   const data = {
     generatedAt: new Date().toISOString(),
     source: {
       tool: TOOL_REPO,
-      map: MAP_REPO || TOOL_REPO,
       api: API,
     },
     counts,
@@ -422,7 +417,6 @@ async function main() {
       release: latestRelease,
       beta: latestBeta,
       preview: latestPreview,
-      map: latestMap,
       tool: pickLatestWithAsset(releases, "tool"),
     },
     releases,

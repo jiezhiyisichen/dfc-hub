@@ -651,6 +651,24 @@ ul {
   margin-top: 32px;
 }
 
+.hero-map-link {
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.hero-map-link a {
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.hero-map-link a:hover {
+  color: var(--text);
+  border-color: var(--blue);
+}
+
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
@@ -1544,6 +1562,10 @@ ul {
 .vb-value.is-loading {
   color: var(--muted);
   font-size: 18px;
+}
+
+.vb-action {
+  margin: 8px 0 6px;
 }
 
 .vb-cell .vb-note {

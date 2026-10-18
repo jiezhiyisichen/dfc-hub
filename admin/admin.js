@@ -39,6 +39,7 @@
     "hero.lede": "首屏说明",
     "hero.primaryText": "主按钮文字",
     "hero.secondaryText": "次按钮文字",
+    "hero.mapLink": "地图网盘链接文字",
     "video.title": "视频封面标题",
     "video.sub": "视频封面副标题",
     "video.upName": "UP 主说明",
@@ -49,6 +50,8 @@
     "downloadsPage.boardMap": "看板 · 地图整合包",
     "downloadsPage.boardSync": "看板 · 数据同步",
     "downloadsPage.boardSyncNote": "看板 · 同步说明",
+    "downloadsPage.mapCta": "地图按钮文字",
+    "downloadsPage.mapNote": "地图按钮说明",
     "downloadsPage.installEyebrow": "安装区小标签",
     "downloadsPage.installTitle": "安装区标题",
     "downloadsPage.installSub": "安装区说明",
@@ -62,6 +65,7 @@
     "links.toolReleases": "全部 Release",
     "links.toolDocs": "使用文档",
     "links.siteRepo": "站点仓库",
+    "links.mapPan": "地图整合包网盘链接",
   };
 
   /* -------------------------------------------------------------- helpers */

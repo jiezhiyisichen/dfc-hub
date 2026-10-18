@@ -14,11 +14,11 @@ if not exist "node_modules\express" (
   )
 )
 
-echo 正在启动本地服务 http://127.0.0.1:4310/admin/
+echo 正在启动本地服务 http://127.0.0.1:8080/admin/
 start "DFC Admin Server" cmd /k "node admin-server.js"
 
 timeout /t 3 /nobreak >nul
-start "" "http://127.0.0.1:4310/admin/"
+start "" "http://127.0.0.1:8080/admin/"
 
 echo 浏览器已打开。关闭弹出的服务窗口即可停止后台。
 exit

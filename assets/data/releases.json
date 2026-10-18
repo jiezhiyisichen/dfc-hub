@@ -1,8 +1,7 @@
 {
-  "generatedAt": "2026-10-18T13:21:05.446Z",
+  "generatedAt": "2026-10-18T13:30:23.418Z",
   "source": {
     "tool": "jiezhiyisichen/DFC-Map-Creation-Tool",
-    "map": "jiezhiyisichen/dfc-hub",
     "api": "https://api.github.com"
   },
   "counts": {
@@ -28,7 +27,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.7.jar",
           "kind": "tool",
           "size": 256557,
-          "downloads": 0,
+          "downloads": 1,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.7/jiezhi-1.12.2-dfcmaptools-3.7.jar",
           "updatedAt": "2026-10-18T13:18:07Z"
         }
@@ -39,7 +38,6 @@
     },
     "beta": null,
     "preview": null,
-    "map": null,
     "tool": {
       "id": "jiezhiyisichen/DFC-Map-Creation-Tool#v3.7",
       "repo": "jiezhiyisichen/DFC-Map-Creation-Tool",
@@ -56,7 +54,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.7.jar",
           "kind": "tool",
           "size": 256557,
-          "downloads": 0,
+          "downloads": 1,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.7/jiezhi-1.12.2-dfcmaptools-3.7.jar",
           "updatedAt": "2026-10-18T13:18:07Z"
         }
@@ -83,7 +81,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.7.jar",
           "kind": "tool",
           "size": 256557,
-          "downloads": 0,
+          "downloads": 1,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.7/jiezhi-1.12.2-dfcmaptools-3.7.jar",
           "updatedAt": "2026-10-18T13:18:07Z"
         }
