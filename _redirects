@@ -1,8 +1,0 @@
-# Cloudflare Pages redirects
-# 文档：https://developers.cloudflare.com/pages/configuration/redirects/
-
-/download            /downloads.html    301
-/downloads           /downloads.html    301
-/releases            /downloads.html    301
-/release             /downloads.html    301
-/dl                  /downloads.html    301

@@ -30,7 +30,7 @@ dfc-hub/
 │   ├── build.mjs               组装 dist/
 │   └── dev-server.mjs          零依赖本地预览服务器
 ├── .github/workflows/deploy.yml  定时同步 + Cloudflare Pages 部署
-├── _headers / _redirects       Cloudflare Pages 缓存与安全响应头、短链跳转
+├── _headers                    Cloudflare Pages 缓存与安全响应头
 └── package.json                npm run sync / build / dev
 ```
 

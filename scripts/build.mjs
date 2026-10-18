@@ -19,7 +19,6 @@ const ROOT_FILES = [
   "404.html",
   "robots.txt",
   "_headers",
-  "_redirects",
 ];
 
 async function main() {
