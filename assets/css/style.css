@@ -607,7 +607,7 @@ ul {
 /* ---------- 9. Hero ---------- */
 .hero {
   position: relative;
-  padding: clamp(38px, 6vw, 74px) 0 clamp(28px, 5vw, 56px);
+  padding: clamp(30px, 4.6vw, 56px) 0 clamp(24px, 4vw, 44px);
   overflow: hidden;
 }
 
@@ -616,11 +616,11 @@ ul {
   position: absolute;
   left: 50%;
   top: -180px;
-  width: 900px;
-  height: 420px;
+  width: 760px;
+  height: 300px;
   transform: translateX(-50%);
-  background: radial-gradient(closest-side, rgba(139, 92, 246, 0.22), transparent);
-  filter: blur(30px);
+  background: radial-gradient(closest-side, rgba(139, 92, 246, 0.1), transparent);
+  filter: blur(36px);
   pointer-events: none;
   z-index: -1;
 }
@@ -633,53 +633,26 @@ ul {
 }
 
 .hero-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 6px 14px 6px 8px;
-  border-radius: 999px;
-  border: 1px solid var(--line-strong);
-  background: rgba(10, 16, 30, 0.6);
   font-family: var(--mono);
-  font-size: 11.5px;
-  letter-spacing: 0.1em;
-  color: var(--text-dim);
-  margin-bottom: 22px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-bottom: 12px;
 }
 
-.hero-tag .chip {
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: var(--grad);
-  color: #04101a;
-  font-weight: 700;
-  font-size: 10px;
-  letter-spacing: 0.08em;
-}
-
-.hero h1 {
-  font-size: clamp(31px, 4.9vw, 56px);
-  line-height: 1.14;
-  letter-spacing: -0.028em;
-}
-
-.hero h1 .grad {
-  background: var(--grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  display: inline;
-}
-
-.hero h1 .line {
-  display: block;
+.hero-title {
+  font-size: clamp(21px, 2.6vw, 29px);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+  color: var(--text);
 }
 
 .hero-lede {
-  margin-top: 20px;
-  font-size: clamp(14.5px, 1.7vw, 17px);
+  margin-top: 14px;
+  font-size: clamp(14px, 1.5vw, 15.5px);
   color: var(--text-dim);
-  max-width: 56ch;
+  max-width: 44ch;
   line-height: 1.8;
 }
 
@@ -689,7 +662,7 @@ ul {
 }
 
 .hero-cta {
-  margin-top: 28px;
+  margin-top: 24px;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
@@ -2389,8 +2362,8 @@ ul {
     padding-top: 26px;
   }
 
-  .hero h1 {
-    font-size: clamp(27px, 8.4vw, 36px);
+  .hero-title {
+    font-size: 21px;
   }
 
   .hero-stats {
