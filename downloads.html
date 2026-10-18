@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>下载中心 · DFC Hub</title>
+    <meta
+      name="description"
+      content="DFC 地图整合包与节枝特效工具（JiezhiMod）全部版本下载。按预览版 / 测试版 / 正式版分类，支持搜索与筛选，所有链接直连 GitHub Release。"
+    />
+    <meta name="theme-color" content="#05070f" />
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="下载中心 · DFC Hub" />
+    <meta property="og:description" content="地图整合包与特效工具独立下载，版本与上游 GitHub Release 实时同步。" />
+  </head>
+  <body>
+    <div class="bg-fx" aria-hidden="true"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <div class="ticker">
+      <div class="wrap ticker-inner">
+        <span class="ticker-badge">SYNC</span>
+        <p>
+          <span
+            >上游最新正式版
+            <b data-latest-version>v3.6</b>
+          </span>
+          <span class="sep hide-sm"></span>
+          <span class="hide-sm">下载直连 GitHub Release · 不经网盘</span>
+          <span class="sep hide-sm"></span>
+          <a href="#install">安装说明 →</a>
+        </p>
+      </div>
+    </div>
+
+    <header class="site-header" id="siteHeader">
+      <div class="wrap header-inner">
+        <a class="brand" href="./" aria-label="DFC Hub 首页">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M12 2.6 20.4 7v10L12 21.4 3.6 17V7L12 2.6Z" stroke-linejoin="round" />
+              <circle cx="12" cy="12" r="2.6" />
+              <path d="M12 4.6v4.8M12 14.6v4.8M4.9 8.2l4.2 2.4M14.9 13.4l4.2 2.4M19.1 8.2l-4.2 2.4M9.1 13.4l-4.2 2.4" stroke-linecap="round" />
+            </svg>
+          </span>
+          <span class="brand-text">
+            <strong>DFC HUB</strong>
+            <em>地图与特效工具发布站</em>
+          </span>
+        </a>
+
+        <nav class="nav" id="primaryNav" aria-label="主导航">
+          <a href="index.html#about">项目简介</a>
+          <a href="index.html#video">宣传视频</a>
+          <a href="index.html#gallery">游戏截图</a>
+          <a href="downloads.html" class="is-active" aria-current="page">下载中心</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="version-pill" href="downloads.html" title="最新正式版">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="vp-label">LATEST</span>
+            <span class="vp-num" data-latest-version>v3.6</span>
+          </a>
+          <a class="btn btn-primary btn-sm" href="index.html">返回首页</a>
+          <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="primaryNav">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- ============ PAGE HEAD ============ -->
+      <section class="page-head">
+        <div class="wrap">
+          <span class="eyebrow">Download Center</span>
+          <h1>下载中心</h1>
+          <p class="lede">
+            工具（<code class="mono">.jar</code>）与地图整合包（<code class="mono">.zip</code>）分开提供。
+            版本按 Tag 自动归类：含 <code class="mono">-beta</code> 为测试版，含 <code class="mono">-preview</code> 为预览版，其余为正式版。
+          </p>
+
+          <div class="version-board">
+            <div class="vb-cell">
+              <div class="vb-label"><span class="dot" style="color: var(--green)"></span> 最新正式版</div>
+              <div class="vb-value" data-latest-slot>
+                <span data-latest-version>v3.6</span>
+                <small data-latest-date>—</small>
+              </div>
+              <p class="vb-note" data-latest-name>节枝特效工具</p>
+            </div>
+            <div class="vb-cell">
+              <div class="vb-label"><span class="dot" style="color: var(--magenta)"></span> 地图整合包</div>
+              <div class="vb-value" data-map-slot>
+                <span data-map-version>待上线</span>
+                <small data-map-date></small>
+              </div>
+              <p class="vb-note" data-map-note>发布 .zip 到 Release 后自动上架</p>
+            </div>
+            <div class="vb-cell">
+              <div class="vb-label"><span class="dot" style="color: var(--cyan)"></span> 数据同步</div>
+              <div class="vb-value"><span class="mono" style="font-size: 15px" data-sync-time>—</span></div>
+              <p class="vb-note">自动任务每 6 小时拉取一次上游 Release</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ TOOLBAR ============ -->
+      <div class="toolbar">
+        <div class="wrap toolbar-inner">
+          <div class="search" id="searchWrap">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-3.5-3.5" />
+            </svg>
+            <input
+              id="q"
+              type="search"
+              autocomplete="off"
+              placeholder="搜索版本号、文件名或更新内容…"
+              aria-label="搜索版本"
+            />
+            <button class="clear" id="qClear" type="button" aria-label="清除搜索">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="m6 6 12 12M18 6 6 18" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="filters">
+            <div class="filter-group" role="group" aria-label="按版本通道筛选">
+              <button class="chip-btn is-on" data-filter="channel" data-value="all" type="button">
+                全部 <span class="n" data-count="all">0</span>
+              </button>
+              <button class="chip-btn" data-filter="channel" data-value="release" type="button">
+                正式版 <span class="n" data-count="release">0</span>
+              </button>
+              <button class="chip-btn" data-filter="channel" data-value="beta" type="button">
+                测试版 <span class="n" data-count="beta">0</span>
+              </button>
+              <button class="chip-btn" data-filter="channel" data-value="preview" type="button">
+                预览版 <span class="n" data-count="preview">0</span>
+              </button>
+            </div>
+
+            <div class="filter-group" role="group" aria-label="按资产类型筛选">
+              <button class="chip-btn is-on" data-filter="type" data-value="all" type="button">全部资产</button>
+              <button class="chip-btn" data-filter="type" data-value="tool" type="button">工具 .jar</button>
+              <button class="chip-btn" data-filter="type" data-value="map" type="button">地图 .zip</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ LIST ============ -->
+      <section class="section--tight">
+        <div class="wrap">
+          <div class="result-bar">
+            <span data-result-line>正在载入版本数据…</span>
+            <span class="sync">
+              <span class="live-dot" aria-hidden="true"></span>
+              <span data-sync-line>DATA SYNC · —</span>
+            </span>
+          </div>
+
+          <div class="release-list" id="releaseList" aria-live="polite"></div>
+
+          <div class="empty" id="emptyState" hidden>
+            <div class="e-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+                <circle cx="11" cy="11" r="7" />
+                <path d="m20 20-3.5-3.5" />
+              </svg>
+            </div>
+            <h3>没有匹配的版本</h3>
+            <p>试试换一个关键词，或者点「全部」重置筛选条件。</p>
+            <button class="btn btn-ghost" id="resetFilters" type="button">重置筛选</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ INSTALL ============ -->
+      <section class="section" id="install">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <span class="eyebrow">Installation</span>
+            <h2 class="section-title">三分钟<span class="grad">装好开档</span></h2>
+            <p class="section-sub">工具与地图互不依赖，但一起装才有完整效果。以下路径以官方启动器为例。</p>
+          </div>
+
+          <div class="steps">
+            <div class="step reveal">
+              <h3>装 Forge 1.12.2</h3>
+              <p>
+                安装 <code>Forge 14.23.5.2864</code>（1.12.2 的任意 14.23.x 均可），启动一次游戏生成
+                <code>.minecraft/mods</code> 目录。
+              </p>
+            </div>
+            <div class="step reveal" data-delay="1">
+              <h3>放入工具 jar</h3>
+              <p>
+                把下载到的 <code>jiezhi-1.12.2-dfcmaptools-x.x.jar</code> 直接丢进
+                <code>.minecraft/mods/</code>。不需要解压。
+              </p>
+            </div>
+            <div class="step reveal" data-delay="2">
+              <h3>解压地图整合包</h3>
+              <p>
+                把整合包内的存档目录解压到 <code>.minecraft/saves/</code>，启动器里选择该存档进入即可。
+                首次进入请允许命令方块运行。
+              </p>
+            </div>
+            <div class="step reveal">
+              <h3>校准 DFC 显示器</h3>
+              <p>
+                放下 DFC 显示器搭成 4×3 多方块，手持 DFC 遥控器右键核心绑定，屏幕会自动完成开机自检。
+              </p>
+            </div>
+            <div class="step reveal" data-delay="1">
+              <h3>没装 HBM？</h3>
+              <p>
+                屏幕会显示 <code>NO LINK</code> 而不是崩溃。特效类指令（抖屏 / 白屏 / 倒计时）不受影响，可单独使用。
+              </p>
+            </div>
+            <div class="step reveal" data-delay="2">
+              <h3>联机注意</h3>
+              <p>
+                工具在服务端注册指令、客户端负责渲染，<b>两侧都要装同一个版本</b>，否则指令可用但看不到特效。
+              </p>
+            </div>
+          </div>
+
+          <div class="callout reveal" style="margin-top: 22px">
+            <span class="c-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <path d="M12 3 2.5 20h19L12 3Z" stroke-linejoin="round" />
+                <path d="M12 9v5M12 17.2v.1" />
+              </svg>
+            </span>
+            <p>
+              <b>关于下载链接失效：</b>本站所有下载按钮都直接指向 GitHub Release 的
+              <code class="mono">browser_download_url</code>，不做二次转存。若某个版本被作者删除，按钮会退回该版本的发布页。
+              遇到下载慢可尝试 GitHub 加速工具，或直接在 Release 页手动下载同名文件。
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="brand" href="./">
+              <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M12 2.6 20.4 7v10L12 21.4 3.6 17V7L12 2.6Z" stroke-linejoin="round" />
+                  <circle cx="12" cy="12" r="2.6" />
+                </svg>
+              </span>
+              <span class="brand-text">
+                <strong>DFC HUB</strong>
+                <em>地图与特效工具发布站</em>
+              </span>
+            </a>
+            <p>由地图作者「树上的节枝」维护的非官方发布站。所有文件均托管于 GitHub Release，站点本身为纯静态页面。</p>
+          </div>
+
+          <div class="footer-col">
+            <h4>导航</h4>
+            <a href="index.html">首页</a>
+            <a href="index.html#about">项目简介</a>
+            <a href="index.html#gallery">游戏截图</a>
+            <a href="downloads.html">下载中心</a>
+          </div>
+
+          <div class="footer-col">
+            <h4>资源</h4>
+            <a href="https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool" target="_blank" rel="noopener noreferrer">工具源码</a>
+            <a href="https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases" target="_blank" rel="noopener noreferrer">全部 Release</a>
+            <a href="https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/tree/main/docs" target="_blank" rel="noopener noreferrer">使用文档</a>
+            <a href="https://space.bilibili.com/3494363348863838" target="_blank" rel="noopener noreferrer">B 站主页</a>
+          </div>
+
+          <div class="footer-col">
+            <h4>本站</h4>
+            <a href="https://github.com/jiezhiyisichen/dfc-hub" target="_blank" rel="noopener noreferrer">站点源码</a>
+            <a href="#install">安装说明</a>
+            <a href="https://www.bilibili.com/video/BV1VRYe6gEga/" target="_blank" rel="noopener noreferrer">宣传视频</a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span>© <span data-year>2026</span> 树上的节枝 · 转载 / 二创请保留署名，禁止商业使用。</span>
+          <span class="mono" data-sync-line>DATA SYNC · —</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/data/releases.js" defer></script>
+    <script src="assets/js/site.js" defer></script>
+    <script src="assets/js/downloads.js" defer></script>
+  </body>
+</html>

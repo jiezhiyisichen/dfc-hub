@@ -1,0 +1,479 @@
+/* ==========================================================================
+   DFC HUB — downloads page controller
+   Renders release cards from window.__DFC_DATA__, with search + filters.
+   ========================================================================== */
+(function () {
+  "use strict";
+
+  var DATA = window.__DFC_DATA__ || null;
+  var listEl = document.getElementById("releaseList");
+  var emptyEl = document.getElementById("emptyState");
+  var resultLine = document.querySelector("[data-result-line]");
+  var searchWrap = document.getElementById("searchWrap");
+  var qInput = document.getElementById("q");
+  var qClear = document.getElementById("qClear");
+
+  if (!listEl) return;
+
+  var CHANNEL_LABEL = {
+    release: "正式版",
+    beta: "测试版",
+    preview: "预览版",
+  };
+
+  var state = {
+    channel: "all",
+    type: "all",
+    q: "",
+  };
+
+  /* -------------------------------------------------------------- helpers */
+  function esc(str) {
+    return String(str == null ? "" : str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function fmtBytes(bytes) {
+    if (!bytes || bytes < 0) return "";
+    var units = ["B", "KB", "MB", "GB"];
+    var i = 0;
+    var n = bytes;
+    while (n >= 1024 && i < units.length - 1) {
+      n /= 1024;
+      i++;
+    }
+    return (i === 0 ? n : n.toFixed(n < 10 ? 1 : 0)) + " " + units[i];
+  }
+
+  function fmtDate(iso, withTime) {
+    if (!iso) return "—";
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return "—";
+    var p = function (v) {
+      return String(v).padStart(2, "0");
+    };
+    var s = d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate());
+    if (withTime) s += " " + p(d.getHours()) + ":" + p(d.getMinutes());
+    return s;
+  }
+
+  function firstAsset(release, kind) {
+    var assets = release.assets || [];
+    for (var i = 0; i < assets.length; i++) {
+      if (assets[i].kind === kind) return assets[i];
+    }
+    return null;
+  }
+
+  function releaseUrl(release) {
+    return (
+      release.url ||
+      "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/tag/" + release.tag
+    );
+  }
+
+  /** Release 标题通常以 Tag 开头（"v3.6 · 自定义屏…"），卡片左侧已经单独展示 Tag，这里去掉重复部分 */
+  function displayName(release) {
+    var name = String(release.name || "").trim();
+    var tag = String(release.tag || "").trim();
+    if (!name) return tag;
+    if (!tag) return name;
+    var safeTag = tag.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    var stripped = name.replace(new RegExp("^" + safeTag + "\\s*[·:：—–-]?\\s*", "i"), "").trim();
+    return stripped || name;
+  }
+
+  function matchesQuery(release, q) {
+    if (!q) return true;
+    var hay = [
+      release.tag,
+      release.version,
+      release.name,
+      CHANNEL_LABEL[release.channel] || "",
+      release.notesText || "",
+      (release.assets || [])
+        .map(function (a) {
+          return a.name + " " + (a.kind === "tool" ? "jar 工具" : "zip 地图 整合包");
+        })
+        .join(" "),
+    ]
+      .join(" ")
+      .toLowerCase();
+    return hay.indexOf(q) !== -1;
+  }
+
+  /* --------------------------------------------------------------- render */
+  function assetRow(asset, release) {
+    var isTool = asset.kind === "tool";
+    var label = isTool ? "下载 .jar" : "下载整合包";
+    var kindText = isTool ? "工具 · 客户端 + 服务端" : "地图 · 整合包";
+    var meta = [kindText];
+    if (asset.size) meta.push(fmtBytes(asset.size));
+    if (asset.downloads) meta.push("↓ " + asset.downloads);
+
+    return (
+      '<div class="asset">' +
+      '<div class="asset-kind" data-kind="' +
+      esc(asset.kind) +
+      '">' +
+      (isTool ? "JAR" : "ZIP") +
+      "</div>" +
+      '<div class="asset-info">' +
+      '<div class="asset-name">' +
+      esc(asset.name) +
+      "</div>" +
+      '<div class="asset-sub">' +
+      meta
+        .map(function (m) {
+          return "<span>" + esc(m) + "</span>";
+        })
+        .join("") +
+      "</div>" +
+      "</div>" +
+      '<div class="asset-actions">' +
+      '<a class="btn btn-primary btn-sm" href="' +
+      esc(asset.url) +
+      '" rel="noopener noreferrer" download>' +
+      '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      '<path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 19h16" /></svg>' +
+      label +
+      "</a>" +
+      '<a class="btn btn-ghost btn-sm" href="' +
+      esc(releaseUrl(release)) +
+      '" target="_blank" rel="noopener noreferrer" title="在 GitHub 查看">' +
+      "GitHub ↗" +
+      "</a>" +
+      "</div>" +
+      "</div>"
+    );
+  }
+
+  function releaseCard(release, index) {
+    var channel = release.channel || "release";
+    var latestTag = DATA && DATA.latest && DATA.latest.release ? DATA.latest.release.tag : null;
+    var isLatest = latestTag === release.tag;
+
+    var assets = (release.assets || []).filter(function (a) {
+      if (state.type === "all") return a.kind === "tool" || a.kind === "map";
+      return a.kind === state.type;
+    });
+
+    if (!assets.length) return "";
+
+    var notesId = "notes-" + esc(release.tag).replace(/[^\w.-]/g, "-");
+    var hasNotes = !!(release.notesHtml && release.notesHtml.trim());
+    var openNotes = isLatest;
+
+    var badges =
+      '<span class="badge badge--' +
+      (channel === "release" ? "release" : channel === "beta" ? "beta" : "preview") +
+      '">' +
+      '<span class="dot"></span>' +
+      CHANNEL_LABEL[channel] +
+      "</span>";
+    if (isLatest) badges += '<span class="badge badge--muted">LATEST</span>';
+
+    var totalSize = assets.reduce(function (sum, a) {
+      return sum + (a.size || 0);
+    }, 0);
+
+    return (
+      '<article class="release' +
+      (isLatest ? " is-latest" : "") +
+      '" data-tag="' +
+      esc(release.tag) +
+      '">' +
+      '<div class="release-head">' +
+      '<div class="release-tag">' +
+      esc(release.tag) +
+      "</div>" +
+      '<div class="release-title">' +
+      "<h3>" +
+      esc(displayName(release)) +
+      "</h3>" +
+      '<div class="meta">' +
+      "<span>" +
+      fmtDate(release.publishedAt) +
+      "</span>" +
+      '<span class="sep"></span>' +
+      "<span>" +
+      assets.length +
+      " 个文件" +
+      (totalSize ? " · " + fmtBytes(totalSize) : "") +
+      "</span>" +
+      '<span class="sep"></span>' +
+      '<a href="' +
+      esc(releaseUrl(release)) +
+      '" target="_blank" rel="noopener noreferrer">发布页 ↗</a>' +
+      "</div>" +
+      "</div>" +
+      '<div class="release-badges">' +
+      badges +
+      "</div>" +
+      "</div>" +
+      '<div class="asset-list">' +
+      assets
+        .map(function (a) {
+          return assetRow(a, release);
+        })
+        .join("") +
+      "</div>" +
+      (hasNotes
+        ? '<div class="release-notes">' +
+          '<button class="notes-toggle" type="button" aria-expanded="' +
+          (openNotes ? "true" : "false") +
+          '" aria-controls="' +
+          notesId +
+          '">' +
+          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>' +
+          "<span>" +
+          (openNotes ? "收起更新内容" : "查看更新内容") +
+          "</span>" +
+          "</button>" +
+          '<div class="notes-body' +
+          (openNotes ? " is-open" : "") +
+          '" id="' +
+          notesId +
+          '">' +
+          release.notesHtml +
+          "</div>" +
+          "</div>"
+        : "") +
+      "</article>"
+    );
+  }
+
+  /* ---------------------------------------------------------------- stats */
+  function computeCounts(releases) {
+    var counts = { all: releases.length, release: 0, beta: 0, preview: 0 };
+    releases.forEach(function (r) {
+      if (counts[r.channel] != null) counts[r.channel]++;
+    });
+    return counts;
+  }
+
+  function updateCounts(releases) {
+    var counts = computeCounts(releases);
+    document.querySelectorAll("[data-count]").forEach(function (el) {
+      var key = el.getAttribute("data-count");
+      if (counts[key] != null) el.textContent = String(counts[key]);
+    });
+  }
+
+  /* --------------------------------------------------------------- render */
+  function render() {
+    if (!DATA || !Array.isArray(DATA.releases)) {
+      if (resultLine) resultLine.textContent = "版本数据未能载入";
+      listEl.innerHTML = "";
+      if (emptyEl) {
+        emptyEl.hidden = false;
+        emptyEl.querySelector("h3").textContent = "版本数据载入失败";
+        emptyEl.querySelector("p").textContent =
+          "可能是数据文件缺失或未生成。请稍后重试，或直接前往 GitHub Release 页面下载。";
+        var resetBtn = document.getElementById("resetFilters");
+        if (resetBtn) {
+          resetBtn.textContent = "前往 GitHub Release";
+          resetBtn.onclick = function () {
+            window.open(
+              "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases",
+              "_blank",
+              "noopener"
+            );
+          };
+        }
+      }
+      return;
+    }
+
+    var q = state.q.trim().toLowerCase();
+    var filtered = DATA.releases.filter(function (r) {
+      if (state.channel !== "all" && r.channel !== state.channel) return false;
+      if (state.type !== "all" && !firstAsset(r, state.type)) return false;
+      return matchesQuery(r, q);
+    });
+
+    var html = filtered.map(releaseCard).join("");
+    // releaseCard returns "" when a release has no assets of the requested type
+    var visible = filtered.filter(function (r) {
+      return state.type === "all" || !!firstAsset(r, state.type);
+    });
+
+    listEl.innerHTML = html;
+
+    if (!html) {
+      listEl.innerHTML = "";
+      if (emptyEl) emptyEl.hidden = false;
+      if (resultLine) resultLine.textContent = "没有匹配的版本";
+    } else {
+      if (emptyEl) emptyEl.hidden = true;
+      if (resultLine) {
+        var assetCount = visible.reduce(function (sum, r) {
+          return (
+            sum +
+            (r.assets || []).filter(function (a) {
+              if (state.type === "all") return a.kind === "tool" || a.kind === "map";
+              return a.kind === state.type;
+            }).length
+          );
+        }, 0);
+        resultLine.textContent =
+          "共 " + visible.length + " 个版本 · " + assetCount + " 个可下载文件" + (q ? " · 关键词「" + state.q.trim() + "」" : "");
+      }
+    }
+
+    bindNotes();
+  }
+
+  function bindNotes() {
+    listEl.querySelectorAll(".notes-toggle").forEach(function (btn) {
+      var body = document.getElementById(btn.getAttribute("aria-controls"));
+      if (body && body.classList.contains("is-open") && body.scrollHeight > body.clientHeight + 4) {
+        body.classList.add("is-scroll");
+      }
+      btn.addEventListener("click", function () {
+        var open = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", open ? "false" : "true");
+        var label = btn.querySelector("span");
+        if (label) label.textContent = open ? "查看更新内容" : "收起更新内容";
+        if (body) {
+          body.classList.toggle("is-open", !open);
+          if (!open && body.scrollHeight > body.clientHeight + 4) {
+            body.classList.add("is-scroll");
+          }
+        }
+      });
+    });
+  }
+
+  /* --------------------------------------------------------------- filters */
+  function syncUrl() {
+    var params = new URLSearchParams();
+    if (state.channel !== "all") params.set("channel", state.channel);
+    if (state.type !== "all") params.set("type", state.type);
+    if (state.q.trim()) params.set("q", state.q.trim());
+    var qs = params.toString();
+    var url = window.location.pathname + (qs ? "?" + qs : "") + window.location.hash;
+    try {
+      window.history.replaceState(null, "", url);
+    } catch (e) {
+      /* file:// may throw — ignore */
+    }
+  }
+
+  function applyChips() {
+    document.querySelectorAll("[data-filter]").forEach(function (btn) {
+      var key = btn.getAttribute("data-filter");
+      var val = btn.getAttribute("data-value");
+      btn.classList.toggle("is-on", state[key] === val);
+      btn.setAttribute("aria-pressed", state[key] === val ? "true" : "false");
+    });
+  }
+
+  function bindFilters() {
+    document.querySelectorAll("[data-filter]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var key = btn.getAttribute("data-filter");
+        state[key] = btn.getAttribute("data-value");
+        applyChips();
+        render();
+        syncUrl();
+      });
+    });
+
+    if (qInput) {
+      var timer = null;
+      qInput.addEventListener("input", function () {
+        state.q = qInput.value;
+        if (searchWrap) searchWrap.classList.toggle("has-value", !!qInput.value);
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          render();
+          syncUrl();
+        }, 120);
+      });
+
+      qInput.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          qInput.value = "";
+          state.q = "";
+          if (searchWrap) searchWrap.classList.remove("has-value");
+          render();
+          syncUrl();
+        }
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "/" && document.activeElement !== qInput) {
+          e.preventDefault();
+          qInput.focus();
+        }
+      });
+    }
+
+    if (qClear) {
+      qClear.addEventListener("click", function () {
+        qInput.value = "";
+        state.q = "";
+        if (searchWrap) searchWrap.classList.remove("has-value");
+        qInput.focus();
+        render();
+        syncUrl();
+      });
+    }
+
+    var reset = document.getElementById("resetFilters");
+    if (reset) {
+      reset.addEventListener("click", function () {
+        state.channel = "all";
+        state.type = "all";
+        state.q = "";
+        if (qInput) qInput.value = "";
+        if (searchWrap) searchWrap.classList.remove("has-value");
+        applyChips();
+        render();
+        syncUrl();
+      });
+    }
+  }
+
+  function readUrl() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var ch = params.get("channel");
+      var tp = params.get("type");
+      var q = params.get("q");
+      if (ch === "release" || ch === "beta" || ch === "preview") state.channel = ch;
+      if (tp === "tool" || tp === "map") state.type = tp;
+      if (q) {
+        state.q = q;
+        if (qInput) {
+          qInput.value = q;
+          if (searchWrap) searchWrap.classList.add("has-value");
+        }
+      }
+    } catch (e) {
+      /* ignore */
+    }
+  }
+
+  /* ----------------------------------------------------------------- boot */
+  function boot() {
+    if (DATA && Array.isArray(DATA.releases)) {
+      updateCounts(DATA.releases);
+    }
+    readUrl();
+    applyChips();
+    bindFilters();
+    render();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+  } else {
+    boot();
+  }
+})();

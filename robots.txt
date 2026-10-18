@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# 站点由 Cloudflare Pages 托管，无 sitemap

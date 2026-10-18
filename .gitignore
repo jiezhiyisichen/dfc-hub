@@ -1,0 +1,30 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+.wrangler/
+
+# logs
+*.log
+npm-debug.log*
+
+# editors / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# local env
+.env
+.env.local
+
+# local preview / debug scratch files
+.preview/
+__preview.html
+__probe.html
+repos.json
+rel.json
+tree.json
+c.json

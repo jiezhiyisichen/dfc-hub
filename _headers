@@ -1,0 +1,30 @@
+# Cloudflare Pages headers
+# 文档：https://developers.cloudflare.com/pages/configuration/headers/
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/downloads.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/assets/data/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/img/*
+  Cache-Control: public, max-age=2592000, immutable
+
+/404.html
+  Cache-Control: public, max-age=0, must-revalidate

@@ -1,0 +1,156 @@
+# =============================================================================
+# DFC Hub — 上游 Release 同步 + Cloudflare Pages 自动部署
+#
+# 触发方式：
+#   1. 定时：每 6 小时拉一次上游工具仓库的最新 Release
+#   2. 手动：Actions 页面点 "Run workflow"
+#   3. 推送：main 分支有代码改动时（自动任务自己提交的数据提交会被跳过）
+#
+# 需要在仓库 Settings 里配置：
+#   Secrets  CLOUDFLARE_API_TOKEN    Cloudflare API 令牌（Pages:Edit 权限）
+#            CLOUDFLARE_ACCOUNT_ID   Cloudflare 账户 ID
+#   Variables（可选）
+#            CLOUDFLARE_PROJECT_NAME Pages 项目名，默认 dfc-hub
+#            UPSTREAM_MAP_REPO       地图仓库，默认与工具仓库相同
+# =============================================================================
+
+name: Sync Releases & Deploy
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # UTC 时间，每 6 小时一次（北京时间 02:17 / 08:17 / 14:17 / 20:17 左右）
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      force_deploy:
+        description: "即使数据没有变化也重新部署"
+        type: boolean
+        default: false
+
+# 允许工作流把同步后的数据提交回仓库
+permissions:
+  contents: write
+
+# 同一时间只跑一个部署，新的排队取消旧的
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+env:
+  UPSTREAM_TOOL_REPO: jiezhiyisichen/DFC-Map-Creation-Tool
+  # 地图整合包（.zip）发布在本站仓库的 Release 里；如需换仓库，在仓库
+  # Settings → Variables 里设置 UPSTREAM_MAP_REPO 覆盖即可。
+  UPSTREAM_MAP_REPO: ${{ vars.UPSTREAM_MAP_REPO || 'jiezhiyisichen/dfc-hub' }}
+  NODE_VERSION: "20"
+
+jobs:
+  sync-and-deploy:
+    name: Sync & Deploy
+    runs-on: ubuntu-latest
+    # 自动同步任务自己产生的数据提交带 [skip ci]，避免自我触发死循环
+    if: >-
+      github.event_name != 'push' ||
+      !contains(github.event.head_commit.message || '', '[skip ci]')
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      # ---------------------------------------------------------------------
+      # 1. 拉取上游 Release，生成 assets/data/releases.json / releases.js
+      # ---------------------------------------------------------------------
+      - name: Sync upstream releases
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          UPSTREAM_TOOL_REPO: ${{ env.UPSTREAM_TOOL_REPO }}
+          UPSTREAM_MAP_REPO: ${{ env.UPSTREAM_MAP_REPO }}
+        run: node scripts/sync-releases.mjs
+
+      # ---------------------------------------------------------------------
+      # 2. 版本号有变化就提交回去（站点本身也是数据的快照）
+      # ---------------------------------------------------------------------
+      - name: Commit data if changed
+        id: commit
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if [ -z "$(git status --porcelain assets/data)" ]; then
+            echo "数据没有变化，跳过提交"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          VERSION=$(node -e "const d=require('./assets/data/releases.json');console.log(d.latest.release?d.latest.release.tag:'unknown')")
+          git add assets/data
+          git commit -m "chore(data): sync upstream release ${VERSION} [skip ci]"
+          git push || echo "::warning::数据提交推送失败（可能是分支保护），本地构建仍会继续"
+
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+
+      # ---------------------------------------------------------------------
+      # 3. 组装可部署目录 dist/
+      # ---------------------------------------------------------------------
+      - name: Build static bundle
+        run: node scripts/build.mjs
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dfc-hub-dist
+          path: dist
+          retention-days: 7
+          if-no-files-found: error
+
+      # ---------------------------------------------------------------------
+      # 4. 检查 Cloudflare 凭据（缺失时给出明确提示而不是直接失败）
+      # ---------------------------------------------------------------------
+      - name: Check Cloudflare credentials
+        id: cf
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CF_TOKEN" ] || [ -z "$CF_ACCOUNT" ]; then
+            echo "::warning title=缺少 Cloudflare 凭据::请在 Settings → Secrets and variables → Actions 添加 CLOUDFLARE_API_TOKEN 与 CLOUDFLARE_ACCOUNT_ID，本次仅构建未部署。"
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # ---------------------------------------------------------------------
+      # 5. 部署到 Cloudflare Pages（项目名默认 dfc-hub → dfc-hub.pages.dev）
+      # ---------------------------------------------------------------------
+      - name: Deploy to Cloudflare Pages
+        if: steps.cf.outputs.ready == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: >-
+            pages deploy dist
+            --project-name=${{ vars.CLOUDFLARE_PROJECT_NAME || 'dfc-hub' }}
+            --branch=main
+            --commit-dirty=true
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "### DFC Hub 部署结果" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- 数据变化：\`${{ steps.commit.outputs.changed || 'unknown' }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- 最新正式版：\`${{ steps.commit.outputs.version || '—' }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Cloudflare 凭据：\`${{ steps.cf.outputs.ready || 'missing' }}\`" >> "$GITHUB_STEP_SUMMARY"
+          if [ "${{ steps.cf.outputs.ready }}" = "true" ]; then
+            echo "- 线上地址：https://dfc-hub.pages.dev" >> "$GITHUB_STEP_SUMMARY"
+          fi
