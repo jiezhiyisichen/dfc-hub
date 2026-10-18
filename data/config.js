@@ -7,7 +7,7 @@ window.__DFC_CONFIG__ = {
     "brandSub": "地图与特效工具",
     "tickerBadge": "SYNC",
     "tickerLabel": "上游最新正式版",
-    "tickerNote": "与 GitHub Release 每 6 小时自动同步",
+    "tickerNote": "与 GitHub Release 每小时自动同步",
     "tickerLinkText": "前往下载中心 →"
   },
   "hero": {
@@ -30,7 +30,7 @@ window.__DFC_CONFIG__ = {
     "boardLatest": "最新正式版",
     "boardMap": "地图整合包",
     "boardSync": "数据同步",
-    "boardSyncNote": "自动任务每 6 小时拉取一次上游 Release",
+    "boardSyncNote": "自动任务每小时拉取一次上游 Release",
     "mapCta": "前往网盘下载地图",
     "mapNote": "123 云盘 · 新标签页打开",
     "installEyebrow": "Installation",

@@ -2,7 +2,7 @@
 # DFC Hub — 上游 Release 同步 + Cloudflare Pages 自动部署
 #
 # 触发方式：
-#   1. 定时：每 6 小时拉一次上游工具仓库的最新 Release
+#   1. 定时：每小时拉一次上游工具仓库的最新 Release
 #   2. 手动：Actions 页面点 "Run workflow"
 #   3. 推送：main 分支有代码改动时（自动任务自己提交的数据提交会被跳过）
 #
@@ -19,8 +19,8 @@ on:
   push:
     branches: [main]
   schedule:
-    # UTC 时间，每 6 小时一次（北京时间 02:17 / 08:17 / 14:17 / 20:17 左右）
-    - cron: "17 */6 * * *"
+    # UTC 时间，每小时一次（每小时第 7 分钟；Actions 高峰期可能延迟几分钟）
+    - cron: "7 * * * *"
   workflow_dispatch:
     inputs:
       force_deploy:

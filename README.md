@@ -167,7 +167,7 @@ Cloudflare Dashboard → 右上头像 → **My Profile** → **API Tokens** → 
 4. `scripts/build.mjs` 生成 `dist/`；
 5. `wrangler pages deploy dist` 发布到 Cloudflare Pages。
 
-定时：每 6 小时一次（`cron: 17 */6 * * *`，UTC）。
+定时：每小时一次（`cron: 7 * * * *`，UTC）。
 
 ### 版本通道判定
 

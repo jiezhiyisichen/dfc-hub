@@ -1,5 +1,6 @@
 # Cloudflare Pages headers
 # 文档：https://developers.cloudflare.com/pages/configuration/headers/
+# 规则按「更具体的路径优先」，`/assets/*` 放在最后当兜底。
 
 /*
   X-Content-Type-Options: nosniff
@@ -17,17 +18,29 @@
 /downloads.html
   Cache-Control: public, max-age=0, must-revalidate
 
-/assets/*
-  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+/404.html
+  Cache-Control: public, max-age=0, must-revalidate
 
+# 版本数据：必须每次校验，否则首页会显示过期版本号
 /assets/data/*
   Cache-Control: public, max-age=0, must-revalidate
 
+/data/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+# 脚本与样式：文件名没有指纹，不能长缓存
+/assets/js/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/css/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+# 图片可以放心长缓存
 /assets/img/*
   Cache-Control: public, max-age=2592000, immutable
 
 /downloads/*
   Cache-Control: public, max-age=86400
 
-/404.html
-  Cache-Control: public, max-age=0, must-revalidate
+/assets/*
+  Cache-Control: public, max-age=3600
