@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T13:58:19.157Z",
+  "generatedAt": "2026-10-18T14:13:38.439Z",
   "source": {
     "tool": "jiezhiyisichen/DFC-Map-Creation-Tool",
     "api": "https://api.github.com",
@@ -8,15 +8,15 @@
       "api": "https://gitee.com/api/v5",
       "enabled": true,
       "ok": true,
-      "mergedAssets": 3,
+      "mergedAssets": 4,
       "extraReleases": 0,
       "primary": false
     }
   },
   "counts": {
-    "all": 5,
+    "all": 6,
     "release": 5,
-    "beta": 0,
+    "beta": 1,
     "preview": 0
   },
   "latest": {
@@ -57,7 +57,43 @@
         }
       }
     },
-    "beta": null,
+    "beta": {
+      "id": "jiezhiyisichen/DFC-Map-Creation-Tool#v3.9-beta",
+      "repo": "jiezhiyisichen/DFC-Map-Creation-Tool",
+      "tag": "v3.9-beta",
+      "version": "3.9-beta",
+      "channel": "beta",
+      "name": "v3.9-beta · 密码盘与密码控制台（测试版）",
+      "publishedAt": "2026-10-18T14:12:37Z",
+      "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/tag/v3.9-beta",
+      "prerelease": true,
+      "draft": false,
+      "assets": [
+        {
+          "name": "jiezhi-1.12.2-dfcmaptools-3.9-beta.jar",
+          "kind": "tool",
+          "size": 283377,
+          "downloads": 0,
+          "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9-beta/jiezhi-1.12.2-dfcmaptools-3.9-beta.jar",
+          "updatedAt": "2026-10-18T14:12:48Z",
+          "mirrors": [
+            {
+              "host": "gitee",
+              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9-beta/jiezhi-1.12.2-dfcmaptools-3.9-beta.jar"
+            }
+          ]
+        }
+      ],
+      "notes": "## 3.9-beta — 密码盘与密码控制台（测试版）\n\n> ⚠️ **测试版**：这套密码系统是全新功能，还没经过大量实机验证。\n> 遇到问题请带上 `logs/latest.log` 反馈。\n\n### 密码盘（占一格、高半格、触摸式）\n\n- **不打开任何界面**：右键**直接点面板上的键**，用命中点算出来你按的是哪一格。\n- **密码每台随机**（6 位数字），写在**旁边那张倾斜的便签纸**上（\"开发者代码：xxxxxx\"）。\n- 状态：待输入 / 已锁定 / 已通过；输错时整个键盘描边转红。\n- 12 个键：`1-9`、`0`、`清除`、`输入`。\n\n### 密码控制台（占一个方块，右键开界面）\n\n一个控制台管一台密码盘，界面里两项设置：\n\n| 设置 | 可选值 |\n| --- | --- |\n| **收到红石信号后** | 不做任何事 / 锁定密码盘 / 解锁密码盘 / 清空已输入 / **锁定并清空**（默认） |\n| **密码正确时输出红石** | 开 / 关 |\n\n- 密码盘报\"已通过\"时，控制台持续输出 **15 级弱信号**。\n- 红石用**每 5 tick 轮询 + 上升沿检测**，不依赖单条事件通知（1.12.2 的红石通知路径太碎）。\n\n### 密码连接器\n\n把两者连起来，全程在世界里完成：\n\n1. **蹲下右键密码盘** → 记录坐标\n2. **蹲下右键控制台** → 完成连接（≤32 格、同维度）\n3. 不蹲下右键控制台 → 打开配置界面\n4. **蹲下右键空气** → 清空记录\n\n### 校验\n\n- 离线自测 **684 PASS / 0 FAIL**（新增 8 条键位断言）\n- 其中最关键的一条：**每个键的中心点用世界坐标反算回来必须命中它自己** ——\n  键位\"画的\"和\"判的\"一旦不一致，玩家就会看着按 5、实际输 6，这种 bug 在游戏里几乎没法复现。\n- 面板可离屏导出：`tools\\canvastest\\run_dump.bat` 会生成\n  `dfc_canvas_keypad_normal / reject / locked / accepted.png` 四张图，用来检查键位出框、便签压字、锁定配色。\n- `check_stackmap` OK ｜ `TestMain` SEAL OK\n\n### 安装\n\n1. Minecraft **1.12.2** + Forge **14.23.5.2864**\n2. 把 `jiezhi-1.12.2-dfcmaptools-3.9-beta.jar` 放进 `.minecraft/mods/`（服务端也要放）\n   ⚠️ **同时只能有一个版本**，旧版请先移出 `mods/`\n3. 启动日志出现 `JiezhiMod v3.9-beta is loading.` 即加载成功\n\n### 玩法提示\n\n1. 放下**密码盘**，旁边会浮出一张便签，上面就是这台盘的密码；\n2. 放下**密码控制台**，用**密码连接器**蹲下右键密码盘 → 蹲下右键控制台，绑定完成；\n3. 右键控制台，设定\"收到红石信号后锁定并清空\"、\"密码正确时输出红石\"；\n4. 把控制台的输出接到门 / 活塞 / 灯上，输入正确密码即可触发；\n5. 拉一下红石信号，键盘立刻锁死，需要\"解锁密码盘\"才能继续输入。\n\n源码镜像：GitHub `jiezhiyisichen/DFC-Map-Creation-Tool` ｜ Gitee `yi-sichen-jiezhi/DFC-Map-Creation-Tool`\n",
+      "notesText": "3.9 beta — 密码盘与密码控制台（测试版） ⚠️ 测试版 ：这套密码系统是全新功能，还没经过大量实机验证。 遇到问题请带上 logs/latest.log 反馈。 密码盘（占一格、高半格、触摸式） 不打开任何界面 ：右键 直接点面板上的键 ，用命中点算出来你按的是哪一格。 密码每台随机 （6 位数字），写在 旁边那张倾斜的便签纸 上（\"开发者代码：xxxxxx\"）。 状态：待输入 / 已锁定 / 已通过；输错时整个键盘描边转红。 12 个键： 1 9 、 0 、 清除 、 输入 。 密码控制台（占一个方块，右键开界面） 一个控制台管一台密码盘，界面里两项设置： 设置 可选值 收到红石信号后 不做任何事 / 锁定密码盘 / 解锁密码盘 / 清空已输入 / 锁定并清空 （默认） 密码正确时输出红石 开 / 关 密码盘报\"已通过\"时，控制台持续输出 15 级弱信号 。 红石用 每 5 tick 轮询 + 上升沿检测 ，不依赖单条事件通知（1.12.2 的红石通知路径太碎）。 密码连接器 把两者连起来，全程在世界里完成： 1. 蹲下右键密码盘 → 记录坐标 2. 蹲下右键控制台 → 完成连接（≤32 格、同维度） 3. 不蹲下右键控制台 → 打开配置界面 4. 蹲下右键空气 → 清空记录 校验 离线自测 684 PASS / 0 FAIL （新增 8 条键位断言） 其中最关键的一条： 每个键的中心点用世界坐标反算回来必须命中它自己 —— 键位\"画的\"和\"判的\"一旦不一致，玩家就会看着按 5、实际输 6，这种 bug 在游戏里几乎没法复现。 面板可离屏导出： tools\\canvastest\\run_dump.bat 会生成 dfc_canvas_keypad_normal / reject / locked / accepted.png 四张图，用来检查键位出框、便签压字、锁定配色。 check_stackmap OK ｜ TestMain SEAL OK 安装 1. Minecraft 1.12.2 + Forge 14.23.5.2864 2. 把 jiezhi 1.12.2 dfcmaptools 3.9 beta.jar 放进 .minecraft/mods/ （服务端也要放） ⚠️ 同时只能有一个版本 ，旧版请先移出 mods/ 3. 启动日志出现 JiezhiMod v3.9 beta is loading. 即加载成功 玩法提示 1. 放下 密码盘 ，旁边会浮出一张便签，上面就是这台盘的密码； 2. 放下 密码控制台 ，用 密码连接器 蹲下右键密码盘 → 蹲下右键控制台，绑定完成； 3. 右键控制台，设定\"收到红石信号后锁定并清空\"、\"密码正确时输出红石\"； 4. 把控制台的输出接到门 / 活塞 / 灯上，输入正确密码即可触发； 5. 拉一下红石信号，键盘立刻锁死，需要\"解锁密码盘\"才能继续输入。 源码镜像：GitHub jiezhiyisichen/DFC Map Creation Tool ｜ Gitee yi sichen jiezhi/DFC Map Creation Tool",
+      "notesHtml": "<h4>3.9-beta — 密码盘与密码控制台（测试版）</h4>\n<blockquote>⚠️ <strong>测试版</strong>：这套密码系统是全新功能，还没经过大量实机验证。<br>遇到问题请带上 <code>logs/latest.log</code> 反馈。</blockquote>\n<h5>密码盘（占一格、高半格、触摸式）</h5>\n<ul>\n<li><strong>不打开任何界面</strong>：右键<strong>直接点面板上的键</strong>，用命中点算出来你按的是哪一格。</li>\n<li><strong>密码每台随机</strong>（6 位数字），写在<strong>旁边那张倾斜的便签纸</strong>上（&quot;开发者代码：xxxxxx&quot;）。</li>\n<li>状态：待输入 / 已锁定 / 已通过；输错时整个键盘描边转红。</li>\n<li>12 个键：<code>1-9</code>、<code>0</code>、<code>清除</code>、<code>输入</code>。</li>\n</ul>\n<h5>密码控制台（占一个方块，右键开界面）</h5>\n<p>一个控制台管一台密码盘，界面里两项设置：</p>\n<table><thead><tr><th>设置</th><th>可选值</th></tr></thead><tbody><tr><td><strong>收到红石信号后</strong></td><td>不做任何事 / 锁定密码盘 / 解锁密码盘 / 清空已输入 / <strong>锁定并清空</strong>（默认）</td></tr><tr><td><strong>密码正确时输出红石</strong></td><td>开 / 关</td></tr></tbody></table>\n<ul>\n<li>密码盘报&quot;已通过&quot;时，控制台持续输出 <strong>15 级弱信号</strong>。</li>\n<li>红石用<strong>每 5 tick 轮询 + 上升沿检测</strong>，不依赖单条事件通知（1.12.2 的红石通知路径太碎）。</li>\n</ul>\n<h5>密码连接器</h5>\n<p>把两者连起来，全程在世界里完成：</p>\n<ul>\n<li><strong>蹲下右键密码盘</strong> → 记录坐标</li>\n<li><strong>蹲下右键控制台</strong> → 完成连接（≤32 格、同维度）</li>\n<li>不蹲下右键控制台 → 打开配置界面</li>\n<li><strong>蹲下右键空气</strong> → 清空记录</li>\n</ul>\n<h5>校验</h5>\n<ul>\n<li>离线自测 <strong>684 PASS / 0 FAIL</strong>（新增 8 条键位断言）</li>\n<li>其中最关键的一条：<strong>每个键的中心点用世界坐标反算回来必须命中它自己</strong> —— 键位&quot;画的&quot;和&quot;判的&quot;一旦不一致，玩家就会看着按 5、实际输 6，这种 bug 在游戏里几乎没法复现。</li>\n<li>面板可离屏导出：<code>tools\\canvastest\\run_dump.bat</code> 会生成 <code>dfc_canvas_keypad_normal / reject / locked / accepted.png</code> 四张图，用来检查键位出框、便签压字、锁定配色。</li>\n<li><code>check_stackmap</code> OK ｜ <code>TestMain</code> SEAL OK</li>\n</ul>\n<h5>安装</h5>\n<ul>\n<li>Minecraft <strong>1.12.2</strong> + Forge <strong>14.23.5.2864</strong></li>\n<li>把 <code>jiezhi-1.12.2-dfcmaptools-3.9-beta.jar</code> 放进 <code>.minecraft/mods/</code>（服务端也要放） ⚠️ <strong>同时只能有一个版本</strong>，旧版请先移出 <code>mods/</code></li>\n<li>启动日志出现 <code>JiezhiMod v3.9-beta is loading.</code> 即加载成功</li>\n</ul>\n<h5>玩法提示</h5>\n<ul>\n<li>放下<strong>密码盘</strong>，旁边会浮出一张便签，上面就是这台盘的密码；</li>\n<li>放下<strong>密码控制台</strong>，用<strong>密码连接器</strong>蹲下右键密码盘 → 蹲下右键控制台，绑定完成；</li>\n<li>右键控制台，设定&quot;收到红石信号后锁定并清空&quot;、&quot;密码正确时输出红石&quot;；</li>\n<li>把控制台的输出接到门 / 活塞 / 灯上，输入正确密码即可触发；</li>\n<li>拉一下红石信号，键盘立刻锁死，需要&quot;解锁密码盘&quot;才能继续输入。</li>\n</ul>\n<p>源码镜像：GitHub <code>jiezhiyisichen/DFC-Map-Creation-Tool</code> ｜ Gitee <code>yi-sichen-jiezhi/DFC-Map-Creation-Tool</code></p>",
+      "mirrors": {
+        "gitee": {
+          "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/tag/v3.9-beta",
+          "tag": "v3.9-beta"
+        }
+      }
+    },
     "preview": null,
     "tool": {
       "id": "jiezhiyisichen/DFC-Map-Creation-Tool#v3.8",
@@ -98,6 +134,43 @@
     }
   },
   "releases": [
+    {
+      "id": "jiezhiyisichen/DFC-Map-Creation-Tool#v3.9-beta",
+      "repo": "jiezhiyisichen/DFC-Map-Creation-Tool",
+      "tag": "v3.9-beta",
+      "version": "3.9-beta",
+      "channel": "beta",
+      "name": "v3.9-beta · 密码盘与密码控制台（测试版）",
+      "publishedAt": "2026-10-18T14:12:37Z",
+      "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/tag/v3.9-beta",
+      "prerelease": true,
+      "draft": false,
+      "assets": [
+        {
+          "name": "jiezhi-1.12.2-dfcmaptools-3.9-beta.jar",
+          "kind": "tool",
+          "size": 283377,
+          "downloads": 0,
+          "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9-beta/jiezhi-1.12.2-dfcmaptools-3.9-beta.jar",
+          "updatedAt": "2026-10-18T14:12:48Z",
+          "mirrors": [
+            {
+              "host": "gitee",
+              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9-beta/jiezhi-1.12.2-dfcmaptools-3.9-beta.jar"
+            }
+          ]
+        }
+      ],
+      "notes": "## 3.9-beta — 密码盘与密码控制台（测试版）\n\n> ⚠️ **测试版**：这套密码系统是全新功能，还没经过大量实机验证。\n> 遇到问题请带上 `logs/latest.log` 反馈。\n\n### 密码盘（占一格、高半格、触摸式）\n\n- **不打开任何界面**：右键**直接点面板上的键**，用命中点算出来你按的是哪一格。\n- **密码每台随机**（6 位数字），写在**旁边那张倾斜的便签纸**上（\"开发者代码：xxxxxx\"）。\n- 状态：待输入 / 已锁定 / 已通过；输错时整个键盘描边转红。\n- 12 个键：`1-9`、`0`、`清除`、`输入`。\n\n### 密码控制台（占一个方块，右键开界面）\n\n一个控制台管一台密码盘，界面里两项设置：\n\n| 设置 | 可选值 |\n| --- | --- |\n| **收到红石信号后** | 不做任何事 / 锁定密码盘 / 解锁密码盘 / 清空已输入 / **锁定并清空**（默认） |\n| **密码正确时输出红石** | 开 / 关 |\n\n- 密码盘报\"已通过\"时，控制台持续输出 **15 级弱信号**。\n- 红石用**每 5 tick 轮询 + 上升沿检测**，不依赖单条事件通知（1.12.2 的红石通知路径太碎）。\n\n### 密码连接器\n\n把两者连起来，全程在世界里完成：\n\n1. **蹲下右键密码盘** → 记录坐标\n2. **蹲下右键控制台** → 完成连接（≤32 格、同维度）\n3. 不蹲下右键控制台 → 打开配置界面\n4. **蹲下右键空气** → 清空记录\n\n### 校验\n\n- 离线自测 **684 PASS / 0 FAIL**（新增 8 条键位断言）\n- 其中最关键的一条：**每个键的中心点用世界坐标反算回来必须命中它自己** ——\n  键位\"画的\"和\"判的\"一旦不一致，玩家就会看着按 5、实际输 6，这种 bug 在游戏里几乎没法复现。\n- 面板可离屏导出：`tools\\canvastest\\run_dump.bat` 会生成\n  `dfc_canvas_keypad_normal / reject / locked / accepted.png` 四张图，用来检查键位出框、便签压字、锁定配色。\n- `check_stackmap` OK ｜ `TestMain` SEAL OK\n\n### 安装\n\n1. Minecraft **1.12.2** + Forge **14.23.5.2864**\n2. 把 `jiezhi-1.12.2-dfcmaptools-3.9-beta.jar` 放进 `.minecraft/mods/`（服务端也要放）\n   ⚠️ **同时只能有一个版本**，旧版请先移出 `mods/`\n3. 启动日志出现 `JiezhiMod v3.9-beta is loading.` 即加载成功\n\n### 玩法提示\n\n1. 放下**密码盘**，旁边会浮出一张便签，上面就是这台盘的密码；\n2. 放下**密码控制台**，用**密码连接器**蹲下右键密码盘 → 蹲下右键控制台，绑定完成；\n3. 右键控制台，设定\"收到红石信号后锁定并清空\"、\"密码正确时输出红石\"；\n4. 把控制台的输出接到门 / 活塞 / 灯上，输入正确密码即可触发；\n5. 拉一下红石信号，键盘立刻锁死，需要\"解锁密码盘\"才能继续输入。\n\n源码镜像：GitHub `jiezhiyisichen/DFC-Map-Creation-Tool` ｜ Gitee `yi-sichen-jiezhi/DFC-Map-Creation-Tool`\n",
+      "notesText": "3.9 beta — 密码盘与密码控制台（测试版） ⚠️ 测试版 ：这套密码系统是全新功能，还没经过大量实机验证。 遇到问题请带上 logs/latest.log 反馈。 密码盘（占一格、高半格、触摸式） 不打开任何界面 ：右键 直接点面板上的键 ，用命中点算出来你按的是哪一格。 密码每台随机 （6 位数字），写在 旁边那张倾斜的便签纸 上（\"开发者代码：xxxxxx\"）。 状态：待输入 / 已锁定 / 已通过；输错时整个键盘描边转红。 12 个键： 1 9 、 0 、 清除 、 输入 。 密码控制台（占一个方块，右键开界面） 一个控制台管一台密码盘，界面里两项设置： 设置 可选值 收到红石信号后 不做任何事 / 锁定密码盘 / 解锁密码盘 / 清空已输入 / 锁定并清空 （默认） 密码正确时输出红石 开 / 关 密码盘报\"已通过\"时，控制台持续输出 15 级弱信号 。 红石用 每 5 tick 轮询 + 上升沿检测 ，不依赖单条事件通知（1.12.2 的红石通知路径太碎）。 密码连接器 把两者连起来，全程在世界里完成： 1. 蹲下右键密码盘 → 记录坐标 2. 蹲下右键控制台 → 完成连接（≤32 格、同维度） 3. 不蹲下右键控制台 → 打开配置界面 4. 蹲下右键空气 → 清空记录 校验 离线自测 684 PASS / 0 FAIL （新增 8 条键位断言） 其中最关键的一条： 每个键的中心点用世界坐标反算回来必须命中它自己 —— 键位\"画的\"和\"判的\"一旦不一致，玩家就会看着按 5、实际输 6，这种 bug 在游戏里几乎没法复现。 面板可离屏导出： tools\\canvastest\\run_dump.bat 会生成 dfc_canvas_keypad_normal / reject / locked / accepted.png 四张图，用来检查键位出框、便签压字、锁定配色。 check_stackmap OK ｜ TestMain SEAL OK 安装 1. Minecraft 1.12.2 + Forge 14.23.5.2864 2. 把 jiezhi 1.12.2 dfcmaptools 3.9 beta.jar 放进 .minecraft/mods/ （服务端也要放） ⚠️ 同时只能有一个版本 ，旧版请先移出 mods/ 3. 启动日志出现 JiezhiMod v3.9 beta is loading. 即加载成功 玩法提示 1. 放下 密码盘 ，旁边会浮出一张便签，上面就是这台盘的密码； 2. 放下 密码控制台 ，用 密码连接器 蹲下右键密码盘 → 蹲下右键控制台，绑定完成； 3. 右键控制台，设定\"收到红石信号后锁定并清空\"、\"密码正确时输出红石\"； 4. 把控制台的输出接到门 / 活塞 / 灯上，输入正确密码即可触发； 5. 拉一下红石信号，键盘立刻锁死，需要\"解锁密码盘\"才能继续输入。 源码镜像：GitHub jiezhiyisichen/DFC Map Creation Tool ｜ Gitee yi sichen jiezhi/DFC Map Creation Tool",
+      "notesHtml": "<h4>3.9-beta — 密码盘与密码控制台（测试版）</h4>\n<blockquote>⚠️ <strong>测试版</strong>：这套密码系统是全新功能，还没经过大量实机验证。<br>遇到问题请带上 <code>logs/latest.log</code> 反馈。</blockquote>\n<h5>密码盘（占一格、高半格、触摸式）</h5>\n<ul>\n<li><strong>不打开任何界面</strong>：右键<strong>直接点面板上的键</strong>，用命中点算出来你按的是哪一格。</li>\n<li><strong>密码每台随机</strong>（6 位数字），写在<strong>旁边那张倾斜的便签纸</strong>上（&quot;开发者代码：xxxxxx&quot;）。</li>\n<li>状态：待输入 / 已锁定 / 已通过；输错时整个键盘描边转红。</li>\n<li>12 个键：<code>1-9</code>、<code>0</code>、<code>清除</code>、<code>输入</code>。</li>\n</ul>\n<h5>密码控制台（占一个方块，右键开界面）</h5>\n<p>一个控制台管一台密码盘，界面里两项设置：</p>\n<table><thead><tr><th>设置</th><th>可选值</th></tr></thead><tbody><tr><td><strong>收到红石信号后</strong></td><td>不做任何事 / 锁定密码盘 / 解锁密码盘 / 清空已输入 / <strong>锁定并清空</strong>（默认）</td></tr><tr><td><strong>密码正确时输出红石</strong></td><td>开 / 关</td></tr></tbody></table>\n<ul>\n<li>密码盘报&quot;已通过&quot;时，控制台持续输出 <strong>15 级弱信号</strong>。</li>\n<li>红石用<strong>每 5 tick 轮询 + 上升沿检测</strong>，不依赖单条事件通知（1.12.2 的红石通知路径太碎）。</li>\n</ul>\n<h5>密码连接器</h5>\n<p>把两者连起来，全程在世界里完成：</p>\n<ul>\n<li><strong>蹲下右键密码盘</strong> → 记录坐标</li>\n<li><strong>蹲下右键控制台</strong> → 完成连接（≤32 格、同维度）</li>\n<li>不蹲下右键控制台 → 打开配置界面</li>\n<li><strong>蹲下右键空气</strong> → 清空记录</li>\n</ul>\n<h5>校验</h5>\n<ul>\n<li>离线自测 <strong>684 PASS / 0 FAIL</strong>（新增 8 条键位断言）</li>\n<li>其中最关键的一条：<strong>每个键的中心点用世界坐标反算回来必须命中它自己</strong> —— 键位&quot;画的&quot;和&quot;判的&quot;一旦不一致，玩家就会看着按 5、实际输 6，这种 bug 在游戏里几乎没法复现。</li>\n<li>面板可离屏导出：<code>tools\\canvastest\\run_dump.bat</code> 会生成 <code>dfc_canvas_keypad_normal / reject / locked / accepted.png</code> 四张图，用来检查键位出框、便签压字、锁定配色。</li>\n<li><code>check_stackmap</code> OK ｜ <code>TestMain</code> SEAL OK</li>\n</ul>\n<h5>安装</h5>\n<ul>\n<li>Minecraft <strong>1.12.2</strong> + Forge <strong>14.23.5.2864</strong></li>\n<li>把 <code>jiezhi-1.12.2-dfcmaptools-3.9-beta.jar</code> 放进 <code>.minecraft/mods/</code>（服务端也要放） ⚠️ <strong>同时只能有一个版本</strong>，旧版请先移出 <code>mods/</code></li>\n<li>启动日志出现 <code>JiezhiMod v3.9-beta is loading.</code> 即加载成功</li>\n</ul>\n<h5>玩法提示</h5>\n<ul>\n<li>放下<strong>密码盘</strong>，旁边会浮出一张便签，上面就是这台盘的密码；</li>\n<li>放下<strong>密码控制台</strong>，用<strong>密码连接器</strong>蹲下右键密码盘 → 蹲下右键控制台，绑定完成；</li>\n<li>右键控制台，设定&quot;收到红石信号后锁定并清空&quot;、&quot;密码正确时输出红石&quot;；</li>\n<li>把控制台的输出接到门 / 活塞 / 灯上，输入正确密码即可触发；</li>\n<li>拉一下红石信号，键盘立刻锁死，需要&quot;解锁密码盘&quot;才能继续输入。</li>\n</ul>\n<p>源码镜像：GitHub <code>jiezhiyisichen/DFC-Map-Creation-Tool</code> ｜ Gitee <code>yi-sichen-jiezhi/DFC-Map-Creation-Tool</code></p>",
+      "mirrors": {
+        "gitee": {
+          "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/tag/v3.9-beta",
+          "tag": "v3.9-beta"
+        }
+      }
+    },
     {
       "id": "jiezhiyisichen/DFC-Map-Creation-Tool#v3.8",
       "repo": "jiezhiyisichen/DFC-Map-Creation-Tool",
