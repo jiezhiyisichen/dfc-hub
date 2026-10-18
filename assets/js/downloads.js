@@ -22,10 +22,33 @@
     preview: "预览版",
   };
 
+  var MIRROR_KEY = "dfc-hub:mirror";
+
+  function readMirror() {
+    try {
+      var v = window.localStorage.getItem(MIRROR_KEY);
+      if (v === "gitee" || v === "github" || v === "auto") return v;
+    } catch (e) {
+      /* 隐私模式 / file:// 下可能抛，忽略 */
+    }
+    return "auto";
+  }
+
+  function saveMirror(v) {
+    try {
+      window.localStorage.setItem(MIRROR_KEY, v);
+    } catch (e) {
+      /* ignore */
+    }
+  }
+
   var state = {
     channel: "all",
     type: "all",
     q: "",
+    /* 下载线路：auto / gitee / github。
+       auto = 有 Gitee 镜像就优先走 Gitee（国内直连快），没有才回落 GitHub。 */
+    mirror: readMirror(),
   };
 
   /* -------------------------------------------------------------- helpers */
@@ -76,6 +99,63 @@
       release.url ||
       "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/tag/" + release.tag
     );
+  }
+
+  /* --------------------------------------------------------------- 下载线路
+   * 同一个文件可能同时存在于 GitHub Release 和 Gitee 发行版里：
+   *   asset.url        → GitHub 地址（主源，sync-releases.mjs 归一化时写入）
+   *   asset.mirrors[]  → 备用线路，目前只有 { host: "gitee", url }
+   * 选"自动"时优先 Gitee（国内直连明显更快），没有镜像才回落 GitHub。
+   * 数据结构里没有 mirrors 时全部退化成老行为 —— 旧数据不会报错。 */
+
+  function hostLabel(host) {
+    return host === "gitee" ? "Gitee" : "GitHub";
+  }
+
+  function mirrorUrl(asset, host) {
+    var list = (asset && asset.mirrors) || [];
+    for (var i = 0; i < list.length; i++) {
+      if (list[i] && list[i].host === host && list[i].url) return list[i].url;
+    }
+    return null;
+  }
+
+  /** 返回 { host, url } —— 按用户选定的线路挑一个可用地址 */
+  function pickPrimary(asset, mirror) {
+    var gitee = mirrorUrl(asset, "gitee");
+    var github = asset.url || null;
+    if (mirror === "gitee") {
+      return gitee ? { host: "gitee", url: gitee } : { host: "github", url: github };
+    }
+    if (mirror === "github") {
+      return github ? { host: "github", url: github } : { host: "gitee", url: gitee };
+    }
+    return gitee ? { host: "gitee", url: gitee } : { host: "github", url: github };
+  }
+
+  /** 另一条线路的地址（没有、或与主地址相同就返回 null） */
+  function pickAlt(asset, primary) {
+    var otherHost = primary.host === "gitee" ? "github" : "gitee";
+    var url = otherHost === "gitee" ? mirrorUrl(asset, "gitee") : asset.url || null;
+    if (!url || url === primary.url) return null;
+    return { host: otherHost, url: url };
+  }
+
+  /** 发布页链接：GitHub 一定有（本地条目除外），Gitee 有镜像才显示 */
+  function releaseLinksHtml(release) {
+    if (release.source === "local") return "<span>本地文件</span>";
+    var parts = [
+      '<a href="' +
+        esc(releaseUrl(release)) +
+        '" target="_blank" rel="noopener noreferrer">GitHub ↗</a>',
+    ];
+    var gitee = release.mirrors && release.mirrors.gitee && release.mirrors.gitee.url;
+    if (gitee) {
+      parts.push(
+        '<a href="' + esc(gitee) + '" target="_blank" rel="noopener noreferrer">Gitee ↗</a>'
+      );
+    }
+    return parts.join('<span class="sep"></span>');
   }
 
   /* ------------------------------------------------- 本地手动上传的包
@@ -147,9 +227,15 @@
     var isTool = asset.kind === "tool";
     var label = isTool ? "下载 .jar" : "下载整合包";
     var kindText = isTool ? "工具 · 客户端 + 服务端" : "地图 · 整合包";
+
+    var primary = pickPrimary(asset, state.mirror);
+    var alt = pickAlt(asset, primary);
+
     var meta = [kindText];
     if (asset.size) meta.push(fmtBytes(asset.size));
     if (asset.downloads) meta.push("↓ " + asset.downloads);
+    // 只有真的存在备用线路时才标注"经哪条线"，否则纯属噪音
+    if (alt) meta.push("线路 " + hostLabel(primary.host));
 
     var isLocal = release.source === "local";
 
@@ -174,18 +260,26 @@
       "</div>" +
       '<div class="asset-actions">' +
       '<a class="btn btn-primary btn-sm" href="' +
-      esc(asset.url) +
+      esc(primary.url || "#") +
       '" rel="noopener noreferrer" download>' +
       '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
       '<path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 19h16" /></svg>' +
       label +
       "</a>" +
+      (alt
+        ? '<a class="btn btn-ghost btn-sm" href="' +
+          esc(alt.url) +
+          '" rel="noopener noreferrer" download title="换一条线路下载同一个文件">' +
+          hostLabel(alt.host) +
+          " 备用" +
+          "</a>"
+        : "") +
       (isLocal
         ? ""
         : '<a class="btn btn-ghost btn-sm" href="' +
           esc(releaseUrl(release)) +
-          '" target="_blank" rel="noopener noreferrer" title="在 GitHub 查看">' +
-          "GitHub ↗" +
+          '" target="_blank" rel="noopener noreferrer" title="查看发布页">' +
+          "发布页 ↗" +
           "</a>") +
       "</div>" +
       "</div>"
@@ -248,11 +342,7 @@
       (totalSize ? " · " + fmtBytes(totalSize) : "") +
       "</span>" +
       '<span class="sep"></span>' +
-      (isLocal
-        ? "<span>本地文件</span>"
-        : '<a href="' +
-          esc(releaseUrl(release)) +
-          '" target="_blank" rel="noopener noreferrer">发布页 ↗</a>') +
+      releaseLinksHtml(release) +
       "</div>" +
       "</div>" +
       '<div class="release-badges">' +
@@ -319,7 +409,7 @@
         emptyEl.hidden = false;
         emptyEl.querySelector("h3").textContent = "版本数据载入失败";
         emptyEl.querySelector("p").textContent =
-          "可能是数据文件缺失或未生成。请稍后重试，或直接前往 GitHub Release 页面下载。";
+          "可能是数据文件缺失或未生成。请稍后重试，或直接前往 GitHub / Gitee 的 Release 页面下载。";
         var resetBtn = document.getElementById("resetFilters");
         if (resetBtn) {
           resetBtn.textContent = "前往 GitHub Release";
@@ -400,6 +490,7 @@
     var params = new URLSearchParams();
     if (state.channel !== "all") params.set("channel", state.channel);
     if (state.type !== "all") params.set("type", state.type);
+    if (state.mirror !== "auto") params.set("mirror", state.mirror);
     if (state.q.trim()) params.set("q", state.q.trim());
     var qs = params.toString();
     var url = window.location.pathname + (qs ? "?" + qs : "") + window.location.hash;
@@ -424,6 +515,7 @@
       btn.addEventListener("click", function () {
         var key = btn.getAttribute("data-filter");
         state[key] = btn.getAttribute("data-value");
+        if (key === "mirror") saveMirror(state.mirror);
         applyChips();
         render();
         syncUrl();
@@ -492,8 +584,10 @@
       var ch = params.get("channel");
       var tp = params.get("type");
       var q = params.get("q");
+      var mh = params.get("mirror");
       if (ch === "release" || ch === "beta" || ch === "preview") state.channel = ch;
       if (tp === "tool" || tp === "map") state.type = tp;
+      if (mh === "gitee" || mh === "github" || mh === "auto") state.mirror = mh;
       if (q) {
         state.q = q;
         if (qInput) {

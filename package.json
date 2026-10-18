@@ -1,6 +1,6 @@
 {
   "name": "dfc-hub",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "DFC 地图与节枝特效工具发布站 · 纯静态 + 本地管理后台",
   "type": "module",
@@ -9,7 +9,8 @@
     "build": "node scripts/build.mjs",
     "dev": "node scripts/dev-server.mjs",
     "admin": "node admin-server.js",
-    "start": "npm run sync && npm run dev"
+    "start": "npm run sync && npm run dev",
+    "smoke": "node scripts/smoke-downloads.mjs"
   },
   "dependencies": {
     "express": "^4.19.2",

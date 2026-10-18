@@ -2,9 +2,11 @@
 
 Minecraft **1.12.2 · HBM 诅咒版 · DFC** 地图与节枝特效工具的发布 / 下载站。
 纯静态（HTML + CSS + 原生 JS），托管在 Cloudflare Pages，版本号由 GitHub Actions 定时从上游 Release 同步。
+**上游同时托管在 GitHub 与 Gitee**，站点把两边按 tag 合并，下载页可选线路。
 
 - 线上地址：<https://dfc-hub.pages.dev>
-- 上游工具仓库：<https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool>
+- 上游工具仓库（GitHub）：<https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool>
+- 上游工具仓库（Gitee 镜像）：<https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool>
 - 宣传视频：<https://www.bilibili.com/video/BV1VRYe6gEga/>
 
 ---
@@ -39,7 +41,8 @@ dfc-hub/
 │   │   └── releases.js         ← 自动生成：window.__DFC_DATA__（file:// 预览兼容）
 │   └── img/                    游戏内截图 + favicon
 ├── scripts/
-│   ├── sync-releases.mjs       拉取 GitHub Release → 生成数据
+│   ├── sync-releases.mjs       拉取 GitHub + Gitee 发行版 → 合并生成数据
+│   ├── smoke-downloads.mjs     下载页脚本的 DOM 冒烟测试（npm run smoke）
 │   ├── build.mjs               组装 dist/（含 data/ 与 public/）
 │   └── dev-server.mjs          零依赖本地预览服务器
 ├── .github/workflows/deploy.yml  定时同步 + Cloudflare Pages 部署
@@ -57,7 +60,8 @@ dfc-hub/
 需要 Node.js ≥ 20（脚本用到了内置 `fetch`）。
 
 ```bash
-npm run sync     # 拉一次上游 Release，生成 assets/data/*
+npm run sync     # 拉一次上游 Release（GitHub + Gitee），生成 assets/data/*
+npm run smoke    # 不启浏览器，把 downloads.js 真正跑一遍（改完线路逻辑必跑）
 npm run dev      # http://127.0.0.1:5173
 ```
 
@@ -66,6 +70,10 @@ npm run dev      # http://127.0.0.1:5173
 
 > 未配置 `GITHUB_TOKEN` 时，GitHub API 的匿名额度是 60 次/小时/IP，一般够用；
 > 报 403 时设置环境变量 `GITHUB_TOKEN=ghp_xxx` 再跑一次。
+>
+> Gitee 默认匿名读取（额度更低但每小时一次的任务完全够用）。可用环境变量：
+> `UPSTREAM_GITEE_REPO`（镜像仓库）、`GITEE_TOKEN`（私人令牌，提高额度）、
+> `GITEE_MIRROR=off`（完全跳过 Gitee，只出 GitHub 线路）。
 
 ---
 
@@ -161,7 +169,8 @@ Cloudflare Dashboard → 右上头像 → **My Profile** → **API Tokens** → 
 
 `.github/workflows/deploy.yml` 每次执行：
 
-1. `scripts/sync-releases.mjs` 调 GitHub API 拉取上游全部 Release（分页，最多 500 条）；
+1. `scripts/sync-releases.mjs` 调 GitHub API 拉取上游全部 Release（分页，最多 500 条），
+   再调 Gitee OpenAPI 拉同一仓库的发行版，**按 tag 合并**（见下节「双源镜像」）；
 2. 归一化后写入 `assets/data/releases.json` 与 `assets/data/releases.js`；
 3. 数据有变化就 `git commit` 回仓库（提交信息带 `[skip ci]`，避免触发死循环）；
 4. `scripts/build.mjs` 生成 `dist/`；
@@ -189,6 +198,33 @@ Cloudflare Dashboard → 右上头像 → **My Profile** → **API Tokens** → 
 
 ---
 
+## 双源镜像（GitHub + Gitee）
+
+上游工具同一份 jar 同时发在 GitHub Release 和 Gitee 发行版里。站点的处理原则是
+**GitHub 为主源、Gitee 只当备用地址**，两边按 tag 对齐：
+
+| 情形 | 结果 |
+| --- | --- |
+| 两边都有同一版本、同名 jar | 卡片上出现「下载 .jar」+「GitHub 备用 / Gitee 备用」两个按钮 |
+| 只有 GitHub 有 | 只走 GitHub，不显示备用按钮（不制造"另一条线也能下"的错觉） |
+| 只有 Gitee 有 | 该版本仍会列出来，下载地址用 Gitee，发布页只给 Gitee |
+| Gitee 整个挂掉 | 记一条 warning，页面照常只出 GitHub 线路 |
+| GitHub 整个挂掉 | 自动降级：用 Gitee 的数据撑起整站，并在日志里明确写「已改用 Gitee 作为主数据源」 |
+
+下载页筛选栏里多了一组**线路**按钮（`自动 / Gitee / GitHub`）：
+
+- **自动**（默认）：有 Gitee 镜像就走 Gitee —— 国内直连明显更快，打不开 GitHub 也不影响下载；
+- 选择会存进 `localStorage`（键 `dfc-hub:mirror`），并同步到 URL（`?mirror=gitee`）方便分享。
+
+> 数据不会互相污染：Gitee 那边体积常常是 `null`、说明格式也不同，
+> 所以合并时**只给主源条目挂 URL，不改任何已有字段**。
+> Gitee 自动生成的源码 `vX.Y.zip` / `.tar.gz` 一律忽略，只认 `/releases/download/...` 的 jar。
+
+改了这套逻辑之后，务必跑一次 `npm run smoke` —— 它会用 DOM 垫片把 `downloads.js`
+真正执行一遍，断言三种线路下的地址形态、以及旧数据（没有 `mirrors` 字段）不会崩。
+
+---
+
 ## 数据结构
 
 `assets/data/releases.json` 关键字段：
@@ -196,7 +232,11 @@ Cloudflare Dashboard → 右上头像 → **My Profile** → **API Tokens** → 
 ```jsonc
 {
   "generatedAt": "2026-10-18T09:20:00.000Z",
-  "source": { "tool": "owner/repo", "api": "https://api.github.com" },
+  "source": {
+    "tool": "owner/repo",
+    "api": "https://api.github.com",
+    "gitee": { "repo": "owner/repo", "ok": true, "mergedAssets": 3, "extraReleases": 0, "primary": false }
+  },
   "counts": { "all": 4, "release": 4, "beta": 0, "preview": 0 },
   "latest": {
     "release": { /* 最新正式版 */ },
@@ -212,8 +252,21 @@ Cloudflare Dashboard → 右上头像 → **My Profile** → **API Tokens** → 
       "name": "v3.6 · 自定义屏面板版面重做",
       "publishedAt": "2026-10-18T04:13:56Z",
       "url": "https://github.com/.../releases/tag/v3.6",
+      "url": "https://github.com/.../releases/tag/v3.6",
+      "mirrors": {
+        "gitee": { "url": "https://gitee.com/.../releases/tag/v3.6", "tag": "v3.6" }
+      },
       "assets": [
-        { "name": "...jar", "kind": "tool", "size": 255931, "downloads": 4, "url": ".../download/v3.6/....jar" }
+        {
+          "name": "...jar",
+          "kind": "tool",
+          "size": 255931,
+          "downloads": 4,
+          "url": "https://github.com/.../download/v3.6/....jar",
+          "mirrors": [
+            { "host": "gitee", "url": "https://gitee.com/.../download/v3.6/....jar" }
+          ]
+        }
       ],
       "notes": "原始 Markdown",
       "notesText": "去标签纯文本，用于搜索",

@@ -7,7 +7,7 @@ window.__DFC_CONFIG__ = {
     "brandSub": "地图与特效工具",
     "tickerBadge": "SYNC",
     "tickerLabel": "上游最新正式版",
-    "tickerNote": "与 GitHub Release 每小时自动同步",
+    "tickerNote": "与 GitHub / Gitee Release 每小时自动同步",
     "tickerLinkText": "前往下载中心 →"
   },
   "hero": {
@@ -26,11 +26,11 @@ window.__DFC_CONFIG__ = {
   },
   "downloadsPage": {
     "title": "下载中心",
-    "lede": "工具（.jar）在下方按版本列出，直接下载；地图整合包放在 123 云盘。版本按 Tag 自动归类：含 -beta 为测试版，含 -preview 为预览版，其余为正式版。",
+    "lede": "工具（.jar）在下方按版本列出，直接下载；地图整合包放在 123 云盘。同一版本同时托管在 GitHub 与 Gitee，可在筛选栏切换下载线路（自动线路会优先走 Gitee，国内更快）。版本按 Tag 自动归类：含 -beta 为测试版，含 -preview 为预览版，其余为正式版。",
     "boardLatest": "最新正式版",
     "boardMap": "地图整合包",
     "boardSync": "数据同步",
-    "boardSyncNote": "自动任务每小时拉取一次上游 Release",
+    "boardSyncNote": "自动任务每小时拉取 GitHub 与 Gitee 两个源的发行版",
     "mapCta": "前往网盘下载地图",
     "mapNote": "123 云盘 · 新标签页打开",
     "installEyebrow": "Installation",
@@ -64,7 +64,7 @@ window.__DFC_CONFIG__ = {
     ]
   },
   "footer": {
-    "note": "由「树上的节枝」维护的个人分享站。文件托管于 GitHub Release，站点本身是纯静态页面。",
+    "note": "由「树上的节枝」维护的个人分享站。文件同步托管于 GitHub Release 与 Gitee 发行版，站点本身是纯静态页面。",
     "copyright": "树上的节枝 · 转载 / 二创请保留署名，禁止商业使用。",
     "navTitle": "导航",
     "navHome": "首页",
@@ -73,7 +73,8 @@ window.__DFC_CONFIG__ = {
     "linkToolRepo": "工具源码",
     "linkReleases": "全部 Release",
     "linkBilibili": "B 站主页",
-    "linkVideo": "宣传视频"
+    "linkVideo": "宣传视频",
+    "linkGitee": "Gitee 镜像"
   },
   "links": {
     "bilibiliSpace": "https://space.bilibili.com/3494363348863838",
@@ -82,6 +83,8 @@ window.__DFC_CONFIG__ = {
     "toolReleases": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases",
     "toolDocs": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/tree/main/docs",
     "siteRepo": "https://github.com/jiezhiyisichen/dfc-hub",
-    "mapPan": "https://1824933551.share.123pan.cn/123pan/9O42jv-Aebdh"
+    "mapPan": "https://1824933551.share.123pan.cn/123pan/9O42jv-Aebdh",
+    "giteeRepo": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool",
+    "giteeReleases": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases"
   }
 };

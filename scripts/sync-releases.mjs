@@ -14,6 +14,16 @@
  * 环境变量：
  *   GITHUB_TOKEN         可选，提高 API 速率限制（GitHub Actions 自动提供）
  *   UPSTREAM_TOOL_REPO   工具仓库，默认 jiezhiyisichen/DFC-Map-Creation-Tool
+ *   UPSTREAM_GITEE_REPO  Gitee 镜像仓库，默认 yi-sichen-jiezhi/DFC-Map-Creation-Tool
+ *   GITEE_TOKEN          可选，Gitee 私人令牌（公开仓库匿名也能读，只是额度低）
+ *   GITEE_MIRROR=off     设为 off 可完全跳过 Gitee（离线 / 只想用 GitHub 时）
+ *
+ * 双源策略：
+ *   · GitHub 是**主源**：版本列表、更新说明、文件体积都来自它；
+ *   · Gitee 是**镜像**：按 tag 匹配，只把「同名资产的下载地址」与「发布页地址」挂到主源条目上
+ *     （asset.mirrors / release.mirrors）。Gitee 自动生成的源码 zip / tar.gz 一律忽略；
+ *   · 只在 Gitee 上发过的版本也会收进来（说明用 Gitee 的 body），只是没有 GitHub 链接；
+ *   · 任意一边挂掉都不影响另一边，**绝不因为一方失败就让站点变空**。
  * ---------------------------------------------------------------------------
  */
 
@@ -30,6 +40,11 @@ const OUT_JS = resolve(OUT_DIR, "releases.js");
 const TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN || "";
 const TOOL_REPO = process.env.UPSTREAM_TOOL_REPO || "jiezhiyisichen/DFC-Map-Creation-Tool";
 const API = "https://api.github.com";
+
+const GITEE_REPO = process.env.UPSTREAM_GITEE_REPO || "yi-sichen-jiezhi/DFC-Map-Creation-Tool";
+const GITEE_API = "https://gitee.com/api/v5";
+const GITEE_TOKEN = process.env.GITEE_TOKEN || "";
+const GITEE_ENABLED = String(process.env.GITEE_MIRROR || "").toLowerCase() !== "off";
 
 const MAX_NOTES = 6000;
 
@@ -73,6 +88,114 @@ async function fetchAllReleases(repo) {
 
 function stripV(tag) {
   return String(tag || "").replace(/^v/i, "").trim();
+}
+
+/* ------------------------------------------------------------- Gitee 镜像
+ * Gitee 的 OpenAPI v5 与 GitHub 不同：
+ *   · 公开仓库可以匿名读，但有额度；有私人令牌时把 access_token 挂在 query 上；
+ *   · **没有内容时返回 200 + 字面量 null**（不是 404、也不是 []），必须自己兜住；
+ *   · 资产里的 size 经常是 null，所以体积一律优先用 GitHub 那边的。
+ * ------------------------------------------------------------------------ */
+
+async function giteeApi(path) {
+  const sep = path.includes("?") ? "&" : "?";
+  const url = GITEE_API + path + (GITEE_TOKEN ? sep + "access_token=" + GITEE_TOKEN : "");
+  const res = await fetch(url, {
+    headers: { Accept: "application/json", "User-Agent": "dfc-hub-sync" },
+  });
+  if (!res.ok) {
+    const body = await res.text().catch(() => "");
+    throw new Error("Gitee API " + res.status + " " + res.statusText + " for " + path + "\n" + body.slice(0, 300));
+  }
+  const data = await res.json();
+  return data == null ? [] : data;
+}
+
+/** 拉 Gitee 的全部发行版（分页，最多 500 条） */
+async function fetchGiteeReleases(repo) {
+  const out = [];
+  for (let page = 1; page <= 5; page++) {
+    const batch = await giteeApi("/repos/" + repo + "/releases?per_page=100&page=" + page);
+    if (!Array.isArray(batch) || batch.length === 0) break;
+    out.push(...batch);
+    if (batch.length < 100) break;
+  }
+  return out;
+}
+
+/** 把 Gitee 的发行版转成 GitHub 的形状，直接复用 normalizeRelease */
+function giteeAsGithubShape(raw, repo) {
+  return {
+    tag_name: raw.tag_name,
+    name: raw.name || raw.tag_name,
+    body: raw.body || "",
+    prerelease: !!raw.prerelease,
+    draft: false,
+    published_at: raw.created_at,
+    created_at: raw.created_at,
+    html_url: raw.html_url || "https://gitee.com/" + repo + "/releases/tag/" + raw.tag_name,
+    assets: (raw.assets || []).map((a) => ({
+      name: a.name,
+      size: a.size || 0,
+      download_count: 0,
+      updated_at: a.updated_at || raw.created_at,
+      browser_download_url: a.browser_download_url,
+    })),
+  };
+}
+
+function tagKey(tag) {
+  return String(tag || "").replace(/^v/i, "").trim().toLowerCase();
+}
+
+/**
+ * 把 Gitee 的镜像信息挂到主列表上。
+ *
+ * 原则是**只增不改**：主源已有的 url / notes / size 一律不动，Gitee 只贡献"备用地址"。
+ * 这样即使 Gitee 那边体积缺失、说明格式不同，也不会污染 GitHub 的数据。
+ */
+function mergeGiteeMirrors(releases, giteeRawList, giteeRepo) {
+  const byTag = new Map();
+  for (const raw of giteeRawList) {
+    if (!raw || raw.draft) continue;
+    byTag.set(tagKey(raw.tag_name), raw);
+  }
+
+  let mergedAssets = 0;
+  for (const rel of releases) {
+    const key = tagKey(rel.tag);
+    const raw = byTag.get(key);
+    if (!raw) continue;
+    byTag.delete(key);
+
+    rel.mirrors = rel.mirrors || {};
+    rel.mirrors.gitee = {
+      url: raw.html_url || "https://gitee.com/" + giteeRepo + "/releases/tag/" + raw.tag_name,
+      tag: raw.tag_name,
+    };
+
+    const giteeAssets = (raw.assets || []).filter((a) => detectKind(a.name) !== "other");
+    for (const asset of rel.assets) {
+      const ga = giteeAssets.find((a) => a.name === asset.name);
+      if (!ga || !ga.browser_download_url) continue;
+      asset.mirrors = asset.mirrors || [];
+      if (!asset.mirrors.some((m) => m.host === "gitee")) {
+        asset.mirrors.push({ host: "gitee", url: ga.browser_download_url });
+      }
+      mergedAssets++;
+    }
+  }
+
+  // 只在 Gitee 上有的版本：也收进来，避免"某个版本只在一边发过"就漏掉
+  const leftovers = [];
+  for (const raw of byTag.values()) {
+    const normalized = normalizeRelease(giteeAsGithubShape(raw, giteeRepo), giteeRepo);
+    if (!normalized.assets.length) continue;
+    normalized.mirrors = { gitee: { url: normalized.url, tag: raw.tag_name } };
+    leftovers.push(normalized);
+  }
+
+  return { mergedAssets, leftovers };
 }
 
 /**
@@ -372,6 +495,53 @@ async function main() {
     }
   }
 
+  // ---------------- Gitee 镜像（可选，失败不影响主流程） ----------------
+  const giteeInfo = {
+    repo: GITEE_REPO,
+    api: GITEE_API,
+    enabled: GITEE_ENABLED,
+    ok: false,
+    mergedAssets: 0,
+    extraReleases: 0,
+    primary: false,
+  };
+
+  if (GITEE_ENABLED) {
+    try {
+      const giteeRaw = await fetchGiteeReleases(GITEE_REPO);
+      log(`gitee ${GITEE_REPO}: ${giteeRaw.length} 个发行版`);
+
+      if (releases.length) {
+        const { mergedAssets, leftovers } = mergeGiteeMirrors(releases, giteeRaw, GITEE_REPO);
+        releases.push(...leftovers);
+        giteeInfo.mergedAssets = mergedAssets;
+        giteeInfo.extraReleases = leftovers.length;
+        log(
+          `gitee 镜像：${mergedAssets} 个资产挂上备用下载地址` +
+            (leftovers.length ? `，另有 ${leftovers.length} 个版本只在 Gitee` : "")
+        );
+      } else {
+        // GitHub 完全不可用：直接用 Gitee 撑起整站，避免页面空白
+        for (const raw of giteeRaw) {
+          if (!raw || raw.draft) continue;
+          const normalized = normalizeRelease(giteeAsGithubShape(raw, GITEE_REPO), GITEE_REPO);
+          if (!normalized.assets.length) continue;
+          normalized.mirrors = { gitee: { url: normalized.url, tag: raw.tag_name } };
+          releases.push(normalized);
+        }
+        giteeInfo.primary = true;
+        if (releases.length) {
+          warn("GitHub 不可用，本次已改用 Gitee 作为主数据源。");
+        }
+      }
+      giteeInfo.ok = true;
+    } catch (err) {
+      warn(`拉取 Gitee ${GITEE_REPO} 失败（不影响 GitHub 数据）：${err.message}`);
+    }
+  } else {
+    log("GITEE_MIRROR=off，跳过 Gitee 镜像。");
+  }
+
   if (!releases.length) {
     // 兜底：保留上一次生成的数据，不让站点变空
     try {
@@ -411,6 +581,7 @@ async function main() {
     source: {
       tool: TOOL_REPO,
       api: API,
+      gitee: giteeInfo,
     },
     counts,
     latest: {
@@ -438,6 +609,14 @@ async function main() {
     `最新正式版 ${latestRelease ? latestRelease.tag : "—"} · 共 ${releases.length} 个版本` +
       `（正式 ${counts.release} / 测试 ${counts.beta} / 预览 ${counts.preview}）`
   );
+  if (giteeInfo.ok) {
+    log(
+      `Gitee 镜像已合并：${giteeInfo.mergedAssets} 个资产有备用地址` +
+        (giteeInfo.extraReleases ? `，额外 ${giteeInfo.extraReleases} 个版本来自 Gitee` : "")
+    );
+  } else if (GITEE_ENABLED) {
+    warn("Gitee 镜像不可用，页面只会提供 GitHub 线路。");
+  }
 
   if (failed && releases.length) {
     warn("部分仓库拉取失败，已用其余数据生成。");
