@@ -1,6 +1,9 @@
 # Cloudflare Pages headers
 # 文档：https://developers.cloudflare.com/pages/configuration/headers/
-# 规则按「更具体的路径优先」，`/assets/*` 放在最后当兜底。
+#
+# 注意：Cloudflare 对匹配到的多条规则是「追加」响应头，不是覆盖。
+# 所以每个路径只能命中一条 Cache-Control，别写 /assets/* 这种兜底，
+# 否则会出现 "max-age=0, must-revalidate, public, max-age=604800" 这种混合值。
 
 /*
   X-Content-Type-Options: nosniff
@@ -41,6 +44,3 @@
 
 /downloads/*
   Cache-Control: public, max-age=86400
-
-/assets/*
-  Cache-Control: public, max-age=3600
