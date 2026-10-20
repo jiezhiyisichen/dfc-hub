@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T14:22:24.635Z",
+  "generatedAt": "2026-10-20T14:59:17.333Z",
   "source": {
     "tool": "jiezhiyisichen/DFC-Map-Creation-Tool",
     "api": "https://api.github.com",
@@ -8,17 +8,17 @@
       "api": "https://gitee.com/api/v5",
       "enabled": true,
       "ok": true,
-      "mergedAssets": 7,
+      "mergedAssets": 8,
       "extraReleases": 0,
       "primary": false
     }
   },
   "counts": {
-    "all": 9,
+    "all": 10,
     "release": 5,
-    "beta": 4,
+    "beta": 5,
     "preview": 0,
-    "hotfix": 1
+    "hotfix": 2
   },
   "latest": {
     "release": {
@@ -60,79 +60,79 @@
       }
     },
     "beta": {
-      "id": "jiezhiyisichen/DFC-Map-Creation-Tool#v3.9.3-beta",
+      "id": "jiezhiyisichen/DFC-Map-Creation-Tool#v3.9.4-beta",
       "repo": "jiezhiyisichen/DFC-Map-Creation-Tool",
-      "tag": "v3.9.3-beta",
-      "version": "3.9.3-beta",
+      "tag": "v3.9.4-beta",
+      "version": "3.9.4-beta",
       "channel": "beta",
-      "hotfix": false,
-      "name": "v3.9.3 · 屏幕覆盖弹窗：熔毁/引爆倒计时",
-      "publishedAt": "2026-10-20T14:21:15Z",
-      "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/tag/v3.9.3-beta",
+      "hotfix": true,
+      "name": "v3.9.4 · 紧急修复：底纹/密码盘/弹窗三态",
+      "publishedAt": "2026-10-20T14:57:57Z",
+      "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/tag/v3.9.4-beta",
       "prerelease": true,
       "draft": false,
       "assets": [
         {
-          "name": "jiezhi-1.12.2-dfcmaptools-3.9.3.jar",
+          "name": "jiezhi-1.12.2-dfcmaptools-3.9.4.jar",
           "kind": "tool",
-          "size": 273933,
+          "size": 274154,
           "downloads": 0,
-          "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9.3-beta/jiezhi-1.12.2-dfcmaptools-3.9.3.jar",
-          "updatedAt": "2026-10-20T14:21:20Z",
+          "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9.4-beta/jiezhi-1.12.2-dfcmaptools-3.9.4.jar",
+          "updatedAt": "2026-10-20T14:58:02Z",
           "mirrors": [
             {
               "host": "gitee",
-              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9.3-beta/jiezhi-1.12.2-dfcmaptools-3.9.3.jar"
+              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9.4-beta/jiezhi-1.12.2-dfcmaptools-3.9.4.jar"
             }
           ]
         }
       ],
-      "notes": "## 3.9.3 — 屏幕覆盖弹窗：熔毁 / 引爆倒计时\n\n核心要炸的时候，**所有连着它的显示屏一起弹警告**。\n\n### 熔毁倒计时（红）\n\n- 判据：`collapsing > 0`（核心开始坍缩）\n- 版式：`注意 //` + 「反应堆核心已达到危急临界级别」+「立即撤离至储备仓库或尝试停用反应堆」+ `>>>> 1:18 <<<<`\n- 红框 + 上下斜纹警戒带 + 三层外发光，边框与光晕按 **620ms** 呼吸闪烁\n- 箭头按 **3 → 2 → 1 → 3** 每 **420ms** 收一批\n\n### 引爆倒计时（橙）\n\n- 判据：`detonation == true`（DFC 引爆器启动），**优先于普通熔毁**\n- 同样的版式，配色换橙光，标题 `// DFC 核心引爆 //`\n\n### 动画\n\n- **弹入**：260ms 缓出，从上方滑下 + 淡入\n- **弹出**：300ms，向上滑走 + 淡出（数据消失后还会播完再收）\n- 弹窗期间重绘节拍临时压到 40ms；其余时间仍按各屏自己的刷新率\n- **有弹窗时让开 301 报错页** —— 正在数秒时整屏切到「与核心失去连接」反而看不出还剩多久\n\n### 倒计时怎么算的\n\n用坍缩度反算 `(1 - collapsing) * 120` 秒。\n`explosionIn` 的单位在作者代码里没注释（秒还是 tick 说不清），但\n`collapsing = 1 - explosionIn/120` 这个关系是确定的 —— 反算出来的秒数与单位无关。\n引爆器启动时会打一行 `[DFC] detonation started: raw timer=…`，下次实机可校准。\n\n### 画面\n\n两张离屏导出（`tools\\canvastest\\run_dump.bat` 可复现）：\n\n- `dfc_canvas_banner_meltdown.png` —— 红版，坍缩 0.35 → 1:18\n- `dfc_canvas_banner_detonate.png` —— 橙版，坍缩 0.5 → 1:00\n\n### 校验\n\n- 离线自测 **620 PASS / 0 FAIL**（+21 条弹窗断言：优先级 / 反算 / m:ss / 弹入弹出单调 / 箭头循环 / 取值范围）\n- `check_stackmap` OK ｜ `TestMain` SEAL OK ｜ 资源 39 条\n\n### 安装\n\n1. Minecraft **1.12.2** + Forge **14.23.5.2864**\n2. 把 `jiezhi-1.12.2-dfcmaptools-3.9.3.jar` 放进 `.minecraft/mods/`（服务端也要放）\n   ⚠️ 同时只能有一个版本\n3. 启动日志出现 `JiezhiMod v3.9.3 is loading.`\n\n### 需要实机确认\n\n1. 让核心进入坍缩（或者拉引爆器），看**所有**连着它的屏是否同时弹出警告带；\n2. 弹入 / 弹出是否顺畅（不是硬切）；\n3. 倒计时数字是否在走、箭头是否一档档收；\n4. 爆炸后弹窗是否正常收走、屏幕是否重走开机自检。\n\n如果数字量级不对（比如显示 0:06 而不是 1:18），把 `[DFC] detonation started: raw timer=…`\n那一行发我，按真实单位改换算即可。\n\n源码镜像：GitHub `jiezhiyisichen/DFC-Map-Creation-Tool` ｜ Gitee `yi-sichen-jiezhi/DFC-Map-Creation-Tool`\n",
-      "notesText": "3.9.3 — 屏幕覆盖弹窗：熔毁 / 引爆倒计时 核心要炸的时候， 所有连着它的显示屏一起弹警告 。 熔毁倒计时（红） 判据： collapsing 0 （核心开始坍缩） 版式： 注意 // + 「反应堆核心已达到危急临界级别」+「立即撤离至储备仓库或尝试停用反应堆」+ 1:18 <<<< 红框 + 上下斜纹警戒带 + 三层外发光，边框与光晕按 620ms 呼吸闪烁 箭头按 3 → 2 → 1 → 3 每 420ms 收一批 引爆倒计时（橙） 判据： detonation == true （DFC 引爆器启动）， 优先于普通熔毁 同样的版式，配色换橙光，标题 // DFC 核心引爆 // 动画 弹入 ：260ms 缓出，从上方滑下 + 淡入 弹出 ：300ms，向上滑走 + 淡出（数据消失后还会播完再收） 弹窗期间重绘节拍临时压到 40ms；其余时间仍按各屏自己的刷新率 有弹窗时让开 301 报错页 —— 正在数秒时整屏切到「与核心失去连接」反而看不出还剩多久 倒计时怎么算的 用坍缩度反算 (1 collapsing) 120 秒。 explosionIn 的单位在作者代码里没注释（秒还是 tick 说不清），但 collapsing = 1 explosionIn/120 这个关系是确定的 —— 反算出来的秒数与单位无关。 引爆器启动时会打一行 [DFC] detonation started: raw timer=… ，下次实机可校准。 画面 两张离屏导出（ tools\\canvastest\\run_dump.bat 可复现）： dfc_canvas_banner_meltdown.png —— 红版，坍缩 0.35 → 1:18 dfc_canvas_banner_detonate.png —— 橙版，坍缩 0.5 → 1:00 校验 离线自测 620 PASS / 0 FAIL （+21 条弹窗断言：优先级 / 反算 / m:ss / 弹入弹出单调 / 箭头循环 / 取值范围） check_stackmap OK ｜ TestMain SEAL OK ｜ 资源 39 条 安装 1. Minecraft 1.12.2 + Forge 14.23.5.2864 2. 把 jiezhi 1.12.2 dfcmaptools 3.9.3.jar 放进 .minecraft/mods/ （服务端也要放） ⚠️ 同时只能有一个版本 3. 启动日志出现 JiezhiMod v3.9.3 is loading. 需要实机确认 1. 让核心进入坍缩（或者拉引爆器），看 所有 连着它的屏是否同时弹出警告带； 2. 弹入 / 弹出是否顺畅（不是硬切）； 3. 倒计时数字是否在走、箭头是否一档档收； 4. 爆炸后弹窗是否正常收走、屏幕是否重走开机自检。 如果数字量级不对（比如显示 0:06 而不是 1:18），把 [DFC] detonation started: raw timer=… 那一行发我，按真实单位改换算即可。 源码镜像：GitHub jiezhiyisichen/DFC Map Creation Tool ｜ Gitee yi sichen jiezhi/DFC Map Creation Tool",
-      "notesHtml": "<h4>3.9.3 — 屏幕覆盖弹窗：熔毁 / 引爆倒计时</h4>\n<p>核心要炸的时候，<strong>所有连着它的显示屏一起弹警告</strong>。</p>\n<h5>熔毁倒计时（红）</h5>\n<ul>\n<li>判据：<code>collapsing &gt; 0</code>（核心开始坍缩）</li>\n<li>版式：<code>注意 //</code> + 「反应堆核心已达到危急临界级别」+「立即撤离至储备仓库或尝试停用反应堆」+ <code>&gt;&gt;&gt;&gt; 1:18 &lt;&lt;&lt;&lt;</code></li>\n<li>红框 + 上下斜纹警戒带 + 三层外发光，边框与光晕按 <strong>620ms</strong> 呼吸闪烁</li>\n<li>箭头按 <strong>3 → 2 → 1 → 3</strong> 每 <strong>420ms</strong> 收一批</li>\n</ul>\n<h5>引爆倒计时（橙）</h5>\n<ul>\n<li>判据：<code>detonation == true</code>（DFC 引爆器启动），<strong>优先于普通熔毁</strong></li>\n<li>同样的版式，配色换橙光，标题 <code>// DFC 核心引爆 //</code></li>\n</ul>\n<h5>动画</h5>\n<ul>\n<li><strong>弹入</strong>：260ms 缓出，从上方滑下 + 淡入</li>\n<li><strong>弹出</strong>：300ms，向上滑走 + 淡出（数据消失后还会播完再收）</li>\n<li>弹窗期间重绘节拍临时压到 40ms；其余时间仍按各屏自己的刷新率</li>\n<li><strong>有弹窗时让开 301 报错页</strong> —— 正在数秒时整屏切到「与核心失去连接」反而看不出还剩多久</li>\n</ul>\n<h5>倒计时怎么算的</h5>\n<p>用坍缩度反算 <code>(1 - collapsing) * 120</code> 秒。</p>\n<p><code>explosionIn</code> 的单位在作者代码里没注释（秒还是 tick 说不清），但</p>\n<p><code>collapsing = 1 - explosionIn/120</code> 这个关系是确定的 —— 反算出来的秒数与单位无关。</p>\n<p>引爆器启动时会打一行 <code>[DFC] detonation started: raw timer=…</code>，下次实机可校准。</p>\n<h5>画面</h5>\n<p>两张离屏导出（<code>tools\\canvastest\\run_dump.bat</code> 可复现）：</p>\n<ul>\n<li><code>dfc_canvas_banner_meltdown.png</code> —— 红版，坍缩 0.35 → 1:18</li>\n<li><code>dfc_canvas_banner_detonate.png</code> —— 橙版，坍缩 0.5 → 1:00</li>\n</ul>\n<h5>校验</h5>\n<ul>\n<li>离线自测 <strong>620 PASS / 0 FAIL</strong>（+21 条弹窗断言：优先级 / 反算 / m:ss / 弹入弹出单调 / 箭头循环 / 取值范围）</li>\n<li><code>check_stackmap</code> OK ｜ <code>TestMain</code> SEAL OK ｜ 资源 39 条</li>\n</ul>\n<h5>安装</h5>\n<ul>\n<li>Minecraft <strong>1.12.2</strong> + Forge <strong>14.23.5.2864</strong></li>\n<li>把 <code>jiezhi-1.12.2-dfcmaptools-3.9.3.jar</code> 放进 <code>.minecraft/mods/</code>（服务端也要放） ⚠️ 同时只能有一个版本</li>\n<li>启动日志出现 <code>JiezhiMod v3.9.3 is loading.</code></li>\n</ul>\n<h5>需要实机确认</h5>\n<ul>\n<li>让核心进入坍缩（或者拉引爆器），看<strong>所有</strong>连着它的屏是否同时弹出警告带；</li>\n<li>弹入 / 弹出是否顺畅（不是硬切）；</li>\n<li>倒计时数字是否在走、箭头是否一档档收；</li>\n<li>爆炸后弹窗是否正常收走、屏幕是否重走开机自检。</li>\n</ul>\n<p>如果数字量级不对（比如显示 0:06 而不是 1:18），把 <code>[DFC] detonation started: raw timer=…</code></p>\n<p>那一行发我，按真实单位改换算即可。</p>\n<p>源码镜像：GitHub <code>jiezhiyisichen/DFC-Map-Creation-Tool</code> ｜ Gitee <code>yi-sichen-jiezhi/DFC-Map-Creation-Tool</code></p>",
+      "notes": "## 3.9.4 — 紧急修复：界面底纹 / 密码盘 / 弹窗三态 / 倒计时单位\n\n### ① 界面底纹：彻底收敛到原版 `Gui.drawRect`\n\n3.9.2 把填充改成\"逐行四边形\"后，密码控制台**仍然鼠标出现、界面一片空白**。\n这次不再在自绘路径上试：**圆角矩形直接退化成原版 `Gui.drawRect`** ——\n全游戏每个 GUI 的底纹都走它，不可能出错。圆角以后用贴图做（贴图不经过 Tessellator）。\n\n额外给 `GuiPasswordConsole` 的绘制加了 try/catch：万一还有别的异常，\n屏幕上会直接显示 `GUI paint error: …` 并写日志，**不再是一片空白**。\n\n### ② 密码盘面板：加纯色兜底\n\n3.9.2 之后底座（模型）能看到了，但**顶面面板仍不显示**。\n现在拿不到画布纹理时，**用 `POSITION_COLOR + GL_QUADS` 画一块深色顶面**\n（TESR 里这条路确认可用，DFC 外壳就是它），并打 `[KeypadRender]` 日志说明原因。\n\n### ③ 弹窗三态（不再整块盖住核心数据）\n\n| 状态 | 判据 | 表现 |\n| --- | --- | --- |\n| 熔毁预警 | `explosionIn > 0` 且尚未坍缩 | 大弹窗（红）+ 倒计时 |\n| 引爆 | `detonation == true` | 大弹窗（橙） |\n| **熔毁进行中** | `collapsing > 0` | **顶部 20px 小条**，左右轻微摆动 + 扫光，只盖标题栏 |\n\n- 文案按反馈改掉「至储备仓库」→「**立即撤离或紧急关机**」。\n- **预警为什么看 `explosionIn`**：作者时序是\"达到熔毁温度 → 先走预警倒计时 → 结束后坍缩度才 > 0\"。\n  只盯 `collapsing > 0` 会整段漏掉最该警告的那两分钟。\n\n### ④ 倒计时单位：从读数自动校准\n\n`explosionIn` / `detonationTimer` 在作者代码里没有单位注释（秒 / tick 差 20 倍）。\n现在服务端比较前后两次读数：**每秒掉约 20 个 = tick 计时**、**约 1 个 = 秒计时**，\n算成秒数随快照下发。你说的\"引爆 30 秒\"会在实机自动对上，不用手写换算。\n\n### 校验\n\n- 自测 **629 PASS / 0 FAIL**（三态判定 / 单位校准 / 秒换算）\n- 离屏导出新增 `dfc_canvas_banner_active_strip.png`\n- `check_stackmap` OK ｜ `TestMain` SEAL OK ｜ 资源 39 条\n\n### ⚠️ 本轮**没有**包含的东西\n\n**折线图显示器**（温度 / 发电量双图）**没做** —— 它需要新方块 + 新页面 + 历史采样缓冲，\n规模与上一轮的弹窗系统相当。先把上面这些会挡住玩的问题修掉，下一轮专门做图表，\n避免又出现\"半成品\"。\n\n### 需要实机确认\n\n1. 密码控制台右键：**界面有没有出来**（出不来时屏幕上会显示 `GUI paint error: …`，请截图给我）；\n2. 密码盘：顶面是不是有一块面板（哪怕是纯色兜底）；\n3. 拉引爆器：倒计时是不是 **30 秒** 左右；熔毁进行中是否只剩顶部小条；\n4. 日志关键字：`[GuiPasswordConsole]` / `[KeypadRender]` / `[DFC] detonation started`。\n\n源码镜像：GitHub `jiezhiyisichen/DFC-Map-Creation-Tool` ｜ Gitee `yi-sichen-jiezhi/DFC-Map-Creation-Tool`\n",
+      "notesText": "3.9.4 — 紧急修复：界面底纹 / 密码盘 / 弹窗三态 / 倒计时单位 ① 界面底纹：彻底收敛到原版 Gui.drawRect 3.9.2 把填充改成\"逐行四边形\"后，密码控制台 仍然鼠标出现、界面一片空白 。 这次不再在自绘路径上试： 圆角矩形直接退化成原版 Gui.drawRect —— 全游戏每个 GUI 的底纹都走它，不可能出错。圆角以后用贴图做（贴图不经过 Tessellator）。 额外给 GuiPasswordConsole 的绘制加了 try/catch：万一还有别的异常， 屏幕上会直接显示 GUI paint error: … 并写日志， 不再是一片空白 。 ② 密码盘面板：加纯色兜底 3.9.2 之后底座（模型）能看到了，但 顶面面板仍不显示 。 现在拿不到画布纹理时， 用 POSITION_COLOR + GL_QUADS 画一块深色顶面 （TESR 里这条路确认可用，DFC 外壳就是它），并打 [KeypadRender] 日志说明原因。 ③ 弹窗三态（不再整块盖住核心数据） 状态 判据 表现 熔毁预警 explosionIn 0 且尚未坍缩 大弹窗（红）+ 倒计时 引爆 detonation == true 大弹窗（橙） 熔毁进行中 collapsing 0 顶部 20px 小条 ，左右轻微摆动 + 扫光，只盖标题栏 文案按反馈改掉「至储备仓库」→「 立即撤离或紧急关机 」。 预警为什么看 explosionIn ：作者时序是\"达到熔毁温度 → 先走预警倒计时 → 结束后坍缩度才 0\"。 只盯 collapsing 0 会整段漏掉最该警告的那两分钟。 ④ 倒计时单位：从读数自动校准 explosionIn / detonationTimer 在作者代码里没有单位注释（秒 / tick 差 20 倍）。 现在服务端比较前后两次读数： 每秒掉约 20 个 = tick 计时 、 约 1 个 = 秒计时 ， 算成秒数随快照下发。你说的\"引爆 30 秒\"会在实机自动对上，不用手写换算。 校验 自测 629 PASS / 0 FAIL （三态判定 / 单位校准 / 秒换算） 离屏导出新增 dfc_canvas_banner_active_strip.png check_stackmap OK ｜ TestMain SEAL OK ｜ 资源 39 条 ⚠️ 本轮 没有 包含的东西 折线图显示器 （温度 / 发电量双图） 没做 —— 它需要新方块 + 新页面 + 历史采样缓冲， 规模与上一轮的弹窗系统相当。先把上面这些会挡住玩的问题修掉，下一轮专门做图表， 避免又出现\"半成品\"。 需要实机确认 1. 密码控制台右键： 界面有没有出来 （出不来时屏幕上会显示 GUI paint error: … ，请截图给我）； 2. 密码盘：顶面是不是有一块面板（哪怕是纯色兜底）； 3. 拉引爆器：倒计时是不是 30 秒 左右；熔毁进行中是否只剩顶部小条； 4. 日志关键字： [GuiPasswordConsole] / [KeypadRender] / [DFC] detonation started 。 源码镜像：GitHub jiezhiyisichen/DFC Map Creation Tool ｜ Gitee yi sichen jiezhi/DFC Map Creation Tool",
+      "notesHtml": "<h4>3.9.4 — 紧急修复：界面底纹 / 密码盘 / 弹窗三态 / 倒计时单位</h4>\n<h5>① 界面底纹：彻底收敛到原版 <code>Gui.drawRect</code></h5>\n<p>3.9.2 把填充改成&quot;逐行四边形&quot;后，密码控制台<strong>仍然鼠标出现、界面一片空白</strong>。</p>\n<p>这次不再在自绘路径上试：<strong>圆角矩形直接退化成原版 <code>Gui.drawRect</code></strong> ——</p>\n<p>全游戏每个 GUI 的底纹都走它，不可能出错。圆角以后用贴图做（贴图不经过 Tessellator）。</p>\n<p>额外给 <code>GuiPasswordConsole</code> 的绘制加了 try/catch：万一还有别的异常，</p>\n<p>屏幕上会直接显示 <code>GUI paint error: …</code> 并写日志，<strong>不再是一片空白</strong>。</p>\n<h5>② 密码盘面板：加纯色兜底</h5>\n<p>3.9.2 之后底座（模型）能看到了，但<strong>顶面面板仍不显示</strong>。</p>\n<p>现在拿不到画布纹理时，<strong>用 <code>POSITION_COLOR + GL_QUADS</code> 画一块深色顶面</strong></p>\n<p>（TESR 里这条路确认可用，DFC 外壳就是它），并打 <code>[KeypadRender]</code> 日志说明原因。</p>\n<h5>③ 弹窗三态（不再整块盖住核心数据）</h5>\n<table><thead><tr><th>状态</th><th>判据</th><th>表现</th></tr></thead><tbody><tr><td>熔毁预警</td><td><code>explosionIn &gt; 0</code> 且尚未坍缩</td><td>大弹窗（红）+ 倒计时</td></tr><tr><td>引爆</td><td><code>detonation == true</code></td><td>大弹窗（橙）</td></tr><tr><td><strong>熔毁进行中</strong></td><td><code>collapsing &gt; 0</code></td><td><strong>顶部 20px 小条</strong>，左右轻微摆动 + 扫光，只盖标题栏</td></tr></tbody></table>\n<ul>\n<li>文案按反馈改掉「至储备仓库」→「<strong>立即撤离或紧急关机</strong>」。</li>\n<li><strong>预警为什么看 <code>explosionIn</code></strong>：作者时序是&quot;达到熔毁温度 → 先走预警倒计时 → 结束后坍缩度才 &gt; 0&quot;。 只盯 <code>collapsing &gt; 0</code> 会整段漏掉最该警告的那两分钟。</li>\n</ul>\n<h5>④ 倒计时单位：从读数自动校准</h5>\n<p><code>explosionIn</code> / <code>detonationTimer</code> 在作者代码里没有单位注释（秒 / tick 差 20 倍）。</p>\n<p>现在服务端比较前后两次读数：<strong>每秒掉约 20 个 = tick 计时</strong>、<strong>约 1 个 = 秒计时</strong>，</p>\n<p>算成秒数随快照下发。你说的&quot;引爆 30 秒&quot;会在实机自动对上，不用手写换算。</p>\n<h5>校验</h5>\n<ul>\n<li>自测 <strong>629 PASS / 0 FAIL</strong>（三态判定 / 单位校准 / 秒换算）</li>\n<li>离屏导出新增 <code>dfc_canvas_banner_active_strip.png</code></li>\n<li><code>check_stackmap</code> OK ｜ <code>TestMain</code> SEAL OK ｜ 资源 39 条</li>\n</ul>\n<h5>⚠️ 本轮<strong>没有</strong>包含的东西</h5>\n<p><strong>折线图显示器</strong>（温度 / 发电量双图）<strong>没做</strong> —— 它需要新方块 + 新页面 + 历史采样缓冲，</p>\n<p>规模与上一轮的弹窗系统相当。先把上面这些会挡住玩的问题修掉，下一轮专门做图表，</p>\n<p>避免又出现&quot;半成品&quot;。</p>\n<h5>需要实机确认</h5>\n<ul>\n<li>密码控制台右键：<strong>界面有没有出来</strong>（出不来时屏幕上会显示 <code>GUI paint error: …</code>，请截图给我）；</li>\n<li>密码盘：顶面是不是有一块面板（哪怕是纯色兜底）；</li>\n<li>拉引爆器：倒计时是不是 <strong>30 秒</strong> 左右；熔毁进行中是否只剩顶部小条；</li>\n<li>日志关键字：<code>[GuiPasswordConsole]</code> / <code>[KeypadRender]</code> / <code>[DFC] detonation started</code>。</li>\n</ul>\n<p>源码镜像：GitHub <code>jiezhiyisichen/DFC-Map-Creation-Tool</code> ｜ Gitee <code>yi-sichen-jiezhi/DFC-Map-Creation-Tool</code></p>",
       "mirrors": {
         "gitee": {
-          "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/tag/v3.9.3-beta",
-          "tag": "v3.9.3-beta"
+          "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/tag/v3.9.4-beta",
+          "tag": "v3.9.4-beta"
         }
       }
     },
     "preview": null,
     "hotfix": {
-      "id": "jiezhiyisichen/DFC-Map-Creation-Tool#v3.9.1-beta",
+      "id": "jiezhiyisichen/DFC-Map-Creation-Tool#v3.9.4-beta",
       "repo": "jiezhiyisichen/DFC-Map-Creation-Tool",
-      "tag": "v3.9.1-beta",
-      "version": "3.9.1-beta",
+      "tag": "v3.9.4-beta",
+      "version": "3.9.4-beta",
       "channel": "beta",
       "hotfix": true,
-      "name": "v3.9.1 · 紧急修复：屏幕刷新率可调（测试版）",
-      "publishedAt": "2026-10-20T05:46:20Z",
-      "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/tag/v3.9.1-beta",
+      "name": "v3.9.4 · 紧急修复：底纹/密码盘/弹窗三态",
+      "publishedAt": "2026-10-20T14:57:57Z",
+      "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/tag/v3.9.4-beta",
       "prerelease": true,
       "draft": false,
       "assets": [
         {
-          "name": "jiezhi-1.12.2-dfcmaptools-3.9.1.jar",
+          "name": "jiezhi-1.12.2-dfcmaptools-3.9.4.jar",
           "kind": "tool",
-          "size": 269732,
-          "downloads": 1,
-          "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9.1-beta/jiezhi-1.12.2-dfcmaptools-3.9.1.jar",
-          "updatedAt": "2026-10-20T05:46:34Z",
+          "size": 274154,
+          "downloads": 0,
+          "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9.4-beta/jiezhi-1.12.2-dfcmaptools-3.9.4.jar",
+          "updatedAt": "2026-10-20T14:58:02Z",
           "mirrors": [
             {
               "host": "gitee",
-              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9.1-beta/jiezhi-1.12.2-dfcmaptools-3.9.1.jar"
+              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9.4-beta/jiezhi-1.12.2-dfcmaptools-3.9.4.jar"
             }
           ]
         }
       ],
-      "notes": "## 3.9.1 — 紧急修复 · 屏幕刷新率可调（测试版）\n\n> ⚠️ **测试版**：版本号是 `3.9.1`，为了让下载站把它归到「测试版」，\n> tag 用 `v3.9.1-beta`。\n\n### 性能：屏幕刷新率现在可调（默认仍是 0.05 秒）\n\n有人反馈**四块 DFC 显示屏同时开着只有 9 FPS**。原因是每块屏每次重绘都要\n把 768×576 的画布抓成 `int[]`、再整张上传纹理 —— 四块 × 20Hz 时这部分开销非常可观。\n\n- 刷新率从\"全局写死的常量\"改成**每台屏各自一个**，默认仍是 **50ms**（行为不变）；\n- 可选 **50 / 100 / 200 / 500 / 1000 ms**；\n- **开机自检、控制台滚屏、熔毁报错页仍固定 50ms** —— 那几段是动画，调慢了像卡住；\n- 刷新率**写进 NBT**：区块重载、跑远再回来都不会跳回默认；\n- `tempDelta`（温度变化率）的除数与 `runTicks` 的增量改成跟着刷新率走，\n  否则调慢之后变化率会凭空放大/缩小。\n\n> 4 块屏都从 50ms 调到 200ms，画布重绘与纹理上传次数直接降到 **1/4**。\n\n### 新增：调试棒 `jiezhimod:debug_stick`\n\n**蹲下右键任意本模组的方块**打开调试界面：\n\n| 方块 | 可调项 | 推荐值 |\n| --- | --- | --- |\n| DFC 监控显示器 | 屏幕刷新率 | **50 ms**（核心读数跳得快） |\n| DFC 部件监视器 | 屏幕刷新率 | **100 ms**（部件页变化慢） |\n| DFC 自定义显示屏 | 屏幕刷新率 | **200 ms**（只是设备读数） |\n| 其它本模组方块 | 暂无可调项 | — |\n\n- 界面上会直接标出「推荐 200 ms（只是设备读数）」，不用自己猜；\n- **不蹲下右键仍然交给方块自己**（开机 / 开面板 / 按键），互不打架；\n- 对不是本模组的方块：提示\"调试棒只能调试本模组的方块\"，不会开界面。\n\n### 删除：红石延时器（彻底移除）\n\n`jiezhimod:delay_block` 连同方块实体、GUI、两个网络包、贴图模型、语言条目、\n说明书章节一并删掉。\n\n> ⚠️ **已经放下的延时器会变成空气** —— 这是\"彻底删除\"的必然结果。\n> 如果存档里有，请在升级前先拆掉回收。\n\n### 校验\n\n- 离线自测 **600 PASS / 0 FAIL**\n  （删掉延时器相关 96 条断言，新增 12 条刷新率断言）\n- `check_stackmap` **OK** ｜ `TestMain` **SEAL OK**\n- 新增断言钉住了：只接受白名单值（37ms 会被拒绝，而不是静默改成 50ms）、\n  设成同一个值返回 false（不发无意义的包）、50ms = 1 tick 的换算。\n\n### 安装\n\n1. Minecraft **1.12.2** + Forge **14.23.5.2864**\n2. 把 `jiezhi-1.12.2-dfcmaptools-3.9.1.jar` 放进 `.minecraft/mods/`（服务端也要放）\n   ⚠️ **同时只能有一个版本**，旧版请先移出 `mods/`\n3. 启动日志出现 `JiezhiMod v3.9.1 is loading.` 即加载成功\n\n源码镜像：GitHub `jiezhiyisichen/DFC-Map-Creation-Tool` ｜ Gitee `yi-sichen-jiezhi/DFC-Map-Creation-Tool`\n",
-      "notesText": "3.9.1 — 紧急修复 · 屏幕刷新率可调（测试版） ⚠️ 测试版 ：版本号是 3.9.1 ，为了让下载站把它归到「测试版」， tag 用 v3.9.1 beta 。 性能：屏幕刷新率现在可调（默认仍是 0.05 秒） 有人反馈 四块 DFC 显示屏同时开着只有 9 FPS 。原因是每块屏每次重绘都要 把 768×576 的画布抓成 int[] 、再整张上传纹理 —— 四块 × 20Hz 时这部分开销非常可观。 刷新率从\"全局写死的常量\"改成 每台屏各自一个 ，默认仍是 50ms （行为不变）； 可选 50 / 100 / 200 / 500 / 1000 ms ； 开机自检、控制台滚屏、熔毁报错页仍固定 50ms —— 那几段是动画，调慢了像卡住； 刷新率 写进 NBT ：区块重载、跑远再回来都不会跳回默认； tempDelta （温度变化率）的除数与 runTicks 的增量改成跟着刷新率走， 否则调慢之后变化率会凭空放大/缩小。 4 块屏都从 50ms 调到 200ms，画布重绘与纹理上传次数直接降到 1/4 。 新增：调试棒 jiezhimod:debug_stick 蹲下右键任意本模组的方块 打开调试界面： 方块 可调项 推荐值 DFC 监控显示器 屏幕刷新率 50 ms （核心读数跳得快） DFC 部件监视器 屏幕刷新率 100 ms （部件页变化慢） DFC 自定义显示屏 屏幕刷新率 200 ms （只是设备读数） 其它本模组方块 暂无可调项 — 界面上会直接标出「推荐 200 ms（只是设备读数）」，不用自己猜； 不蹲下右键仍然交给方块自己 （开机 / 开面板 / 按键），互不打架； 对不是本模组的方块：提示\"调试棒只能调试本模组的方块\"，不会开界面。 删除：红石延时器（彻底移除） jiezhimod:delay_block 连同方块实体、GUI、两个网络包、贴图模型、语言条目、 说明书章节一并删掉。 ⚠️ 已经放下的延时器会变成空气 —— 这是\"彻底删除\"的必然结果。 如果存档里有，请在升级前先拆掉回收。 校验 离线自测 600 PASS / 0 FAIL （删掉延时器相关 96 条断言，新增 12 条刷新率断言） check_stackmap OK ｜ TestMain SEAL OK 新增断言钉住了：只接受白名单值（37ms 会被拒绝，而不是静默改成 50ms）、 设成同一个值返回 false（不发无意义的包）、50ms = 1 tick 的换算。 安装 1. Minecraft 1.12.2 + Forge 14.23.5.2864 2. 把 jiezhi 1.12.2 dfcmaptools 3.9.1.jar 放进 .minecraft/mods/ （服务端也要放） ⚠️ 同时只能有一个版本 ，旧版请先移出 mods/ 3. 启动日志出现 JiezhiMod v3.9.1 is loading. 即加载成功 源码镜像：GitHub jiezhiyisichen/DFC Map Creation Tool ｜ Gitee yi sichen jiezhi/DFC Map Creation Tool",
-      "notesHtml": "<h4>3.9.1 — 紧急修复 · 屏幕刷新率可调（测试版）</h4>\n<blockquote>⚠️ <strong>测试版</strong>：版本号是 <code>3.9.1</code>，为了让下载站把它归到「测试版」，<br>tag 用 <code>v3.9.1-beta</code>。</blockquote>\n<h5>性能：屏幕刷新率现在可调（默认仍是 0.05 秒）</h5>\n<p>有人反馈<strong>四块 DFC 显示屏同时开着只有 9 FPS</strong>。原因是每块屏每次重绘都要</p>\n<p>把 768×576 的画布抓成 <code>int[]</code>、再整张上传纹理 —— 四块 × 20Hz 时这部分开销非常可观。</p>\n<ul>\n<li>刷新率从&quot;全局写死的常量&quot;改成<strong>每台屏各自一个</strong>，默认仍是 <strong>50ms</strong>（行为不变）；</li>\n<li>可选 <strong>50 / 100 / 200 / 500 / 1000 ms</strong>；</li>\n<li><strong>开机自检、控制台滚屏、熔毁报错页仍固定 50ms</strong> —— 那几段是动画，调慢了像卡住；</li>\n<li>刷新率<strong>写进 NBT</strong>：区块重载、跑远再回来都不会跳回默认；</li>\n<li><code>tempDelta</code>（温度变化率）的除数与 <code>runTicks</code> 的增量改成跟着刷新率走， 否则调慢之后变化率会凭空放大/缩小。</li>\n</ul>\n<blockquote>4 块屏都从 50ms 调到 200ms，画布重绘与纹理上传次数直接降到 <strong>1/4</strong>。</blockquote>\n<h5>新增：调试棒 <code>jiezhimod:debug_stick</code></h5>\n<p><strong>蹲下右键任意本模组的方块</strong>打开调试界面：</p>\n<table><thead><tr><th>方块</th><th>可调项</th><th>推荐值</th></tr></thead><tbody><tr><td>DFC 监控显示器</td><td>屏幕刷新率</td><td><strong>50 ms</strong>（核心读数跳得快）</td></tr><tr><td>DFC 部件监视器</td><td>屏幕刷新率</td><td><strong>100 ms</strong>（部件页变化慢）</td></tr><tr><td>DFC 自定义显示屏</td><td>屏幕刷新率</td><td><strong>200 ms</strong>（只是设备读数）</td></tr><tr><td>其它本模组方块</td><td>暂无可调项</td><td>—</td></tr></tbody></table>\n<ul>\n<li>界面上会直接标出「推荐 200 ms（只是设备读数）」，不用自己猜；</li>\n<li><strong>不蹲下右键仍然交给方块自己</strong>（开机 / 开面板 / 按键），互不打架；</li>\n<li>对不是本模组的方块：提示&quot;调试棒只能调试本模组的方块&quot;，不会开界面。</li>\n</ul>\n<h5>删除：红石延时器（彻底移除）</h5>\n<p><code>jiezhimod:delay_block</code> 连同方块实体、GUI、两个网络包、贴图模型、语言条目、</p>\n<p>说明书章节一并删掉。</p>\n<blockquote>⚠️ <strong>已经放下的延时器会变成空气</strong> —— 这是&quot;彻底删除&quot;的必然结果。<br>如果存档里有，请在升级前先拆掉回收。</blockquote>\n<h5>校验</h5>\n<ul>\n<li>离线自测 <strong>600 PASS / 0 FAIL</strong> （删掉延时器相关 96 条断言，新增 12 条刷新率断言）</li>\n<li><code>check_stackmap</code> <strong>OK</strong> ｜ <code>TestMain</code> <strong>SEAL OK</strong></li>\n<li>新增断言钉住了：只接受白名单值（37ms 会被拒绝，而不是静默改成 50ms）、 设成同一个值返回 false（不发无意义的包）、50ms = 1 tick 的换算。</li>\n</ul>\n<h5>安装</h5>\n<ul>\n<li>Minecraft <strong>1.12.2</strong> + Forge <strong>14.23.5.2864</strong></li>\n<li>把 <code>jiezhi-1.12.2-dfcmaptools-3.9.1.jar</code> 放进 <code>.minecraft/mods/</code>（服务端也要放） ⚠️ <strong>同时只能有一个版本</strong>，旧版请先移出 <code>mods/</code></li>\n<li>启动日志出现 <code>JiezhiMod v3.9.1 is loading.</code> 即加载成功</li>\n</ul>\n<p>源码镜像：GitHub <code>jiezhiyisichen/DFC-Map-Creation-Tool</code> ｜ Gitee <code>yi-sichen-jiezhi/DFC-Map-Creation-Tool</code></p>",
+      "notes": "## 3.9.4 — 紧急修复：界面底纹 / 密码盘 / 弹窗三态 / 倒计时单位\n\n### ① 界面底纹：彻底收敛到原版 `Gui.drawRect`\n\n3.9.2 把填充改成\"逐行四边形\"后，密码控制台**仍然鼠标出现、界面一片空白**。\n这次不再在自绘路径上试：**圆角矩形直接退化成原版 `Gui.drawRect`** ——\n全游戏每个 GUI 的底纹都走它，不可能出错。圆角以后用贴图做（贴图不经过 Tessellator）。\n\n额外给 `GuiPasswordConsole` 的绘制加了 try/catch：万一还有别的异常，\n屏幕上会直接显示 `GUI paint error: …` 并写日志，**不再是一片空白**。\n\n### ② 密码盘面板：加纯色兜底\n\n3.9.2 之后底座（模型）能看到了，但**顶面面板仍不显示**。\n现在拿不到画布纹理时，**用 `POSITION_COLOR + GL_QUADS` 画一块深色顶面**\n（TESR 里这条路确认可用，DFC 外壳就是它），并打 `[KeypadRender]` 日志说明原因。\n\n### ③ 弹窗三态（不再整块盖住核心数据）\n\n| 状态 | 判据 | 表现 |\n| --- | --- | --- |\n| 熔毁预警 | `explosionIn > 0` 且尚未坍缩 | 大弹窗（红）+ 倒计时 |\n| 引爆 | `detonation == true` | 大弹窗（橙） |\n| **熔毁进行中** | `collapsing > 0` | **顶部 20px 小条**，左右轻微摆动 + 扫光，只盖标题栏 |\n\n- 文案按反馈改掉「至储备仓库」→「**立即撤离或紧急关机**」。\n- **预警为什么看 `explosionIn`**：作者时序是\"达到熔毁温度 → 先走预警倒计时 → 结束后坍缩度才 > 0\"。\n  只盯 `collapsing > 0` 会整段漏掉最该警告的那两分钟。\n\n### ④ 倒计时单位：从读数自动校准\n\n`explosionIn` / `detonationTimer` 在作者代码里没有单位注释（秒 / tick 差 20 倍）。\n现在服务端比较前后两次读数：**每秒掉约 20 个 = tick 计时**、**约 1 个 = 秒计时**，\n算成秒数随快照下发。你说的\"引爆 30 秒\"会在实机自动对上，不用手写换算。\n\n### 校验\n\n- 自测 **629 PASS / 0 FAIL**（三态判定 / 单位校准 / 秒换算）\n- 离屏导出新增 `dfc_canvas_banner_active_strip.png`\n- `check_stackmap` OK ｜ `TestMain` SEAL OK ｜ 资源 39 条\n\n### ⚠️ 本轮**没有**包含的东西\n\n**折线图显示器**（温度 / 发电量双图）**没做** —— 它需要新方块 + 新页面 + 历史采样缓冲，\n规模与上一轮的弹窗系统相当。先把上面这些会挡住玩的问题修掉，下一轮专门做图表，\n避免又出现\"半成品\"。\n\n### 需要实机确认\n\n1. 密码控制台右键：**界面有没有出来**（出不来时屏幕上会显示 `GUI paint error: …`，请截图给我）；\n2. 密码盘：顶面是不是有一块面板（哪怕是纯色兜底）；\n3. 拉引爆器：倒计时是不是 **30 秒** 左右；熔毁进行中是否只剩顶部小条；\n4. 日志关键字：`[GuiPasswordConsole]` / `[KeypadRender]` / `[DFC] detonation started`。\n\n源码镜像：GitHub `jiezhiyisichen/DFC-Map-Creation-Tool` ｜ Gitee `yi-sichen-jiezhi/DFC-Map-Creation-Tool`\n",
+      "notesText": "3.9.4 — 紧急修复：界面底纹 / 密码盘 / 弹窗三态 / 倒计时单位 ① 界面底纹：彻底收敛到原版 Gui.drawRect 3.9.2 把填充改成\"逐行四边形\"后，密码控制台 仍然鼠标出现、界面一片空白 。 这次不再在自绘路径上试： 圆角矩形直接退化成原版 Gui.drawRect —— 全游戏每个 GUI 的底纹都走它，不可能出错。圆角以后用贴图做（贴图不经过 Tessellator）。 额外给 GuiPasswordConsole 的绘制加了 try/catch：万一还有别的异常， 屏幕上会直接显示 GUI paint error: … 并写日志， 不再是一片空白 。 ② 密码盘面板：加纯色兜底 3.9.2 之后底座（模型）能看到了，但 顶面面板仍不显示 。 现在拿不到画布纹理时， 用 POSITION_COLOR + GL_QUADS 画一块深色顶面 （TESR 里这条路确认可用，DFC 外壳就是它），并打 [KeypadRender] 日志说明原因。 ③ 弹窗三态（不再整块盖住核心数据） 状态 判据 表现 熔毁预警 explosionIn 0 且尚未坍缩 大弹窗（红）+ 倒计时 引爆 detonation == true 大弹窗（橙） 熔毁进行中 collapsing 0 顶部 20px 小条 ，左右轻微摆动 + 扫光，只盖标题栏 文案按反馈改掉「至储备仓库」→「 立即撤离或紧急关机 」。 预警为什么看 explosionIn ：作者时序是\"达到熔毁温度 → 先走预警倒计时 → 结束后坍缩度才 0\"。 只盯 collapsing 0 会整段漏掉最该警告的那两分钟。 ④ 倒计时单位：从读数自动校准 explosionIn / detonationTimer 在作者代码里没有单位注释（秒 / tick 差 20 倍）。 现在服务端比较前后两次读数： 每秒掉约 20 个 = tick 计时 、 约 1 个 = 秒计时 ， 算成秒数随快照下发。你说的\"引爆 30 秒\"会在实机自动对上，不用手写换算。 校验 自测 629 PASS / 0 FAIL （三态判定 / 单位校准 / 秒换算） 离屏导出新增 dfc_canvas_banner_active_strip.png check_stackmap OK ｜ TestMain SEAL OK ｜ 资源 39 条 ⚠️ 本轮 没有 包含的东西 折线图显示器 （温度 / 发电量双图） 没做 —— 它需要新方块 + 新页面 + 历史采样缓冲， 规模与上一轮的弹窗系统相当。先把上面这些会挡住玩的问题修掉，下一轮专门做图表， 避免又出现\"半成品\"。 需要实机确认 1. 密码控制台右键： 界面有没有出来 （出不来时屏幕上会显示 GUI paint error: … ，请截图给我）； 2. 密码盘：顶面是不是有一块面板（哪怕是纯色兜底）； 3. 拉引爆器：倒计时是不是 30 秒 左右；熔毁进行中是否只剩顶部小条； 4. 日志关键字： [GuiPasswordConsole] / [KeypadRender] / [DFC] detonation started 。 源码镜像：GitHub jiezhiyisichen/DFC Map Creation Tool ｜ Gitee yi sichen jiezhi/DFC Map Creation Tool",
+      "notesHtml": "<h4>3.9.4 — 紧急修复：界面底纹 / 密码盘 / 弹窗三态 / 倒计时单位</h4>\n<h5>① 界面底纹：彻底收敛到原版 <code>Gui.drawRect</code></h5>\n<p>3.9.2 把填充改成&quot;逐行四边形&quot;后，密码控制台<strong>仍然鼠标出现、界面一片空白</strong>。</p>\n<p>这次不再在自绘路径上试：<strong>圆角矩形直接退化成原版 <code>Gui.drawRect</code></strong> ——</p>\n<p>全游戏每个 GUI 的底纹都走它，不可能出错。圆角以后用贴图做（贴图不经过 Tessellator）。</p>\n<p>额外给 <code>GuiPasswordConsole</code> 的绘制加了 try/catch：万一还有别的异常，</p>\n<p>屏幕上会直接显示 <code>GUI paint error: …</code> 并写日志，<strong>不再是一片空白</strong>。</p>\n<h5>② 密码盘面板：加纯色兜底</h5>\n<p>3.9.2 之后底座（模型）能看到了，但<strong>顶面面板仍不显示</strong>。</p>\n<p>现在拿不到画布纹理时，<strong>用 <code>POSITION_COLOR + GL_QUADS</code> 画一块深色顶面</strong></p>\n<p>（TESR 里这条路确认可用，DFC 外壳就是它），并打 <code>[KeypadRender]</code> 日志说明原因。</p>\n<h5>③ 弹窗三态（不再整块盖住核心数据）</h5>\n<table><thead><tr><th>状态</th><th>判据</th><th>表现</th></tr></thead><tbody><tr><td>熔毁预警</td><td><code>explosionIn &gt; 0</code> 且尚未坍缩</td><td>大弹窗（红）+ 倒计时</td></tr><tr><td>引爆</td><td><code>detonation == true</code></td><td>大弹窗（橙）</td></tr><tr><td><strong>熔毁进行中</strong></td><td><code>collapsing &gt; 0</code></td><td><strong>顶部 20px 小条</strong>，左右轻微摆动 + 扫光，只盖标题栏</td></tr></tbody></table>\n<ul>\n<li>文案按反馈改掉「至储备仓库」→「<strong>立即撤离或紧急关机</strong>」。</li>\n<li><strong>预警为什么看 <code>explosionIn</code></strong>：作者时序是&quot;达到熔毁温度 → 先走预警倒计时 → 结束后坍缩度才 &gt; 0&quot;。 只盯 <code>collapsing &gt; 0</code> 会整段漏掉最该警告的那两分钟。</li>\n</ul>\n<h5>④ 倒计时单位：从读数自动校准</h5>\n<p><code>explosionIn</code> / <code>detonationTimer</code> 在作者代码里没有单位注释（秒 / tick 差 20 倍）。</p>\n<p>现在服务端比较前后两次读数：<strong>每秒掉约 20 个 = tick 计时</strong>、<strong>约 1 个 = 秒计时</strong>，</p>\n<p>算成秒数随快照下发。你说的&quot;引爆 30 秒&quot;会在实机自动对上，不用手写换算。</p>\n<h5>校验</h5>\n<ul>\n<li>自测 <strong>629 PASS / 0 FAIL</strong>（三态判定 / 单位校准 / 秒换算）</li>\n<li>离屏导出新增 <code>dfc_canvas_banner_active_strip.png</code></li>\n<li><code>check_stackmap</code> OK ｜ <code>TestMain</code> SEAL OK ｜ 资源 39 条</li>\n</ul>\n<h5>⚠️ 本轮<strong>没有</strong>包含的东西</h5>\n<p><strong>折线图显示器</strong>（温度 / 发电量双图）<strong>没做</strong> —— 它需要新方块 + 新页面 + 历史采样缓冲，</p>\n<p>规模与上一轮的弹窗系统相当。先把上面这些会挡住玩的问题修掉，下一轮专门做图表，</p>\n<p>避免又出现&quot;半成品&quot;。</p>\n<h5>需要实机确认</h5>\n<ul>\n<li>密码控制台右键：<strong>界面有没有出来</strong>（出不来时屏幕上会显示 <code>GUI paint error: …</code>，请截图给我）；</li>\n<li>密码盘：顶面是不是有一块面板（哪怕是纯色兜底）；</li>\n<li>拉引爆器：倒计时是不是 <strong>30 秒</strong> 左右；熔毁进行中是否只剩顶部小条；</li>\n<li>日志关键字：<code>[GuiPasswordConsole]</code> / <code>[KeypadRender]</code> / <code>[DFC] detonation started</code>。</li>\n</ul>\n<p>源码镜像：GitHub <code>jiezhiyisichen/DFC-Map-Creation-Tool</code> ｜ Gitee <code>yi-sichen-jiezhi/DFC-Map-Creation-Tool</code></p>",
       "mirrors": {
         "gitee": {
-          "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/tag/v3.9.1-beta",
-          "tag": "v3.9.1-beta"
+          "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/tag/v3.9.4-beta",
+          "tag": "v3.9.4-beta"
         }
       }
     },
@@ -177,6 +177,44 @@
   },
   "releases": [
     {
+      "id": "jiezhiyisichen/DFC-Map-Creation-Tool#v3.9.4-beta",
+      "repo": "jiezhiyisichen/DFC-Map-Creation-Tool",
+      "tag": "v3.9.4-beta",
+      "version": "3.9.4-beta",
+      "channel": "beta",
+      "hotfix": true,
+      "name": "v3.9.4 · 紧急修复：底纹/密码盘/弹窗三态",
+      "publishedAt": "2026-10-20T14:57:57Z",
+      "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/tag/v3.9.4-beta",
+      "prerelease": true,
+      "draft": false,
+      "assets": [
+        {
+          "name": "jiezhi-1.12.2-dfcmaptools-3.9.4.jar",
+          "kind": "tool",
+          "size": 274154,
+          "downloads": 0,
+          "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9.4-beta/jiezhi-1.12.2-dfcmaptools-3.9.4.jar",
+          "updatedAt": "2026-10-20T14:58:02Z",
+          "mirrors": [
+            {
+              "host": "gitee",
+              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9.4-beta/jiezhi-1.12.2-dfcmaptools-3.9.4.jar"
+            }
+          ]
+        }
+      ],
+      "notes": "## 3.9.4 — 紧急修复：界面底纹 / 密码盘 / 弹窗三态 / 倒计时单位\n\n### ① 界面底纹：彻底收敛到原版 `Gui.drawRect`\n\n3.9.2 把填充改成\"逐行四边形\"后，密码控制台**仍然鼠标出现、界面一片空白**。\n这次不再在自绘路径上试：**圆角矩形直接退化成原版 `Gui.drawRect`** ——\n全游戏每个 GUI 的底纹都走它，不可能出错。圆角以后用贴图做（贴图不经过 Tessellator）。\n\n额外给 `GuiPasswordConsole` 的绘制加了 try/catch：万一还有别的异常，\n屏幕上会直接显示 `GUI paint error: …` 并写日志，**不再是一片空白**。\n\n### ② 密码盘面板：加纯色兜底\n\n3.9.2 之后底座（模型）能看到了，但**顶面面板仍不显示**。\n现在拿不到画布纹理时，**用 `POSITION_COLOR + GL_QUADS` 画一块深色顶面**\n（TESR 里这条路确认可用，DFC 外壳就是它），并打 `[KeypadRender]` 日志说明原因。\n\n### ③ 弹窗三态（不再整块盖住核心数据）\n\n| 状态 | 判据 | 表现 |\n| --- | --- | --- |\n| 熔毁预警 | `explosionIn > 0` 且尚未坍缩 | 大弹窗（红）+ 倒计时 |\n| 引爆 | `detonation == true` | 大弹窗（橙） |\n| **熔毁进行中** | `collapsing > 0` | **顶部 20px 小条**，左右轻微摆动 + 扫光，只盖标题栏 |\n\n- 文案按反馈改掉「至储备仓库」→「**立即撤离或紧急关机**」。\n- **预警为什么看 `explosionIn`**：作者时序是\"达到熔毁温度 → 先走预警倒计时 → 结束后坍缩度才 > 0\"。\n  只盯 `collapsing > 0` 会整段漏掉最该警告的那两分钟。\n\n### ④ 倒计时单位：从读数自动校准\n\n`explosionIn` / `detonationTimer` 在作者代码里没有单位注释（秒 / tick 差 20 倍）。\n现在服务端比较前后两次读数：**每秒掉约 20 个 = tick 计时**、**约 1 个 = 秒计时**，\n算成秒数随快照下发。你说的\"引爆 30 秒\"会在实机自动对上，不用手写换算。\n\n### 校验\n\n- 自测 **629 PASS / 0 FAIL**（三态判定 / 单位校准 / 秒换算）\n- 离屏导出新增 `dfc_canvas_banner_active_strip.png`\n- `check_stackmap` OK ｜ `TestMain` SEAL OK ｜ 资源 39 条\n\n### ⚠️ 本轮**没有**包含的东西\n\n**折线图显示器**（温度 / 发电量双图）**没做** —— 它需要新方块 + 新页面 + 历史采样缓冲，\n规模与上一轮的弹窗系统相当。先把上面这些会挡住玩的问题修掉，下一轮专门做图表，\n避免又出现\"半成品\"。\n\n### 需要实机确认\n\n1. 密码控制台右键：**界面有没有出来**（出不来时屏幕上会显示 `GUI paint error: …`，请截图给我）；\n2. 密码盘：顶面是不是有一块面板（哪怕是纯色兜底）；\n3. 拉引爆器：倒计时是不是 **30 秒** 左右；熔毁进行中是否只剩顶部小条；\n4. 日志关键字：`[GuiPasswordConsole]` / `[KeypadRender]` / `[DFC] detonation started`。\n\n源码镜像：GitHub `jiezhiyisichen/DFC-Map-Creation-Tool` ｜ Gitee `yi-sichen-jiezhi/DFC-Map-Creation-Tool`\n",
+      "notesText": "3.9.4 — 紧急修复：界面底纹 / 密码盘 / 弹窗三态 / 倒计时单位 ① 界面底纹：彻底收敛到原版 Gui.drawRect 3.9.2 把填充改成\"逐行四边形\"后，密码控制台 仍然鼠标出现、界面一片空白 。 这次不再在自绘路径上试： 圆角矩形直接退化成原版 Gui.drawRect —— 全游戏每个 GUI 的底纹都走它，不可能出错。圆角以后用贴图做（贴图不经过 Tessellator）。 额外给 GuiPasswordConsole 的绘制加了 try/catch：万一还有别的异常， 屏幕上会直接显示 GUI paint error: … 并写日志， 不再是一片空白 。 ② 密码盘面板：加纯色兜底 3.9.2 之后底座（模型）能看到了，但 顶面面板仍不显示 。 现在拿不到画布纹理时， 用 POSITION_COLOR + GL_QUADS 画一块深色顶面 （TESR 里这条路确认可用，DFC 外壳就是它），并打 [KeypadRender] 日志说明原因。 ③ 弹窗三态（不再整块盖住核心数据） 状态 判据 表现 熔毁预警 explosionIn 0 且尚未坍缩 大弹窗（红）+ 倒计时 引爆 detonation == true 大弹窗（橙） 熔毁进行中 collapsing 0 顶部 20px 小条 ，左右轻微摆动 + 扫光，只盖标题栏 文案按反馈改掉「至储备仓库」→「 立即撤离或紧急关机 」。 预警为什么看 explosionIn ：作者时序是\"达到熔毁温度 → 先走预警倒计时 → 结束后坍缩度才 0\"。 只盯 collapsing 0 会整段漏掉最该警告的那两分钟。 ④ 倒计时单位：从读数自动校准 explosionIn / detonationTimer 在作者代码里没有单位注释（秒 / tick 差 20 倍）。 现在服务端比较前后两次读数： 每秒掉约 20 个 = tick 计时 、 约 1 个 = 秒计时 ， 算成秒数随快照下发。你说的\"引爆 30 秒\"会在实机自动对上，不用手写换算。 校验 自测 629 PASS / 0 FAIL （三态判定 / 单位校准 / 秒换算） 离屏导出新增 dfc_canvas_banner_active_strip.png check_stackmap OK ｜ TestMain SEAL OK ｜ 资源 39 条 ⚠️ 本轮 没有 包含的东西 折线图显示器 （温度 / 发电量双图） 没做 —— 它需要新方块 + 新页面 + 历史采样缓冲， 规模与上一轮的弹窗系统相当。先把上面这些会挡住玩的问题修掉，下一轮专门做图表， 避免又出现\"半成品\"。 需要实机确认 1. 密码控制台右键： 界面有没有出来 （出不来时屏幕上会显示 GUI paint error: … ，请截图给我）； 2. 密码盘：顶面是不是有一块面板（哪怕是纯色兜底）； 3. 拉引爆器：倒计时是不是 30 秒 左右；熔毁进行中是否只剩顶部小条； 4. 日志关键字： [GuiPasswordConsole] / [KeypadRender] / [DFC] detonation started 。 源码镜像：GitHub jiezhiyisichen/DFC Map Creation Tool ｜ Gitee yi sichen jiezhi/DFC Map Creation Tool",
+      "notesHtml": "<h4>3.9.4 — 紧急修复：界面底纹 / 密码盘 / 弹窗三态 / 倒计时单位</h4>\n<h5>① 界面底纹：彻底收敛到原版 <code>Gui.drawRect</code></h5>\n<p>3.9.2 把填充改成&quot;逐行四边形&quot;后，密码控制台<strong>仍然鼠标出现、界面一片空白</strong>。</p>\n<p>这次不再在自绘路径上试：<strong>圆角矩形直接退化成原版 <code>Gui.drawRect</code></strong> ——</p>\n<p>全游戏每个 GUI 的底纹都走它，不可能出错。圆角以后用贴图做（贴图不经过 Tessellator）。</p>\n<p>额外给 <code>GuiPasswordConsole</code> 的绘制加了 try/catch：万一还有别的异常，</p>\n<p>屏幕上会直接显示 <code>GUI paint error: …</code> 并写日志，<strong>不再是一片空白</strong>。</p>\n<h5>② 密码盘面板：加纯色兜底</h5>\n<p>3.9.2 之后底座（模型）能看到了，但<strong>顶面面板仍不显示</strong>。</p>\n<p>现在拿不到画布纹理时，<strong>用 <code>POSITION_COLOR + GL_QUADS</code> 画一块深色顶面</strong></p>\n<p>（TESR 里这条路确认可用，DFC 外壳就是它），并打 <code>[KeypadRender]</code> 日志说明原因。</p>\n<h5>③ 弹窗三态（不再整块盖住核心数据）</h5>\n<table><thead><tr><th>状态</th><th>判据</th><th>表现</th></tr></thead><tbody><tr><td>熔毁预警</td><td><code>explosionIn &gt; 0</code> 且尚未坍缩</td><td>大弹窗（红）+ 倒计时</td></tr><tr><td>引爆</td><td><code>detonation == true</code></td><td>大弹窗（橙）</td></tr><tr><td><strong>熔毁进行中</strong></td><td><code>collapsing &gt; 0</code></td><td><strong>顶部 20px 小条</strong>，左右轻微摆动 + 扫光，只盖标题栏</td></tr></tbody></table>\n<ul>\n<li>文案按反馈改掉「至储备仓库」→「<strong>立即撤离或紧急关机</strong>」。</li>\n<li><strong>预警为什么看 <code>explosionIn</code></strong>：作者时序是&quot;达到熔毁温度 → 先走预警倒计时 → 结束后坍缩度才 &gt; 0&quot;。 只盯 <code>collapsing &gt; 0</code> 会整段漏掉最该警告的那两分钟。</li>\n</ul>\n<h5>④ 倒计时单位：从读数自动校准</h5>\n<p><code>explosionIn</code> / <code>detonationTimer</code> 在作者代码里没有单位注释（秒 / tick 差 20 倍）。</p>\n<p>现在服务端比较前后两次读数：<strong>每秒掉约 20 个 = tick 计时</strong>、<strong>约 1 个 = 秒计时</strong>，</p>\n<p>算成秒数随快照下发。你说的&quot;引爆 30 秒&quot;会在实机自动对上，不用手写换算。</p>\n<h5>校验</h5>\n<ul>\n<li>自测 <strong>629 PASS / 0 FAIL</strong>（三态判定 / 单位校准 / 秒换算）</li>\n<li>离屏导出新增 <code>dfc_canvas_banner_active_strip.png</code></li>\n<li><code>check_stackmap</code> OK ｜ <code>TestMain</code> SEAL OK ｜ 资源 39 条</li>\n</ul>\n<h5>⚠️ 本轮<strong>没有</strong>包含的东西</h5>\n<p><strong>折线图显示器</strong>（温度 / 发电量双图）<strong>没做</strong> —— 它需要新方块 + 新页面 + 历史采样缓冲，</p>\n<p>规模与上一轮的弹窗系统相当。先把上面这些会挡住玩的问题修掉，下一轮专门做图表，</p>\n<p>避免又出现&quot;半成品&quot;。</p>\n<h5>需要实机确认</h5>\n<ul>\n<li>密码控制台右键：<strong>界面有没有出来</strong>（出不来时屏幕上会显示 <code>GUI paint error: …</code>，请截图给我）；</li>\n<li>密码盘：顶面是不是有一块面板（哪怕是纯色兜底）；</li>\n<li>拉引爆器：倒计时是不是 <strong>30 秒</strong> 左右；熔毁进行中是否只剩顶部小条；</li>\n<li>日志关键字：<code>[GuiPasswordConsole]</code> / <code>[KeypadRender]</code> / <code>[DFC] detonation started</code>。</li>\n</ul>\n<p>源码镜像：GitHub <code>jiezhiyisichen/DFC-Map-Creation-Tool</code> ｜ Gitee <code>yi-sichen-jiezhi/DFC-Map-Creation-Tool</code></p>",
+      "mirrors": {
+        "gitee": {
+          "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/tag/v3.9.4-beta",
+          "tag": "v3.9.4-beta"
+        }
+      }
+    },
+    {
       "id": "jiezhiyisichen/DFC-Map-Creation-Tool#v3.9.3-beta",
       "repo": "jiezhiyisichen/DFC-Map-Creation-Tool",
       "tag": "v3.9.3-beta",
@@ -193,7 +231,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.9.3.jar",
           "kind": "tool",
           "size": 273933,
-          "downloads": 0,
+          "downloads": 2,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9.3-beta/jiezhi-1.12.2-dfcmaptools-3.9.3.jar",
           "updatedAt": "2026-10-20T14:21:20Z",
           "mirrors": [
