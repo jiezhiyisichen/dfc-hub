@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T14:59:17.333Z",
+  "generatedAt": "2026-10-20T15:06:59.983Z",
   "source": {
     "tool": "jiezhiyisichen/DFC-Map-Creation-Tool",
     "api": "https://api.github.com",
@@ -8,15 +8,15 @@
       "api": "https://gitee.com/api/v5",
       "enabled": true,
       "ok": true,
-      "mergedAssets": 8,
+      "mergedAssets": 9,
       "extraReleases": 0,
       "primary": false
     }
   },
   "counts": {
-    "all": 10,
+    "all": 11,
     "release": 5,
-    "beta": 5,
+    "beta": 6,
     "preview": 0,
     "hotfix": 2
   },
@@ -60,40 +60,40 @@
       }
     },
     "beta": {
-      "id": "jiezhiyisichen/DFC-Map-Creation-Tool#v3.9.4-beta",
+      "id": "jiezhiyisichen/DFC-Map-Creation-Tool#v3.9.5-beta",
       "repo": "jiezhiyisichen/DFC-Map-Creation-Tool",
-      "tag": "v3.9.4-beta",
-      "version": "3.9.4-beta",
+      "tag": "v3.9.5-beta",
+      "version": "3.9.5-beta",
       "channel": "beta",
-      "hotfix": true,
-      "name": "v3.9.4 · 紧急修复：底纹/密码盘/弹窗三态",
-      "publishedAt": "2026-10-20T14:57:57Z",
-      "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/tag/v3.9.4-beta",
+      "hotfix": false,
+      "name": "v3.9.5 · 修好 301 被小条顶掉",
+      "publishedAt": "2026-10-20T15:06:01Z",
+      "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/tag/v3.9.5-beta",
       "prerelease": true,
       "draft": false,
       "assets": [
         {
-          "name": "jiezhi-1.12.2-dfcmaptools-3.9.4.jar",
+          "name": "jiezhi-1.12.2-dfcmaptools-3.9.5.jar",
           "kind": "tool",
-          "size": 274154,
+          "size": 274172,
           "downloads": 0,
-          "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9.4-beta/jiezhi-1.12.2-dfcmaptools-3.9.4.jar",
-          "updatedAt": "2026-10-20T14:58:02Z",
+          "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9.5-beta/jiezhi-1.12.2-dfcmaptools-3.9.5.jar",
+          "updatedAt": "2026-10-20T15:06:06Z",
           "mirrors": [
             {
               "host": "gitee",
-              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9.4-beta/jiezhi-1.12.2-dfcmaptools-3.9.4.jar"
+              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9.5-beta/jiezhi-1.12.2-dfcmaptools-3.9.5.jar"
             }
           ]
         }
       ],
-      "notes": "## 3.9.4 — 紧急修复：界面底纹 / 密码盘 / 弹窗三态 / 倒计时单位\n\n### ① 界面底纹：彻底收敛到原版 `Gui.drawRect`\n\n3.9.2 把填充改成\"逐行四边形\"后，密码控制台**仍然鼠标出现、界面一片空白**。\n这次不再在自绘路径上试：**圆角矩形直接退化成原版 `Gui.drawRect`** ——\n全游戏每个 GUI 的底纹都走它，不可能出错。圆角以后用贴图做（贴图不经过 Tessellator）。\n\n额外给 `GuiPasswordConsole` 的绘制加了 try/catch：万一还有别的异常，\n屏幕上会直接显示 `GUI paint error: …` 并写日志，**不再是一片空白**。\n\n### ② 密码盘面板：加纯色兜底\n\n3.9.2 之后底座（模型）能看到了，但**顶面面板仍不显示**。\n现在拿不到画布纹理时，**用 `POSITION_COLOR + GL_QUADS` 画一块深色顶面**\n（TESR 里这条路确认可用，DFC 外壳就是它），并打 `[KeypadRender]` 日志说明原因。\n\n### ③ 弹窗三态（不再整块盖住核心数据）\n\n| 状态 | 判据 | 表现 |\n| --- | --- | --- |\n| 熔毁预警 | `explosionIn > 0` 且尚未坍缩 | 大弹窗（红）+ 倒计时 |\n| 引爆 | `detonation == true` | 大弹窗（橙） |\n| **熔毁进行中** | `collapsing > 0` | **顶部 20px 小条**，左右轻微摆动 + 扫光，只盖标题栏 |\n\n- 文案按反馈改掉「至储备仓库」→「**立即撤离或紧急关机**」。\n- **预警为什么看 `explosionIn`**：作者时序是\"达到熔毁温度 → 先走预警倒计时 → 结束后坍缩度才 > 0\"。\n  只盯 `collapsing > 0` 会整段漏掉最该警告的那两分钟。\n\n### ④ 倒计时单位：从读数自动校准\n\n`explosionIn` / `detonationTimer` 在作者代码里没有单位注释（秒 / tick 差 20 倍）。\n现在服务端比较前后两次读数：**每秒掉约 20 个 = tick 计时**、**约 1 个 = 秒计时**，\n算成秒数随快照下发。你说的\"引爆 30 秒\"会在实机自动对上，不用手写换算。\n\n### 校验\n\n- 自测 **629 PASS / 0 FAIL**（三态判定 / 单位校准 / 秒换算）\n- 离屏导出新增 `dfc_canvas_banner_active_strip.png`\n- `check_stackmap` OK ｜ `TestMain` SEAL OK ｜ 资源 39 条\n\n### ⚠️ 本轮**没有**包含的东西\n\n**折线图显示器**（温度 / 发电量双图）**没做** —— 它需要新方块 + 新页面 + 历史采样缓冲，\n规模与上一轮的弹窗系统相当。先把上面这些会挡住玩的问题修掉，下一轮专门做图表，\n避免又出现\"半成品\"。\n\n### 需要实机确认\n\n1. 密码控制台右键：**界面有没有出来**（出不来时屏幕上会显示 `GUI paint error: …`，请截图给我）；\n2. 密码盘：顶面是不是有一块面板（哪怕是纯色兜底）；\n3. 拉引爆器：倒计时是不是 **30 秒** 左右；熔毁进行中是否只剩顶部小条；\n4. 日志关键字：`[GuiPasswordConsole]` / `[KeypadRender]` / `[DFC] detonation started`。\n\n源码镜像：GitHub `jiezhiyisichen/DFC-Map-Creation-Tool` ｜ Gitee `yi-sichen-jiezhi/DFC-Map-Creation-Tool`\n",
-      "notesText": "3.9.4 — 紧急修复：界面底纹 / 密码盘 / 弹窗三态 / 倒计时单位 ① 界面底纹：彻底收敛到原版 Gui.drawRect 3.9.2 把填充改成\"逐行四边形\"后，密码控制台 仍然鼠标出现、界面一片空白 。 这次不再在自绘路径上试： 圆角矩形直接退化成原版 Gui.drawRect —— 全游戏每个 GUI 的底纹都走它，不可能出错。圆角以后用贴图做（贴图不经过 Tessellator）。 额外给 GuiPasswordConsole 的绘制加了 try/catch：万一还有别的异常， 屏幕上会直接显示 GUI paint error: … 并写日志， 不再是一片空白 。 ② 密码盘面板：加纯色兜底 3.9.2 之后底座（模型）能看到了，但 顶面面板仍不显示 。 现在拿不到画布纹理时， 用 POSITION_COLOR + GL_QUADS 画一块深色顶面 （TESR 里这条路确认可用，DFC 外壳就是它），并打 [KeypadRender] 日志说明原因。 ③ 弹窗三态（不再整块盖住核心数据） 状态 判据 表现 熔毁预警 explosionIn 0 且尚未坍缩 大弹窗（红）+ 倒计时 引爆 detonation == true 大弹窗（橙） 熔毁进行中 collapsing 0 顶部 20px 小条 ，左右轻微摆动 + 扫光，只盖标题栏 文案按反馈改掉「至储备仓库」→「 立即撤离或紧急关机 」。 预警为什么看 explosionIn ：作者时序是\"达到熔毁温度 → 先走预警倒计时 → 结束后坍缩度才 0\"。 只盯 collapsing 0 会整段漏掉最该警告的那两分钟。 ④ 倒计时单位：从读数自动校准 explosionIn / detonationTimer 在作者代码里没有单位注释（秒 / tick 差 20 倍）。 现在服务端比较前后两次读数： 每秒掉约 20 个 = tick 计时 、 约 1 个 = 秒计时 ， 算成秒数随快照下发。你说的\"引爆 30 秒\"会在实机自动对上，不用手写换算。 校验 自测 629 PASS / 0 FAIL （三态判定 / 单位校准 / 秒换算） 离屏导出新增 dfc_canvas_banner_active_strip.png check_stackmap OK ｜ TestMain SEAL OK ｜ 资源 39 条 ⚠️ 本轮 没有 包含的东西 折线图显示器 （温度 / 发电量双图） 没做 —— 它需要新方块 + 新页面 + 历史采样缓冲， 规模与上一轮的弹窗系统相当。先把上面这些会挡住玩的问题修掉，下一轮专门做图表， 避免又出现\"半成品\"。 需要实机确认 1. 密码控制台右键： 界面有没有出来 （出不来时屏幕上会显示 GUI paint error: … ，请截图给我）； 2. 密码盘：顶面是不是有一块面板（哪怕是纯色兜底）； 3. 拉引爆器：倒计时是不是 30 秒 左右；熔毁进行中是否只剩顶部小条； 4. 日志关键字： [GuiPasswordConsole] / [KeypadRender] / [DFC] detonation started 。 源码镜像：GitHub jiezhiyisichen/DFC Map Creation Tool ｜ Gitee yi sichen jiezhi/DFC Map Creation Tool",
-      "notesHtml": "<h4>3.9.4 — 紧急修复：界面底纹 / 密码盘 / 弹窗三态 / 倒计时单位</h4>\n<h5>① 界面底纹：彻底收敛到原版 <code>Gui.drawRect</code></h5>\n<p>3.9.2 把填充改成&quot;逐行四边形&quot;后，密码控制台<strong>仍然鼠标出现、界面一片空白</strong>。</p>\n<p>这次不再在自绘路径上试：<strong>圆角矩形直接退化成原版 <code>Gui.drawRect</code></strong> ——</p>\n<p>全游戏每个 GUI 的底纹都走它，不可能出错。圆角以后用贴图做（贴图不经过 Tessellator）。</p>\n<p>额外给 <code>GuiPasswordConsole</code> 的绘制加了 try/catch：万一还有别的异常，</p>\n<p>屏幕上会直接显示 <code>GUI paint error: …</code> 并写日志，<strong>不再是一片空白</strong>。</p>\n<h5>② 密码盘面板：加纯色兜底</h5>\n<p>3.9.2 之后底座（模型）能看到了，但<strong>顶面面板仍不显示</strong>。</p>\n<p>现在拿不到画布纹理时，<strong>用 <code>POSITION_COLOR + GL_QUADS</code> 画一块深色顶面</strong></p>\n<p>（TESR 里这条路确认可用，DFC 外壳就是它），并打 <code>[KeypadRender]</code> 日志说明原因。</p>\n<h5>③ 弹窗三态（不再整块盖住核心数据）</h5>\n<table><thead><tr><th>状态</th><th>判据</th><th>表现</th></tr></thead><tbody><tr><td>熔毁预警</td><td><code>explosionIn &gt; 0</code> 且尚未坍缩</td><td>大弹窗（红）+ 倒计时</td></tr><tr><td>引爆</td><td><code>detonation == true</code></td><td>大弹窗（橙）</td></tr><tr><td><strong>熔毁进行中</strong></td><td><code>collapsing &gt; 0</code></td><td><strong>顶部 20px 小条</strong>，左右轻微摆动 + 扫光，只盖标题栏</td></tr></tbody></table>\n<ul>\n<li>文案按反馈改掉「至储备仓库」→「<strong>立即撤离或紧急关机</strong>」。</li>\n<li><strong>预警为什么看 <code>explosionIn</code></strong>：作者时序是&quot;达到熔毁温度 → 先走预警倒计时 → 结束后坍缩度才 &gt; 0&quot;。 只盯 <code>collapsing &gt; 0</code> 会整段漏掉最该警告的那两分钟。</li>\n</ul>\n<h5>④ 倒计时单位：从读数自动校准</h5>\n<p><code>explosionIn</code> / <code>detonationTimer</code> 在作者代码里没有单位注释（秒 / tick 差 20 倍）。</p>\n<p>现在服务端比较前后两次读数：<strong>每秒掉约 20 个 = tick 计时</strong>、<strong>约 1 个 = 秒计时</strong>，</p>\n<p>算成秒数随快照下发。你说的&quot;引爆 30 秒&quot;会在实机自动对上，不用手写换算。</p>\n<h5>校验</h5>\n<ul>\n<li>自测 <strong>629 PASS / 0 FAIL</strong>（三态判定 / 单位校准 / 秒换算）</li>\n<li>离屏导出新增 <code>dfc_canvas_banner_active_strip.png</code></li>\n<li><code>check_stackmap</code> OK ｜ <code>TestMain</code> SEAL OK ｜ 资源 39 条</li>\n</ul>\n<h5>⚠️ 本轮<strong>没有</strong>包含的东西</h5>\n<p><strong>折线图显示器</strong>（温度 / 发电量双图）<strong>没做</strong> —— 它需要新方块 + 新页面 + 历史采样缓冲，</p>\n<p>规模与上一轮的弹窗系统相当。先把上面这些会挡住玩的问题修掉，下一轮专门做图表，</p>\n<p>避免又出现&quot;半成品&quot;。</p>\n<h5>需要实机确认</h5>\n<ul>\n<li>密码控制台右键：<strong>界面有没有出来</strong>（出不来时屏幕上会显示 <code>GUI paint error: …</code>，请截图给我）；</li>\n<li>密码盘：顶面是不是有一块面板（哪怕是纯色兜底）；</li>\n<li>拉引爆器：倒计时是不是 <strong>30 秒</strong> 左右；熔毁进行中是否只剩顶部小条；</li>\n<li>日志关键字：<code>[GuiPasswordConsole]</code> / <code>[KeypadRender]</code> / <code>[DFC] detonation started</code>。</li>\n</ul>\n<p>源码镜像：GitHub <code>jiezhiyisichen/DFC-Map-Creation-Tool</code> ｜ Gitee <code>yi-sichen-jiezhi/DFC-Map-Creation-Tool</code></p>",
+      "notes": "## 3.9.5 — 熔毁进行中不再顶掉 301 报错页\n\n3.9.4 为了让倒计时看得清，加了「有弹窗时让开 301 报错页」。\n但**熔毁进行中**用的是一条顶部小条，它同样命中了这条规则 ——\n结果坍缩期整屏再也看不到 301，而「错误 301 · 与核心失去连接」\n恰恰是坍缩期最该出现的正式告警页。\n\n现在改成：**只有大弹窗（熔毁预警 / 引爆）才让开 301**；\n熔毁进行中的小条与 301 **叠加显示** —— 301 铺满整屏，小条压在顶部，\n既保留「还剩多久」，也没有丢掉告警页。\n\n### 校验\n\n- 自测 **629 PASS / 0 FAIL** ｜ `check_stackmap` OK ｜ `TestMain` SEAL OK\n- jar `sha256 ab8d081f…62bf52`\n\n### 安装\n\n1. Minecraft **1.12.2** + Forge **14.23.5.2864**\n2. 把 `jiezhi-1.12.2-dfcmaptools-3.9.5.jar` 放进 `.minecraft/mods/`（服务端也要放）\n3. 启动日志出现 `JiezhiMod v3.9.5 is loading.`\n",
+      "notesText": "3.9.5 — 熔毁进行中不再顶掉 301 报错页 3.9.4 为了让倒计时看得清，加了「有弹窗时让开 301 报错页」。 但 熔毁进行中 用的是一条顶部小条，它同样命中了这条规则 —— 结果坍缩期整屏再也看不到 301，而「错误 301 · 与核心失去连接」 恰恰是坍缩期最该出现的正式告警页。 现在改成： 只有大弹窗（熔毁预警 / 引爆）才让开 301 ； 熔毁进行中的小条与 301 叠加显示 —— 301 铺满整屏，小条压在顶部， 既保留「还剩多久」，也没有丢掉告警页。 校验 自测 629 PASS / 0 FAIL ｜ check_stackmap OK ｜ TestMain SEAL OK jar sha256 ab8d081f…62bf52 安装 1. Minecraft 1.12.2 + Forge 14.23.5.2864 2. 把 jiezhi 1.12.2 dfcmaptools 3.9.5.jar 放进 .minecraft/mods/ （服务端也要放） 3. 启动日志出现 JiezhiMod v3.9.5 is loading.",
+      "notesHtml": "<h4>3.9.5 — 熔毁进行中不再顶掉 301 报错页</h4>\n<p>3.9.4 为了让倒计时看得清，加了「有弹窗时让开 301 报错页」。</p>\n<p>但<strong>熔毁进行中</strong>用的是一条顶部小条，它同样命中了这条规则 ——</p>\n<p>结果坍缩期整屏再也看不到 301，而「错误 301 · 与核心失去连接」</p>\n<p>恰恰是坍缩期最该出现的正式告警页。</p>\n<p>现在改成：<strong>只有大弹窗（熔毁预警 / 引爆）才让开 301</strong>；</p>\n<p>熔毁进行中的小条与 301 <strong>叠加显示</strong> —— 301 铺满整屏，小条压在顶部，</p>\n<p>既保留「还剩多久」，也没有丢掉告警页。</p>\n<h5>校验</h5>\n<ul>\n<li>自测 <strong>629 PASS / 0 FAIL</strong> ｜ <code>check_stackmap</code> OK ｜ <code>TestMain</code> SEAL OK</li>\n<li>jar <code>sha256 ab8d081f…62bf52</code></li>\n</ul>\n<h5>安装</h5>\n<ul>\n<li>Minecraft <strong>1.12.2</strong> + Forge <strong>14.23.5.2864</strong></li>\n<li>把 <code>jiezhi-1.12.2-dfcmaptools-3.9.5.jar</code> 放进 <code>.minecraft/mods/</code>（服务端也要放）</li>\n<li>启动日志出现 <code>JiezhiMod v3.9.5 is loading.</code></li>\n</ul>",
       "mirrors": {
         "gitee": {
-          "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/tag/v3.9.4-beta",
-          "tag": "v3.9.4-beta"
+          "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/tag/v3.9.5-beta",
+          "tag": "v3.9.5-beta"
         }
       }
     },
@@ -176,6 +176,44 @@
     }
   },
   "releases": [
+    {
+      "id": "jiezhiyisichen/DFC-Map-Creation-Tool#v3.9.5-beta",
+      "repo": "jiezhiyisichen/DFC-Map-Creation-Tool",
+      "tag": "v3.9.5-beta",
+      "version": "3.9.5-beta",
+      "channel": "beta",
+      "hotfix": false,
+      "name": "v3.9.5 · 修好 301 被小条顶掉",
+      "publishedAt": "2026-10-20T15:06:01Z",
+      "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/tag/v3.9.5-beta",
+      "prerelease": true,
+      "draft": false,
+      "assets": [
+        {
+          "name": "jiezhi-1.12.2-dfcmaptools-3.9.5.jar",
+          "kind": "tool",
+          "size": 274172,
+          "downloads": 0,
+          "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9.5-beta/jiezhi-1.12.2-dfcmaptools-3.9.5.jar",
+          "updatedAt": "2026-10-20T15:06:06Z",
+          "mirrors": [
+            {
+              "host": "gitee",
+              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9.5-beta/jiezhi-1.12.2-dfcmaptools-3.9.5.jar"
+            }
+          ]
+        }
+      ],
+      "notes": "## 3.9.5 — 熔毁进行中不再顶掉 301 报错页\n\n3.9.4 为了让倒计时看得清，加了「有弹窗时让开 301 报错页」。\n但**熔毁进行中**用的是一条顶部小条，它同样命中了这条规则 ——\n结果坍缩期整屏再也看不到 301，而「错误 301 · 与核心失去连接」\n恰恰是坍缩期最该出现的正式告警页。\n\n现在改成：**只有大弹窗（熔毁预警 / 引爆）才让开 301**；\n熔毁进行中的小条与 301 **叠加显示** —— 301 铺满整屏，小条压在顶部，\n既保留「还剩多久」，也没有丢掉告警页。\n\n### 校验\n\n- 自测 **629 PASS / 0 FAIL** ｜ `check_stackmap` OK ｜ `TestMain` SEAL OK\n- jar `sha256 ab8d081f…62bf52`\n\n### 安装\n\n1. Minecraft **1.12.2** + Forge **14.23.5.2864**\n2. 把 `jiezhi-1.12.2-dfcmaptools-3.9.5.jar` 放进 `.minecraft/mods/`（服务端也要放）\n3. 启动日志出现 `JiezhiMod v3.9.5 is loading.`\n",
+      "notesText": "3.9.5 — 熔毁进行中不再顶掉 301 报错页 3.9.4 为了让倒计时看得清，加了「有弹窗时让开 301 报错页」。 但 熔毁进行中 用的是一条顶部小条，它同样命中了这条规则 —— 结果坍缩期整屏再也看不到 301，而「错误 301 · 与核心失去连接」 恰恰是坍缩期最该出现的正式告警页。 现在改成： 只有大弹窗（熔毁预警 / 引爆）才让开 301 ； 熔毁进行中的小条与 301 叠加显示 —— 301 铺满整屏，小条压在顶部， 既保留「还剩多久」，也没有丢掉告警页。 校验 自测 629 PASS / 0 FAIL ｜ check_stackmap OK ｜ TestMain SEAL OK jar sha256 ab8d081f…62bf52 安装 1. Minecraft 1.12.2 + Forge 14.23.5.2864 2. 把 jiezhi 1.12.2 dfcmaptools 3.9.5.jar 放进 .minecraft/mods/ （服务端也要放） 3. 启动日志出现 JiezhiMod v3.9.5 is loading.",
+      "notesHtml": "<h4>3.9.5 — 熔毁进行中不再顶掉 301 报错页</h4>\n<p>3.9.4 为了让倒计时看得清，加了「有弹窗时让开 301 报错页」。</p>\n<p>但<strong>熔毁进行中</strong>用的是一条顶部小条，它同样命中了这条规则 ——</p>\n<p>结果坍缩期整屏再也看不到 301，而「错误 301 · 与核心失去连接」</p>\n<p>恰恰是坍缩期最该出现的正式告警页。</p>\n<p>现在改成：<strong>只有大弹窗（熔毁预警 / 引爆）才让开 301</strong>；</p>\n<p>熔毁进行中的小条与 301 <strong>叠加显示</strong> —— 301 铺满整屏，小条压在顶部，</p>\n<p>既保留「还剩多久」，也没有丢掉告警页。</p>\n<h5>校验</h5>\n<ul>\n<li>自测 <strong>629 PASS / 0 FAIL</strong> ｜ <code>check_stackmap</code> OK ｜ <code>TestMain</code> SEAL OK</li>\n<li>jar <code>sha256 ab8d081f…62bf52</code></li>\n</ul>\n<h5>安装</h5>\n<ul>\n<li>Minecraft <strong>1.12.2</strong> + Forge <strong>14.23.5.2864</strong></li>\n<li>把 <code>jiezhi-1.12.2-dfcmaptools-3.9.5.jar</code> 放进 <code>.minecraft/mods/</code>（服务端也要放）</li>\n<li>启动日志出现 <code>JiezhiMod v3.9.5 is loading.</code></li>\n</ul>",
+      "mirrors": {
+        "gitee": {
+          "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/tag/v3.9.5-beta",
+          "tag": "v3.9.5-beta"
+        }
+      }
+    },
     {
       "id": "jiezhiyisichen/DFC-Map-Creation-Tool#v3.9.4-beta",
       "repo": "jiezhiyisichen/DFC-Map-Creation-Tool",
