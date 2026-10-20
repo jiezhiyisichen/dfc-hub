@@ -259,23 +259,38 @@ function detectKind(name) {
   return "other";
 }
 
+/**
+ * 版本比较。
+ *
+ * 【为什么不能直接按 [.-+] 切分】"3.9.1-beta" 切开是 [3,9,1,beta]，"3.9-beta" 是 [3,9,beta]，
+ * 第三段变成 "1" 与 "beta" 的**数字 vs 字符串**比较 —— 字符串比较里 "1" < "beta"，
+ * 于是 3.9.1-beta 反而排在 3.9-beta 前面，站点上的"最新测试版"就永远指着旧的那个。
+ *
+ * 所以先把「数字核心」和「预发布标签」拆开：核心逐段按数字比，核心相同再比有没有标签
+ * （有标签的更低，这是 semver 的规矩：3.9.1 > 3.9.1-beta）。
+ */
 function compareVersion(a, b) {
-  const pa = stripV(a.tag).split(/[.\-+]/).map((x) => (/^\d+$/.test(x) ? Number(x) : x));
-  const pb = stripV(b.tag).split(/[.\-+]/).map((x) => (/^\d+$/.test(x) ? Number(x) : x));
-  for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
-    const x = pa[i];
-    const y = pb[i];
-    if (x === undefined) return -1;
-    if (y === undefined) return 1;
-    if (typeof x === "number" && typeof y === "number") {
-      if (x !== y) return x - y;
-    } else {
-      const sx = String(x);
-      const sy = String(y);
-      if (sx !== sy) return sx > sy ? 1 : -1;
-    }
+  const va = splitVersion(a.tag);
+  const vb = splitVersion(b.tag);
+  for (let i = 0; i < Math.max(va.core.length, vb.core.length); i++) {
+    const x = va.core[i] === undefined ? 0 : va.core[i];
+    const y = vb.core[i] === undefined ? 0 : vb.core[i];
+    if (x !== y) return x - y;
   }
-  return 0;
+  if (va.pre === vb.pre) return 0;
+  if (!va.pre) return 1;
+  if (!vb.pre) return -1;
+  return va.pre > vb.pre ? 1 : -1;
+}
+
+/** "v3.9.1-beta.2" -> { core: [3,9,1], pre: "beta.2" } */
+function splitVersion(tag) {
+  const raw = stripV(tag);
+  const dash = raw.indexOf("-");
+  const coreStr = dash >= 0 ? raw.slice(0, dash) : raw;
+  const pre = dash >= 0 ? raw.slice(dash + 1).toLowerCase() : "";
+  const core = coreStr.split(".").map((x) => (/^\d+$/.test(x) ? Number(x) : 0));
+  return { core, pre };
 }
 
 /* --------------------------------------------------- markdown → html (lite)
