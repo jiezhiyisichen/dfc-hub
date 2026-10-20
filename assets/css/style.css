@@ -353,6 +353,13 @@ ul {
   border-color: rgba(139, 92, 246, 0.38);
 }
 
+/* 紧急修复：叠加属性，用独立的红橙色系，和三条通道色都不冲突 */
+.badge--hotfix {
+  color: #ff9b9b;
+  background: rgba(255, 77, 79, 0.14);
+  border-color: rgba(255, 77, 79, 0.42);
+}
+
 .badge--muted {
   color: var(--muted);
   background: rgba(255, 255, 255, 0.04);
@@ -1714,6 +1721,17 @@ ul {
 .chip-btn.is-on .n {
   color: #04101a;
   background: rgba(0, 0, 0, 0.18);
+}
+
+/* 紧急修复筛选：开启时走红橙，和通道筛选的蓝紫区分开 */
+.chip-btn--hotfix.is-on {
+  color: #2b0606;
+  background: linear-gradient(135deg, #ff6b6b, #ff9a76);
+}
+
+.chip-btn--hotfix.is-on .n {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.28);
 }
 
 .result-bar {

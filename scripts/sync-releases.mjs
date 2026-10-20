@@ -90,6 +90,9 @@ function stripV(tag) {
   return String(tag || "").replace(/^v/i, "").trim();
 }
 
+/** 通道中文名，日志用 */
+const CHANNEL_NAMES = { release: "正式版", beta: "测试版", preview: "预览版" };
+
 /* ------------------------------------------------------------- Gitee 镜像
  * Gitee 的 OpenAPI v5 与 GitHub 不同：
  *   · 公开仓库可以匿名读，但有额度；有私人令牌时把 access_token 挂在 query 上；
@@ -199,18 +202,53 @@ function mergeGiteeMirrors(releases, giteeRawList, giteeRepo) {
 }
 
 /**
- * 版本通道判定：
+ * 版本通道判定（只管「正式 / 测试 / 预览」，紧急修复不在这里）：
  *   -preview / -alpha / -rc  → preview
  *   -beta                   → beta
  *   其它（含纯数字）          → release
- * GitHub 上勾了 Pre-release 但没有约定后缀的，按 preview 处理。
+ *
+ * Tag 没写通道后缀时，再退一步看 Release 标题末尾的显式措辞，
+ * 例如「v3.9.1 紧急修复版 + 测试版」这种只把通道写在标题里的情况。
+ * 只认标题结尾的 测试版 / beta / 预览版 / preview，避免正文里随口提到就被带偏。
+ * GitHub 上勾了 Pre-release 但仍无任何线索的，按 preview 处理。
  */
-function detectChannel(tag, prerelease) {
+function detectChannel(tag, prerelease, name) {
   const t = String(tag || "").toLowerCase();
   if (/-preview\b|-alpha\b|-rc\d*\b|-snapshot\b/.test(t)) return "preview";
   if (/-beta\b/.test(t)) return "beta";
+
+  const n = String(name || "").trim();
+  if (/(^|[+＋·、,，\s])(测试版|beta)\s*$/i.test(n)) return "beta";
+  if (/(^|[+＋·、,，\s])(预览版|preview|alpha|rc)\s*$/i.test(n)) return "preview";
+
   if (prerelease) return "preview";
   return "release";
+}
+
+/**
+ * 紧急修复版判定 —— 与通道「正交」，不参与 channel 计算。
+ * 所以一个版本可以同时是「紧急修复版 + 测试版」或「紧急修复版 + 正式版」。
+ *
+ * 识别来源（任意一条命中即算紧急修复）：
+ *   1) Tag 里的 hotfix / hot-fix / hot_fix / urgentfix / emergencyfix，或 -fix 收尾
+ *      例：v3.9.1-hotfix、v3.9.1-hotfix-beta、v3.9.1-beta-hotfix、v3.9.1-fix
+ *   2) Release 标题里出现「紧急修复」或 hotfix
+ *      例：v3.9.1 紧急修复版 + 测试版
+ *   3) Release 说明前 200 字出现「紧急修复版」或 hotfix（只认这个明确措辞，
+ *      避免「修复了 xx 崩溃」这类普通更新被误判）
+ */
+function detectHotfix(tag, name, body) {
+  const t = String(tag || "").toLowerCase();
+  const n = String(name || "").toLowerCase();
+
+  if (/(^|[^a-z])(hot[-_]?fix|urgent[-_]?fix|emergency[-_]?fix)([^a-z]|$)/.test(t)) return true;
+  if (/(^|[^a-z])fix([^a-z]|$)/.test(t)) return true;
+  if (/hot\s*fix|紧急修复/.test(n)) return true;
+
+  const lead = String(body || "").slice(0, 200).toLowerCase();
+  if (/紧急修复版|hotfix/.test(lead)) return true;
+
+  return false;
 }
 
 /** 资产归类：只收 .jar → tool。
@@ -422,7 +460,8 @@ function mdToText(markdown) {
 /* ------------------------------------------------------------------ shape */
 
 function normalizeRelease(raw, repo) {
-  const channel = detectChannel(raw.tag_name, raw.prerelease);
+  const channel = detectChannel(raw.tag_name, raw.prerelease, raw.name);
+  const hotfix = detectHotfix(raw.tag_name, raw.name, raw.body);
   const assets = (raw.assets || [])
     .map((a) => ({
       name: a.name,
@@ -442,6 +481,8 @@ function normalizeRelease(raw, repo) {
     tag: raw.tag_name,
     version: stripV(raw.tag_name),
     channel,
+    /* 紧急修复标记：独立于 channel，可与任意通道叠加 */
+    hotfix,
     name: raw.name || raw.tag_name,
     publishedAt: raw.published_at || raw.created_at,
     url: raw.html_url,
@@ -567,14 +608,19 @@ async function main() {
     return d !== 0 ? d : compareVersion(b, a);
   });
 
-  const counts = { all: releases.length, release: 0, beta: 0, preview: 0 };
+  const counts = { all: releases.length, release: 0, beta: 0, preview: 0, hotfix: 0 };
   releases.forEach((r) => {
     counts[r.channel] = (counts[r.channel] || 0) + 1;
+    if (r.hotfix) counts.hotfix++;
   });
 
   const latestRelease = pickLatest(releases, "release");
   const latestBeta = pickLatest(releases, "beta");
   const latestPreview = pickLatest(releases, "preview");
+  const hotfixReleases = releases
+    .filter((r) => r.hotfix && !r.draft)
+    .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+  const latestHotfix = hotfixReleases.length ? hotfixReleases[0] : null;
 
   const data = {
     generatedAt: new Date().toISOString(),
@@ -588,6 +634,7 @@ async function main() {
       release: latestRelease,
       beta: latestBeta,
       preview: latestPreview,
+      hotfix: latestHotfix,
       tool: pickLatestWithAsset(releases, "tool"),
     },
     releases,
@@ -609,6 +656,15 @@ async function main() {
     `最新正式版 ${latestRelease ? latestRelease.tag : "—"} · 共 ${releases.length} 个版本` +
       `（正式 ${counts.release} / 测试 ${counts.beta} / 预览 ${counts.preview}）`
   );
+  /* 紧急修复版是叠加属性，单独打一行，方便确认新标签有没有被认出来 */
+  if (counts.hotfix) {
+    const combos = hotfixReleases
+      .map((r) => `${r.tag} = 紧急修复+${CHANNEL_NAMES[r.channel] || r.channel}`)
+      .join("，");
+    log(`识别到 ${counts.hotfix} 个紧急修复版：${combos}`);
+  } else {
+    log("暂无紧急修复版标记（Tag / 标题 / 说明里出现 hotfix 或「紧急修复」即自动识别）");
+  }
   if (giteeInfo.ok) {
     log(
       `Gitee 镜像已合并：${giteeInfo.mergedAssets} 个资产有备用地址` +

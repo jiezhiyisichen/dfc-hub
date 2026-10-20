@@ -45,6 +45,10 @@
   var state = {
     channel: "all",
     type: "all",
+    /* 版本性质：all / hotfix。
+       紧急修复是叠加属性，不占 channel —— 所以「紧急修复 + 测试版」也能被
+       channel=beta 且 hotfix=hotfix 同时命中。 */
+    hotfix: "all",
     q: "",
     /* 下载线路：auto / gitee / github。
        auto = 有 Gitee 镜像就优先走 Gitee（国内直连快），没有才回落 GitHub。 */
@@ -200,6 +204,10 @@
     if (!tag) return name;
     var safeTag = tag.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     var stripped = name.replace(new RegExp("^" + safeTag + "\\s*[·:：—–-]?\\s*", "i"), "").trim();
+    /* Tag 带通道后缀时（v3.9.1-hotfix-beta）标题往往只写版本号（"v3.9.1 紧急修复版 + 测试版"），
+       再兜一次版本号前缀，避免卡片上出现两遍版本信息 */
+    var noVersion = stripped.replace(/^v?\d+(?:\.\d+)*(?=$|[\s·:：—–+,，、])[\s·:：—–+,，、]*/i, "").trim();
+    if (noVersion) stripped = noVersion;
     return stripped || name;
   }
 
@@ -210,6 +218,7 @@
       release.version,
       release.name,
       CHANNEL_LABEL[release.channel] || "",
+      release.hotfix ? "紧急修复 紧急修复版 hotfix" : "",
       release.notesText || "",
       (release.assets || [])
         .map(function (a) {
@@ -303,7 +312,16 @@
     var hasNotes = !!(release.notesHtml && release.notesHtml.trim());
     var openNotes = isLatest;
 
-    var badges =
+    var badges = "";
+    /* 紧急修复在前、通道在后：读起来就是「紧急修复 · 测试版」 */
+    if (release.hotfix) {
+      badges +=
+        '<span class="badge badge--hotfix" title="包含重大紧急 bug 的修复，可与任意通道叠加">' +
+        '<span class="dot"></span>' +
+        "紧急修复" +
+        "</span>";
+    }
+    badges +=
       '<span class="badge badge--' +
       (channel === "release" ? "release" : channel === "beta" ? "beta" : "preview") +
       '">' +
@@ -383,9 +401,10 @@
 
   /* ---------------------------------------------------------------- stats */
   function computeCounts(releases) {
-    var counts = { all: releases.length, release: 0, beta: 0, preview: 0 };
+    var counts = { all: releases.length, release: 0, beta: 0, preview: 0, hotfix: 0 };
     releases.forEach(function (r) {
       if (counts[r.channel] != null) counts[r.channel]++;
+      if (r.hotfix) counts.hotfix++;
     });
     return counts;
   }
@@ -428,6 +447,7 @@
     var q = state.q.trim().toLowerCase();
     var filtered = pool.filter(function (r) {
       if (state.channel !== "all" && r.channel !== state.channel) return false;
+      if (state.hotfix === "hotfix" && !r.hotfix) return false;
       if (state.type !== "all" && !firstAsset(r, state.type)) return false;
       return matchesQuery(r, q);
     });
@@ -489,6 +509,7 @@
   function syncUrl() {
     var params = new URLSearchParams();
     if (state.channel !== "all") params.set("channel", state.channel);
+    if (state.hotfix !== "all") params.set("hotfix", "1");
     if (state.type !== "all") params.set("type", state.type);
     if (state.mirror !== "auto") params.set("mirror", state.mirror);
     if (state.q.trim()) params.set("q", state.q.trim());
@@ -567,6 +588,7 @@
     if (reset) {
       reset.addEventListener("click", function () {
         state.channel = "all";
+        state.hotfix = "all";
         state.type = "all";
         state.q = "";
         if (qInput) qInput.value = "";
@@ -586,6 +608,7 @@
       var q = params.get("q");
       var mh = params.get("mirror");
       if (ch === "release" || ch === "beta" || ch === "preview") state.channel = ch;
+      if (params.get("hotfix") === "1") state.hotfix = "hotfix";
       if (tp === "tool" || tp === "map") state.type = tp;
       if (mh === "gitee" || mh === "github" || mh === "auto") state.mirror = mh;
       if (q) {

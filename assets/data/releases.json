@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T00:16:40.053Z",
+  "generatedAt": "2026-10-20T05:39:22.699Z",
   "source": {
     "tool": "jiezhiyisichen/DFC-Map-Creation-Tool",
     "api": "https://api.github.com",
@@ -17,7 +17,8 @@
     "all": 6,
     "release": 5,
     "beta": 1,
-    "preview": 0
+    "preview": 0,
+    "hotfix": 0
   },
   "latest": {
     "release": {
@@ -26,6 +27,7 @@
       "tag": "v3.8",
       "version": "3.8",
       "channel": "release",
+      "hotfix": false,
       "name": "v3.8 · 面板底色改走带纹理路径",
       "publishedAt": "2026-10-18T13:42:40Z",
       "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/tag/v3.8",
@@ -63,6 +65,7 @@
       "tag": "v3.9-beta",
       "version": "3.9-beta",
       "channel": "beta",
+      "hotfix": false,
       "name": "v3.9-beta · 密码盘与密码控制台（测试版）",
       "publishedAt": "2026-10-18T14:12:37Z",
       "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/tag/v3.9-beta",
@@ -95,12 +98,14 @@
       }
     },
     "preview": null,
+    "hotfix": null,
     "tool": {
       "id": "jiezhiyisichen/DFC-Map-Creation-Tool#v3.8",
       "repo": "jiezhiyisichen/DFC-Map-Creation-Tool",
       "tag": "v3.8",
       "version": "3.8",
       "channel": "release",
+      "hotfix": false,
       "name": "v3.8 · 面板底色改走带纹理路径",
       "publishedAt": "2026-10-18T13:42:40Z",
       "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/tag/v3.8",
@@ -140,6 +145,7 @@
       "tag": "v3.9-beta",
       "version": "3.9-beta",
       "channel": "beta",
+      "hotfix": false,
       "name": "v3.9-beta · 密码盘与密码控制台（测试版）",
       "publishedAt": "2026-10-18T14:12:37Z",
       "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/tag/v3.9-beta",
@@ -177,6 +183,7 @@
       "tag": "v3.8",
       "version": "3.8",
       "channel": "release",
+      "hotfix": false,
       "name": "v3.8 · 面板底色改走带纹理路径",
       "publishedAt": "2026-10-18T13:42:40Z",
       "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/tag/v3.8",
@@ -214,6 +221,7 @@
       "tag": "v3.7",
       "version": "3.7",
       "channel": "release",
+      "hotfix": false,
       "name": "v3.7 · 修好面板底色透明",
       "publishedAt": "2026-10-18T13:17:56Z",
       "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/tag/v3.7",
@@ -251,6 +259,7 @@
       "tag": "v3.6",
       "version": "3.6",
       "channel": "release",
+      "hotfix": false,
       "name": "v3.6 · 自定义屏面板版面重做",
       "publishedAt": "2026-10-18T04:13:56Z",
       "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/tag/v3.6",
@@ -288,6 +297,7 @@
       "tag": "v3.5",
       "version": "3.5",
       "channel": "release",
+      "hotfix": false,
       "name": "JiezhiMod v3.5 · 节枝特效工具",
       "publishedAt": "2026-10-16T15:50:42Z",
       "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/tag/v3.5",
@@ -313,6 +323,7 @@
       "tag": "v3.4",
       "version": "3.4",
       "channel": "release",
+      "hotfix": false,
       "name": "JiezhiMod v3.4 · 节枝特效工具",
       "publishedAt": "2026-10-16T15:07:50Z",
       "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/tag/v3.4",
