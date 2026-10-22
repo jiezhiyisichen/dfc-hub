@@ -78,7 +78,7 @@
           <span class="eyebrow">Download Center</span>
           <h1 data-cfg="downloadsPage.title">下载中心</h1>
           <p class="lede" data-cfg="downloadsPage.lede">
-            工具（.jar）在下方按版本列出，直接下载；地图整合包放在 123 云盘。同一版本同时托管在 GitHub 与 Gitee，可在筛选栏切换下载线路（自动线路会优先走 Gitee，国内更快）。版本按 Tag 自动归类：含 -beta 为测试版，含 -preview 为预览版，其余为正式版。带 hotfix 或「紧急修复」标记的版本会额外加一个红色「紧急修复」标签，它独立于三条通道，可以与测试版或正式版叠加。
+            工具（.jar）在下方按版本列出，直接下载；地图整合包放在 123 云盘。同一版本同时托管在 GitHub 与 Gitee，可在筛选栏切换下载线路（自动线路会优先走 Gitee，国内更快）。版本按 Tag 自动归类：含 -beta 为测试版，含 -preview 为预览版，其余为正式版。带 hotfix 或「紧急修复」标记的版本会额外加一个红色「紧急修复」标签，它独立于三条通道，可以与测试版或正式版叠加。带 major 或「重大更新」标记的正式版会再加一个蓝色「重大更新」标签。
           </p>
 
           <div class="version-board">
@@ -150,15 +150,24 @@
             </div>
 
             <div class="filter-group" role="group" aria-label="按版本性质筛选">
-              <button class="chip-btn is-on" data-filter="hotfix" data-value="all" type="button">不限性质</button>
+              <button class="chip-btn is-on" data-filter="nature" data-value="all" type="button">不限性质</button>
               <button
                 class="chip-btn chip-btn--hotfix"
-                data-filter="hotfix"
+                data-filter="nature"
                 data-value="hotfix"
                 type="button"
                 title="包含重大紧急 bug 的修复，可与测试版 / 正式版叠加"
               >
                 紧急修复 <span class="n" data-count="hotfix">0</span>
+              </button>
+              <button
+                class="chip-btn chip-btn--major"
+                data-filter="nature"
+                data-value="major"
+                type="button"
+                title="重大更新，只会出现在正式版上"
+              >
+                重大更新 <span class="n" data-count="major">0</span>
               </button>
             </div>
 

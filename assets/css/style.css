@@ -360,6 +360,13 @@ ul {
   border-color: rgba(255, 77, 79, 0.42);
 }
 
+/* 重大更新：只挂在正式版上，用青蓝色区分于通道色 */
+.badge--major {
+  color: #8fd8ff;
+  background: rgba(56, 189, 248, 0.14);
+  border-color: rgba(56, 189, 248, 0.42);
+}
+
 .badge--muted {
   color: var(--muted);
   background: rgba(255, 255, 255, 0.04);
@@ -1730,6 +1737,17 @@ ul {
 }
 
 .chip-btn--hotfix.is-on .n {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.28);
+}
+
+/* 重大更新筛选：青蓝系，和紧急修复的红色区分 */
+.chip-btn--major.is-on {
+  color: #04202b;
+  background: linear-gradient(135deg, #5cc8f5, #7ee0d0);
+}
+
+.chip-btn--major.is-on .n {
   color: #fff;
   background: rgba(0, 0, 0, 0.28);
 }

@@ -251,6 +251,30 @@ function detectHotfix(tag, name, body) {
   return false;
 }
 
+/**
+ * 重大更新判定 —— 与通道「正交」，但只允许挂在正式版上。
+ * 也就是说：v3.9.1-major（正式版）会打标；v3.9.1-major-beta（测试版）不会。
+ *
+ * 识别来源（任意一条命中即算重大更新）：
+ *   1) Tag 里的 major（v3.9.1-major、v3.9.1-major-release）
+ *   2) Release 标题里出现「重大更新」或 major
+ *   3) Release 说明前 200 字出现「重大更新」
+ */
+function detectMajor(tag, name, body, channel) {
+  if (channel !== "release") return false;
+
+  const t = String(tag || "").toLowerCase();
+  if (/(^|[^a-z])major([^a-z]|$)/.test(t)) return true;
+
+  const n = String(name || "");
+  if (/重大更新|重大版本/.test(n) || /(^|[^a-z])major([^a-z]|$)/i.test(n)) return true;
+
+  const lead = String(body || "").slice(0, 200);
+  if (/重大更新|重大版本/.test(lead)) return true;
+
+  return false;
+}
+
 /** 资产归类：只收 .jar → tool。
  *  地图整合包已改为走 123 云盘，Release 里的 zip 一律忽略。 */
 function detectKind(name) {
@@ -477,6 +501,7 @@ function mdToText(markdown) {
 function normalizeRelease(raw, repo) {
   const channel = detectChannel(raw.tag_name, raw.prerelease, raw.name);
   const hotfix = detectHotfix(raw.tag_name, raw.name, raw.body);
+  const major = detectMajor(raw.tag_name, raw.name, raw.body, channel);
   const assets = (raw.assets || [])
     .map((a) => ({
       name: a.name,
@@ -498,6 +523,8 @@ function normalizeRelease(raw, repo) {
     channel,
     /* 紧急修复标记：独立于 channel，可与任意通道叠加 */
     hotfix,
+    /* 重大更新标记：独立于 channel，但只在正式版上生效 */
+    major,
     name: raw.name || raw.tag_name,
     publishedAt: raw.published_at || raw.created_at,
     url: raw.html_url,
@@ -623,10 +650,11 @@ async function main() {
     return d !== 0 ? d : compareVersion(b, a);
   });
 
-  const counts = { all: releases.length, release: 0, beta: 0, preview: 0, hotfix: 0 };
+  const counts = { all: releases.length, release: 0, beta: 0, preview: 0, hotfix: 0, major: 0 };
   releases.forEach((r) => {
     counts[r.channel] = (counts[r.channel] || 0) + 1;
     if (r.hotfix) counts.hotfix++;
+    if (r.major) counts.major++;
   });
 
   const latestRelease = pickLatest(releases, "release");
@@ -636,6 +664,7 @@ async function main() {
     .filter((r) => r.hotfix && !r.draft)
     .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
   const latestHotfix = hotfixReleases.length ? hotfixReleases[0] : null;
+  const latestMajor = latestRelease && latestRelease.major ? latestRelease : null;
 
   const data = {
     generatedAt: new Date().toISOString(),
@@ -650,6 +679,7 @@ async function main() {
       beta: latestBeta,
       preview: latestPreview,
       hotfix: latestHotfix,
+      major: latestMajor,
       tool: pickLatestWithAsset(releases, "tool"),
     },
     releases,
@@ -679,6 +709,13 @@ async function main() {
     log(`识别到 ${counts.hotfix} 个紧急修复版：${combos}`);
   } else {
     log("暂无紧急修复版标记（Tag / 标题 / 说明里出现 hotfix 或「紧急修复」即自动识别）");
+  }
+  /* 重大更新同理，只认正式版 */
+  if (counts.major) {
+    const majors = releases.filter((r) => r.major).map((r) => r.tag).join("，");
+    log(`识别到 ${counts.major} 个重大更新版本：${majors}`);
+  } else {
+    log("暂无重大更新标记（正式版的 Tag / 标题 / 说明里出现 major 或「重大更新」即自动识别）");
   }
   if (giteeInfo.ok) {
     log(
