@@ -153,6 +153,39 @@ check("按关键词过滤有效", q.indexOf("v3.8") !== -1);
 const beta = run("?channel=beta");
 check("空通道不崩", typeof beta === "string");
 
+/* 「重大更新」是叠加标记，但只允许挂在正式版上。
+   数据不变式在这里验一次，前端徽章顺序也验一次。 */
+section("重大更新标记（只能配正式版）");
+const RAW = JSON.parse(
+  readFileSync(resolve(ROOT, "assets/data/releases.json"), "utf8")
+);
+const majors = (RAW.releases || []).filter((r) => r.major);
+check("至少识别出一个重大更新版本", majors.length > 0, "n=" + majors.length);
+check(
+  "所有重大更新版本都是正式版",
+  majors.every((r) => r.channel === "release"),
+  majors.filter((r) => r.channel !== "release").map((r) => r.tag).join(",")
+);
+check(
+  "最新正式版带重大更新标记",
+  !!(RAW.latest && RAW.latest.release && RAW.latest.release.major),
+  RAW.latest && RAW.latest.release ? RAW.latest.release.tag : "no latest"
+);
+const majorTag = majors.length ? majors[0].tag : "";
+if (majorTag) {
+  const html = run("?q=" + majorTag.replace(/^v/, ""));
+  check("页面渲染出「重大更新」徽章", html.indexOf("badge--major") !== -1);
+  check("徽章文案是重大更新", html.indexOf(">重大更新<") !== -1);
+  const iMajor = html.indexOf("badge--major");
+  const iChan = html.indexOf("badge--release");
+  check("徽章排在通道徽章之前", iMajor !== -1 && iChan !== -1 && iMajor < iChan);
+  const filtered = run("?nature=major");
+  check(
+    "按重大更新筛选只剩正式版",
+    filtered.indexOf("badge--major") !== -1 && filtered.indexOf("badge--beta") === -1
+  );
+}
+
 console.log("");
 console.log(failures ? "RESULT: FAILED (" + failures + ")" : "RESULT: ALL GREEN");
 process.exit(failures ? 1 : 0);

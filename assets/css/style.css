@@ -583,6 +583,22 @@ ul {
   letter-spacing: 0.02em;
 }
 
+/* 首页版本胶囊里的「重大更新」：只在最新正式版带 major 标记时出现 */
+.version-pill .vp-major {
+  padding: 2px 6px;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #8fd8ff;
+  background: rgba(56, 189, 248, 0.16);
+  border: 1px solid rgba(56, 189, 248, 0.44);
+}
+
+.version-pill .vp-major[hidden] {
+  display: none;
+}
+
 .nav-toggle {
   display: none;
   width: 40px;

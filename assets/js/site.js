@@ -57,6 +57,14 @@
       el.textContent = latest ? latest.tag : "—";
     });
 
+    /* 「重大更新」只可能在正式版上出现（sync-releases.mjs 里已强约束），
+       这里只是把它在首页亮出来，数据里没有 major 就保持隐藏。 */
+    var isMajor = !!(latest && latest.major);
+    $$("[data-latest-major]").forEach(function (el) {
+      if (isMajor) el.removeAttribute("hidden");
+      else el.setAttribute("hidden", "");
+    });
+
     $$("[data-latest-date]").forEach(function (el) {
       el.textContent = latest ? formatDate(latest.publishedAt) + " 发布" : "暂无正式版";
     });
