@@ -650,4 +650,11 @@
   } else {
     boot();
   }
+
+  /* 供「手动刷新数据」按钮调用：拉到新数据后就地重渲染，不用刷新整页 */
+  window.__DFC_RERENDER__ = function () {
+    if (typeof readUrl === "function") applyChips();
+    updateCounts(allReleases());
+    render();
+  };
 })();

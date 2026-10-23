@@ -1310,6 +1310,10 @@ ul {
   white-space: nowrap;
 }
 
+.shot--half {
+  grid-column: span 6;
+}
+
 .gallery-hint {
   margin-top: 16px;
   font-size: 12px;
@@ -1602,6 +1606,28 @@ ul {
   margin-top: 5px;
   font-size: 11.5px;
   color: var(--muted);
+}
+
+/* 「手动刷新数据」：看板第三格里的小按钮 */
+.vb-refresh {
+  margin-top: 10px;
+  gap: 6px;
+  font-size: 12px;
+  padding: 5px 11px;
+  color: var(--text-dim);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.vb-refresh:hover {
+  color: var(--cyan);
+  border-color: rgba(56, 224, 255, 0.4);
+}
+
+.vb-refresh.is-busy {
+  opacity: 0.72;
+  cursor: progress;
 }
 
 .toolbar {
@@ -2505,6 +2531,10 @@ ul {
   .shot {
     grid-column: span 12;
     aspect-ratio: 4 / 3;
+  }
+
+  .shot--half {
+    grid-column: span 12;
   }
 
   .filter-group {

@@ -1,0 +1,581 @@
+/* ==========================================================================
+   DFC HUB — 百科页样式
+   只负责正文排版；头部、信息条、页脚沿用 style.css。
+   ========================================================================== */
+
+.wiki-main {
+  padding: clamp(26px, 4vw, 48px) 0 clamp(40px, 6vw, 72px);
+}
+
+.wiki-layout {
+  display: grid;
+  grid-template-columns: 208px minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+}
+
+/* ---------- 目录 ---------- */
+.wiki-toc {
+  position: sticky;
+  top: calc(var(--header-h) + 18px);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: 14px;
+  border-left: 1px solid var(--line);
+}
+
+.wiki-toc-title {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.wiki-toc a {
+  font-size: 13.5px;
+  color: var(--text-dim);
+  padding: 6px 8px 6px 0;
+  border-radius: 8px;
+  transition: color 0.22s, transform 0.22s var(--ease);
+}
+
+.wiki-toc a:hover {
+  color: var(--text);
+  transform: translateX(2px);
+}
+
+.wiki-toc a.is-active {
+  color: var(--cyan);
+}
+
+/* ---------- 正文容器 ---------- */
+.wiki-body {
+  min-width: 0;
+  max-width: 78ch;
+}
+
+.wiki-head {
+  padding-bottom: clamp(20px, 3vw, 32px);
+  margin-bottom: clamp(22px, 3vw, 36px);
+  border-bottom: 1px solid var(--line);
+}
+
+.wiki-head h1 {
+  font-size: clamp(26px, 3.6vw, 38px);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 10px 0 0;
+}
+
+.wiki-lede {
+  margin-top: 14px;
+  font-size: clamp(14.5px, 1.5vw, 16.5px);
+  line-height: 1.85;
+  color: var(--text-dim);
+}
+
+.wiki-lede strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.wiki-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+}
+
+.wiki-meta li {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  padding: 4px 9px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.02);
+  margin: 0;
+}
+
+.wiki-meta code {
+  font-size: 10.5px;
+}
+
+/* ---------- 分节 ---------- */
+.doc-section {
+  padding-block: clamp(24px, 3.4vw, 40px);
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: calc(var(--header-h) + 20px);
+}
+
+.doc-section:last-of-type {
+  border-bottom: 0;
+}
+
+.doc-section h2 {
+  font-size: clamp(20px, 2.5vw, 26px);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  margin: 0 0 16px;
+}
+
+.doc-section h2::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 0.86em;
+  margin-right: 10px;
+  border-radius: 2px;
+  background: var(--grad);
+  vertical-align: -0.06em;
+}
+
+.doc-section h3 {
+  font-size: clamp(15.5px, 1.7vw, 17.5px);
+  margin: 30px 0 10px;
+  color: var(--text);
+}
+
+.doc-section p {
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: var(--text-dim);
+  margin: 12px 0;
+}
+
+.doc-section strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.doc-section a {
+  color: var(--cyan);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(56, 224, 255, 0.28);
+}
+
+.doc-section a:hover {
+  border-bottom-color: var(--cyan);
+}
+
+.doc-hint {
+  font-size: 13px !important;
+  color: var(--muted) !important;
+  line-height: 1.8;
+}
+
+/* 行内代码 */
+.doc-section code {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  padding: 1.5px 6px;
+  border-radius: 6px;
+  color: #cfe9ff;
+  background: rgba(56, 224, 255, 0.09);
+  border: 1px solid rgba(56, 224, 255, 0.16);
+  white-space: nowrap;
+}
+
+/* ---------- 卡片网格 ---------- */
+.doc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.doc-card {
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgba(11, 17, 32, 0.6);
+}
+
+.doc-card h3 {
+  margin: 0 0 6px;
+  font-size: 14.5px;
+}
+
+.doc-card p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+/* ---------- 提示框 ---------- */
+.callout {
+  margin: 18px 0;
+  padding: 14px 16px 14px 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--cyan);
+  background: rgba(56, 224, 255, 0.06);
+}
+
+.callout p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.85;
+}
+
+.callout--warn {
+  border-left-color: var(--amber);
+  background: rgba(255, 180, 84, 0.07);
+}
+
+.callout--info {
+  border-left-color: var(--violet);
+  background: rgba(139, 92, 246, 0.08);
+}
+
+/* ---------- 步骤 ---------- */
+.doc-steps {
+  list-style: none;
+  counter-reset: step;
+  padding: 0;
+  margin: 18px 0;
+}
+
+.doc-steps > li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 42px;
+  margin: 0 0 18px;
+}
+
+.doc-steps > li::before {
+  content: counter(step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--cyan);
+  border: 1px solid rgba(56, 224, 255, 0.26);
+  border-radius: 8px;
+  background: rgba(56, 224, 255, 0.07);
+}
+
+.doc-steps h3 {
+  margin: 0 0 4px;
+  font-size: 14.5px;
+}
+
+.doc-steps p {
+  margin: 0;
+}
+
+.doc-steps--tight > li {
+  margin-bottom: 10px;
+}
+
+/* ---------- 列表 ---------- */
+.doc-list {
+  margin: 14px 0;
+  padding-left: 20px;
+}
+
+.doc-list li {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--text-dim);
+  margin: 7px 0;
+  list-style: none;
+  position: relative;
+  padding-left: 14px;
+}
+
+.doc-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.78em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(56, 224, 255, 0.6);
+}
+
+/* ---------- 表格 ---------- */
+.table-wrap {
+  margin: 16px 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  background: rgba(11, 17, 32, 0.55);
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 520px;
+}
+
+.doc-table th,
+.doc-table td {
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  line-height: 1.7;
+  color: var(--text-dim);
+}
+
+.doc-table thead th {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.02);
+  white-space: nowrap;
+}
+
+.doc-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.doc-table tbody tr:hover td {
+  background: rgba(56, 224, 255, 0.03);
+}
+
+/* ---------- 代码块 ---------- */
+.doc-code {
+  margin: 14px 0;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: rgba(3, 6, 14, 0.8);
+  overflow-x: auto;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  line-height: 1.9;
+  color: #cfe9ff;
+  tab-size: 2;
+}
+
+.doc-code code {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+  white-space: pre;
+}
+
+.doc-code .cm {
+  color: var(--muted);
+}
+
+/* ---------- 快捷键 ---------- */
+kbd {
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 5px;
+  border: 1px solid var(--line-strong);
+  border-bottom-width: 2px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+}
+
+/* ---------- FAQ ---------- */
+.doc-faq {
+  margin: 10px 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgba(11, 17, 32, 0.5);
+  overflow: hidden;
+}
+
+.doc-faq summary {
+  cursor: pointer;
+  padding: 13px 16px;
+  font-size: 14px;
+  color: var(--text);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.doc-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.doc-faq summary::before {
+  content: "+";
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--cyan);
+  width: 14px;
+  flex: none;
+}
+
+.doc-faq[open] summary::before {
+  content: "−";
+}
+
+.doc-faq p {
+  margin: 0;
+  padding: 0 16px 14px 40px;
+  font-size: 13.5px;
+  color: var(--text-dim);
+}
+
+/* ---------- 视频 ---------- */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 18px 0;
+}
+
+.video-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: rgba(11, 17, 32, 0.6);
+}
+
+.video-card .video-facade {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(56, 224, 255, 0.14), transparent 62%),
+    linear-gradient(160deg, #0a1020, #060a14);
+  color: var(--text);
+}
+
+.video-card .video-facade .play-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #04101a;
+  background: var(--grad);
+  box-shadow: 0 14px 34px -12px rgba(56, 224, 255, 0.6);
+  transition: transform 0.35s var(--ease);
+}
+
+.video-card .video-facade:hover .play-btn {
+  transform: scale(1.08);
+}
+
+.video-card .video-facade strong {
+  font-size: 14.5px;
+}
+
+.video-id {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.video-embed {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.video-embed iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
+
+.video-card-foot {
+  padding: 10px 14px;
+  border-top: 1px solid var(--line);
+}
+
+.video-card-foot a {
+  font-size: 12.5px;
+  color: var(--cyan);
+  border: 0;
+}
+
+/* ---------- 页脚按钮 ---------- */
+.wiki-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 1000px) {
+  .wiki-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .wiki-toc {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0 0 14px;
+    border-left: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .wiki-toc-title {
+    width: 100%;
+    margin-bottom: 4px;
+  }
+
+  .wiki-toc a {
+    padding: 5px 11px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 12.5px;
+  }
+
+  .wiki-toc a.is-active {
+    border-color: rgba(56, 224, 255, 0.4);
+    background: rgba(56, 224, 255, 0.08);
+  }
+
+  .wiki-body {
+    max-width: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .doc-grid,
+  .video-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .doc-section p,
+  .doc-list li {
+    font-size: 14px;
+  }
+
+  .doc-code {
+    font-size: 11.5px;
+  }
+}

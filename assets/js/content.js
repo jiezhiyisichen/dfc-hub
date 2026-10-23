@@ -65,10 +65,12 @@
       }
     }
 
-    /* 文档标题与摘要 */
-    if (C.site && C.site.title) document.title = C.site.title;
+    /* 文档标题与摘要：子页面可用 <html data-page-title="…"> 声明自己的标题，
+       避免被站点默认标题覆盖（例如百科页）。 */
+    var ownTitle = document.documentElement.getAttribute("data-page-title");
+    if (!ownTitle && C.site && C.site.title) document.title = C.site.title;
     var metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc && C.site && C.site.description) {
+    if (metaDesc && !ownTitle && C.site && C.site.description) {
       metaDesc.setAttribute("content", C.site.description);
     }
 

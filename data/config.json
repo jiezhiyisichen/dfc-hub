@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "DFC Hub · 节枝 DFC 地图与特效工具",
-    "description": "Minecraft 1.12.2 HBM 诅咒版 DFC 地图与节枝特效工具（JiezhiMod）的下载页，附实机演示视频。",
+    "description": "Minecraft 1.12.2 HBM 诅咒版 DFC 地图与节枝特效工具（JiezhiMod）的下载站与百科。",
     "brandName": "DFC HUB",
     "brandSub": "地图与特效工具",
     "tickerBadge": "SYNC",
@@ -13,13 +13,13 @@
     "tag": "Minecraft 1.12.2 · HBM 诅咒版 · DFC",
     "title": "DFC 地图与节枝特效工具",
     "lede": "一张围绕暗核聚变堆的 Minecraft 地图，和一套做屏幕与特效的小工具。",
-    "primaryText": "前往下载中心",
-    "secondaryText": "作者 B 站主页",
+    "primaryText": "下载中心",
+    "secondaryText": "使用教程",
     "mapLink": "地图整合包在 123 云盘 ↗"
   },
   "video": {
     "title": "DFC 地图 × 节枝特效工具 · 实机演示",
-    "sub": "bilibili · BV1VRYe6gEga",
+    "sub": "bilibili · BV1upnG6BEtF",
     "upName": "UP 主：树上的节枝",
     "externalText": "在 B 站打开 ↗"
   },
@@ -72,18 +72,21 @@
     "linkToolRepo": "工具源码",
     "linkReleases": "全部 Release",
     "linkBilibili": "B 站主页",
-    "linkVideo": "宣传视频",
-    "linkGitee": "Gitee 镜像"
+    "linkVideo": "演示视频",
+    "linkGitee": "Gitee 镜像",
+    "navWiki": "百科"
   },
   "links": {
     "bilibiliSpace": "https://space.bilibili.com/3494363348863838",
-    "video": "https://www.bilibili.com/video/BV1VRYe6gEga/",
+    "video": "https://www.bilibili.com/video/BV1upnG6BEtF/",
     "toolRepo": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool",
     "toolReleases": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases",
     "toolDocs": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/tree/main/docs",
     "siteRepo": "https://github.com/jiezhiyisichen/dfc-hub",
     "mapPan": "https://1824933551.share.123pan.cn/123pan/9O42jv-Aebdh",
     "giteeRepo": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool",
-    "giteeReleases": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases"
+    "giteeReleases": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases",
+    "video1": "https://www.bilibili.com/video/BV1upnG6BEtF/",
+    "video2": "https://www.bilibili.com/video/BV12vnt6yEt9/"
   }
 }

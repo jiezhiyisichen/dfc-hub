@@ -54,6 +54,7 @@
 
         <nav class="nav" id="primaryNav" aria-label="主导航">
           <a href="index.html" data-cfg="footer.navHome">首页</a>
+          <a href="wiki.html" data-cfg="footer.navWiki">百科</a>
           <a href="downloads.html" class="is-active" aria-current="page" data-cfg="footer.navDownloads">下载中心</a>
         </nav>
 
@@ -106,6 +107,13 @@
               <div class="vb-label"><span class="dot" style="color: var(--cyan)"></span> <span data-cfg="downloadsPage.boardSync">数据同步</span></div>
               <div class="vb-value"><span class="mono" style="font-size: 15px" data-sync-time>—</span></div>
               <p class="vb-note" data-cfg="downloadsPage.boardSyncNote">自动任务每小时拉取一次上游 Release</p>
+              <button class="btn btn-quiet vb-refresh" type="button" data-refresh title="立刻重新拉取最新的版本清单，不用等下一次自动同步">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 11a8 8 0 1 0-2.3 5.7" />
+                  <path d="M20 4v7h-7" />
+                </svg>
+                <span data-refresh-label>手动刷新数据</span>
+              </button>
             </div>
           </div>
         </div>
@@ -302,6 +310,7 @@
           <div class="footer-col">
             <h4 data-cfg="footer.navTitle">导航</h4>
             <a href="index.html" data-cfg="footer.navHome">首页</a>
+            <a href="wiki.html" data-cfg="footer.navWiki">百科</a>
             <a href="downloads.html" data-cfg="footer.navDownloads">下载中心</a>
             <a href="#install">安装说明</a>
           </div>
@@ -312,7 +321,7 @@
             <a href="https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases" data-cfg-href="links.toolReleases" target="_blank" rel="noopener noreferrer" data-cfg="footer.linkReleases">全部 Release</a>
             <a href="https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool" data-cfg-href="links.giteeRepo" target="_blank" rel="noopener noreferrer" data-cfg="footer.linkGitee">Gitee 镜像</a>
             <a href="https://space.bilibili.com/3494363348863838" data-cfg-href="links.bilibiliSpace" target="_blank" rel="noopener noreferrer" data-cfg="footer.linkBilibili">B 站主页</a>
-            <a href="https://www.bilibili.com/video/BV1VRYe6gEga/" data-cfg-href="links.video" target="_blank" rel="noopener noreferrer" data-cfg="footer.linkVideo">宣传视频</a>
+            <a href="wiki.html#videos" data-cfg="footer.linkVideo">演示视频</a>
           </div>
         </div>
 

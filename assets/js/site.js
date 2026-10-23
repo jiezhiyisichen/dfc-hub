@@ -205,7 +205,7 @@
 
   /* ------------------------------------------------------------- scrollspy */
   function initScrollSpy() {
-    var links = $$('#primaryNav a[href^="#"]');
+    var links = $$('#primaryNav a[href^="#"], .wiki-toc a[href^="#"]');
     if (!links.length) return;
 
     var map = {};
@@ -238,6 +238,30 @@
 
   /* --------------------------------------------------------------- video */
   function initVideoFacade() {
+    /* 百科页：任意带 data-bvid 的按钮，点一下就换成播放器 */
+    $$("[data-bvid]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var bvid = btn.getAttribute("data-bvid");
+        if (!bvid) return;
+        var embed = document.createElement("div");
+        embed.className = "video-embed";
+        var iframe = document.createElement("iframe");
+        iframe.src =
+          "https://player.bilibili.com/player.html?bvid=" +
+          encodeURIComponent(bvid) +
+          "&page=1&high_quality=1&danmaku=1&autoplay=1";
+        iframe.title = btn.getAttribute("data-vtitle") || "B 站视频";
+        iframe.setAttribute("frameborder", "0");
+        iframe.setAttribute("scrolling", "no");
+        iframe.setAttribute("allowfullscreen", "true");
+        iframe.setAttribute("allow", "autoplay; fullscreen; picture-in-picture");
+        iframe.setAttribute("referrerpolicy", "no-referrer-when-downgrade");
+        embed.appendChild(iframe);
+        btn.replaceWith(embed);
+      });
+    });
+
+    /* 旧写法（首页曾经的单视频门面）保留兼容 */
     var facade = $("#videoFacade");
     var frame = $("#videoFrame");
     if (!facade || !frame) return;
@@ -245,7 +269,7 @@
     facade.addEventListener("click", function () {
       var iframe = document.createElement("iframe");
       iframe.src =
-        "https://player.bilibili.com/player.html?bvid=BV1VRYe6gEga&page=1&high_quality=1&danmaku=1&autoplay=1";
+        "https://player.bilibili.com/player.html?bvid=BV1upnG6BEtF&page=1&high_quality=1&danmaku=1&autoplay=1";
       iframe.title = "DFC 地图 × 节枝特效工具 · 实机演示";
       iframe.setAttribute("frameborder", "0");
       iframe.setAttribute("scrolling", "no");
@@ -334,6 +358,54 @@
     });
   }
 
+  /* --------------------------------------------------------- data refresh
+     纯静态站没有后端，但访客可以自己把最新的版本清单拉一遍：
+     带时间戳请求 releases.json（绕开任何缓存），就地重渲染，不用等下一次部署。 */
+  function initDataRefresh() {
+    var btns = $$("[data-refresh]");
+    if (!btns.length) return;
+
+    btns.forEach(function (btn) {
+      var label = btn.querySelector("[data-refresh-label]") || btn;
+      var idleText = label.textContent;
+      var timer = null;
+
+      function reset(text, delay) {
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          label.textContent = idleText;
+          btn.classList.remove("is-busy");
+          btn.removeAttribute("disabled");
+        }, delay);
+        if (text) label.textContent = text;
+      }
+
+      btn.addEventListener("click", function () {
+        if (btn.classList.contains("is-busy")) return;
+        btn.classList.add("is-busy");
+        btn.setAttribute("disabled", "");
+        label.textContent = "同步中…";
+
+        fetch("assets/data/releases.json?t=" + Date.now(), { cache: "no-store" })
+          .then(function (res) {
+            if (!res.ok) throw new Error("HTTP " + res.status);
+            return res.json();
+          })
+          .then(function (json) {
+            DATA = json;
+            window.__DFC_DATA__ = json;
+            applyData();
+            if (typeof window.__DFC_RERENDER__ === "function") window.__DFC_RERENDER__();
+            var tag = json && json.latest && json.latest.release ? json.latest.release.tag : "—";
+            reset("已是最新 " + tag, 2200);
+          })
+          .catch(function () {
+            reset("同步失败，稍后再试", 2400);
+          });
+      });
+    });
+  }
+
   /* ----------------------------------------------------------------- boot */
   function boot() {
     applyData();
@@ -342,6 +414,7 @@
     initScrollSpy();
     initVideoFacade();
     initLightbox();
+    initDataRefresh();
 
     if (!DATA) {
       $$("[data-latest-version]").forEach(function (el) {

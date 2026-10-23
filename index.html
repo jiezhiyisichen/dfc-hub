@@ -6,7 +6,7 @@
     <title>DFC Hub · 节枝 DFC 地图与特效工具</title>
     <meta
       name="description"
-      content="Minecraft 1.12.2 HBM 诅咒版 DFC 地图与节枝特效工具（JiezhiMod）的下载页，附实机演示视频。"
+      content="Minecraft 1.12.2 HBM 诅咒版 DFC 地图与节枝特效工具（JiezhiMod）的下载站与百科。"
     />
     <meta name="theme-color" content="#05070f" />
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
@@ -14,7 +14,7 @@
     <script src="data/config.js"></script>
     <meta property="og:type" content="website" />
     <meta property="og:title" content="DFC Hub · 节枝 DFC 地图与特效工具" />
-    <meta property="og:description" content="Minecraft 1.12.2 HBM 诅咒版 DFC 地图与节枝特效工具，附实机演示视频。" />
+    <meta property="og:description" content="Minecraft 1.12.2 HBM 诅咒版 DFC 地图与节枝特效工具。" />
     <meta property="og:image" content="assets/img/dfc-main.png" />
     <script type="application/ld+json">
       {
@@ -69,6 +69,7 @@
 
         <nav class="nav" id="primaryNav" aria-label="主导航">
           <a href="./" class="is-active">首页</a>
+          <a href="wiki.html">百科</a>
           <a href="downloads.html">下载中心</a>
         </nav>
 
@@ -96,57 +97,48 @@
 
             <h1 class="hero-title" data-cfg="hero.title">DFC 地图与节枝特效工具</h1>
 
-            <p class="hero-lede" data-cfg="hero.lede">一张围绕暗核聚变堆的 Minecraft 地图，和一套做屏幕与特效的小工具。</p>
-
             <div class="hero-cta">
               <a class="btn btn-primary btn-lg" href="downloads.html">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 19h16" />
                 </svg>
-                <span data-cfg="hero.primaryText">前往下载中心</span>
+                <span data-cfg="hero.primaryText">下载中心</span>
               </a>
-              <a class="btn btn-ghost btn-lg" href="https://space.bilibili.com/3494363348863838" data-cfg-href="links.bilibiliSpace" target="_blank" rel="noopener noreferrer">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M7 4 9.5 7M17 4l-2.5 3" />
-                  <rect x="3" y="7" width="18" height="13" rx="3" />
-                  <path d="M8.5 12.2v1.6M15.5 12.2v1.6" />
+              <a class="btn btn-ghost btn-lg" href="wiki.html">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H19v15H6.5A2.5 2.5 0 0 0 4 20.5V5.5Z" />
+                  <path d="M8 7.5h7M8 11h7M8 14.5h4" />
                 </svg>
-                <span data-cfg="hero.secondaryText">作者 B 站主页</span>
+                <span data-cfg="hero.secondaryText">使用教程</span>
               </a>
             </div>
-
-            <p class="hero-map-link">
-              <a href="https://1824933551.share.123pan.cn/123pan/9O42jv-Aebdh" data-cfg-href="links.mapPan" target="_blank" rel="noopener noreferrer" data-cfg="hero.mapLink">地图整合包在 123 云盘 ↗</a>
-            </p>
           </div>
         </div>
       </section>
 
-      <!-- ================= VIDEO ================= -->
-      <section class="section section--tight" id="video">
+      <!-- ================= SHOTS ================= -->
+      <section class="section section--tight" id="shots">
         <div class="wrap">
-          <div class="video-shell reveal">
-            <div class="video-frame" id="videoFrame">
-              <button class="video-facade" id="videoFacade" type="button" aria-label="播放 B 站宣传视频">
-                <span class="video-facade-inner">
-                  <span class="play-btn" aria-hidden="true">
-                    <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M9.2 5.6v12.8L20 12 9.2 5.6Z" />
-                    </svg>
-                  </span>
-                  <strong data-cfg="video.title">DFC 地图 × 节枝特效工具 · 实机演示</strong>
-                  <span class="vf-sub" data-cfg="video.sub">bilibili · BV1VRYe6gEga</span>
-                </span>
-              </button>
-            </div>
-            <div class="video-meta">
-              <span class="badge badge--muted">BILIBILI</span>
-              <span data-cfg="video.upName">UP 主：树上的节枝</span>
-              <span class="spacer"></span>
-              <a class="btn btn-quiet" href="https://www.bilibili.com/video/BV1VRYe6gEga/" data-cfg-href="links.video" target="_blank" rel="noopener noreferrer">
-                <span data-cfg="video.externalText">在 B 站打开 ↗</span>
-              </a>
-            </div>
+          <div class="gallery">
+            <figure class="shot shot--half reveal" data-full="assets/img/dfc-main.png" data-caption="核心页 · 暗核聚变堆实时读数" tabindex="0" role="button" aria-label="查看大图：核心页">
+              <img src="assets/img/dfc-main.png" alt="DFC 显示器核心页：温度、稳定度与崩溃圆盘" width="768" height="576" loading="eager" decoding="async" />
+              <figcaption>核心页 <em>CORE</em></figcaption>
+            </figure>
+
+            <figure class="shot shot--half reveal" data-delay="1" data-full="assets/img/dfc-custom.png" data-caption="自定义页 · 最多 8 条自选数据" tabindex="0" role="button" aria-label="查看大图：自定义页">
+              <img src="assets/img/dfc-custom.png" alt="DFC 自定义显示屏：8 条自选数据" width="768" height="576" loading="lazy" decoding="async" />
+              <figcaption>自定义页 <em>CUSTOM</em></figcaption>
+            </figure>
+
+            <figure class="shot shot--half reveal" data-full="assets/img/blocks.png" data-caption="方块 · 显示器、部件监视器与密码盘" tabindex="0" role="button" aria-label="查看大图：方块">
+              <img src="assets/img/blocks.png" alt="模组方块：DFC 显示器与相关设备" width="708" height="460" loading="lazy" decoding="async" />
+              <figcaption>方块 <em>BLOCKS</em></figcaption>
+            </figure>
+
+            <figure class="shot shot--half reveal" data-delay="1" data-full="assets/img/items.png" data-caption="物品 · 线圈、调试棒与 DFC 遥控器" tabindex="0" role="button" aria-label="查看大图：物品">
+              <img src="assets/img/items.png" alt="模组物品：线圈、调试棒与遥控器" width="872" height="934" loading="lazy" decoding="async" />
+              <figcaption>物品 <em>ITEMS</em></figcaption>
+            </figure>
           </div>
         </div>
       </section>
@@ -175,6 +167,7 @@
           <div class="footer-col">
             <h4 data-cfg="footer.navTitle">导航</h4>
             <a href="./" data-cfg="footer.navHome">首页</a>
+            <a href="wiki.html" data-cfg="footer.navWiki">百科</a>
             <a href="downloads.html" data-cfg="footer.navDownloads">下载中心</a>
           </div>
 
@@ -184,7 +177,7 @@
             <a href="https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases" data-cfg-href="links.toolReleases" target="_blank" rel="noopener noreferrer" data-cfg="footer.linkReleases">全部 Release</a>
             <a href="https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool" data-cfg-href="links.giteeRepo" target="_blank" rel="noopener noreferrer" data-cfg="footer.linkGitee">Gitee 镜像</a>
             <a href="https://space.bilibili.com/3494363348863838" data-cfg-href="links.bilibiliSpace" target="_blank" rel="noopener noreferrer" data-cfg="footer.linkBilibili">B 站主页</a>
-            <a href="https://www.bilibili.com/video/BV1VRYe6gEga/" data-cfg-href="links.video" target="_blank" rel="noopener noreferrer" data-cfg="footer.linkVideo">宣传视频</a>
+            <a href="wiki.html#videos" data-cfg="footer.linkVideo">演示视频</a>
           </div>
         </div>
 
@@ -194,6 +187,19 @@
         </div>
       </div>
     </footer>
+
+    <!-- ================= LIGHTBOX ================= -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="查看大图">
+      <button class="lightbox-close" id="lbClose" type="button" aria-label="关闭">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18" /></svg>
+      </button>
+      <button class="lightbox-nav prev" id="lbPrev" type="button" aria-label="上一张">‹</button>
+      <figure>
+        <img id="lbImg" alt="" />
+        <figcaption id="lbCap"></figcaption>
+      </figure>
+      <button class="lightbox-nav next" id="lbNext" type="button" aria-label="下一张">›</button>
+    </div>
 
     <script src="assets/data/releases.js" defer></script>
     <script src="assets/js/content.js" defer></script>

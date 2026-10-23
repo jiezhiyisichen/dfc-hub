@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-title="百科 · 节枝特效工具 JiezhiMod">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>百科 · 节枝特效工具 JiezhiMod</title>
+    <meta
+      name="description"
+      content="节枝特效工具 JiezhiMod 百科：安装、指令手册、倒计时样式、DFC 显示器、物品与常见问题，附实机演示视频。"
+    />
+    <meta name="theme-color" content="#05070f" />
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/wiki.css" />
+    <script src="data/config.js"></script>
+  </head>
+  <body class="wiki-page">
+    <div class="bg-fx" aria-hidden="true"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <!-- ================= TOP TICKER ================= -->
+    <div class="ticker">
+      <div class="wrap ticker-inner">
+        <span class="ticker-badge">WIKI</span>
+        <p>
+          <span>当前正式版 <b data-latest-version>—</b></span>
+          <span class="sep hide-sm"></span>
+          <span class="hide-sm">文档对应 v3.9 · 更高版本若有改动以实际为准</span>
+          <span class="sep hide-sm"></span>
+          <a href="downloads.html">前往下载中心 →</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- ================= HEADER ================= -->
+    <header class="site-header" id="siteHeader">
+      <div class="wrap header-inner">
+        <a class="brand" href="./" aria-label="DFC Hub 首页">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M12 2.6 20.4 7v10L12 21.4 3.6 17V7L12 2.6Z" stroke-linejoin="round" />
+              <circle cx="12" cy="12" r="2.6" />
+              <path d="M12 4.6v4.8M12 14.6v4.8M4.9 8.2l4.2 2.4M14.9 13.4l4.2 2.4M19.1 8.2l-4.2 2.4M9.1 13.4l-4.2 2.4" stroke-linecap="round" />
+            </svg>
+          </span>
+          <span class="brand-text">
+            <strong>DFC HUB</strong>
+            <em>地图与特效工具</em>
+          </span>
+        </a>
+
+        <nav class="nav" id="primaryNav" aria-label="主导航">
+          <a href="./">首页</a>
+          <a href="wiki.html" class="is-active" aria-current="page">百科</a>
+          <a href="downloads.html">下载中心</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="version-pill" href="downloads.html" title="最新正式版">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="vp-label">LATEST</span>
+            <span class="vp-num" data-latest-version>—</span>
+          </a>
+          <a class="btn btn-primary btn-sm" href="downloads.html">下载</a>
+          <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="primaryNav">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="wiki-main">
+      <div class="wrap wiki-layout">
+        <!-- ============ TOC ============ -->
+        <aside class="wiki-toc" aria-label="本页目录">
+          <p class="wiki-toc-title">目录</p>
+          <a href="#intro">这是什么</a>
+          <a href="#install">安装</a>
+          <a href="#commands">指令手册</a>
+          <a href="#countdown">倒计时样式</a>
+          <a href="#display">DFC 显示器</a>
+          <a href="#items">物品与方块</a>
+          <a href="#faq">常见问题</a>
+          <a href="#videos">视频演示</a>
+          <a href="#credit">署名与二创</a>
+        </aside>
+
+        <!-- ============ BODY ============ -->
+        <article class="wiki-body">
+          <header class="wiki-head">
+            <p class="eyebrow">Wiki</p>
+            <h1>节枝特效工具 · 百科</h1>
+            <p class="wiki-lede">
+              一套给地图作者与短片作者用的 Minecraft 视觉特效工具包。特效全在客户端渲染，
+              指令在服务端注册，所以<strong>客户端与服务端都要装</strong>。
+            </p>
+            <ul class="wiki-meta">
+              <li>Minecraft 1.12.2</li>
+              <li>Forge 14.23.5.2864</li>
+              <li>Java 8</li>
+              <li>客户端 + 服务端</li>
+              <li>模组 ID <code>jiezhimod</code></li>
+            </ul>
+          </header>
+
+          <!-- ================= INTRO ================= -->
+          <section id="intro" class="doc-section">
+            <h2>这是什么</h2>
+            <p>
+              把做地图 / 拍短片时常用的「演出效果」打包成一条指令能调用的东西：抖屏、白屏、字幕、倒计时、
+              通知、聊天栏动效，外加线圈道具、喷气背包、密码盘与一整套 DFC 监控显示器。
+            </p>
+
+            <div class="doc-grid">
+              <div class="doc-card">
+                <h3>镜头与文字</h3>
+                <p><code>/shake</code> 视角抖动、<code>/white</code> 白屏震撼弹、<code>/sub</code> 字幕、<code>/notice</code> 右下角通知。</p>
+              </div>
+              <div class="doc-card">
+                <h3>倒计时</h3>
+                <p>6 种样式，十分之一秒精度、进度条，可被红石比较器检测「还剩几秒 / 已结束」。</p>
+              </div>
+              <div class="doc-card">
+                <h3>DFC 显示器</h3>
+                <p>4×3 吊装大屏，四种页面：核心页、部件页、自定义页、曲线页，配 DFC 遥控器绑定数据源。</p>
+              </div>
+              <div class="doc-card">
+                <h3>物品与方块</h3>
+                <p>三种线圈、喷气背包、遥控器、调试棒，以及密码盘与密码控制台。</p>
+              </div>
+            </div>
+
+            <div class="callout callout--info">
+              <p>
+                <strong>软依赖，不会崩。</strong>DFC 显示器用纯反射读 HBM 核科技（NTM-CE）的数据；
+                没装 HBM 时屏幕显示 <code>NO LINK</code>，特效类指令照常可用。
+              </p>
+            </div>
+          </section>
+
+          <!-- ================= INSTALL ================= -->
+          <section id="install" class="doc-section">
+            <h2>安装</h2>
+            <ol class="doc-steps">
+              <li>
+                <h3>装 Forge</h3>
+                <p>安装 <strong>Minecraft 1.12.2</strong> 与 <strong>Forge 14.23.5.2864</strong>，启动一次游戏生成 <code>.minecraft/mods</code>。</p>
+              </li>
+              <li>
+                <h3>放入 jar</h3>
+                <p>把 <code>jiezhi-1.12.2-dfcmaptools-x.x.jar</code> 放进 <code>.minecraft/mods/</code>，不用解压。
+                  <strong>服务端也要放同一个版本</strong>。</p>
+              </li>
+              <li>
+                <h3>确认加载</h3>
+                <p>启动后日志里出现 <code>jiezhi</code> 大字 LOGO 与 <code>JiezhiMod v3.9 is loading.</code> 即加载成功。</p>
+              </li>
+              <li>
+                <h3>自检</h3>
+                <p>进世界输入 <code>/shake 40</code>，画面抖动即一切正常。</p>
+              </li>
+            </ol>
+
+            <div class="callout callout--warn">
+              <p><strong>为什么两端都要装：</strong>只装服务端能注册指令但看不到特效；只装客户端连指令都没有。单人游戏的集成服务器会一并注册，所以单人装了就能用。</p>
+            </div>
+
+            <p class="doc-hint">jar 内置完整性校验，改动过（反编译、二次打包、解压改动）会报 <code>integrity check failed</code>，请重新下载官方发布页的完整包。</p>
+          </section>
+
+          <!-- ================= COMMANDS ================= -->
+          <section id="commands" class="doc-section">
+            <h2>指令手册</h2>
+            <p>
+              所有特效指令<strong>权限等级 2</strong>（OP 或命令方块）。省略 <code>[@target]</code> 时：
+              玩家自己执行只作用于自己；控制台 / 命令方块执行则作用于所有在线玩家。
+            </p>
+
+            <div class="table-wrap">
+              <table class="doc-table">
+                <thead>
+                  <tr><th>指令</th><th>别名</th><th>用途</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>/shake [@target] &lt;ticks&gt; [intensity]</code></td><td><code>/cshake</code></td><td>视角抖动</td></tr>
+                  <tr><td><code>/white [@target] &lt;ticks&gt; [alpha]</code></td><td><code>/whitescreen</code></td><td>白屏震撼弹</td></tr>
+                  <tr><td><code>/sub [@target] [ticks] &lt;text...&gt;</code></td><td><code>/subtitle</code></td><td>底部字幕</td></tr>
+                  <tr><td><code>/subtitleclear [@target]</code></td><td><code>/subclear</code></td><td>清空字幕队列</td></tr>
+                  <tr><td><code>/countdown_add &lt;样式1-6&gt; &lt;名称&gt; &lt;秒数&gt; [r] [g] [b]</code></td><td>—</td><td>新增 / 覆盖倒计时</td></tr>
+                  <tr><td><code>/countdown_remove &lt;名称&gt;</code></td><td><code>/countdown_re</code></td><td>删除倒计时</td></tr>
+                  <tr><td><code>/countdown_stop &lt;名称&gt;</code></td><td>—</td><td>暂停</td></tr>
+                  <tr><td><code>/countdown_continue &lt;名称&gt;</code></td><td>—</td><td>继续</td></tr>
+                  <tr><td><code>/countdown_test &lt;名称&gt; &lt;min&gt; &lt;max&gt;</code></td><td>—</td><td>剩余秒数区间检测（红石比较器）</td></tr>
+                  <tr><td><code>/notice &lt;标题&gt; &lt;正文...&gt;</code></td><td>—</td><td>右下角通知卡片</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 id="cmd-shake">视角抖动 <code>/shake</code></h3>
+            <div class="table-wrap">
+              <table class="doc-table">
+                <thead><tr><th>参数</th><th>范围</th><th>默认</th><th>说明</th></tr></thead>
+                <tbody>
+                  <tr><td><code>ticks</code></td><td>1 ~ 2000</td><td>必填</td><td>持续时长，20 ticks = 1 秒</td></tr>
+                  <tr><td><code>intensity</code></td><td>0 ~ 90</td><td>4.0</td><td>峰值摆幅（度），超过 15 已经很晕</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>3 tick 起振冲到峰值 → 主震指数衰减 → 余震缓慢收尾；结束后视角<strong>精确回到原位</strong>，不留偏移。</p>
+            <pre class="doc-code"><code>/shake 40              <span class="cm"># 抖 2 秒，默认强度 4 度</span>
+/shake 30 12           <span class="cm"># 抖 1.5 秒，强度 12 度（近距离爆炸）</span>
+/shake @a 60 8         <span class="cm"># 全场抖 3 秒</span></code></pre>
+
+            <h3 id="cmd-white">白屏震撼弹 <code>/white</code></h3>
+            <div class="table-wrap">
+              <table class="doc-table">
+                <thead><tr><th>参数</th><th>范围</th><th>默认</th><th>说明</th></tr></thead>
+                <tbody>
+                  <tr><td><code>ticks</code></td><td>1 ~ 2000</td><td>必填</td><td>主闪时长</td></tr>
+                  <tr><td><code>alpha</code></td><td>0.0 ~ 1.0</td><td>1.0</td><td>峰值不透明度</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>整屏纯白矩形，无暗角光晕；强闪阶段叠加模糊，主闪结束后自动追加 1~4.5 秒余像（余像阶段关闭模糊）。
+              shader 加载失败或被占用时静默降级为纯白屏，不会崩。</p>
+            <pre class="doc-code"><code>/white 30              <span class="cm"># 主闪 1.5 秒，满不透明</span>
+/white 25 0.8          <span class="cm"># 1.25 秒，80% 强度</span>
+/white @a[team=red] 40 <span class="cm"># 只对红队闪</span></code></pre>
+
+            <h3 id="cmd-sub">字幕 <code>/sub</code></h3>
+            <p>默认时长 <strong>80 ticks（4 秒）</strong>；只有首参数是纯数字时才当时长，否则整段都是文本。
+              支持 <code>\n</code> 换行、<code>\u00a7</code> 颜色码、双引号分组；多条字幕向上堆叠。</p>
+            <pre class="doc-code"><code>/sub @a 80 反应堆临界，请立即撤离
+/sub @a 60 "第一行\n第二行"
+/sub @a 100 \u00a7c警告 \u00a7r冷却液泄漏</code></pre>
+
+            <h3 id="cmd-notice">通知 <code>/notice</code></h3>
+            <p>右下角圆角黑框，标题在上正文在下，停留 8 秒后滑出；同屏最多 6 条，历史保留 300 条。
+              按 <kbd>P</kbd> 打开全屏历史（滚轮滑动、Esc 退出），任何界面打开时都不会触发。</p>
+
+            <h3 id="cmd-selector">目标选择器与颜色码</h3>
+            <p>支持 <code>@p</code> <code>@a</code> <code>@r</code> <code>@e</code> <code>@s</code>，
+              常用参数：<code>c=3</code>（最多 3 个）、<code>team=red</code>（队伍）、<code>r=30</code>（半径）、
+              <code>x= y= z=</code>（中心点）。</p>
+            <p>1.12.2 打不出分节号，写 <code>\u00a7</code> 即可：<code>\u00a7c</code> 红、<code>\u00a7a</code> 绿、
+              <code>\u00a7e</code> 黄、<code>\u00a79</code> 蓝、<code>\u00a7l</code> 粗体、<code>\u00a7r</code> 重置。</p>
+          </section>
+
+          <!-- ================= COUNTDOWN ================= -->
+          <section id="countdown" class="doc-section">
+            <h2>倒计时 6 种样式</h2>
+            <p>样式 4 / 5 / 6 是高精度（<code>mm:ss.t</code>），小数位会随剩余时间变色；1 / 2 / 3 是整秒样式。</p>
+
+            <div class="table-wrap">
+              <table class="doc-table">
+                <thead><tr><th>样式</th><th>外观</th><th>颜色规则</th><th>临期表现</th></tr></thead>
+                <tbody>
+                  <tr><td>1</td><td>时间 + 下方横线</td><td>用你给的 rgb</td><td>≤ 5 秒整行脉冲放大</td></tr>
+                  <tr><td>2</td><td><code>\\\时间///</code></td><td>固定红色，忽略 rgb</td><td>斜杠从外向内逐个亮</td></tr>
+                  <tr><td>3</td><td><code>┌时间┐</code> 方框</td><td>用你给的 rgb</td><td>≤ 5 秒整行脉冲放大</td></tr>
+                  <tr><td>4</td><td><code>mm:ss.t</code></td><td>≤ 10 秒小数位转黄，≤ 3 秒转红</td><td>小数位颜色即提醒</td></tr>
+                  <tr><td>5</td><td><code>!mm:ss.t!</code></td><td>≤ 3 秒整体转红</td><td>≤ 5 秒感叹号脉冲</td></tr>
+                  <tr><td>6</td><td>时间 + 进度条</td><td>条由 rgb 渐变到黄再转红</td><td>条随剩余时间收缩，≤ 3 秒呼吸</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <pre class="doc-code"><code>/countdown_add 1 ready 10                 <span class="cm"># 朴素白字 + 横线</span>
+/countdown_add 2 alarm 30                 <span class="cm"># 红色斜杠</span>
+/countdown_add 3 locked 60 255 200 60     <span class="cm"># 橙黄方框</span>
+/countdown_add 4 precise 45 120 200 255   <span class="cm"># 高精度，天蓝</span>
+/countdown_add 5 tense 20 255 120 180     <span class="cm"># 感叹号，粉紫</span>
+/countdown_add 6 bomb 30 255 90 60        <span class="cm"># 进度条，橙红（做爆炸倒计时最合适）</span></code></pre>
+
+            <ul class="doc-list">
+              <li>时间<strong>向上取整</strong>：3 秒立刻显示 <code>03</code>，最后 1 tick 仍显示 <code>00:01</code>。</li>
+              <li><strong>归零不自动删除</strong>，保留压暗的 <code>00:00</code>，这样 <code>/countdown_test 名称 0 0</code> 才能给红石「已结束」信号。</li>
+              <li>样式 6 的进度条分母是<strong>添加时设定的总秒数</strong>，暂停时条会停住而不是回缩。</li>
+            </ul>
+          </section>
+
+          <!-- ================= DISPLAY ================= -->
+          <section id="display" class="doc-section">
+            <h2>DFC 显示器</h2>
+            <p>一块 <strong>4 宽 × 3 高 = 12 格</strong>的吊装多方块大屏，面朝斜下方，下倾角由放置时的视线俯仰决定。
+              放下任意一格会自动铺满 4×3（空间不够则整体取消并返还物品），<strong>右键开关机</strong>。</p>
+
+            <div class="table-wrap">
+              <table class="doc-table">
+                <thead><tr><th>方块</th><th>注册名</th><th>页面</th></tr></thead>
+                <tbody>
+                  <tr><td>DFC 监控显示器</td><td><code>jiezhimod:dfc_screen</code></td><td>核心页 · 反应堆实时数据</td></tr>
+                  <tr><td>DFC 部件监视器</td><td><code>jiezhimod:dfc_monitor</code></td><td>部件页 · 同类部件合并统计</td></tr>
+                  <tr><td>DFC 自定义显示屏</td><td><code>jiezhimod:dfc_custom</code></td><td>自定义页 · 最多 8 条自选数据</td></tr>
+                  <tr><td>DFC 曲线显示器</td><td><code>jiezhimod:dfc_graph</code></td><td>曲线页 · 温度 / 发电量折线</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="doc-hint">四块屏共用同一套 11 个占位方块，只是控制器不同，所以可以并排装、互不干扰。</p>
+
+            <h3>核心页</h3>
+            <p>温度 / 熔点、稳定度、能量总线（SPK）、崩溃圆盘、运行时长、事件日志。</p>
+            <ul class="doc-list">
+              <li><strong>崩溃圆盘</strong>：外圈 36 格刻度的填充 = 堆芯坍缩度，顶部读数是稳定度，底部是崩溃百分比。</li>
+              <li><strong>崩溃告警</strong>：坍缩度一离开 0 整屏转红、盘心变黄、顶栏闪烁并套红边；未连接时一律不报警。</li>
+              <li><strong>离线判定</strong>：反应堆未到 100°C 时整屏画「离线」页，不会把 0 当正常读数。</li>
+            </ul>
+
+            <h3>部件页</h3>
+            <p>同类部件合并显示，不逐台罗列：发射器（台数 / 工作中 / 功率档位 / 合计 SPK）、接收器、燃料罐（A/B 两罐液位，&lt;15% 变黄）、
+              燃料喷射器、能量存储、能量爆发（核心每秒吐出的 SPK）。</p>
+
+            <h3>自定义页 + DFC 遥控器</h3>
+            <ol class="doc-steps doc-steps--tight">
+              <li><p>拿 <strong>DFC 遥控器</strong>，<strong>蹲下右键</strong>一台设备 → 记录（储罐 / 电池 / 飞轮 / 涡轮部件）。</p></li>
+              <li><p><strong>右键</strong>自定义显示屏 → 打开面板（开机按钮也在面板里）。</p></li>
+              <li><p>把遥控器放进面板左上的槽位 → 显示「N/8 台」。</p></li>
+              <li><p>点「添加」→ 记录到的设备全部接进来（满了或重复会跳过并报数）。</p></li>
+            </ol>
+            <p class="doc-hint">关面板时遥控器自动还给你；蹲下右键空气 = 清空遥控器记录。点不到设备也没关系：
+              遥控器会解多方块代理链，并就近扫描 3 格取最近的可读设备。</p>
+
+            <h3>曲线页</h3>
+            <ul class="doc-list">
+              <li>并排两张折线图：左温度、右发电量，带面积填充与网格，右上角是当前实时值。</li>
+              <li>纵轴自动量程（100 → 150 → … → 1500），量程被抬高时刻度值转暖黄色。</li>
+              <li>历史窗口约 60 秒：每 0.5 秒采一点，环形缓冲 120 点，<strong>采样完全在客户端</strong>，不增加网络流量。</li>
+              <li>发电量 = 所有接收器上一 tick 收到的能量之和（J/t）；没有接收器时退回核心吐出量（SPK）。</li>
+              <li>只有<strong>未绑定数据源</strong>时才记断点，不会画「突然掉到 0」的假悬崖。</li>
+            </ul>
+
+            <h3>绑定数据源</h3>
+            <p>拿 DFC 遥控器右键 <strong>DFC 核心</strong>或 <strong>DFC 稳定器</strong>记录坐标，再右键显示器完成绑定。
+              未绑定时所有读数显示 <code>--</code>，不会把 0 当读数。</p>
+
+            <h3>全局显示规则</h3>
+            <div class="table-wrap">
+              <table class="doc-table">
+                <thead><tr><th>规则</th><th>说明</th></tr></thead>
+                <tbody>
+                  <tr><td>刷新率 0.05 秒</td><td>恰好 1 tick，数据与画面同一节拍，不插值不滞后</td></tr>
+                  <tr><td>数值保留 2 位小数</td><td>温度 / 能量 / 液量 / 百分比 / 变化率；时间保持整数秒</td></tr>
+                  <tr><td>未到 100°C = 离线</td><td>整屏改画「离线」页</td></tr>
+                  <tr><td>0 度 + 0 稳定度不显示危急</td><td>冷堆的 0% 是「没开机」</td></tr>
+                  <tr><td>重新加载存档会重启屏幕</td><td>重走 <code>节枝OS → 自检 → 主界面</code></td></tr>
+                  <tr><td>坍缩度离开 0</td><td>整屏改画「错误 301 · 与核心失去连接」，停留 4 秒后自动重启</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- ================= ITEMS ================= -->
+          <section id="items" class="doc-section">
+            <h2>物品与方块</h2>
+
+            <h3>三种线圈</h3>
+            <div class="table-wrap">
+              <table class="doc-table">
+                <thead><tr><th>物品</th><th>注册名</th><th>效果（手持生效）</th></tr></thead>
+                <tbody>
+                  <tr><td>加速线圈</td><td><code>jiezhimod:speed_coil</code></td><td>移动速度 ×5</td></tr>
+                  <tr><td>重力线圈</td><td><code>jiezhimod:gravity_coil</code></td><td>跳跃高度约 6 格</td></tr>
+                  <tr><td>治愈线圈</td><td><code>jiezhimod:healing_coil</code></td><td>每秒回复 4 点生命（2 颗心）</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="doc-hint">不用右键、不是药水效果（没有粒子和 HUD 图标），可以和药水叠加。</p>
+            <pre class="doc-code"><code>/give &lt;玩家&gt; jiezhimod:speed_coil
+/give &lt;玩家&gt; jiezhimod:gravity_coil
+/give &lt;玩家&gt; jiezhimod:healing_coil</code></pre>
+
+            <h3>喷气背包</h3>
+            <p>装在<strong>胸甲槽</strong>，把<strong>喷气开关</strong>拿在手上，<strong>按住右键</strong>起飞、松开立刻失去动力。
+              准星下方有热量条（绿→黄→橙），满了会过热，必须冷却到 30% 以下才能再飞。
+              满燃料单次最多连续飞 <strong>18 秒</strong>；跳跃键爬升、WASD 推进。</p>
+
+            <h3>调试棒</h3>
+            <ul class="doc-list">
+              <li><strong>蹲下右键密码盘</strong>：改便签文字（最多 8 字符，留空显示当前密码）与固定密码（必须 6 位数字）。</li>
+              <li><strong>蹲下右键显示器</strong>：调刷新率（曲线页推荐 200 ms）。</li>
+            </ul>
+
+            <h3>密码盘与密码控制台</h3>
+            <p>密码盘占一格、高半格，<strong>右键键面直接按键</strong>（不开界面）。默认密码是 6 位随机数，写在旁边的便签上，
+              <strong>每次进游戏会自动换一批</strong>。密码控制台用于输入与校验。</p>
+          </section>
+
+          <!-- ================= FAQ ================= -->
+          <section id="faq" class="doc-section">
+            <h2>常见问题</h2>
+
+            <details class="doc-faq">
+              <summary>装好了但指令用不了 / 特效没反应？</summary>
+              <p>特效指令权限等级是 2，需要 OP 或命令方块；同时确认<strong>客户端与服务端都装了同一个版本</strong>。</p>
+            </details>
+
+            <details class="doc-faq">
+              <summary>DFC 显示器显示 <code>NO LINK</code> 或一堆 <code>--</code>？</summary>
+              <p>这台屏还没绑定数据源。拿 DFC 遥控器右键核心或稳定器记录坐标，再右键显示器绑定。
+                没装 HBM 核科技时不会崩，只会显示 <code>NO LINK</code>。</p>
+            </details>
+
+            <details class="doc-faq">
+              <summary>整屏是「离线」页？</summary>
+              <p>反应堆温度没到 100°C 就按离线处理。等核心升温到 100°C 以上就会切回主界面。</p>
+            </details>
+
+            <details class="doc-faq">
+              <summary>遥控器蹲下右键设备没反应？</summary>
+              <p>会明确告诉你原因（附近没有可读设备 / 这个方块读不出数据）。对着大桶或 9×9 叶片点不准时，
+                遥控器会自动解代理链并就近扫描 3 格。</p>
+            </details>
+
+            <details class="doc-faq">
+              <summary>倒计时归零后 <code>00:00</code> 一直挂着？</summary>
+              <p>这是刻意的，方便 <code>/countdown_test 名称 0 0</code> 检测「已结束」。用 <code>/countdown_remove 名称</code> 清掉即可。</p>
+            </details>
+
+            <details class="doc-faq">
+              <summary>启动崩溃，报 <code>integrity check failed</code>？</summary>
+              <p>jar 内置完整性校验，说明文件被改动过。请从官方发布页重新下载完整 jar；自己构建的请确认三步构建全部重跑。</p>
+            </details>
+
+            <details class="doc-faq">
+              <summary>白屏时画面没模糊？</summary>
+              <p>余像阶段（主闪结束后）故意关闭模糊；若内置 shader 被其他模组占用或资源缺失，会静默降级为纯白屏。</p>
+            </details>
+
+            <details class="doc-faq">
+              <summary>站点上的版本号会不会过期？</summary>
+              <p>不会。GitHub Actions 每小时拉一次上游 Release，页面数据本身也不走缓存。若刚发版想立刻看到，
+                下载中心里有一个「手动刷新数据」按钮，点一下就会重新拉取最新的版本清单。</p>
+            </details>
+          </section>
+
+          <!-- ================= VIDEOS ================= -->
+          <section id="videos" class="doc-section">
+            <h2>视频演示</h2>
+            <p class="doc-hint">点封面才加载播放器，不拖慢页面。</p>
+
+            <div class="video-grid">
+              <article class="video-card">
+                <button
+                  class="video-facade"
+                  type="button"
+                  data-bvid="BV1upnG6BEtF"
+                  data-vtitle="节枝特效工具 · 演示 ①"
+                >
+                  <span class="play-btn" aria-hidden="true">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M9.2 5.6v12.8L20 12 9.2 5.6Z" /></svg>
+                  </span>
+                  <strong>演示 ①</strong>
+                  <span class="video-id">bilibili · BV1upnG6BEtF</span>
+                </button>
+                <div class="video-card-foot">
+                  <a href="https://www.bilibili.com/video/BV1upnG6BEtF/" target="_blank" rel="noopener noreferrer">在 B 站打开 ↗</a>
+                </div>
+              </article>
+
+              <article class="video-card">
+                <button
+                  class="video-facade"
+                  type="button"
+                  data-bvid="BV12vnt6yEt9"
+                  data-vtitle="节枝特效工具 · 演示 ②"
+                >
+                  <span class="play-btn" aria-hidden="true">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M9.2 5.6v12.8L20 12 9.2 5.6Z" /></svg>
+                  </span>
+                  <strong>演示 ②</strong>
+                  <span class="video-id">bilibili · BV12vnt6yEt9</span>
+                </button>
+                <div class="video-card-foot">
+                  <a href="https://www.bilibili.com/video/BV12vnt6yEt9/" target="_blank" rel="noopener noreferrer">在 B 站打开 ↗</a>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- ================= CREDIT ================= -->
+          <section id="credit" class="doc-section">
+            <h2>署名与二创</h2>
+            <p>
+              作者：<strong>树上的节枝（jiezhi）</strong>。转载、二创请保留署名并注明来源，<strong>禁止商业使用</strong>。
+              源码与完整文档在
+              <a href="https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool" target="_blank" rel="noopener noreferrer">GitHub 仓库</a>，
+              发布包在 <a href="downloads.html">下载中心</a>。
+            </p>
+            <p class="doc-hint">
+              本页内容依据模组源码与仓库文档整理，对应 v3.9。后续版本若新增指令或改动数值，以游戏内实际行为为准。
+            </p>
+          </section>
+
+          <div class="wiki-foot">
+            <a class="btn btn-primary" href="downloads.html">前往下载中心</a>
+            <a class="btn btn-ghost" href="https://space.bilibili.com/3494363348863838" target="_blank" rel="noopener noreferrer">作者 B 站主页</a>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="brand" href="./">
+              <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M12 2.6 20.4 7v10L12 21.4 3.6 17V7L12 2.6Z" stroke-linejoin="round" />
+                  <circle cx="12" cy="12" r="2.6" />
+                </svg>
+              </span>
+              <span class="brand-text">
+                <strong>DFC HUB</strong>
+                <em>地图与特效工具</em>
+              </span>
+            </a>
+            <p>由「树上的节枝」维护的个人分享站。文件托管于 GitHub Release，站点本身是纯静态页面。</p>
+          </div>
+
+          <div class="footer-col">
+            <h4>导航</h4>
+            <a href="./">首页</a>
+            <a href="wiki.html">百科</a>
+            <a href="downloads.html">下载中心</a>
+          </div>
+
+          <div class="footer-col">
+            <h4>资源</h4>
+            <a href="https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool" target="_blank" rel="noopener noreferrer">工具源码</a>
+            <a href="https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases" target="_blank" rel="noopener noreferrer">全部 Release</a>
+            <a href="https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool" target="_blank" rel="noopener noreferrer">Gitee 镜像</a>
+            <a href="https://space.bilibili.com/3494363348863838" target="_blank" rel="noopener noreferrer">B 站主页</a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span>© <span data-year>2026</span> 树上的节枝 · 转载 / 二创请保留署名，禁止商业使用。</span>
+          <span class="mono" data-sync-line>DATA SYNC · —</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/data/releases.js" defer></script>
+    <script src="assets/js/site.js" defer></script>
+  </body>
+</html>
