@@ -18,12 +18,15 @@ dfc-hub/
 ├── index.html                  首页：标题 / 下载中心与使用教程两个入口 / 四张截图
 ├── wiki.html                   百科：安装、指令手册、倒计时、DFC 显示器、物品、FAQ、视频
 ├── downloads.html              下载中心：版本看板 / 搜索 / 通道筛选 / 资产列表 / 安装说明
+├── mods.html                   其他下载：二创 Mod，按模组名切换选项卡
 ├── 404.html                    错误页（复用同一套样式）
 ├── data/                       ★ 站点内容（由本地后台读写）
 │   ├── config.json             全部可编辑文案
 │   ├── config.js               ← 自动生成：window.__DFC_CONFIG__
 │   ├── releases.json           本地手动发布的下载包清单
-│   └── releases.js             ← 自动生成：window.__DFC_LOCAL__
+│   ├── releases.js             ← 自动生成：window.__DFC_LOCAL__
+│   ├── mods.json               ★ 二创 Mod 清单（platform + repo）
+│   └── mods.js                 ← 由 build 生成：window.__DFC_MODS__
 ├── public/
 │   └── downloads/              ★ 后台上传的 .jar / .zip，部署后映射到 /downloads/*
 ├── admin-server.js             ★ 本地管理后台服务（Express）
@@ -36,7 +39,8 @@ dfc-hub/
 │   ├── js/
 │   │   ├── content.js          把 config 绑定到 data-cfg 元素
 │   │   ├── site.js             公共交互：导航、滚动揭示、视频门面、版本号回填
-│   │   └── downloads.js        下载页：搜索、筛选、卡片渲染、URL 状态同步
+│   │   ├── downloads.js        下载页：搜索、筛选、卡片渲染、URL 状态同步
+│   │   └── mods.js             其他下载页：模组选项卡 + 版本卡片 + 刷新
 │   ├── data/
 │   │   ├── releases.json       ← 自动生成：上游 Release 归一化数据
 │   │   └── releases.js         ← 自动生成：window.__DFC_DATA__（file:// 预览兼容）
@@ -69,6 +73,44 @@ dfc-hub/
 带时间戳 `fetch('assets/data/releases.json?t=…', {cache:'no-store'})` 拉最新清单，就地重渲染并更新顶部版本号，
 不用等下一次自动同步，也不用刷整页。实现见 `assets/js/site.js` 的 `initDataRefresh()`，
 下载页通过 `window.__DFC_RERENDER__` 暴露重渲染入口。
+
+---
+
+## 其他下载（二创 Mod）
+
+`mods.html` 是「下载中心」旁边的第二个下载页，专门列社区作者的二创版本。页面结构与下载中心一致：
+顶部选项卡按 **模组名** 切换 → 版本看板（当前模组 / 最新版本 / 来源）→ 版本卡片列表 → 安装说明。
+
+### 加一个二创 mod
+
+只要在 `data/mods.json` 里加一条，下一次同步就会自动出现，**不用改代码**：
+
+```jsonc
+{
+  "id": "rbmk-monitor",                 // 锚点 id，也是 URL 参数 ?mod=rbmk-monitor
+  "name": "RBMK 监视器",                 // 选项卡上显示的名字
+  "platform": "gitee",                  // gitee | github
+  "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+  "author": "baldih",
+  "desc": "一句话介绍",
+  "note": "二创作品 · 原作为树上的节枝 JiezhiMod",
+  "enabled": true                       // false 可以临时下架
+}
+```
+
+### 同步规则
+
+`scripts/sync-mods.mjs` 逐个拉取发行版，生成 `assets/data/mods.json` 与 `mods.js`（`window.__DFC_MODS__`）：
+
+| 事项 | 说明 |
+| --- | --- |
+| 数据源 | Gitee `api/v5/repos/{repo}/releases`、GitHub `api/repos/{repo}/releases` |
+| 附件过滤 | 只留真实附件（`.jar` / `.zip` / `.7z` / `.rar`）；Gitee 自动生成的源码包（URL 含 `/archive/refs/`）一律丢弃 |
+| 失败隔离 | 单个 mod 拉取失败只会让该选项卡显示错误原因，不影响其它 mod 和主站 |
+| 频率 | 跟着主流水线走，**每小时**一次（满足「至少每 2 小时」）；也可以在看板里点「手动刷新数据」 |
+| 凭据 | 可选 `GITEE_TOKEN` / `GITHUB_TOKEN`，提高 API 额度；匿名也能读公开仓库 |
+
+> **二创包与本体互斥**：两个 jar 同时放进 `mods/` 会因模组 ID 冲突启动失败，页面上也有这条提示。
 
 ---
 

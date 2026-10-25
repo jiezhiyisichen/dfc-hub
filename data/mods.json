@@ -1,0 +1,15 @@
+{
+  "_comment": "二创 Mod 清单：新增一个 mod 只要在这里加一条，下次同步就会出现在「其他下载」页。platform 支持 gitee / github；repo 写 owner/repo。",
+  "mods": [
+    {
+      "id": "rbmk-monitor",
+      "name": "RBMK 监视器",
+      "platform": "gitee",
+      "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+      "author": "baldih",
+      "desc": "在节枝特效工具基础上加入 RBMK 反应堆监控的二创版本。",
+      "note": "二创作品 · 原作为树上的节枝 JiezhiMod",
+      "enabled": true
+    }
+  ]
+}

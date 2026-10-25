@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-title="其他下载 · 二创 Mod | DFC Hub">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>其他下载 · 二创 Mod | DFC Hub</title>
+    <meta
+      name="description"
+      content="社区作者基于节枝特效工具制作的二创 Mod 下载，含 Gitee 与 GitHub 来源，版本每两小时自动同步。"
+    />
+    <meta name="theme-color" content="#05070f" />
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="data/config.js"></script>
+  </head>
+  <body>
+    <div class="bg-fx" aria-hidden="true"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <!-- ================= TOP TICKER ================= -->
+    <div class="ticker">
+      <div class="wrap ticker-inner">
+        <span class="ticker-badge">MODS</span>
+        <p>
+          <span>二创 Mod <b data-mod-count>—</b> 个</span>
+          <span class="sep hide-sm"></span>
+          <span class="hide-sm">来源 Gitee / GitHub · 自动同步</span>
+          <span class="sep hide-sm"></span>
+          <a href="downloads.html">回到下载中心 →</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- ================= HEADER ================= -->
+    <header class="site-header" id="siteHeader">
+      <div class="wrap header-inner">
+        <a class="brand" href="./" aria-label="DFC Hub 首页">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M12 2.6 20.4 7v10L12 21.4 3.6 17V7L12 2.6Z" stroke-linejoin="round" />
+              <circle cx="12" cy="12" r="2.6" />
+              <path d="M12 4.6v4.8M12 14.6v4.8M4.9 8.2l4.2 2.4M14.9 13.4l4.2 2.4M19.1 8.2l-4.2 2.4M9.1 13.4l-4.2 2.4" stroke-linecap="round" />
+            </svg>
+          </span>
+          <span class="brand-text">
+            <strong>DFC HUB</strong>
+            <em>地图与特效工具</em>
+          </span>
+        </a>
+
+        <nav class="nav" id="primaryNav" aria-label="主导航">
+          <a href="./">首页</a>
+          <a href="wiki.html">百科</a>
+          <a href="downloads.html">下载中心</a>
+          <a href="mods.html" class="is-active" aria-current="page">其他下载</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="version-pill" href="downloads.html" title="最新正式版">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="vp-label">LATEST</span>
+            <span class="vp-num" data-latest-version>—</span>
+          </a>
+          <a class="btn btn-primary btn-sm" href="downloads.html">下载</a>
+          <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="primaryNav">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- ================= HEAD ================= -->
+      <section class="page-head">
+        <div class="wrap">
+          <span class="eyebrow">Derivative Mods</span>
+          <h1>其他下载</h1>
+          <p class="lede">
+            社区作者基于节枝特效工具做的二创版本，托管在各自的 Gitee / GitHub 仓库。
+            点上面的名字切换模组，每个模组下面按版本列出附件。
+          </p>
+
+          <div class="callout callout--warn">
+            <p>
+              <strong>二创包与本体的 jar 互斥。</strong>二创版本通常已经改过本体逻辑，
+              两个 jar 同时放进 <code class="mono">mods/</code> 会因为模组 ID 冲突而启动失败，装之前先移走本体。
+            </p>
+          </div>
+
+          <!-- 选项卡：由 mods.js 按数据生成 -->
+          <div class="mod-tabs" id="modTabs" role="tablist" aria-label="选择二创模组">
+            <button class="mod-tab is-on" type="button" role="tab" aria-selected="true">载入中…</button>
+          </div>
+
+          <div class="version-board" id="modBoard" hidden>
+            <div class="vb-cell">
+              <div class="vb-label"><span class="dot" style="color: var(--green)"></span> 当前模组</div>
+              <div class="vb-value"><span data-mod-name>—</span></div>
+              <p class="vb-note" data-mod-author>—</p>
+            </div>
+            <div class="vb-cell">
+              <div class="vb-label"><span class="dot" style="color: var(--cyan)"></span> 最新版本</div>
+              <div class="vb-value">
+                <span data-mod-latest>—</span>
+                <small data-mod-date></small>
+              </div>
+              <p class="vb-note" data-mod-releases>—</p>
+            </div>
+            <div class="vb-cell">
+              <div class="vb-label"><span class="dot" style="color: var(--magenta)"></span> 来源</div>
+              <div class="vb-value"><span data-mod-platform>—</span></div>
+              <p class="vb-note">
+                <a href="#" data-mod-repo target="_blank" rel="noopener noreferrer">打开仓库 ↗</a>
+              </p>
+              <button class="btn btn-quiet vb-refresh" type="button" data-mods-refresh title="立刻重新拉取二创 Mod 的版本清单">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 11a8 8 0 1 0-2.3 5.7" />
+                  <path d="M20 4v7h-7" />
+                </svg>
+                <span data-mods-refresh-label>手动刷新数据</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= LIST ================= -->
+      <section class="section--tight">
+        <div class="wrap">
+          <div class="result-bar">
+            <p class="result-line" id="modResult">正在读取版本数据…</p>
+          </div>
+
+          <div class="release-list" id="modList"></div>
+
+          <div class="empty" id="modEmpty" hidden>
+            <h3>这个模组还没有可下载的文件</h3>
+            <p>作者可能只推了源码、或者发行版里还没挂 jar。稍后再来看，或者直接去仓库的 Release 页面。</p>
+            <button class="btn btn-ghost" type="button" id="modReset">刷新试试</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= NOTE ================= -->
+      <section class="section--tight">
+        <div class="wrap">
+          <div class="note-block">
+            <h2 class="section-title">怎么装</h2>
+            <ol class="mod-steps">
+              <li>先装好 <b>Forge 1.12.2</b>（14.23.5.2864）。</li>
+              <li>把本页下载到的 <code class="mono">.jar</code> 放进 <code class="mono">.minecraft/mods/</code>。</li>
+              <li><b>移走本体的节枝特效工具 jar</b>，两个不要同时装。</li>
+              <li>联机时服务端与客户端要放同一个文件，否则指令可用但看不到特效。</li>
+            </ol>
+            <p class="mod-disclaimer">
+              二创作品版权归各自作者，站点只做索引，文件全部直链到作者自己的仓库，本站不转存。
+              遇到问题请去对应仓库的 Issue 反馈。
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="brand" href="./">
+              <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M12 2.6 20.4 7v10L12 21.4 3.6 17V7L12 2.6Z" stroke-linejoin="round" />
+                  <circle cx="12" cy="12" r="2.6" />
+                </svg>
+              </span>
+              <span class="brand-text">
+                <strong>DFC HUB</strong>
+                <em>地图与特效工具</em>
+              </span>
+            </a>
+            <p>由「树上的节枝」维护的个人分享站。文件托管于各作者自己的仓库，站点本身是纯静态页面。</p>
+          </div>
+
+          <div class="footer-col">
+            <h4>导航</h4>
+            <a href="./">首页</a>
+            <a href="wiki.html">百科</a>
+            <a href="downloads.html">下载中心</a>
+            <a href="mods.html">其他下载</a>
+          </div>
+
+          <div class="footer-col">
+            <h4>资源</h4>
+            <a href="https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool" target="_blank" rel="noopener noreferrer">工具源码</a>
+            <a href="https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases" target="_blank" rel="noopener noreferrer">全部 Release</a>
+            <a href="https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool" target="_blank" rel="noopener noreferrer">Gitee 镜像</a>
+            <a href="https://space.bilibili.com/3494363348863838" target="_blank" rel="noopener noreferrer">B 站主页</a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span>© <span data-year>2026</span> 树上的节枝 · 转载 / 二创请保留署名，禁止商业使用。</span>
+          <span class="mono" data-mod-sync>MODS SYNC · —</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/data/releases.js" defer></script>
+    <script src="assets/data/mods.js" defer></script>
+    <script src="assets/js/site.js" defer></script>
+    <script src="assets/js/mods.js" defer></script>
+  </body>
+</html>

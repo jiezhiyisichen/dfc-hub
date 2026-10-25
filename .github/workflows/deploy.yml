@@ -2,7 +2,7 @@
 # DFC Hub — 上游 Release 同步 + Cloudflare Pages 自动部署
 #
 # 触发方式：
-#   1. 定时：每小时拉一次上游工具仓库的最新 Release
+#   1. 定时：每小时拉一次上游工具仓库的最新 Release 与二创 Mod（Gitee / GitHub）
 #   2. 手动：Actions 页面点 "Run workflow"
 #   3. 推送：main 分支有代码改动时（自动任务自己提交的数据提交会被跳过）
 #
@@ -69,6 +69,16 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           UPSTREAM_TOOL_REPO: ${{ env.UPSTREAM_TOOL_REPO }}
         run: node scripts/sync-releases.mjs
+
+      # ---------------------------------------------------------------------
+      # 1b. 拉取二创 Mod（Gitee / GitHub）→ assets/data/mods.json / mods.js
+      #     清单在 data/mods.json；任何单个 mod 失败都不会影响其它步骤
+      # ---------------------------------------------------------------------
+      - name: Sync derivative mods
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
+        run: node scripts/sync-mods.mjs
 
       # ---------------------------------------------------------------------
       # 2. 版本号有变化就提交回去（站点本身也是数据的快照）

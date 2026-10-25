@@ -9,8 +9,10 @@
     "build": "node scripts/build.mjs",
     "dev": "node scripts/dev-server.mjs",
     "admin": "node admin-server.js",
-    "start": "npm run sync && npm run dev",
-    "smoke": "node scripts/smoke-downloads.mjs"
+    "start": "npm run sync:all && npm run dev",
+    "smoke": "node scripts/smoke-downloads.mjs",
+    "sync:mods": "node scripts/sync-mods.mjs",
+    "sync:all": "node scripts/sync-releases.mjs && node scripts/sync-mods.mjs"
   },
   "dependencies": {
     "express": "^4.19.2",
