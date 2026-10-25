@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T06:15:06.153Z",
+  "generatedAt": "2026-10-25T11:16:18.250Z",
   "source": {
     "tool": "jiezhiyisichen/DFC-Map-Creation-Tool",
     "api": "https://api.github.com",
@@ -46,7 +46,7 @@
           "mirrors": [
             {
               "host": "gitee",
-              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9/jiezhi-1.12.2-dfcmaptools-3.9.jar"
+              "url": "https://gitee.com/jiezhi-bililbli/DFC-Map-Creation-Tool/releases/download/v3.9/jiezhi-1.12.2-dfcmaptools-3.9.jar"
             }
           ]
         }
@@ -85,7 +85,7 @@
           "mirrors": [
             {
               "host": "gitee",
-              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v4.0-beta/jiezhi-1.12.2-dfcmaptools-4.0.jar"
+              "url": "https://gitee.com/jiezhi-bililbli/DFC-Map-Creation-Tool/releases/download/v4.0-beta/jiezhi-1.12.2-dfcmaptools-4.0.jar"
             }
           ]
         }
@@ -125,7 +125,7 @@
           "mirrors": [
             {
               "host": "gitee",
-              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9.4-beta/jiezhi-1.12.2-dfcmaptools-3.9.4.jar"
+              "url": "https://gitee.com/jiezhi-bililbli/DFC-Map-Creation-Tool/releases/download/v3.9.4-beta/jiezhi-1.12.2-dfcmaptools-3.9.4.jar"
             }
           ]
         }
@@ -164,7 +164,7 @@
           "mirrors": [
             {
               "host": "gitee",
-              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9/jiezhi-1.12.2-dfcmaptools-3.9.jar"
+              "url": "https://gitee.com/jiezhi-bililbli/DFC-Map-Creation-Tool/releases/download/v3.9/jiezhi-1.12.2-dfcmaptools-3.9.jar"
             }
           ]
         }
@@ -203,7 +203,7 @@
           "mirrors": [
             {
               "host": "gitee",
-              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9/jiezhi-1.12.2-dfcmaptools-3.9.jar"
+              "url": "https://gitee.com/jiezhi-bililbli/DFC-Map-Creation-Tool/releases/download/v3.9/jiezhi-1.12.2-dfcmaptools-3.9.jar"
             }
           ]
         }
@@ -244,7 +244,7 @@
           "mirrors": [
             {
               "host": "gitee",
-              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v4.0-beta/jiezhi-1.12.2-dfcmaptools-4.0.jar"
+              "url": "https://gitee.com/jiezhi-bililbli/DFC-Map-Creation-Tool/releases/download/v4.0-beta/jiezhi-1.12.2-dfcmaptools-4.0.jar"
             }
           ]
         }
@@ -283,7 +283,7 @@
           "mirrors": [
             {
               "host": "gitee",
-              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9/jiezhi-1.12.2-dfcmaptools-3.9.jar"
+              "url": "https://gitee.com/jiezhi-bililbli/DFC-Map-Creation-Tool/releases/download/v3.9/jiezhi-1.12.2-dfcmaptools-3.9.jar"
             }
           ]
         }
@@ -322,7 +322,7 @@
           "mirrors": [
             {
               "host": "gitee",
-              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9.9-beta/jiezhi-1.12.2-dfcmaptools-3.9.9.jar"
+              "url": "https://gitee.com/jiezhi-bililbli/DFC-Map-Creation-Tool/releases/download/v3.9.9-beta/jiezhi-1.12.2-dfcmaptools-3.9.9.jar"
             }
           ]
         }
@@ -361,7 +361,7 @@
           "mirrors": [
             {
               "host": "gitee",
-              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9.8-beta/jiezhi-1.12.2-dfcmaptools-3.9.8.jar"
+              "url": "https://gitee.com/jiezhi-bililbli/DFC-Map-Creation-Tool/releases/download/v3.9.8-beta/jiezhi-1.12.2-dfcmaptools-3.9.8.jar"
             }
           ]
         }
@@ -400,7 +400,7 @@
           "mirrors": [
             {
               "host": "gitee",
-              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9.7-beta/jiezhi-1.12.2-dfcmaptools-3.9.7.jar"
+              "url": "https://gitee.com/jiezhi-bililbli/DFC-Map-Creation-Tool/releases/download/v3.9.7-beta/jiezhi-1.12.2-dfcmaptools-3.9.7.jar"
             }
           ]
         }
@@ -439,7 +439,7 @@
           "mirrors": [
             {
               "host": "gitee",
-              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9.6-beta/jiezhi-1.12.2-dfcmaptools-3.9.6.jar"
+              "url": "https://gitee.com/jiezhi-bililbli/DFC-Map-Creation-Tool/releases/download/v3.9.6-beta/jiezhi-1.12.2-dfcmaptools-3.9.6.jar"
             }
           ]
         }
@@ -478,7 +478,7 @@
           "mirrors": [
             {
               "host": "gitee",
-              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9.5-beta/jiezhi-1.12.2-dfcmaptools-3.9.5.jar"
+              "url": "https://gitee.com/jiezhi-bililbli/DFC-Map-Creation-Tool/releases/download/v3.9.5-beta/jiezhi-1.12.2-dfcmaptools-3.9.5.jar"
             }
           ]
         }
@@ -517,7 +517,7 @@
           "mirrors": [
             {
               "host": "gitee",
-              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9.4-beta/jiezhi-1.12.2-dfcmaptools-3.9.4.jar"
+              "url": "https://gitee.com/jiezhi-bililbli/DFC-Map-Creation-Tool/releases/download/v3.9.4-beta/jiezhi-1.12.2-dfcmaptools-3.9.4.jar"
             }
           ]
         }
@@ -556,7 +556,7 @@
           "mirrors": [
             {
               "host": "gitee",
-              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9.3-beta/jiezhi-1.12.2-dfcmaptools-3.9.3.jar"
+              "url": "https://gitee.com/jiezhi-bililbli/DFC-Map-Creation-Tool/releases/download/v3.9.3-beta/jiezhi-1.12.2-dfcmaptools-3.9.3.jar"
             }
           ]
         }
@@ -595,7 +595,7 @@
           "mirrors": [
             {
               "host": "gitee",
-              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9.2-beta/jiezhi-1.12.2-dfcmaptools-3.9.2.jar"
+              "url": "https://gitee.com/jiezhi-bililbli/DFC-Map-Creation-Tool/releases/download/v3.9.2-beta/jiezhi-1.12.2-dfcmaptools-3.9.2.jar"
             }
           ]
         }
@@ -634,7 +634,7 @@
           "mirrors": [
             {
               "host": "gitee",
-              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9.1-beta/jiezhi-1.12.2-dfcmaptools-3.9.1.jar"
+              "url": "https://gitee.com/jiezhi-bililbli/DFC-Map-Creation-Tool/releases/download/v3.9.1-beta/jiezhi-1.12.2-dfcmaptools-3.9.1.jar"
             }
           ]
         }
@@ -673,7 +673,7 @@
           "mirrors": [
             {
               "host": "gitee",
-              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.9-beta/jiezhi-1.12.2-dfcmaptools-3.9-beta.jar"
+              "url": "https://gitee.com/jiezhi-bililbli/DFC-Map-Creation-Tool/releases/download/v3.9-beta/jiezhi-1.12.2-dfcmaptools-3.9-beta.jar"
             }
           ]
         }
@@ -712,7 +712,7 @@
           "mirrors": [
             {
               "host": "gitee",
-              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.8/jiezhi-1.12.2-dfcmaptools-3.8.jar"
+              "url": "https://gitee.com/jiezhi-bililbli/DFC-Map-Creation-Tool/releases/download/v3.8/jiezhi-1.12.2-dfcmaptools-3.8.jar"
             }
           ]
         }
@@ -751,7 +751,7 @@
           "mirrors": [
             {
               "host": "gitee",
-              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.7/jiezhi-1.12.2-dfcmaptools-3.7.jar"
+              "url": "https://gitee.com/jiezhi-bililbli/DFC-Map-Creation-Tool/releases/download/v3.7/jiezhi-1.12.2-dfcmaptools-3.7.jar"
             }
           ]
         }
@@ -790,7 +790,7 @@
           "mirrors": [
             {
               "host": "gitee",
-              "url": "https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool/releases/download/v3.6/jiezhi-1.12.2-dfcmaptools-3.6.jar"
+              "url": "https://gitee.com/jiezhi-bililbli/DFC-Map-Creation-Tool/releases/download/v3.6/jiezhi-1.12.2-dfcmaptools-3.6.jar"
             }
           ]
         }
