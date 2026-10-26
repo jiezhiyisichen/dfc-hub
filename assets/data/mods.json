@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T00:13:03.154Z",
+  "generatedAt": "2026-10-26T06:03:48.178Z",
   "count": 1,
   "mods": [
     {
@@ -12,6 +12,32 @@
       "desc": "在节枝特效工具基础上加入 RBMK 反应堆监控的二创版本。",
       "note": "二创作品 · 原作为树上的节枝 JiezhiMod",
       "releases": [
+        {
+          "id": "rbmk-monitor#4.1",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "4.1",
+          "version": "4.1",
+          "channel": "release",
+          "name": "4.1版紧急修复",
+          "publishedAt": "2026-10-26T13:04:39+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/4.1",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "jiezhi-rbmk-monitor-1.12.2-1.0.0-rbmk.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": 0,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/4.1/jiezhi-rbmk-monitor-1.12.2-1.0.0-rbmk.jar",
+              "mirror": null
+            }
+          ],
+          "notesText": "上次预览版出现重大错误，原本的RBMK被改消失了，取而代之的是原版的DFC，此版本特指修改。",
+          "notesHtml": "<p>上次预览版出现重大错误，原本的RBMK被改消失了，取而代之的是原版的DFC，此版本特指修改。</p>"
+        },
         {
           "id": "rbmk-monitor#4.0",
           "modId": "rbmk-monitor",
@@ -118,30 +144,30 @@
         }
       ],
       "latest": {
-        "id": "rbmk-monitor#4.0",
+        "id": "rbmk-monitor#4.1",
         "modId": "rbmk-monitor",
         "platform": "gitee",
         "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
-        "tag": "4.0",
-        "version": "4.0",
-        "channel": "preview",
-        "name": "jiezhimod and RBMKmod 合并版",
-        "publishedAt": "2026-10-26T06:53:19+08:00",
-        "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/4.0",
-        "prerelease": true,
+        "tag": "4.1",
+        "version": "4.1",
+        "channel": "release",
+        "name": "4.1版紧急修复",
+        "publishedAt": "2026-10-26T13:04:39+08:00",
+        "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/4.1",
+        "prerelease": false,
         "draft": false,
         "assets": [
           {
-            "name": "jiezhimod-merged-4.0 rbmk (1).jar",
+            "name": "jiezhi-rbmk-monitor-1.12.2-1.0.0-rbmk.jar",
             "kind": "mod",
             "size": 0,
             "downloads": 0,
-            "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/4.0/jiezhimod-merged-4.0%20rbmk%20(1).jar",
+            "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/4.1/jiezhi-rbmk-monitor-1.12.2-1.0.0-rbmk.jar",
             "mirror": null
           }
         ],
-        "notesText": "📦 合并包做了什么\n \n以原版 DFC 特效工具 4.0 为基础，把 RBMK 监控屏独有的 22 个 class + 全部资源文件（blockstates/models/textures/lang）都塞进去了。总共 162 个 class。\n \n⚠️ 为什么不能完美合并\n \n两个 jar 虽然 modid 都叫  jiezhimod ，但它们是同一个 mod 的两个不同版本，核心类同名但内容完全不同",
-        "notesHtml": "<p>📦 合并包做了什么</p><p>以原版 DFC 特效工具 4.0 为基础，把 RBMK 监控屏独有的 22 个 class + 全部资源文件（blockstates/models/textures/lang）都塞进去了。总共 162 个 class。</p><p>⚠️ 为什么不能完美合并</p><p>两个 jar 虽然 modid 都叫  jiezhimod ，但它们是同一个 mod 的两个不同版本，核心类同名但内容完全不同</p>"
+        "notesText": "上次预览版出现重大错误，原本的RBMK被改消失了，取而代之的是原版的DFC，此版本特指修改。",
+        "notesHtml": "<p>上次预览版出现重大错误，原本的RBMK被改消失了，取而代之的是原版的DFC，此版本特指修改。</p>"
       },
       "error": null
     }
