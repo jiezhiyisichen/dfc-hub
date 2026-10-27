@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T16:29:50.231Z",
+  "generatedAt": "2026-10-27T21:15:51.343Z",
   "count": 1,
   "mods": [
     {
@@ -12,6 +12,32 @@
       "desc": "在节枝特效工具基础上加入 RBMK 反应堆监控的二创版本。",
       "note": "二创作品 · 原作为树上的节枝 JiezhiMod",
       "releases": [
+        {
+          "id": "rbmk-monitor#5.0.0",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "5.0.0",
+          "version": "5.0.0",
+          "channel": "release",
+          "name": "5.0.0正式版",
+          "publishedAt": "2026-10-28T03:39:02+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/5.0.0",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "jiezhi-rbmk-monitor-1.12.2-5.0.0-rbmk.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": 0,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/5.0.0/jiezhi-rbmk-monitor-1.12.2-5.0.0-rbmk.jar",
+              "mirror": null
+            }
+          ],
+          "notesText": "把原版模组的一些给移植到了这个模组用起来不收心",
+          "notesHtml": "<p>把原版模组的一些给移植到了这个模组用起来不收心</p>"
+        },
         {
           "id": "rbmk-monitor#4.1",
           "modId": "rbmk-monitor",
@@ -144,30 +170,30 @@
         }
       ],
       "latest": {
-        "id": "rbmk-monitor#4.1",
+        "id": "rbmk-monitor#5.0.0",
         "modId": "rbmk-monitor",
         "platform": "gitee",
         "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
-        "tag": "4.1",
-        "version": "4.1",
+        "tag": "5.0.0",
+        "version": "5.0.0",
         "channel": "release",
-        "name": "4.1版紧急修复",
-        "publishedAt": "2026-10-26T13:04:39+08:00",
-        "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/4.1",
+        "name": "5.0.0正式版",
+        "publishedAt": "2026-10-28T03:39:02+08:00",
+        "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/5.0.0",
         "prerelease": false,
         "draft": false,
         "assets": [
           {
-            "name": "jiezhi-rbmk-monitor-1.12.2-1.0.0-rbmk.jar",
+            "name": "jiezhi-rbmk-monitor-1.12.2-5.0.0-rbmk.jar",
             "kind": "mod",
             "size": 0,
             "downloads": 0,
-            "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/4.1/jiezhi-rbmk-monitor-1.12.2-1.0.0-rbmk.jar",
+            "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/5.0.0/jiezhi-rbmk-monitor-1.12.2-5.0.0-rbmk.jar",
             "mirror": null
           }
         ],
-        "notesText": "上次预览版出现重大错误，原本的RBMK被改消失了，取而代之的是原版的DFC，此版本特指修改。",
-        "notesHtml": "<p>上次预览版出现重大错误，原本的RBMK被改消失了，取而代之的是原版的DFC，此版本特指修改。</p>"
+        "notesText": "把原版模组的一些给移植到了这个模组用起来不收心",
+        "notesHtml": "<p>把原版模组的一些给移植到了这个模组用起来不收心</p>"
       },
       "error": null
     }
