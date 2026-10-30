@@ -1314,6 +1314,12 @@ ul {
   grid-column: span 6;
 }
 
+/* 首页截图有竖图（物品/方块一览），用 contain 避免裁掉内容 */
+.shot--half img {
+  object-fit: contain;
+  background: #060911;
+}
+
 .gallery-hint {
   margin-top: 16px;
   font-size: 12px;

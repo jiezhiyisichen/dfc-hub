@@ -2,7 +2,7 @@
 window.__DFC_CONFIG__ = {
   "site": {
     "title": "DFC Hub · 节枝 DFC 地图与特效工具",
-    "description": "Minecraft 1.12.2 HBM 诅咒版 DFC 地图与节枝特效工具（JiezhiMod）的下载站与百科。",
+    "description": "Minecraft 1.12.2 HBM 诅咒版 DFC 地图与节枝特效工具（JiezhiMod）的下载站与百科：特效指令、DFC 显示器、灯圈与红石工具。",
     "brandName": "DFC HUB",
     "brandSub": "地图与特效工具",
     "tickerBadge": "SYNC",

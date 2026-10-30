@@ -25,7 +25,7 @@
         <p>
           <span>当前正式版 <b data-latest-version>—</b></span>
           <span class="sep hide-sm"></span>
-          <span class="hide-sm">文档对应 v3.9 · 更高版本若有改动以实际为准</span>
+          <span class="hide-sm">文档对应 v4.4 · 更高版本若有改动以实际为准</span>
           <span class="sep hide-sm"></span>
           <a href="downloads.html">前往下载中心 →</a>
         </p>
@@ -101,6 +101,7 @@
               <li>Java 8</li>
               <li>客户端 + 服务端</li>
               <li>模组 ID <code>jiezhimod</code></li>
+              <li>文档对应 v4.4</li>
             </ul>
           </header>
 
@@ -109,7 +110,8 @@
             <h2>这是什么</h2>
             <p>
               把做地图 / 拍短片时常用的「演出效果」打包成一条指令能调用的东西：抖屏、白屏、字幕、倒计时、
-              通知、聊天栏动效，外加线圈道具、喷气背包、密码盘与一整套 DFC 监控显示器。
+              通知、聊天栏动效，外加线圈道具、喷气背包、密码盘、高级红石中继器、灯圈系统，
+              以及一整套 DFC 监控显示器（含标注屏与激光状态屏）。
             </p>
 
             <div class="doc-grid">
@@ -123,11 +125,19 @@
               </div>
               <div class="doc-card">
                 <h3>DFC 显示器</h3>
-                <p>4×3 吊装大屏，四种页面：核心页、部件页、自定义页、曲线页，配 DFC 遥控器绑定数据源。</p>
+                <p>4×3 吊装大屏，六种页面：核心、部件、自定义、曲线、标注、激光状态。</p>
+              </div>
+              <div class="doc-card">
+                <h3>灯圈系统 <span class="doc-tag">v4.4</span></h3>
+                <p>整格发光方块，相邻自动连组，任意 RGB，可用红石或控制台换色、淡入淡出、闪烁。</p>
+              </div>
+              <div class="doc-card">
+                <h3>高级红石中继器</h3>
+                <p>原版外形与行为，延迟放宽到 <strong>1~1200 tick（0.05~60 秒）</strong>，界面里按 tick 或秒填。</p>
               </div>
               <div class="doc-card">
                 <h3>物品与方块</h3>
-                <p>三种线圈、喷气背包、遥控器、调试棒，以及密码盘与密码控制台。</p>
+                <p>三种线圈、喷气背包、遥控器、调试棒、激光链接器、灯圈链接器，以及密码盘与密码控制台。</p>
               </div>
             </div>
 
@@ -149,12 +159,12 @@
               </li>
               <li>
                 <h3>放入 jar</h3>
-                <p>把 <code>jiezhi-1.12.2-dfcmaptools-x.x.jar</code> 放进 <code>.minecraft/mods/</code>，不用解压。
+                <p>把 <code>jiezhi-1.12.2-dfcmaptools-4.4.jar</code> 放进 <code>.minecraft/mods/</code>，不用解压。
                   <strong>服务端也要放同一个版本</strong>。</p>
               </li>
               <li>
                 <h3>确认加载</h3>
-                <p>启动后日志里出现 <code>jiezhi</code> 大字 LOGO 与 <code>JiezhiMod v3.9 is loading.</code> 即加载成功。</p>
+                <p>启动后日志里出现 <code>jiezhi</code> 大字 LOGO 与 <code>JiezhiMod v4.4 is loading.</code> 即加载成功。</p>
               </li>
               <li>
                 <h3>自检</h3>
@@ -186,9 +196,9 @@
                   <tr><td><code>/shake [@target] &lt;ticks&gt; [intensity]</code></td><td><code>/cshake</code></td><td>视角抖动</td></tr>
                   <tr><td><code>/white [@target] &lt;ticks&gt; [alpha]</code></td><td><code>/whitescreen</code></td><td>白屏震撼弹</td></tr>
                   <tr><td><code>/sub [@target] [ticks] &lt;text...&gt;</code></td><td><code>/subtitle</code></td><td>底部字幕</td></tr>
-                  <tr><td><code>/subtitleclear [@target]</code></td><td><code>/subclear</code></td><td>清空字幕队列</td></tr>
+                  <tr><td><code>/subtitleclear [@target]</code></td><td><code>/subclear</code>、<code>/clearsubtitle</code></td><td>清空字幕队列</td></tr>
                   <tr><td><code>/countdown_add &lt;样式1-6&gt; &lt;名称&gt; &lt;秒数&gt; [r] [g] [b]</code></td><td>—</td><td>新增 / 覆盖倒计时</td></tr>
-                  <tr><td><code>/countdown_remove &lt;名称&gt;</code></td><td><code>/countdown_re</code></td><td>删除倒计时</td></tr>
+                  <tr><td><code>/countdown_remove &lt;名称&gt;</code></td><td><code>/countdown_re</code>、<code>/countdown_del</code></td><td>删除倒计时</td></tr>
                   <tr><td><code>/countdown_stop &lt;名称&gt;</code></td><td>—</td><td>暂停</td></tr>
                   <tr><td><code>/countdown_continue &lt;名称&gt;</code></td><td>—</td><td>继续</td></tr>
                   <tr><td><code>/countdown_test &lt;名称&gt; &lt;min&gt; &lt;max&gt;</code></td><td>—</td><td>剩余秒数区间检测（红石比较器）</td></tr>
@@ -294,10 +304,12 @@
                   <tr><td>DFC 部件监视器</td><td><code>jiezhimod:dfc_monitor</code></td><td>部件页 · 同类部件合并统计</td></tr>
                   <tr><td>DFC 自定义显示屏</td><td><code>jiezhimod:dfc_custom</code></td><td>自定义页 · 最多 8 条自选数据</td></tr>
                   <tr><td>DFC 曲线显示器</td><td><code>jiezhimod:dfc_graph</code></td><td>曲线页 · 温度 / 发电量折线</td></tr>
+                  <tr><td>DFC 标注显示器</td><td><code>jiezhimod:dfc_label</code></td><td>标注页 · 七格自选指标引线图</td></tr>
+                  <tr><td>DFC 激光状态显示器</td><td><code>jiezhimod:dfc_laser</code></td><td>激光页 · 最多 4 台激光状态</td></tr>
                 </tbody>
               </table>
             </div>
-            <p class="doc-hint">四块屏共用同一套 11 个占位方块，只是控制器不同，所以可以并排装、互不干扰。</p>
+            <p class="doc-hint">六块屏共用同一套 11 个占位方块，只是控制器不同，所以可以并排装、互不干扰。</p>
 
             <h3>核心页</h3>
             <p>温度 / 熔点、稳定度、能量总线（SPK）、崩溃圆盘、运行时长、事件日志。</p>
@@ -329,6 +341,48 @@
               <li>发电量 = 所有接收器上一 tick 收到的能量之和（J/t）；没有接收器时退回核心吐出量（SPK）。</li>
               <li>只有<strong>未绑定数据源</strong>时才记断点，不会画「突然掉到 0」的假悬崖。</li>
             </ul>
+
+            <h3>标注页</h3>
+            <p>中央一台设备示意图，四周七条引线拉出「小标题 + 大数值」，每个数字旁边就写着它是什么。
+              数字颜色即状态：绿正常 / 黄注意 / 红危急 / 灰无数据；核心一开始坍缩，整屏和堆芯一起转红。</p>
+            <p>七个格子可以自己配，共 15 种指标可选：</p>
+            <div class="table-wrap">
+              <table class="doc-table">
+                <thead><tr><th>类别</th><th>可选项</th></tr></thead>
+                <tbody>
+                  <tr><td>堆芯</td><td>温度等级、稳定度、蕴含能量、坍缩程度、燃料储量、熔毁倒计时、运行时长、潜在增益</td></tr>
+                  <tr><td>电力</td><td>电力生产（所有接收器合计 J/t，没有接收器时退化成核心喷出 SPK/s）</td></tr>
+                  <tr><td>部件</td><td>发射器、接收器、燃料喷射器、稳定器、结构完整度</td></tr>
+                  <tr><td>其它</td><td>空（留白，什么都不画）</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="doc-hint">改法：<strong>调试棒蹲下右键</strong>本屏 → 七行，每行一对左右箭头循环切换，右侧实时预览这一格会显示什么；
+              底部还有「恢复默认」与刷新率按钮。配置存在方块实体里（进 NBT），改完立刻生效。
+              出厂七格：温度等级 / 稳定度 / 坍缩程度 / 蕴含能量 / 电力生产 / 结构完整度 / 熔毁倒计时。</p>
+
+            <h3>激光页</h3>
+            <p>一块屏最多接 <strong>4 台激光</strong>，2×2 摆开：每格左边一张小激光图，右边五行「名称 …… 数值」加数据条。
+              默认刷新率 <strong>200 ms</strong>，可在面板里再调。</p>
+            <div class="table-wrap">
+              <table class="doc-table">
+                <thead><tr><th>类型</th><th>名字颜色</th><th>显示内容</th></tr></thead>
+                <tbody>
+                  <tr><td>稳定器 <code>SL</code></td><td>黄</td><td>透镜类型、剩余电量、等级、开启状态、透镜耐久</td></tr>
+                  <tr><td>发射器 <code>PL</code></td><td>红（加热用）</td><td>开启状态、等级、剩余电量、冷凝胶剩余</td></tr>
+                  <tr><td>接收器 <code>OL</code></td><td>浅蓝</td><td>开启状态、等级、发电量、储能、冷凝胶剩余</td></tr>
+                  <tr><td>燃料喷射器 <code>INJ</code></td><td>白</td><td>两个燃料罐的类型与液位</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p><strong>用「激光链接器」接，不用遥控器</strong>（这块屏的槽位只认链接器）：</p>
+            <ol class="doc-steps doc-steps--tight">
+              <li><p>背包物品页取一支 <strong>激光链接器</strong>（<code>jiezhimod:laser_connector</code>）。</p></li>
+              <li><p><strong>蹲下右键</strong>一台激光部件（稳定器 / 发射器 / 接收器 / 喷射器）= 记录，最多 4 台；蹲下右键空气清空。</p></li>
+              <li><p><strong>右键</strong>这块屏打开面板 → 把链接器放进左边槽位 → 点「添加」（也可以蹲下右键屏本身一次接入全部记录）。</p></li>
+            </ol>
+            <p class="doc-hint">告警：透镜耐久 &lt; 20% 变黄、&lt; 4% 变红并在底部弹出「更换透镜」；冷凝胶 &lt; 50% 黄、&lt; 25% 橙、&lt; 10% 红，
+              颜色同时用在名字、数字和数据条上。多条告警按 2.5 秒轮播，右上角标出「N 项」。</p>
 
             <h3>绑定数据源</h3>
             <p>拿 DFC 遥控器右键 <strong>DFC 核心</strong>或 <strong>DFC 稳定器</strong>记录坐标，再右键显示器完成绑定。
@@ -378,12 +432,57 @@
             <h3>调试棒</h3>
             <ul class="doc-list">
               <li><strong>蹲下右键密码盘</strong>：改便签文字（最多 8 字符，留空显示当前密码）与固定密码（必须 6 位数字）。</li>
-              <li><strong>蹲下右键显示器</strong>：调刷新率（曲线页推荐 200 ms）。</li>
+              <li><strong>蹲下右键显示器</strong>：调刷新率（曲线页、激光页推荐 200 ms）。</li>
+              <li><strong>蹲下右键标注屏</strong>：配置七格分别显示哪个指标。</li>
             </ul>
 
             <h3>密码盘与密码控制台</h3>
             <p>密码盘占一格、高半格，<strong>右键键面直接按键</strong>（不开界面）。默认密码是 6 位随机数，写在旁边的便签上，
               <strong>每次进游戏会自动换一批</strong>。密码控制台用于输入与校验。</p>
+            <p class="doc-hint">v4.0 起这两样从「jiezhimod-红石」页搬到了「jiezhimod物品」页，红石页现在放高级红石中继器。</p>
+
+            <h3>高级红石中继器</h3>
+            <p>外形、贴图、红石行为完全照搬原版中继器（<code>jiezhimod:advanced_repeater</code>），只把「延迟能设多长」放开：</p>
+            <div class="table-wrap">
+              <table class="doc-table">
+                <thead><tr><th></th><th>原版中继器</th><th>高级红石中继器</th></tr></thead>
+                <tbody>
+                  <tr><td>延迟范围</td><td>1~4 档（2~8 tick）</td><td><strong>1 ~ 1200 tick（0.05 ~ 60 秒）</strong></td></tr>
+                  <tr><td>怎么调</td><td>右键循环切 4 档</td><td>右键打开界面，直接填数值</td></tr>
+                  <tr><td>单位</td><td>只有档位</td><td>tick / 秒 两种，切换自动换算</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <ul class="doc-list">
+              <li>信号只从背面进、正面出，输出 15 级，能接红石粉、拉活塞、点亮红石灯。</li>
+              <li>上升沿与下降沿<strong>对称延迟</strong>；比延迟还短的脉冲会被整个吞掉（60 秒档下 1 秒脉冲传不出去）。</li>
+              <li>左右被上电的中继器 / 比较器顶住时进入<strong>锁定</strong>状态（模型中间多一根黑条）。</li>
+              <li>延迟存在方块实体里，<strong>拆下来写进物品 NBT</strong>，搬走再放回去不用重设。</li>
+            </ul>
+
+            <h3>灯圈系统 <span class="doc-tag">v4.4</span></h3>
+            <p>整格的发光方块（和红石灯同一档：活塞推不动、不挡光、满格碰撞箱），一格格排起来就是灯带，能套在炮身、管道上，
+              也能嵌进墙体当发光面板，颜色任意 RGB，装光影也不掉链子。</p>
+            <div class="table-wrap">
+              <table class="doc-table">
+                <thead><tr><th>物品</th><th>注册名</th><th>用途</th></tr></thead>
+                <tbody>
+                  <tr><td>灯圈</td><td><code>jiezhimod:light_ring</code></td><td>整格发光方块，相邻自动连组</td></tr>
+                  <tr><td>灯圈控制台</td><td><code>jiezhimod:ring_console</code></td><td>红石触发，按配置操作灯圈组</td></tr>
+                  <tr><td>灯圈链接器</td><td><code>jiezhimod:ring_connector</code></td><td>蹲下右键灯圈记录 → 蹲下右键控制台绑定</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <ul class="doc-list">
+              <li><strong>六面相邻的灯圈自动成组</strong>（上限 1024 格）：红石激活任何一格整组一起亮，断开整组灭；拆掉桥接格自动分成两组。</li>
+              <li><strong>轴向由放置时点击的面决定</strong>：贴侧面放是立着的圈（套炮身），贴顶面放是平躺的圈（光晕）。</li>
+              <li>亮着时是光源（光照 15），自己全亮，周围一圈也被照亮。</li>
+            </ul>
+            <p><strong>控制台能配什么（可多选）</strong>：切换颜色（直接切 / 慢慢过渡，7 个预设色 + 手填 RGB）、
+              开启（立即 / 淡入）、关闭（立即 / 淡出）、闪烁（普通重复关开 / 渐变闪烁，可设周期、总时长）。
+              收到红石上升沿后执行；多台控制台可以接力，颜色过渡从当前颜色继续，
+              所以「中继器延迟 2 秒触发第二台」就是「淡入到红 → 停两秒 → 淡入到蓝」。</p>
+            <p class="doc-hint">绑定：拿灯圈链接器蹲下右键灯圈记录一格 → 蹲下右键控制台绑定它所在的组 → 蹲下右键空气清空。</p>
           </section>
 
           <!-- ================= FAQ ================= -->
@@ -425,6 +524,19 @@
             <details class="doc-faq">
               <summary>白屏时画面没模糊？</summary>
               <p>余像阶段（主闪结束后）故意关闭模糊；若内置 shader 被其他模组占用或资源缺失，会静默降级为纯白屏。</p>
+            </details>
+
+            <details class="doc-faq">
+              <summary>激光状态屏显示「（空）」或「离线」？</summary>
+              <p>「（空）」= 那一格还没接设备，「离线」= 设备被拆了或区块没加载。
+                这块屏要用<strong>激光链接器</strong>（<code>jiezhimod:laser_connector</code>）接，DFC 遥控器在这里无效。</p>
+            </details>
+
+            <details class="doc-faq">
+              <summary>灯圈不亮 / 红石没反应？</summary>
+              <p>灯圈要<strong>六面相邻</strong>才会连成一组，靠红石激活任意一格才整组亮；
+                控制台必须先绑定组——用灯圈链接器蹲下右键灯圈记录，再蹲下右键控制台绑定（不蹲下的右键是开方块界面）。
+                另外灯圈是整格方块，别把它嵌在会被活塞推动的位置。</p>
             </details>
 
             <details class="doc-faq">
@@ -488,7 +600,7 @@
               发布包在 <a href="downloads.html">下载中心</a>。
             </p>
             <p class="doc-hint">
-              本页内容依据模组源码与仓库文档整理，对应 v3.9。后续版本若新增指令或改动数值，以游戏内实际行为为准。
+              本页内容依据模组源码与仓库文档整理，对应 v4.4。后续版本若新增指令或改动数值，以游戏内实际行为为准。
             </p>
           </section>
 

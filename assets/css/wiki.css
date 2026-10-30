@@ -579,3 +579,18 @@ kbd {
     font-size: 11.5px;
   }
 }
+
+/* 卡片标题里的小版本标（例如「灯圈系统 v4.4」） */
+.doc-tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  color: #8fd8ff;
+  background: rgba(56, 189, 248, 0.14);
+  border: 1px solid rgba(56, 189, 248, 0.38);
+  vertical-align: 1px;
+}
