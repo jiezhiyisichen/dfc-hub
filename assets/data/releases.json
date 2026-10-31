@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T05:27:34.837Z",
+  "generatedAt": "2026-10-31T12:15:02.885Z",
   "source": {
     "tool": "jiezhiyisichen/DFC-Map-Creation-Tool",
     "api": "https://api.github.com",
@@ -850,7 +850,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.4.jar",
           "kind": "tool",
           "size": 248237,
-          "downloads": 4,
+          "downloads": 5,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.4/jiezhi-1.12.2-dfcmaptools-3.4.jar",
           "updatedAt": "2026-10-16T15:07:53Z"
         }

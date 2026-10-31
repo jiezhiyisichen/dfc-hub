@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T05:27:37.451Z",
+  "generatedAt": "2026-10-31T12:15:08.616Z",
   "count": 1,
   "mods": [
     {
@@ -13,6 +13,40 @@
       "note": "二创作品 · 原作为树上的节枝 JiezhiMod",
       "releases": [
         {
+          "id": "rbmk-monitor#5.2",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "5.2",
+          "version": "5.2",
+          "channel": "release",
+          "name": "RBMK-Monitor-5.2",
+          "publishedAt": "2026-10-31T15:39:03+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/5.2",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-5.2.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": 0,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/5.2/RBMK-Monitor-5.2.jar",
+              "mirror": null
+            },
+            {
+              "name": "ForgeGradle-example-master.rar",
+              "kind": "pack",
+              "size": 0,
+              "downloads": 0,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/5.2/ForgeGradle-example-master.rar",
+              "mirror": null
+            }
+          ],
+          "notesText": "RBMK-Monitor-5.2",
+          "notesHtml": "<p>RBMK-Monitor-5.2</p>"
+        },
+        {
           "id": "rbmk-monitor#5.1",
           "modId": "rbmk-monitor",
           "platform": "gitee",
@@ -20,23 +54,31 @@
           "tag": "5.1",
           "version": "5.1",
           "channel": "release",
-          "name": "5.1小更新",
+          "name": "5.1-重要更新（把modID，包名更改）",
           "publishedAt": "2026-10-29T06:40:09+08:00",
           "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/5.1",
           "prerelease": false,
           "draft": false,
           "assets": [
             {
-              "name": "jiezhi-rbmk-monitor-1.12.2-5.1-rbmk.jar",
+              "name": "RBMK-Monitor-5.1.jar",
               "kind": "mod",
               "size": 0,
               "downloads": 0,
-              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/5.1/jiezhi-rbmk-monitor-1.12.2-5.1-rbmk.jar",
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/5.1/RBMK-Monitor-5.1.jar",
+              "mirror": null
+            },
+            {
+              "name": "RBMK-Monitor-5.1-修改后源码.zip",
+              "kind": "pack",
+              "size": 0,
+              "downloads": 0,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/5.1/RBMK-Monitor-5.1-%E4%BF%AE%E6%94%B9%E5%90%8E%E6%BA%90%E7%A0%81.zip",
               "mirror": null
             }
           ],
-          "notesText": "把modID更改，jeizhi应该可以共存，有bug请在lssues",
-          "notesHtml": "<p>把modID更改，jeizhi应该可以共存，有bug请在lssues</p>"
+          "notesText": "把modID，包名更改，jeizhi应该可以共存，有bug请在lssues",
+          "notesHtml": "<p>把modID，包名更改，jeizhi应该可以共存，有bug请在lssues</p>"
         },
         {
           "id": "rbmk-monitor#5.0.0",
@@ -196,30 +238,38 @@
         }
       ],
       "latest": {
-        "id": "rbmk-monitor#5.1",
+        "id": "rbmk-monitor#5.2",
         "modId": "rbmk-monitor",
         "platform": "gitee",
         "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
-        "tag": "5.1",
-        "version": "5.1",
+        "tag": "5.2",
+        "version": "5.2",
         "channel": "release",
-        "name": "5.1小更新",
-        "publishedAt": "2026-10-29T06:40:09+08:00",
-        "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/5.1",
+        "name": "RBMK-Monitor-5.2",
+        "publishedAt": "2026-10-31T15:39:03+08:00",
+        "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/5.2",
         "prerelease": false,
         "draft": false,
         "assets": [
           {
-            "name": "jiezhi-rbmk-monitor-1.12.2-5.1-rbmk.jar",
+            "name": "RBMK-Monitor-5.2.jar",
             "kind": "mod",
             "size": 0,
             "downloads": 0,
-            "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/5.1/jiezhi-rbmk-monitor-1.12.2-5.1-rbmk.jar",
+            "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/5.2/RBMK-Monitor-5.2.jar",
+            "mirror": null
+          },
+          {
+            "name": "ForgeGradle-example-master.rar",
+            "kind": "pack",
+            "size": 0,
+            "downloads": 0,
+            "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/5.2/ForgeGradle-example-master.rar",
             "mirror": null
           }
         ],
-        "notesText": "把modID更改，jeizhi应该可以共存，有bug请在lssues",
-        "notesHtml": "<p>把modID更改，jeizhi应该可以共存，有bug请在lssues</p>"
+        "notesText": "RBMK-Monitor-5.2",
+        "notesHtml": "<p>RBMK-Monitor-5.2</p>"
       },
       "error": null
     }
