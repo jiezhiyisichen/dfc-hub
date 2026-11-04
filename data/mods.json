@@ -9,6 +9,20 @@
       "author": "baldih",
       "desc": "在节枝特效工具基础上加入 RBMK 反应堆监控的二创版本。",
       "note": "二创作品 · 原作为树上的节枝 JiezhiMod",
+      "coexist": false,
+      "ignore": ["ForgeGradle-example"],
+      "enabled": true
+    },
+    {
+      "id": "hbmzz",
+      "name": "HBMZZ",
+      "platform": "github",
+      "repo": "ysb-discowave/HBMZZ-MOD",
+      "author": "ysb-discowave",
+      "desc": "DFC 监控屏 + 机器控制面板 + 制式枪械 + Roblox 线圈／喷气背包，面向 HBM 核科技社区版的附属。",
+      "note": "二创作品 · 显示屏渲染取自树上的节枝 JiezhiMod（已获授权）",
+      "coexist": true,
+      "requires": "HBM 的核科技社区版（NTM:CE）或它的 Leafia 诅咒版附属",
       "enabled": true
     }
   ]

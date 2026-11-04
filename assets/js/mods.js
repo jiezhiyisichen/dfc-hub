@@ -273,6 +273,32 @@
 
     var repoLink = boardEl.querySelector("[data-mod-repo]");
     if (repoLink) repoLink.setAttribute("href", mod.repoUrl || "#");
+
+    renderNotice(mod);
+  }
+
+  /* 顶上那条提示：改过本体的二创与本体互斥，独立附属则要一起装。
+     由 data/mods.json 的 coexist / requires 决定，切换选项卡时同步换掉。 */
+  function renderNotice(mod) {
+    var coexist = !!(mod && mod.coexist);
+
+    var noticeEl = document.getElementById("modNotice");
+    if (noticeEl) {
+      noticeEl.classList.toggle("callout--ok", coexist);
+      var conflictP = noticeEl.querySelector("[data-notice-conflict]");
+      var coexistP = noticeEl.querySelector("[data-notice-coexist]");
+      if (conflictP) conflictP.hidden = coexist;
+      if (coexistP) coexistP.hidden = !coexist;
+      var reqEl = noticeEl.querySelector("[data-mod-requires]");
+      if (reqEl) reqEl.textContent = (mod && mod.requires) || "无额外前置";
+    }
+
+    var step3 = document.querySelector("[data-mod-step3]");
+    if (step3) {
+      step3.innerHTML = coexist
+        ? "<b>保留本体的节枝特效工具 jar</b>，两者一起装。"
+        : "<b>移走本体的节枝特效工具 jar</b>，两个不要同时装。";
+    }
   }
 
   function bindNotes() {

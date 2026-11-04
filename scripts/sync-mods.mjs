@@ -59,13 +59,19 @@ function detectChannel(tag, prerelease) {
   return "release";
 }
 
-/** 附件归类；Gitee 自动生成的源码包要单独排除 */
+/** 附件归类；Gitee 自动生成的源码包要单独排除
+ *  另外 -sources / -javadoc / -dev 这类 jar 不是能直接丢进 mods/ 的产物，也不收。 */
 function detectKind(name, url) {
   const n = String(name || "").toLowerCase();
   const u = String(url || "").toLowerCase();
   if (u.includes("/archive/refs/") || u.includes("/repository/archive/")) return "other";
+  if (/-sources\.jar$|-javadoc\.jar$|-dev\.jar$|-sources-\w+\.jar$/.test(n)) return "other";
   if (n.endsWith(".jar")) return "mod";
-  if (/\.(zip|7z|rar)$/.test(n)) return "pack";
+  /* 源码包不是给玩家下的整合包：xxx-src.zip / xxx-src_3b726a77.zip / 修改后源码.zip */
+  if (/\.(zip|7z|rar)$/.test(n)) {
+    if (/(^|[-_.])(src|source|sources)([-_.]|$)/.test(n) || n.includes("源码")) return "other";
+    return "pack";
+  }
   return "other";
 }
 
@@ -166,7 +172,7 @@ async function fetchGitee(repo) {
 
 /* -------------------------------------------------------------- normalize */
 
-function normalizeRelease(raw, mod) {
+function normalizeRelease(raw, mod, ignoreRes) {
   const tag = raw.tag_name || raw.name || "unknown";
   const platform = mod.platform;
   const htmlUrl =
@@ -187,7 +193,7 @@ function normalizeRelease(raw, mod) {
         mirror: null,
       };
     })
-    .filter((a) => a.kind !== "other" && a.url);
+    .filter((a) => a.kind !== "other" && a.url && !ignoreRes.some((re) => re.test(a.name)));
 
   const body = raw.body || "";
 
@@ -241,17 +247,24 @@ async function main() {
       author: mod.author || mod.repo.split("/")[0],
       desc: mod.desc || "",
       note: mod.note || "",
+      /* coexist 决定页面上那条提示：false = 与本体互斥（改过本体的二创），
+         true = 独立附属，可以一起装，此时 requires 写它的前置。 */
+      coexist: mod.coexist === true,
+      requires: mod.requires || "",
       releases: [],
       latest: null,
       error: null,
     };
+
+    /* data/mods.json 里可选的 ignore：正则字符串数组，命中的附件直接丢掉 */
+    const ignoreRes = (Array.isArray(mod.ignore) ? mod.ignore : []).map((src) => new RegExp(src, "i"));
 
     try {
       const raw = entry.platform === "gitee" ? await fetchGitee(mod.repo) : await fetchGithub(mod.repo);
       if (!Array.isArray(raw)) throw new Error("返回格式不是数组");
 
       entry.releases = raw
-        .map((r) => normalizeRelease(r, entry))
+        .map((r) => normalizeRelease(r, entry, ignoreRes))
         .filter((r) => r.assets.length > 0 || r.notesHtml);
       entry.releases.sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
       entry.latest = pickLatest(entry.releases);

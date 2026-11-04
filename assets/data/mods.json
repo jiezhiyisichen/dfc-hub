@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-11-04T09:02:19.962Z",
-  "count": 1,
+  "generatedAt": "2026-11-04T14:58:22.363Z",
+  "count": 2,
   "mods": [
     {
       "id": "rbmk-monitor",
@@ -11,6 +11,8 @@
       "author": "baldih",
       "desc": "在节枝特效工具基础上加入 RBMK 反应堆监控的二创版本。",
       "note": "二创作品 · 原作为树上的节枝 JiezhiMod",
+      "coexist": false,
+      "requires": "",
       "releases": [
         {
           "id": "rbmk-monitor#9.0",
@@ -32,14 +34,6 @@
               "size": 0,
               "downloads": 0,
               "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/9.0/RBMK-Monitor-9.0.jar",
-              "mirror": null
-            },
-            {
-              "name": "RBMK-Monitor-7.2-src_3b726a77.zip",
-              "kind": "pack",
-              "size": 0,
-              "downloads": 0,
-              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/9.0/RBMK-Monitor-7.2-src_3b726a77.zip",
               "mirror": null
             }
           ],
@@ -67,14 +61,6 @@
               "downloads": 0,
               "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/8.0/RBMK-Monitor-8.0.jar",
               "mirror": null
-            },
-            {
-              "name": "RBMK-Monitor-7.1-src_9b4df2b9.zip",
-              "kind": "pack",
-              "size": 0,
-              "downloads": 0,
-              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/8.0/RBMK-Monitor-7.1-src_9b4df2b9.zip",
-              "mirror": null
             }
           ],
           "notesText": "RBMK-Monitor-8.0\n最终打包出的 8.0 版本代码，这个模组目前包含了以下物品（Item）：\n1. 🕹️ RBMK 遥控器 (RBMK Remote)\n功能：\n普通右键 RBMK 控制台或反应堆柱，可以记录数据源。\n右键你的显示屏，可以将屏幕绑定到该反应堆。\n潜行+右键 储罐、电池等设备，可以记录这些设备（最多记录 8 个）。\n潜行+右键自定义屏幕，可以把记录的设备导入屏幕显示。\n2. 🧥 喷气背包 (Jetpack) & 喷气开关 (Jet Switch)\n功能：穿在胸甲栏，手持开关右键长按即可喷射飞行。\n注意：有温度过热机制（飞行时右上角/准星下方会显示热量条），过热后会强制熄火冷却。\n3. 🔴 速度线圈 (Speed Coil)\n功能：拿在主手或副手时，移动速度提升至 5 倍。\n4. 🔵 重力线圈 (Gravity Coil)\n功能：拿在主手或副手时，跳跃高度大幅提升。\n5. 🟢 治愈线圈 (Healing Coil)\n功能：拿在主手或副手时，每秒恢复 4 点（2颗心） 生命值。\n🧱 另外，方块（以物品形式存在）也有更新：\nRBMK 显示屏 (RBMK Screen)：基础的多方块屏幕。\nRBMK 堆芯监视器 (RBMK Monitor)：可以查看反应堆的 15x15 网格细节。\nRBMK 自定义屏 (Custom Screen)：可以绑定储罐、电池等设备，显示它们的液位和电量。\nRBMK 曲线屏 (Graph Screen)：新增的屏幕，可以显示温度、通量、水量等历史曲线。\nRBMK 显示屏配件 (Screen Part)：多方块结构的一部分（通常由放置主机时自动生成，不需要手动拿）。\n你进游戏测试的时候，可以直接在创造模式的物品栏里找到名为 “jiezhirbmkmod” 的专属标签页，所有东西都在里面！\n警报器呢\n警报器没有被做成一个“独立的方块”放在物品栏里。\n千问在 8.0 版本里实现的“警报”，是直接嵌在“RBMK显示屏”系统里的。也就是说，屏幕本身就是警报器。\n🔔 怎么触发警报（屏幕报警）？\n不需要额外合成警报器，你只需要：\n放置一个RBMK显示屏，并用RBMK遥控器绑定到你家的核反应堆。\n蹲下 + 空手右键 这块屏幕，会弹出一个“告警设置界面”。\n在这个界面里，你可以设置 “预警温度” 和 “严重温度”（比如设为 800℃）。\n当反应堆的温度超过你设定的数值时：\n屏幕画面会变红闪烁，并在顶部显示告警原因。\n屏幕方块上会飘出红烟。\n如果开启了汽笛，会直接播放 HBM 的警报音效。\n(你看代码里的 ModSounds.java，它注册了 alertwarn 和 alertcrit 两个声音，专门给屏幕超温时播放用的。)\n💡 如果你想要一个“独立的方块警报器”\n那千问确实没有做。如果你想要类似原版 HBM 里的“",
@@ -100,14 +86,6 @@
               "size": 0,
               "downloads": 0,
               "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/7.0/RBMK-Monitor-7.0.jar",
-              "mirror": null
-            },
-            {
-              "name": "RBMK-Monitor-7.0-src.zip",
-              "kind": "pack",
-              "size": 0,
-              "downloads": 0,
-              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/7.0/RBMK-Monitor-7.0-src.zip",
               "mirror": null
             }
           ],
@@ -135,14 +113,6 @@
               "downloads": 0,
               "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/6.1/RBMK-Monitor-6.1.jar",
               "mirror": null
-            },
-            {
-              "name": "ForgeGradle-example-master.rar",
-              "kind": "pack",
-              "size": 0,
-              "downloads": 0,
-              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/6.1/ForgeGradle-example-master.rar",
-              "mirror": null
             }
           ],
           "notesText": "添加曲线显示屏，添加字体文件",
@@ -169,14 +139,6 @@
               "downloads": 0,
               "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/5.2/RBMK-Monitor-5.2.jar",
               "mirror": null
-            },
-            {
-              "name": "ForgeGradle-example-master.rar",
-              "kind": "pack",
-              "size": 0,
-              "downloads": 0,
-              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/5.2/ForgeGradle-example-master.rar",
-              "mirror": null
             }
           ],
           "notesText": "RBMK-Monitor-5.2",
@@ -202,14 +164,6 @@
               "size": 0,
               "downloads": 0,
               "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/5.1/RBMK-Monitor-5.1.jar",
-              "mirror": null
-            },
-            {
-              "name": "RBMK-Monitor-5.1-修改后源码.zip",
-              "kind": "pack",
-              "size": 0,
-              "downloads": 0,
-              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/5.1/RBMK-Monitor-5.1-%E4%BF%AE%E6%94%B9%E5%90%8E%E6%BA%90%E7%A0%81.zip",
               "mirror": null
             }
           ],
@@ -394,18 +348,129 @@
             "downloads": 0,
             "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/9.0/RBMK-Monitor-9.0.jar",
             "mirror": null
-          },
-          {
-            "name": "RBMK-Monitor-7.2-src_3b726a77.zip",
-            "kind": "pack",
-            "size": 0,
-            "downloads": 0,
-            "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/9.0/RBMK-Monitor-7.2-src_3b726a77.zip",
-            "mirror": null
           }
         ],
         "notesText": "方块类 (Blocks)\n在创造模式物品栏的 jiezhirbmkmod 标签页里可以找到\nRBMK 显示屏 (RBMK Screen)：基础的多方块屏幕（挂在天花板上，4x3 结构），用来显示反应堆的总体运行数据。\nRBMK 堆芯监视器 (RBMK Monitor)：进阶屏幕，可以显示反应堆 15x15 的网格细节，直观看到每一根柱子的状态。\nRBMK 自定义屏 (Custom Screen)：可以绑定储罐、电池等设备，用来显示液位、电量等自定义数据。\nRBMK 曲线屏 (Graph Screen)：专门用来显示温度、中子通量、水量等数据的历史折线图（支持自动轮换显示）。\n独立警报器 (RBMK Siren) 🚨（最新加入）：\n不需要多方块结构，单格方块即可放置。\n通上红石信号就会响（自带 HBM 的防空警报音效）。\n支持 16 种颜色染色。\n右键点击可以打开设置界面，自定义：警报颜色、声音类型（预警/严重）、音量大小。\n🛠️ 物品类 (Items)\nRBMK 遥控器 (RBMK Remote)：\n右键 RBMK 控制台或反应堆柱：记录数据源。\n右键 你的屏幕：将屏幕绑定到该反应堆。\n潜行+右键 储罐/电池：记录设备（最多 8 个）。\n潜行+右键 自定义屏：将记录的数据导入屏幕。\n喷气背包 (Jetpack) & 喷气开关 (Jet Switch)：\n穿在胸甲栏，手持开关右键长按即可喷射飞行。\n注意：有温度过热机制，飞太久会强制熄火冷却（屏幕下方会有热量条）。\n速度线圈 (Speed Coil)：拿在手上，移动速度提升至 5 倍。\n重力线圈 (Gravity Coil)：拿在手上，跳跃高度大幅提升。\n治愈线圈 (Healing Coil)：拿在手上，每秒恢复 4 点（2颗心）生命值。\n⚙️ 隐藏的核心机制（玩家可能不知道）\n超温红石联动：对着屏幕 蹲下+空手右键，可以打开告警设置。你可以设定“超过 800℃ 输出红石信号”。把这个红石信号接出来，连到你的独立警报器上，就能实现自动化超温防空警报。\n去抖（Debounce）机制：红石信号在温度上下浮动时不会疯狂闪烁，而是连续 4 拍（约0.8秒）确认超温后才会拉响，防止服务器卡顿和红石狂闪。",
         "notesHtml": "<p>方块类 (Blocks)</p><p>在创造模式物品栏的 jiezhirbmkmod 标签页里可以找到</p><p>RBMK 显示屏 (RBMK Screen)：基础的多方块屏幕（挂在天花板上，4x3 结构），用来显示反应堆的总体运行数据。</p><p>RBMK 堆芯监视器 (RBMK Monitor)：进阶屏幕，可以显示反应堆 15x15 的网格细节，直观看到每一根柱子的状态。</p><p>RBMK 自定义屏 (Custom Screen)：可以绑定储罐、电池等设备，用来显示液位、电量等自定义数据。</p><p>RBMK 曲线屏 (Graph Screen)：专门用来显示温度、中子通量、水量等数据的历史折线图（支持自动轮换显示）。</p><p>独立警报器 (RBMK Siren) 🚨（最新加入）：</p><p>不需要多方块结构，单格方块即可放置。</p><p>通上红石信号就会响（自带 HBM 的防空警报音效）。</p><p>支持 16 种颜色染色。</p><p>右键点击可以打开设置界面，自定义：警报颜色、声音类型（预警/严重）、音量大小。</p><p>🛠️ 物品类 (Items)</p><p>RBMK 遥控器 (RBMK Remote)：</p><p>右键 RBMK 控制台或反应堆柱：记录数据源。</p><p>右键 你的屏幕：将屏幕绑定到该反应堆。</p><p>潜行+右键 储罐/电池：记录设备（最多 8 个）。</p><p>潜行+右键 自定义屏：将记录的数据导入屏幕。</p><p>喷气背包 (Jetpack) &amp; 喷气开关 (Jet Switch)：</p><p>穿在胸甲栏，手持开关右键长按即可喷射飞行。</p><p>注意：有温度过热机制，飞太久会强制熄火冷却（屏幕下方会有热量条）。</p><p>速度线圈 (Speed Coil)：拿在手上，移动速度提升至 5 倍。</p><p>重力线圈 (Gravity Coil)：拿在手上，跳跃高度大幅提升。</p><p>治愈线圈 (Healing Coil)：拿在手上，每秒恢复 4 点（2颗心）生命值。</p><p>⚙️ 隐藏的核心机制（玩家可能不知道）</p><p>超温红石联动：对着屏幕 蹲下+空手右键，可以打开告警设置。你可以设定“超过 800℃ 输出红石信号”。把这个红石信号接出来，连到你的独立警报器上，就能实现自动化超温防空警报。</p><p>去抖（Debounce）机制：红石信号在温度上下浮动时不会疯狂闪烁，而是连续 4 拍（约0.8秒）确认超温后才会拉响，防止服务器卡顿和红石狂闪。</p>"
+      },
+      "error": null
+    },
+    {
+      "id": "hbmzz",
+      "name": "HBMZZ",
+      "platform": "github",
+      "repo": "ysb-discowave/HBMZZ-MOD",
+      "repoUrl": "https://github.com/ysb-discowave/HBMZZ-MOD",
+      "author": "ysb-discowave",
+      "desc": "DFC 监控屏 + 机器控制面板 + 制式枪械 + Roblox 线圈／喷气背包，面向 HBM 核科技社区版的附属。",
+      "note": "二创作品 · 显示屏渲染取自树上的节枝 JiezhiMod（已获授权）",
+      "coexist": true,
+      "requires": "HBM 的核科技社区版（NTM:CE）或它的 Leafia 诅咒版附属",
+      "releases": [
+        {
+          "id": "hbmzz#v2.3.2",
+          "modId": "hbmzz",
+          "platform": "github",
+          "repo": "ysb-discowave/HBMZZ-MOD",
+          "tag": "v2.3.2",
+          "version": "2.3.2",
+          "channel": "release",
+          "name": "v2.3.2 连不上的线，点不开的窗",
+          "publishedAt": "2026-11-04T13:52:14Z",
+          "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/tag/v2.3.2",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "hbmzz-2.3.2.jar",
+              "kind": "mod",
+              "size": 946930,
+              "downloads": 2,
+              "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.3.2/hbmzz-2.3.2.jar",
+              "mirror": null
+            }
+          ],
+          "notesText": "两个「写了但永远走不到」的 bug\n 1. 视频广播器右键没反应\n方块在客户端调 HBMZZ.proxy.openVideoBroadcaster(...) 开窗，而 ClientProxy 从来没覆盖过这个方法 —— 于是落到 CommonProxy 的空实现：手挥了，什么都没发生，也没有任何报错。补上覆盖即可。\n 2. 监控屏连不上任何东西\n1.12.2 的 PlayerInteractionManager 只在方块 onBlockActivated 返回 false 之后才调用 Item.onItemUse。监控屏、摄像头、控制面板都无条件返回 true，所以拿数据线点屏只会打开终端，绑定代码一次都没被执行过——不是绑定写错了，是根本进不去。\n现在拿着数据线时方块让位：点屏 = 绑定；数据线里没有记录时仍然打开终端。大屏的边缘格子经 BlockDFCMonitorPart.findController 转给控制器再绑。\n 摄像头这条链此前也没接通\n- 数据线右键摄像头记录坐标（原来落到「已记录坐标，但这个方块不受控制面板控制」的通用分支）\n- 点屏绑定后自动翻到第 4 页；潜行点屏断开；上限 64 格，失败会说明原因（不在 / 太远）\n- cameraPos / cameraEnabled 写进 NBT —— 原来不存档，退出重进就断线\n- 画面改 100 ms 缓存：墙面渲染器与窗口本来就每帧取一次，一帧 160 条射线、每条约 72 次方块查询，等于在渲染线程上按 60 Hz 空转\n- 服务端 snapshot() 不再为读一个名字去射线追踪整幅画面再把像素丢掉\n 自检\ntools/regcheck/check.py 从 5 条加到 10 条，新增：\n- 每个 proxy.openX(...) 调用是否在 ClientProxy 有实现（第 1 个 bug）\n- 代码里用到的 hbmzz. 翻译 key 是否两种语言都有（顺手补上 enus 缺的两个旧 key）\n- 绑定目标方块是否把右键让给了数据线（第 2 个 bug）\nall 10 checks passed；tools/videocheck 26/26、tools/linkercheck 21 passed / 1 skipped。\n 仍需进游戏确认\n绑定后第 4 页的画面观感、摄像头 100 ms 缓存的顺滑度、多人下两人同时改同一块屏。",
+          "notesHtml": "<h4>两个「写了但永远走不到」的 bug</h4><h4>1. 视频广播器右键没反应</h4><p>方块在客户端调 <code>HBMZZ.proxy.openVideoBroadcaster(...)</code> 开窗，而 <code>ClientProxy</code> 从来没覆盖过这个方法 —— 于是落到 <code>CommonProxy</code> 的空实现：手挥了，什么都没发生，也没有任何报错。补上覆盖即可。</p><h4>2. 监控屏连不上任何东西</h4><p>1.12.2 的 <code>PlayerInteractionManager</code> 只在方块 <code>onBlockActivated</code> 返回 <strong>false</strong> 之后才调用 <code>Item.onItemUse</code>。监控屏、摄像头、控制面板都无条件返回 <code>true</code>，所以拿数据线点屏只会打开终端，绑定代码一次都没被执行过——不是绑定写错了，是根本进不去。</p><p>现在拿着数据线时方块让位：点屏 = 绑定；数据线里没有记录时仍然打开终端。大屏的边缘格子经 <code>BlockDFCMonitorPart.findController</code> 转给控制器再绑。</p><h4>摄像头这条链此前也没接通</h4><ul><li>数据线右键摄像头记录坐标（原来落到「已记录坐标，但这个方块不受控制面板控制」的通用分支）</li><li>点屏绑定后自动翻到第 4 页；潜行点屏断开；上限 64 格，失败会说明原因（不在 / 太远）</li><li><code>cameraPos</code> / <code>cameraEnabled</code> 写进 NBT —— 原来不存档，退出重进就断线</li><li>画面改 100 ms 缓存：墙面渲染器与窗口本来就每帧取一次，一帧 160 条射线、每条约 72 次方块查询，等于在渲染线程上按 60 Hz 空转</li><li>服务端 <code>snapshot()</code> 不再为读一个名字去射线追踪整幅画面再把像素丢掉</li></ul><h4>自检</h4><p><code>tools/regcheck/check.py</code> 从 5 条加到 10 条，新增：</p><ul><li>每个 <code>proxy.openX(...)</code> 调用是否在 <code>ClientProxy</code> 有实现（第 1 个 bug）</li><li>代码里用到的 <code>hbmzz.*</code> 翻译 key 是否两种语言都有（顺手补上 <code>en_us</code> 缺的两个旧 key）</li><li>绑定目标方块是否把右键让给了数据线（第 2 个 bug）</li></ul><p><code>all 10 checks passed</code>；<code>tools/videocheck</code> 26/26、<code>tools/linkercheck</code> 21 passed / 1 skipped。</p><h4>仍需进游戏确认</h4><p>绑定后第 4 页的画面观感、摄像头 100 ms 缓存的顺滑度、多人下两人同时改同一块屏。</p>"
+        },
+        {
+          "id": "hbmzz#v2.3.1",
+          "modId": "hbmzz",
+          "platform": "github",
+          "repo": "ysb-discowave/HBMZZ-MOD",
+          "tag": "v2.3.1",
+          "version": "2.3.1",
+          "channel": "release",
+          "name": "HBMZZ 2.3.1 — 两个注册漏项",
+          "publishedAt": "2026-11-04T13:03:25Z",
+          "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/tag/v2.3.1",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "hbmzz-2.3.1.jar",
+              "kind": "mod",
+              "size": 944988,
+              "downloads": 2,
+              "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.3.1/hbmzz-2.3.1.jar",
+              "mirror": null
+            }
+          ],
+          "notesText": "修两个编译完全通不过检查、只有进游戏才会发现的注册漏项。\n 视频广播器：有方块，没物品\nITEMBLOCKVIDEOBROADCASTER 在 ModContent 里声明了，却从来没交给物品注册表——所以创造栏里找不到它，也放不下来。现在它和别的方块一样走 ItemBlock 注册，并沿用方块的注册名。\n 监控摄像头：放下就崩\nTileEntityMonitorCamera 从来没有 GameRegistry.registerTileEntity。它的名称、频道、朝向是靠 SPacketUpdateTileEntity 同步的，所以放置的那一刻：\n1. onBlockPlacedBy 调 setName(...)\n2. setName 里 markDirty() + sync() → notifyBlockUpdate\n3. 客户端/服务端同步走 getUpdatePacket() → writeToNBT()\n4. TileEntity.writeInternal 查不到映射，直接抛\n   TileEntityMonitorCamera is missing a mapping! This is a bug!\n不是存档时才炸，是放下的那一瞬间。现在补上了映射（hbmzz:monitorcamera）。\n 顺带：新增 tools/regcheck/check.py\n这类 bug 编译器看不见，但完全可以在仓库内静态查出来。新脚本比对四组集合：\n- 声明的 Block ↔ 真正进 registerBlocks 的\n- 声明的 Item ↔ 真正进 registerItems 的\n- 每个可放置方块 ↔ 有没有对应的 ItemBlock（BLOCKMONITORPART 在允许清单里）\n- 每个 extends TileEntity 的类 ↔ 有没有注册名\n \n不启动 JVM，几百毫秒。我把它回退到 2.3.0 的状态验过：会准确报出上面这两个漏项。\n 安装\n需要 Minecraft 1.12.2 + Forge 14.23.5.2847，以及 NTM: 诅咒版（NTM-CE）；附属控件与节点还需要 CE Addon。把 hbmzz-2.3.1.jar 放进 mods/ 即可，2.3.0 → 2.3.1 直接替换，无存档迁移。\n 校验\ngradlew build 通过（BUILD SUCCESSFUL）；tools/regcheck/check.py 5/5 PASS；站点数据与页面一致性校验通过。产物里的 ModContent.registerItems 与 HBMZZ.preInit 已用 javap 逐条核对，确认修复真的在 jar 里。\n 许可\nGPL-3.0-only，来源与再分发义务见仓库 NOTICE.md。",
+          "notesHtml": "<p>修两个<strong>编译完全通不过检查、只有进游戏才会发现</strong>的注册漏项。</p><h4>视频广播器：有方块，没物品</h4><p><code>ITEM_BLOCK_VIDEO_BROADCASTER</code> 在 <code>ModContent</code> 里声明了，却从来没交给物品注册表——所以创造栏里找不到它，也放不下来。现在它和别的方块一样走 <code>ItemBlock</code> 注册，并沿用方块的注册名。</p><h4>监控摄像头：放下就崩</h4><p><code>TileEntityMonitorCamera</code> 从来没有 <code>GameRegistry.registerTileEntity</code>。它的名称、频道、朝向是靠 <code>SPacketUpdateTileEntity</code> 同步的，所以放置的那一刻：</p><p>1. <code>onBlockPlacedBy</code> 调 <code>setName(...)</code></p><p>2. <code>setName</code> 里 <code>markDirty()</code> + <code>sync()</code> → <code>notifyBlockUpdate</code></p><p>3. 客户端/服务端同步走 <code>getUpdatePacket()</code> → <code>writeToNBT()</code></p><p>4. <code>TileEntity.writeInternal</code> 查不到映射，直接抛</p><p><code>TileEntityMonitorCamera is missing a mapping! This is a bug!</code></p><p>不是存档时才炸，是<strong>放下的那一瞬间</strong>。现在补上了映射（<code>hbmzz:monitor_camera</code>）。</p><h4>顺带：新增 <code>tools/regcheck/check.py</code></h4><p>这类 bug 编译器看不见，但完全可以在仓库内静态查出来。新脚本比对四组集合：</p><ul><li>声明的 <code>Block</code> ↔ 真正进 <code>registerBlocks</code> 的</li><li>声明的 <code>Item</code> ↔ 真正进 <code>registerItems</code> 的</li><li>每个可放置方块 ↔ 有没有对应的 <code>ItemBlock</code>（<code>BLOCK_MONITOR_PART</code> 在允许清单里）</li><li>每个 <code>extends TileEntity</code> 的类 ↔ 有没有注册名</li></ul><p>```bash</p><p>python tools/regcheck/check.py     # all 5 checks passed</p><p>```</p><p>不启动 JVM，几百毫秒。我把它回退到 2.3.0 的状态验过：会准确报出上面这两个漏项。</p><h4>安装</h4><p>需要 <strong>Minecraft 1.12.2 + Forge 14.23.5.2847</strong>，以及 <strong>NTM: 诅咒版（NTM-CE）</strong>；附属控件与节点还需要 <strong>CE Addon</strong>。把 <code>hbmzz-2.3.1.jar</code> 放进 <code>mods/</code> 即可，2.3.0 → 2.3.1 直接替换，无存档迁移。</p><h4>校验</h4><p><code>gradlew build</code> 通过（<code>BUILD SUCCESSFUL</code>）；<code>tools/regcheck/check.py</code> 5/5 PASS；站点数据与页面一致性校验通过。产物里的 <code>ModContent.registerItems</code> 与 <code>HBMZZ.preInit</code> 已用 <code>javap</code> 逐条核对，确认修复真的在 jar 里。</p><h4>许可</h4><p><strong>GPL-3.0-only</strong>，来源与再分发义务见仓库 <code>NOTICE.md</code>。</p>"
+        },
+        {
+          "id": "hbmzz#v2.3.0",
+          "modId": "hbmzz",
+          "platform": "github",
+          "repo": "ysb-discowave/HBMZZ-MOD",
+          "tag": "v2.3.0",
+          "version": "2.3.0",
+          "channel": "release",
+          "name": "HBMZZ 2.3.0 — 视频广播器",
+          "publishedAt": "2026-11-04T11:55:33Z",
+          "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/tag/v2.3.0",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "hbmzz-2.3.0.jar",
+              "kind": "mod",
+              "size": 944936,
+              "downloads": 2,
+              "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.3.0/hbmzz-2.3.0.jar",
+              "mirror": null
+            }
+          ],
+          "notesText": "红石一通电，选中玩家的屏幕整个换成一段视频，播完自己恢复。\n 方块与触发\n- 新方块 视频广播器：只认红石上升沿，拉杆按着不放 = 只广播一次。\n- 按 tick 轮询 world.isBlockPowered，不用邻居通知——区块重载后落在通电红石线旁的方块收不到\"变化\"通知，而这里漏一次的后果是屏幕永不接管。\n- 进存档 / 区块重载后的第一个 tick 只记录电平不触发；高频时钟被 video.cooldownTicks 冷却挡掉并在状态行说明。\n- 正面小灯跟着红石亮（POWERED 状态位），纯装饰。\n 目标玩家\n用原版 EntitySelector 解析，方块扮成命令等级 2 的 ICommandSender，半径与坐标以方块为原点：\n- 支持 @a / @p / @r / @e[type=player,...] 等完整语法与方括号参数\n- 裸名字按玩家名精确匹配\n- @s 明确失败，不会偷偷降级成 @p——旁边正好站着别人时就播到别人屏幕上了\n 视频格式\nconfig/hbmzz/videos/ 下的帧序列包：alarm.zip 或 alarm/ 目录，内含 meta.json + f000001.jpg… + 可选 audio.wav。meta.json 可以省（缺省 12 fps）。\n刻意不用 mp4：1.12.2 只有 JRE，没有 H.264 解码器，捆绑原生解码库等于每个平台一份二进制。帧序列 + javax.imageio 到处能解。\ntools/video/pack.py 素材.mp4 alarm 直接打包。\n- 名字是白名单不是路径（[A-Za-z0-9][A-Za-z0-9.-]{0,63}），服务端与客户端各校验一次，否则恶意服务端能让客户端去读 ../../options.txt\n- 文件在客户端，不在服务端（30 秒 480p 几十 MB，网络传不动）\n- 解码在后台线程，只保留固定帧数窗口；播放按时钟走，跟不上就丢帧而不是拖慢声音\n- 客户端缺文件时报出缺的文件名与查找路径，不是一块沉默的黑屏\n- ESC 默认被吞（video.allowEsc 可放开）\n 工具\n- tools/video/pack.py：mp4 或现成图片 → 帧序列包\n- tools/videocheck/run.sh：26 项离线断言，不需要 Minecraft\n 安装\n1. 需要 Minecraft 1.12.2 + Forge 14.23.5.2847，以及 NTM: 诅咒版（NTM-CE）；附属控件与节点还需要 CE Addon。\n2. 把 hbmzz-2.3.0.jar 放进 mods/。\n3. 视频包放 config/hbmzz/videos/（客户端侧）。\n4. 放方块 → 右键填视频名与目标 → 「测试广播」验证链路。\n 许可\nGP",
+          "notesHtml": "<p>红石一通电，选中玩家的屏幕整个换成一段视频，播完自己恢复。</p><h4>方块与触发</h4><ul><li>新方块 <strong>视频广播器</strong>：只认红石<strong>上升沿</strong>，拉杆按着不放 = 只广播一次。</li><li>按 tick 轮询 <code>world.isBlockPowered</code>，不用邻居通知——区块重载后落在通电红石线旁的方块收不到&quot;变化&quot;通知，而这里漏一次的后果是屏幕永不接管。</li><li>进存档 / 区块重载后的第一个 tick 只记录电平不触发；高频时钟被 <code>video.cooldownTicks</code> 冷却挡掉并在状态行说明。</li><li>正面小灯跟着红石亮（<code>POWERED</code> 状态位），纯装饰。</li></ul><h4>目标玩家</h4><p>用原版 <code>EntitySelector</code> 解析，方块扮成命令等级 2 的 <code>ICommandSender</code>，半径与坐标以方块为原点：</p><ul><li>支持 <code>@a</code> / <code>@p</code> / <code>@r</code> / <code>@e[type=player,...]</code> 等完整语法与方括号参数</li><li>裸名字按玩家名精确匹配</li><li><code>@s</code> <strong>明确失败</strong>，不会偷偷降级成 <code>@p</code>——旁边正好站着别人时就播到别人屏幕上了</li></ul><h4>视频格式</h4><p><code>config/hbmzz/videos/</code> 下的<strong>帧序列包</strong>：<code>alarm.zip</code> 或 <code>alarm/</code> 目录，内含 <code>meta.json</code> + <code>f000001.jpg…</code> + 可选 <code>audio.wav</code>。<code>meta.json</code> 可以省（缺省 12 fps）。</p><p><strong>刻意不用 mp4</strong>：1.12.2 只有 JRE，没有 H.264 解码器，捆绑原生解码库等于每个平台一份二进制。帧序列 + <code>javax.imageio</code> 到处能解。</p><p><code>tools/video/pack.py 素材.mp4 alarm</code> 直接打包。</p><ul><li>名字是<strong>白名单不是路径</strong>（<code>[A-Za-z0-9][A-Za-z0-9_.-]{0,63}</code>），服务端与客户端各校验一次，否则恶意服务端能让客户端去读 <code>../../options.txt</code></li><li>文件在<strong>客户端</strong>，不在服务端（30 秒 480p 几十 MB，网络传不动）</li><li>解码在后台线程，只保留固定帧数窗口；播放按时钟走，跟不上就丢帧而不是拖慢声音</li><li>客户端缺文件时报出缺的文件名与查找路径，不是一块沉默的黑屏</li><li>ESC 默认被吞（<code>video.allowEsc</code> 可放开）</li></ul><h4>工具</h4><ul><li><code>tools/video/pack.py</code>：mp4 或现成图片 → 帧序列包</li><li><code>tools/videocheck/run.sh</code>：26 项离线断言，不需要 Minecraft</li></ul><h4>安装</h4><p>1. 需要 <strong>Minecraft 1.12.2 + Forge 14.23.5.2847</strong>，以及 <strong>NTM: 诅咒版（NTM-CE）</strong>；附属控件与节点还需要 <strong>CE Addon</strong>。</p><p>2. 把 <code>hbmzz-2.3.0.jar</code> 放进 <code>mods/</code>。</p><p>3. 视频包放 <code>config/hbmzz/videos/</code>（客户端侧）。</p><p>4. 放方块 → 右键填视频名与目标 → 「测试广播」验证链路。</p><h4>许可</h4><p><strong>GPL-3.0-only</strong>。本项目逐文件移植自 NTM: 诅咒版与 CE Addon，因此必须继续使用 GPL-3.0，不能改成 MIT，也不能附加&quot;禁止商用&quot;之类限制。监控屏的渲染结构与画布管线取自节枝特效工具 JiezhiMod，<strong>已取得作者书面授权</strong>可按 GPL-3.0 使用与再分发（<code>AUTHORIZATION.md</code> 是这份授权的书面记录，再分发时请保留）。</p><p>来源、对上游做过的修改、再分发义务见仓库里的 <code>NOTICE.md</code>。本项目不是 NTM / NTM-CE / CE Addon 的官方作品，也未获得其作者背书。</p><h4>校验</h4><p><code>gradlew build</code> 通过；<code>tools/videocheck/run.sh</code> 26 PASS / 0 FAIL；站点数据与页面一致性校验通过。红石时序、全屏接管观感、解码能否跟上帧率、音画同步这些只能进游戏验。</p>"
+        }
+      ],
+      "latest": {
+        "id": "hbmzz#v2.3.2",
+        "modId": "hbmzz",
+        "platform": "github",
+        "repo": "ysb-discowave/HBMZZ-MOD",
+        "tag": "v2.3.2",
+        "version": "2.3.2",
+        "channel": "release",
+        "name": "v2.3.2 连不上的线，点不开的窗",
+        "publishedAt": "2026-11-04T13:52:14Z",
+        "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/tag/v2.3.2",
+        "prerelease": false,
+        "draft": false,
+        "assets": [
+          {
+            "name": "hbmzz-2.3.2.jar",
+            "kind": "mod",
+            "size": 946930,
+            "downloads": 2,
+            "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.3.2/hbmzz-2.3.2.jar",
+            "mirror": null
+          }
+        ],
+        "notesText": "两个「写了但永远走不到」的 bug\n 1. 视频广播器右键没反应\n方块在客户端调 HBMZZ.proxy.openVideoBroadcaster(...) 开窗，而 ClientProxy 从来没覆盖过这个方法 —— 于是落到 CommonProxy 的空实现：手挥了，什么都没发生，也没有任何报错。补上覆盖即可。\n 2. 监控屏连不上任何东西\n1.12.2 的 PlayerInteractionManager 只在方块 onBlockActivated 返回 false 之后才调用 Item.onItemUse。监控屏、摄像头、控制面板都无条件返回 true，所以拿数据线点屏只会打开终端，绑定代码一次都没被执行过——不是绑定写错了，是根本进不去。\n现在拿着数据线时方块让位：点屏 = 绑定；数据线里没有记录时仍然打开终端。大屏的边缘格子经 BlockDFCMonitorPart.findController 转给控制器再绑。\n 摄像头这条链此前也没接通\n- 数据线右键摄像头记录坐标（原来落到「已记录坐标，但这个方块不受控制面板控制」的通用分支）\n- 点屏绑定后自动翻到第 4 页；潜行点屏断开；上限 64 格，失败会说明原因（不在 / 太远）\n- cameraPos / cameraEnabled 写进 NBT —— 原来不存档，退出重进就断线\n- 画面改 100 ms 缓存：墙面渲染器与窗口本来就每帧取一次，一帧 160 条射线、每条约 72 次方块查询，等于在渲染线程上按 60 Hz 空转\n- 服务端 snapshot() 不再为读一个名字去射线追踪整幅画面再把像素丢掉\n 自检\ntools/regcheck/check.py 从 5 条加到 10 条，新增：\n- 每个 proxy.openX(...) 调用是否在 ClientProxy 有实现（第 1 个 bug）\n- 代码里用到的 hbmzz. 翻译 key 是否两种语言都有（顺手补上 enus 缺的两个旧 key）\n- 绑定目标方块是否把右键让给了数据线（第 2 个 bug）\nall 10 checks passed；tools/videocheck 26/26、tools/linkercheck 21 passed / 1 skipped。\n 仍需进游戏确认\n绑定后第 4 页的画面观感、摄像头 100 ms 缓存的顺滑度、多人下两人同时改同一块屏。",
+        "notesHtml": "<h4>两个「写了但永远走不到」的 bug</h4><h4>1. 视频广播器右键没反应</h4><p>方块在客户端调 <code>HBMZZ.proxy.openVideoBroadcaster(...)</code> 开窗，而 <code>ClientProxy</code> 从来没覆盖过这个方法 —— 于是落到 <code>CommonProxy</code> 的空实现：手挥了，什么都没发生，也没有任何报错。补上覆盖即可。</p><h4>2. 监控屏连不上任何东西</h4><p>1.12.2 的 <code>PlayerInteractionManager</code> 只在方块 <code>onBlockActivated</code> 返回 <strong>false</strong> 之后才调用 <code>Item.onItemUse</code>。监控屏、摄像头、控制面板都无条件返回 <code>true</code>，所以拿数据线点屏只会打开终端，绑定代码一次都没被执行过——不是绑定写错了，是根本进不去。</p><p>现在拿着数据线时方块让位：点屏 = 绑定；数据线里没有记录时仍然打开终端。大屏的边缘格子经 <code>BlockDFCMonitorPart.findController</code> 转给控制器再绑。</p><h4>摄像头这条链此前也没接通</h4><ul><li>数据线右键摄像头记录坐标（原来落到「已记录坐标，但这个方块不受控制面板控制」的通用分支）</li><li>点屏绑定后自动翻到第 4 页；潜行点屏断开；上限 64 格，失败会说明原因（不在 / 太远）</li><li><code>cameraPos</code> / <code>cameraEnabled</code> 写进 NBT —— 原来不存档，退出重进就断线</li><li>画面改 100 ms 缓存：墙面渲染器与窗口本来就每帧取一次，一帧 160 条射线、每条约 72 次方块查询，等于在渲染线程上按 60 Hz 空转</li><li>服务端 <code>snapshot()</code> 不再为读一个名字去射线追踪整幅画面再把像素丢掉</li></ul><h4>自检</h4><p><code>tools/regcheck/check.py</code> 从 5 条加到 10 条，新增：</p><ul><li>每个 <code>proxy.openX(...)</code> 调用是否在 <code>ClientProxy</code> 有实现（第 1 个 bug）</li><li>代码里用到的 <code>hbmzz.*</code> 翻译 key 是否两种语言都有（顺手补上 <code>en_us</code> 缺的两个旧 key）</li><li>绑定目标方块是否把右键让给了数据线（第 2 个 bug）</li></ul><p><code>all 10 checks passed</code>；<code>tools/videocheck</code> 26/26、<code>tools/linkercheck</code> 21 passed / 1 skipped。</p><h4>仍需进游戏确认</h4><p>绑定后第 4 页的画面观感、摄像头 100 ms 缓存的顺滑度、多人下两人同时改同一块屏。</p>"
       },
       "error": null
     }

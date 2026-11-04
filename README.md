@@ -94,9 +94,23 @@ dfc-hub/
   "author": "baldih",
   "desc": "一句话介绍",
   "note": "二创作品 · 原作为树上的节枝 JiezhiMod",
+  "coexist": false,                     // 见下方「互斥还是共存」
+  "requires": "前置模组",                // 仅 coexist: true 时展示
+  "ignore": ["ForgeGradle-example"],    // 可选：正则，命中的附件直接丢掉
   "enabled": true                       // false 可以临时下架
 }
 ```
+
+### 互斥还是共存
+
+页面上那条提示由 `coexist` 决定，切换选项卡时会跟着换：
+
+| `coexist` | 提示 | 「怎么装」第 3 步 |
+| --- | --- | --- |
+| `false`（默认） | 琥珀色：二创包与本体的 jar 互斥，装之前先移走本体 | 移走本体的节枝特效工具 jar |
+| `true` | 绿色：独立附属，和本体一起装；前置是 `requires` | 保留本体的 jar，两者一起装 |
+
+改过本体逻辑的 fork（如 RBMK 监视器）用 `false`；只是引用了代码、自己另起 modid 的独立附属（如 HBMZZ）用 `true`。
 
 ### 同步规则
 
@@ -105,12 +119,16 @@ dfc-hub/
 | 事项 | 说明 |
 | --- | --- |
 | 数据源 | Gitee `api/v5/repos/{repo}/releases`、GitHub `api/repos/{repo}/releases` |
-| 附件过滤 | 只留真实附件（`.jar` / `.zip` / `.7z` / `.rar`）；Gitee 自动生成的源码包（URL 含 `/archive/refs/`）一律丢弃 |
+| 附件过滤 | 只留真实能装的附件（`.jar` / 整合包 `.zip` `.7z` `.rar`）。丢弃：Gitee 自动生成的源码包（URL 含 `/archive/refs/`）、`-sources.jar` / `-javadoc.jar` / `-dev.jar`、以及名字里带 `src` / `源码` 的压缩包 |
+| 按模组忽略 | `data/mods.json` 里可写 `ignore: ["正则"]`，用于某个仓库特有的垃圾附件（例：RBMK 的 `ForgeGradle-example-master.rar`） |
 | 失败隔离 | 单个 mod 拉取失败只会让该选项卡显示错误原因，不影响其它 mod 和主站 |
 | 频率 | 跟着主流水线走，**每小时**一次（满足「至少每 2 小时」）；也可以在看板里点「手动刷新数据」 |
 | 凭据 | 可选 `GITEE_TOKEN` / `GITHUB_TOKEN`，提高 API 额度；匿名也能读公开仓库 |
 
-> **二创包与本体互斥**：两个 jar 同时放进 `mods/` 会因模组 ID 冲突启动失败，页面上也有这条提示。
+> **二创包与本体是否互斥，看模组的 `coexist`**：`false` 时两个 jar 同时放进 `mods/` 会因模组 ID 冲突启动失败；
+> `true` 时是独立附属，必须和本体一起装。页面上的提示与安装步骤会按当前选中的模组自动切换。
+
+当前收录：**RBMK 监视器**（Gitee · 互斥）、**HBMZZ**（GitHub · 独立附属）。
 
 ---
 

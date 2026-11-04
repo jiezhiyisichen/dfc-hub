@@ -2233,6 +2233,16 @@ ul {
   color: #ffd39a;
 }
 
+/* 独立附属（可与本体共存）时那条提示转绿，和「互斥」的琥珀色区分开 */
+.callout--ok {
+  border-color: rgba(56, 224, 180, 0.26);
+  background: rgba(56, 224, 180, 0.06);
+}
+
+.callout--ok b {
+  color: #9df5d2;
+}
+
 /* ---------- 19. Footer ---------- */
 .site-footer {
   border-top: 1px solid var(--line);
