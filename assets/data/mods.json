@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-05T14:49:39.759Z",
+  "generatedAt": "2026-11-05T15:24:26.653Z",
   "count": 2,
   "mods": [
     {
@@ -18,373 +18,9 @@
       "loader": "Forge 14.23.5.2864",
       "license": "GPL-3.0",
       "homepage": "",
-      "releases": [
-        {
-          "id": "rbmk-monitor#10.0",
-          "modId": "rbmk-monitor",
-          "platform": "gitee",
-          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
-          "tag": "10.0",
-          "version": "10.0",
-          "channel": "preview",
-          "name": "RBMK-Monitor-10.0",
-          "publishedAt": "2026-11-05T20:14:40+08:00",
-          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/10.0",
-          "prerelease": true,
-          "draft": false,
-          "assets": [
-            {
-              "name": "RBMK-Monitor-10.0.jar",
-              "kind": "mod",
-              "size": 0,
-              "downloads": 0,
-              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/10.0/RBMK-Monitor-10.0.jar",
-              "mirror": null
-            }
-          ],
-          "notesText": "请勿下载！",
-          "notesHtml": "<p>请勿下载！</p>"
-        },
-        {
-          "id": "rbmk-monitor#9.0",
-          "modId": "rbmk-monitor",
-          "platform": "gitee",
-          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
-          "tag": "9.0",
-          "version": "9.0",
-          "channel": "release",
-          "name": "RBMK-Monitor-9.0",
-          "publishedAt": "2026-11-01T17:02:12+08:00",
-          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/9.0",
-          "prerelease": false,
-          "draft": false,
-          "assets": [
-            {
-              "name": "RBMK-Monitor-9.0.jar",
-              "kind": "mod",
-              "size": 0,
-              "downloads": 0,
-              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/9.0/RBMK-Monitor-9.0.jar",
-              "mirror": null
-            }
-          ],
-          "notesText": "方块类 (Blocks)\n在创造模式物品栏的 jiezhirbmkmod 标签页里可以找到\nRBMK 显示屏 (RBMK Screen)：基础的多方块屏幕（挂在天花板上，4x3 结构），用来显示反应堆的总体运行数据。\nRBMK 堆芯监视器 (RBMK Monitor)：进阶屏幕，可以显示反应堆 15x15 的网格细节，直观看到每一根柱子的状态。\nRBMK 自定义屏 (Custom Screen)：可以绑定储罐、电池等设备，用来显示液位、电量等自定义数据。\nRBMK 曲线屏 (Graph Screen)：专门用来显示温度、中子通量、水量等数据的历史折线图（支持自动轮换显示）。\n独立警报器 (RBMK Siren) 🚨（最新加入）：\n不需要多方块结构，单格方块即可放置。\n通上红石信号就会响（自带 HBM 的防空警报音效）。\n支持 16 种颜色染色。\n右键点击可以打开设置界面，自定义：警报颜色、声音类型（预警/严重）、音量大小。\n🛠️ 物品类 (Items)\nRBMK 遥控器 (RBMK Remote)：\n右键 RBMK 控制台或反应堆柱：记录数据源。\n右键 你的屏幕：将屏幕绑定到该反应堆。\n潜行+右键 储罐/电池：记录设备（最多 8 个）。\n潜行+右键 自定义屏：将记录的数据导入屏幕。\n喷气背包 (Jetpack) & 喷气开关 (Jet Switch)：\n穿在胸甲栏，手持开关右键长按即可喷射飞行。\n注意：有温度过热机制，飞太久会强制熄火冷却（屏幕下方会有热量条）。\n速度线圈 (Speed Coil)：拿在手上，移动速度提升至 5 倍。\n重力线圈 (Gravity Coil)：拿在手上，跳跃高度大幅提升。\n治愈线圈 (Healing Coil)：拿在手上，每秒恢复 4 点（2颗心）生命值。\n⚙️ 隐藏的核心机制（玩家可能不知道）\n超温红石联动：对着屏幕 蹲下+空手右键，可以打开告警设置。你可以设定“超过 800℃ 输出红石信号”。把这个红石信号接出来，连到你的独立警报器上，就能实现自动化超温防空警报。\n去抖（Debounce）机制：红石信号在温度上下浮动时不会疯狂闪烁，而是连续 4 拍（约0.8秒）确认超温后才会拉响，防止服务器卡顿和红石狂闪。",
-          "notesHtml": "<p>方块类 (Blocks)</p><p>在创造模式物品栏的 jiezhirbmkmod 标签页里可以找到</p><p>RBMK 显示屏 (RBMK Screen)：基础的多方块屏幕（挂在天花板上，4x3 结构），用来显示反应堆的总体运行数据。</p><p>RBMK 堆芯监视器 (RBMK Monitor)：进阶屏幕，可以显示反应堆 15x15 的网格细节，直观看到每一根柱子的状态。</p><p>RBMK 自定义屏 (Custom Screen)：可以绑定储罐、电池等设备，用来显示液位、电量等自定义数据。</p><p>RBMK 曲线屏 (Graph Screen)：专门用来显示温度、中子通量、水量等数据的历史折线图（支持自动轮换显示）。</p><p>独立警报器 (RBMK Siren) 🚨（最新加入）：</p><p>不需要多方块结构，单格方块即可放置。</p><p>通上红石信号就会响（自带 HBM 的防空警报音效）。</p><p>支持 16 种颜色染色。</p><p>右键点击可以打开设置界面，自定义：警报颜色、声音类型（预警/严重）、音量大小。</p><p>🛠️ 物品类 (Items)</p><p>RBMK 遥控器 (RBMK Remote)：</p><p>右键 RBMK 控制台或反应堆柱：记录数据源。</p><p>右键 你的屏幕：将屏幕绑定到该反应堆。</p><p>潜行+右键 储罐/电池：记录设备（最多 8 个）。</p><p>潜行+右键 自定义屏：将记录的数据导入屏幕。</p><p>喷气背包 (Jetpack) &amp; 喷气开关 (Jet Switch)：</p><p>穿在胸甲栏，手持开关右键长按即可喷射飞行。</p><p>注意：有温度过热机制，飞太久会强制熄火冷却（屏幕下方会有热量条）。</p><p>速度线圈 (Speed Coil)：拿在手上，移动速度提升至 5 倍。</p><p>重力线圈 (Gravity Coil)：拿在手上，跳跃高度大幅提升。</p><p>治愈线圈 (Healing Coil)：拿在手上，每秒恢复 4 点（2颗心）生命值。</p><p>⚙️ 隐藏的核心机制（玩家可能不知道）</p><p>超温红石联动：对着屏幕 蹲下+空手右键，可以打开告警设置。你可以设定“超过 800℃ 输出红石信号”。把这个红石信号接出来，连到你的独立警报器上，就能实现自动化超温防空警报。</p><p>去抖（Debounce）机制：红石信号在温度上下浮动时不会疯狂闪烁，而是连续 4 拍（约0.8秒）确认超温后才会拉响，防止服务器卡顿和红石狂闪。</p>"
-        },
-        {
-          "id": "rbmk-monitor#8.0",
-          "modId": "rbmk-monitor",
-          "platform": "gitee",
-          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
-          "tag": "8.0",
-          "version": "8.0",
-          "channel": "release",
-          "name": "RBMK-Monitor-8.0",
-          "publishedAt": "2026-11-01T15:53:45+08:00",
-          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/8.0",
-          "prerelease": false,
-          "draft": false,
-          "assets": [
-            {
-              "name": "RBMK-Monitor-8.0.jar",
-              "kind": "mod",
-              "size": 0,
-              "downloads": 0,
-              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/8.0/RBMK-Monitor-8.0.jar",
-              "mirror": null
-            }
-          ],
-          "notesText": "RBMK-Monitor-8.0\n最终打包出的 8.0 版本代码，这个模组目前包含了以下物品（Item）：\n1. 🕹️ RBMK 遥控器 (RBMK Remote)\n功能：\n普通右键 RBMK 控制台或反应堆柱，可以记录数据源。\n右键你的显示屏，可以将屏幕绑定到该反应堆。\n潜行+右键 储罐、电池等设备，可以记录这些设备（最多记录 8 个）。\n潜行+右键自定义屏幕，可以把记录的设备导入屏幕显示。\n2. 🧥 喷气背包 (Jetpack) & 喷气开关 (Jet Switch)\n功能：穿在胸甲栏，手持开关右键长按即可喷射飞行。\n注意：有温度过热机制（飞行时右上角/准星下方会显示热量条），过热后会强制熄火冷却。\n3. 🔴 速度线圈 (Speed Coil)\n功能：拿在主手或副手时，移动速度提升至 5 倍。\n4. 🔵 重力线圈 (Gravity Coil)\n功能：拿在主手或副手时，跳跃高度大幅提升。\n5. 🟢 治愈线圈 (Healing Coil)\n功能：拿在主手或副手时，每秒恢复 4 点（2颗心） 生命值。\n🧱 另外，方块（以物品形式存在）也有更新：\nRBMK 显示屏 (RBMK Screen)：基础的多方块屏幕。\nRBMK 堆芯监视器 (RBMK Monitor)：可以查看反应堆的 15x15 网格细节。\nRBMK 自定义屏 (Custom Screen)：可以绑定储罐、电池等设备，显示它们的液位和电量。\nRBMK 曲线屏 (Graph Screen)：新增的屏幕，可以显示温度、通量、水量等历史曲线。\nRBMK 显示屏配件 (Screen Part)：多方块结构的一部分（通常由放置主机时自动生成，不需要手动拿）。\n你进游戏测试的时候，可以直接在创造模式的物品栏里找到名为 “jiezhirbmkmod” 的专属标签页，所有东西都在里面！\n警报器呢\n警报器没有被做成一个“独立的方块”放在物品栏里。\n千问在 8.0 版本里实现的“警报”，是直接嵌在“RBMK显示屏”系统里的。也就是说，屏幕本身就是警报器。\n🔔 怎么触发警报（屏幕报警）？\n不需要额外合成警报器，你只需要：\n放置一个RBMK显示屏，并用RBMK遥控器绑定到你家的核反应堆。\n蹲下 + 空手右键 这块屏幕，会弹出一个“告警设置界面”。\n在这个界面里，你可以设置 “预警温度” 和 “严重温度”（比如设为 800℃）。\n当反应堆的温度超过你设定的数值时：\n屏幕画面会变红闪烁，并在顶部显示告警原因。\n屏幕方块上会飘出红烟。\n如果开启了汽笛，会直接播放 HBM 的警报音效。\n(你看代码里的 ModSounds.java，它注册了 alertwarn 和 alertcrit 两个声音，专门给屏幕超温时播放用的。)\n💡 如果你想要一个“独立的方块警报器”\n那千问确实没有做。如果你想要类似原版 HBM 里的“",
-          "notesHtml": "<p>RBMK-Monitor-8.0</p><p>最终打包出的 8.0 版本代码，这个模组目前包含了以下物品（Item）：</p><p>1. 🕹️ RBMK 遥控器 (RBMK Remote)</p><p>功能：</p><p>普通右键 RBMK 控制台或反应堆柱，可以记录数据源。</p><p>右键你的显示屏，可以将屏幕绑定到该反应堆。</p><p>潜行+右键 储罐、电池等设备，可以记录这些设备（最多记录 8 个）。</p><p>潜行+右键自定义屏幕，可以把记录的设备导入屏幕显示。</p><p>2. 🧥 喷气背包 (Jetpack) &amp; 喷气开关 (Jet Switch)</p><p>功能：穿在胸甲栏，手持开关右键长按即可喷射飞行。</p><p>注意：有温度过热机制（飞行时右上角/准星下方会显示热量条），过热后会强制熄火冷却。</p><p>3. 🔴 速度线圈 (Speed Coil)</p><p>功能：拿在主手或副手时，移动速度提升至 5 倍。</p><p>4. 🔵 重力线圈 (Gravity Coil)</p><p>功能：拿在主手或副手时，跳跃高度大幅提升。</p><p>5. 🟢 治愈线圈 (Healing Coil)</p><p>功能：拿在主手或副手时，每秒恢复 4 点（2颗心） 生命值。</p><p>🧱 另外，方块（以物品形式存在）也有更新：</p><p>RBMK 显示屏 (RBMK Screen)：基础的多方块屏幕。</p><p>RBMK 堆芯监视器 (RBMK Monitor)：可以查看反应堆的 15x15 网格细节。</p><p>RBMK 自定义屏 (Custom Screen)：可以绑定储罐、电池等设备，显示它们的液位和电量。</p><p>RBMK 曲线屏 (Graph Screen)：新增的屏幕，可以显示温度、通量、水量等历史曲线。</p><p>RBMK 显示屏配件 (Screen Part)：多方块结构的一部分（通常由放置主机时自动生成，不需要手动拿）。</p><p>你进游戏测试的时候，可以直接在创造模式的物品栏里找到名为 “jiezhirbmkmod” 的专属标签页，所有东西都在里面！</p><p>警报器呢</p><p>警报器没有被做成一个“独立的方块”放在物品栏里。</p><p>千问在 8.0 版本里实现的“警报”，是直接嵌在“RBMK显示屏”系统里的。也就是说，屏幕本身就是警报器。</p><p>🔔 怎么触发警报（屏幕报警）？</p><p>不需要额外合成警报器，你只需要：</p><p>放置一个RBMK显示屏，并用RBMK遥控器绑定到你家的核反应堆。</p><p>蹲下 + 空手右键 这块屏幕，会弹出一个“告警设置界面”。</p><p>在这个界面里，你可以设置 “预警温度” 和 “严重温度”（比如设为 800℃）。</p><p>当反应堆的温度超过你设定的数值时：</p><p>屏幕画面会变红闪烁，并在顶部显示告警原因。</p><p>屏幕方块上会飘出红烟。</p><p>如果开启了汽笛，会直接播放 HBM 的警报音效。</p><p>(你看代码里的 ModSounds.java，它注册了 alert_warn 和 alert_crit 两个声音，专门给屏幕超温时播放用的。)</p><p>💡 如果你想要一个“独立的方块警报器”</p><p>那千问确实没有做。如果你想要类似原版 HBM 里的“汽笛（Siren）”方块，或者想要一个占地一格、超温就全图响的警报器，那是需要新建一个 Block 和 TileEntity 的。</p><p>如果你觉得“屏幕当警报器”不够硬核，想要一个真正的独立警报器，你可以去跟千问提：</p><p>“千问，能不能帮我做一个独立的警报器方块（Siren Block）？不需要屏幕。只要通上红石信号，或者绑定了反应堆超温，它就能发出 HBM 的警报声，并且不需要多方块结构。”</p><p>🎮 你刚才测试的“红石输出”配合什么用？</p><p>你在设置界面里开了“红石输出”后，当反应堆超温，屏幕方块本身（以及它周围的 12 个隐形配件）会发出红石信号（强度 15）。</p><p>你可以用这个红石信号联动其他东西：</p><p>连到 HBM 自己的原版汽笛方块上，让汽笛响。</p><p>连到活塞上，把控制棒强行降下去（自动停堆）。</p><p>连到 TNT 上……（如果你想让基地上天的话）。</p><p>先去游戏里蹲下右键屏幕，把设置界面调出来，试试超温后屏幕闪烁的效果吧！</p>"
-        },
-        {
-          "id": "rbmk-monitor#7.0",
-          "modId": "rbmk-monitor",
-          "platform": "gitee",
-          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
-          "tag": "7.0",
-          "version": "7.0",
-          "channel": "release",
-          "name": "RBMK-Monitor-7.0",
-          "publishedAt": "2026-11-01T13:39:46+08:00",
-          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/7.0",
-          "prerelease": false,
-          "draft": false,
-          "assets": [
-            {
-              "name": "RBMK-Monitor-7.0.jar",
-              "kind": "mod",
-              "size": 0,
-              "downloads": 0,
-              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/7.0/RBMK-Monitor-7.0.jar",
-              "mirror": null
-            }
-          ],
-          "notesText": "RBMK-Monitor-7.0",
-          "notesHtml": "<p>RBMK-Monitor-7.0</p>"
-        },
-        {
-          "id": "rbmk-monitor#6.1",
-          "modId": "rbmk-monitor",
-          "platform": "gitee",
-          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
-          "tag": "6.1",
-          "version": "6.1",
-          "channel": "release",
-          "name": "RBMK-Monitor-6.1",
-          "publishedAt": "2026-11-01T08:50:13+08:00",
-          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/6.1",
-          "prerelease": false,
-          "draft": false,
-          "assets": [
-            {
-              "name": "RBMK-Monitor-6.1.jar",
-              "kind": "mod",
-              "size": 0,
-              "downloads": 0,
-              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/6.1/RBMK-Monitor-6.1.jar",
-              "mirror": null
-            }
-          ],
-          "notesText": "添加曲线显示屏，添加字体文件",
-          "notesHtml": "<p>添加曲线显示屏，添加字体文件</p>"
-        },
-        {
-          "id": "rbmk-monitor#5.2",
-          "modId": "rbmk-monitor",
-          "platform": "gitee",
-          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
-          "tag": "5.2",
-          "version": "5.2",
-          "channel": "release",
-          "name": "RBMK-Monitor-5.2",
-          "publishedAt": "2026-10-31T15:39:03+08:00",
-          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/5.2",
-          "prerelease": false,
-          "draft": false,
-          "assets": [
-            {
-              "name": "RBMK-Monitor-5.2.jar",
-              "kind": "mod",
-              "size": 0,
-              "downloads": 0,
-              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/5.2/RBMK-Monitor-5.2.jar",
-              "mirror": null
-            }
-          ],
-          "notesText": "RBMK-Monitor-5.2",
-          "notesHtml": "<p>RBMK-Monitor-5.2</p>"
-        },
-        {
-          "id": "rbmk-monitor#5.1",
-          "modId": "rbmk-monitor",
-          "platform": "gitee",
-          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
-          "tag": "5.1",
-          "version": "5.1",
-          "channel": "release",
-          "name": "5.1-重要更新（把modID，包名更改）",
-          "publishedAt": "2026-10-29T06:40:09+08:00",
-          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/5.1",
-          "prerelease": false,
-          "draft": false,
-          "assets": [
-            {
-              "name": "RBMK-Monitor-5.1.jar",
-              "kind": "mod",
-              "size": 0,
-              "downloads": 0,
-              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/5.1/RBMK-Monitor-5.1.jar",
-              "mirror": null
-            }
-          ],
-          "notesText": "把modID，包名更改，jeizhi应该可以共存，有bug请在lssues",
-          "notesHtml": "<p>把modID，包名更改，jeizhi应该可以共存，有bug请在lssues</p>"
-        },
-        {
-          "id": "rbmk-monitor#5.0.0",
-          "modId": "rbmk-monitor",
-          "platform": "gitee",
-          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
-          "tag": "5.0.0",
-          "version": "5.0.0",
-          "channel": "release",
-          "name": "5.0.0正式版",
-          "publishedAt": "2026-10-28T03:39:02+08:00",
-          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/5.0.0",
-          "prerelease": false,
-          "draft": false,
-          "assets": [
-            {
-              "name": "jiezhi-rbmk-monitor-1.12.2-5.0.0-rbmk.jar",
-              "kind": "mod",
-              "size": 0,
-              "downloads": 0,
-              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/5.0.0/jiezhi-rbmk-monitor-1.12.2-5.0.0-rbmk.jar",
-              "mirror": null
-            }
-          ],
-          "notesText": "把原版模组的一些给移植到了这个模组用起来不收心",
-          "notesHtml": "<p>把原版模组的一些给移植到了这个模组用起来不收心</p>"
-        },
-        {
-          "id": "rbmk-monitor#4.1",
-          "modId": "rbmk-monitor",
-          "platform": "gitee",
-          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
-          "tag": "4.1",
-          "version": "4.1",
-          "channel": "release",
-          "name": "4.1版紧急修复",
-          "publishedAt": "2026-10-26T13:04:39+08:00",
-          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/4.1",
-          "prerelease": false,
-          "draft": false,
-          "assets": [
-            {
-              "name": "jiezhi-rbmk-monitor-1.12.2-1.0.0-rbmk.jar",
-              "kind": "mod",
-              "size": 0,
-              "downloads": 0,
-              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/4.1/jiezhi-rbmk-monitor-1.12.2-1.0.0-rbmk.jar",
-              "mirror": null
-            }
-          ],
-          "notesText": "上次预览版出现重大错误，原本的RBMK被改消失了，取而代之的是原版的DFC，此版本特指修改。",
-          "notesHtml": "<p>上次预览版出现重大错误，原本的RBMK被改消失了，取而代之的是原版的DFC，此版本特指修改。</p>"
-        },
-        {
-          "id": "rbmk-monitor#4.0",
-          "modId": "rbmk-monitor",
-          "platform": "gitee",
-          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
-          "tag": "4.0",
-          "version": "4.0",
-          "channel": "preview",
-          "name": "jiezhimod and RBMKmod 合并版",
-          "publishedAt": "2026-10-26T06:53:19+08:00",
-          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/4.0",
-          "prerelease": true,
-          "draft": false,
-          "assets": [
-            {
-              "name": "jiezhimod-merged-4.0 rbmk (1).jar",
-              "kind": "mod",
-              "size": 0,
-              "downloads": 0,
-              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/4.0/jiezhimod-merged-4.0%20rbmk%20(1).jar",
-              "mirror": null
-            }
-          ],
-          "notesText": "📦 合并包做了什么\n \n以原版 DFC 特效工具 4.0 为基础，把 RBMK 监控屏独有的 22 个 class + 全部资源文件（blockstates/models/textures/lang）都塞进去了。总共 162 个 class。\n \n⚠️ 为什么不能完美合并\n \n两个 jar 虽然 modid 都叫  jiezhimod ，但它们是同一个 mod 的两个不同版本，核心类同名但内容完全不同",
-          "notesHtml": "<p>📦 合并包做了什么</p><p>以原版 DFC 特效工具 4.0 为基础，把 RBMK 监控屏独有的 22 个 class + 全部资源文件（blockstates/models/textures/lang）都塞进去了。总共 162 个 class。</p><p>⚠️ 为什么不能完美合并</p><p>两个 jar 虽然 modid 都叫  jiezhimod ，但它们是同一个 mod 的两个不同版本，核心类同名但内容完全不同</p>"
-        },
-        {
-          "id": "rbmk-monitor#2.0",
-          "modId": "rbmk-monitor",
-          "platform": "gitee",
-          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
-          "tag": "2.0",
-          "version": "2.0",
-          "channel": "release",
-          "name": "jiezhi-rbmk-monitor-1.12.2-2.0-rbmk",
-          "publishedAt": "2026-10-25T19:04:14+08:00",
-          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/2.0",
-          "prerelease": false,
-          "draft": false,
-          "assets": [
-            {
-              "name": "jiezhi-rbmk-monitor-1.12.2-2.0-rbmk.jar",
-              "kind": "mod",
-              "size": 0,
-              "downloads": 0,
-              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/2.0/jiezhi-rbmk-monitor-1.12.2-2.0-rbmk.jar",
-              "mirror": null
-            }
-          ],
-          "notesText": "jiezhi-rbmk-monitor-1.12.2-2.0-rbmk",
-          "notesHtml": "<p>jiezhi-rbmk-monitor-1.12.2-2.0-rbmk</p>"
-        },
-        {
-          "id": "rbmk-monitor#1.0.1",
-          "modId": "rbmk-monitor",
-          "platform": "gitee",
-          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
-          "tag": "1.0.1",
-          "version": "1.0.1",
-          "channel": "release",
-          "name": "jiezhi-rbmk-monitor-1.12.2-1.0.1-rbmk",
-          "publishedAt": "2026-10-25T18:57:06+08:00",
-          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/1.0.1",
-          "prerelease": false,
-          "draft": false,
-          "assets": [
-            {
-              "name": "jiezhi-rbmk-monitor-1.12.2-1.0.1-rbmk.jar",
-              "kind": "mod",
-              "size": 0,
-              "downloads": 0,
-              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/1.0.1/jiezhi-rbmk-monitor-1.12.2-1.0.1-rbmk.jar",
-              "mirror": null
-            }
-          ],
-          "notesText": "jiezhi-rbmk-monitor-1.12.2-1.0.1-rbmk for  MC HBM 1.12.2",
-          "notesHtml": "<p>jiezhi-rbmk-monitor-1.12.2-1.0.1-rbmk for  _MC HBM 1.12.2_</p>"
-        },
-        {
-          "id": "rbmk-monitor#1.0.0",
-          "modId": "rbmk-monitor",
-          "platform": "gitee",
-          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
-          "tag": "1.0.0",
-          "version": "1.0.0",
-          "channel": "release",
-          "name": "jiezhi-rbmk-monitor-1.12.2-1.0.0-rbmk",
-          "publishedAt": "2026-10-24T15:29:06+08:00",
-          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/1.0.0",
-          "prerelease": false,
-          "draft": false,
-          "assets": [
-            {
-              "name": "jiezhi-rbmk-monitor-1.12.2-1.0.0-rbmk.jar",
-              "kind": "mod",
-              "size": 0,
-              "downloads": 0,
-              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/1.0.0/jiezhi-rbmk-monitor-1.12.2-1.0.0-rbmk.jar",
-              "mirror": null
-            }
-          ],
-          "notesText": "改变树上的节枝的jar，原作者bilibili：https://space.bilibili.com/3494363348863838\n本作品基于节枝特效工具 JiezhiMod 二次创作",
-          "notesHtml": "<p>改变树上的节枝的jar，原作者bilibili：https://space.bilibili.com/3494363348863838</p><p>本作品基于节枝特效工具 JiezhiMod 二次创作</p>"
-        }
-      ],
-      "latest": {
-        "id": "rbmk-monitor#10.0",
-        "modId": "rbmk-monitor",
-        "platform": "gitee",
-        "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
-        "tag": "10.0",
-        "version": "10.0",
-        "channel": "preview",
-        "name": "RBMK-Monitor-10.0",
-        "publishedAt": "2026-11-05T20:14:40+08:00",
-        "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/10.0",
-        "prerelease": true,
-        "draft": false,
-        "assets": [
-          {
-            "name": "RBMK-Monitor-10.0.jar",
-            "kind": "mod",
-            "size": 0,
-            "downloads": 0,
-            "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/10.0/RBMK-Monitor-10.0.jar",
-            "mirror": null
-          }
-        ],
-        "notesText": "请勿下载！",
-        "notesHtml": "<p>请勿下载！</p>"
-      },
-      "error": null
+      "releases": [],
+      "latest": null,
+      "error": "fetch failed"
     },
     {
       "id": "hbmzz",
@@ -403,6 +39,32 @@
       "license": "GPL-3.0",
       "homepage": "https://hbm-zz.ysbdwz.dpdns.org/",
       "releases": [
+        {
+          "id": "hbmzz#v2.5.1",
+          "modId": "hbmzz",
+          "platform": "github",
+          "repo": "ysb-discowave/HBMZZ-MOD",
+          "tag": "v2.5.1",
+          "version": "2.5.1",
+          "channel": "release",
+          "name": "v2.5.1 中文槽位名不再印成豆腐块",
+          "publishedAt": "2026-11-05T15:10:44Z",
+          "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/tag/v2.5.1",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "hbmzz-2.5.1.jar",
+              "kind": "mod",
+              "size": 1007579,
+              "downloads": 0,
+              "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.5.1/hbmzz-2.5.1.jar",
+              "mirror": null
+            }
+          ],
+          "notesText": "中文槽位名不再印成豆腐块\n终端输入行左边的提示符，在 CE 控制台上会变成一排空方框。自研面板的槽位是 A–F，那个位置永远只有三个字母；CE 控制台的槽位是你自己起的中文标签（反应堆），而它被固定用等宽字体画——等宽字体没有汉字，AWT 就画自己的「缺字」方框。不报错、不崩溃，只是看着像坏了。\n 根因\n不是漏了一处字体调用，而是量宽度和画字各挑各的字体。TermCanvas 里同一个字符串，可能用 A 字体量宽度、用 B 字体画出来，光标位置和裁剪边界就都算错了。\n现在原语统一收口：\n \ntext / width / center / clip 全部只收 size + bold，字体由字符串内容选（有汉字走中文字体，纯 ASCII 才走等宽）。两边不可能再算出不同宽度。另外「bold」对汉字会退化成常规字重——9–10 px 下粗体汉字会糊成一团。\n 顺带\n- DFC 监视器终端标题右侧的「· 核心名」也是标签，同样会变方框；底部状态条在「数据中断」时那一条也带汉字。两处一起修了。\n- 日志里的版本号：Client attempting to join with ... hbmzz@2.0.0 这句话从 2.0.0 起就没变过，五个版本都在报旧号——HBMZZ.VERSION 是编译期常量，一直没人跟着改。现在是对的。\n 自检（regcheck 共 21 条，新增 2 条，都做过回退验证）\n \nregcheck 21 / termcheck 46 / cecpcheck 8 / videocheck 26 / linkercheck 21（1 skip）全绿；站点 syncsite --check 与 audithtml 通过。\ntools/PreviewCtrl 加了一屏 term-console.png：中文提示符 + 中文槽位 + 中文机器名，正是这次漏掉的组合。\n 校验和",
+          "notesHtml": "<h4>中文槽位名不再印成豆腐块</h4><p>终端输入行左边的提示符，在 CE 控制台上会变成一排空方框。自研面板的槽位是 <code>A</code>–<code>F</code>，那个位置永远只有三个字母；CE 控制台的槽位是你自己起的中文标签（<code>反应堆</code>），而它被固定用等宽字体画——等宽字体没有汉字，AWT 就画自己的「缺字」方框。不报错、不崩溃，只是看着像坏了。</p><h4>根因</h4><p>不是漏了一处字体调用，而是<strong>量宽度和画字各挑各的字体</strong>。<code>TermCanvas</code> 里同一个字符串，可能用 A 字体量宽度、用 B 字体画出来，光标位置和裁剪边界就都算错了。</p><p>现在原语统一收口：</p><p>```java</p><p>// 改动前：调用方传 Font，量宽度时另算</p><p>text(g, view.prompt, x, y, AMBER, ScreenFonts.monoBold(10));</p><p>// 改动后：字体由要画的那个字符串决定</p><p>text(g, view.prompt, x, y, AMBER, 10, true);</p><p>```</p><p><code>text</code> / <code>width</code> / <code>center</code> / <code>clip</code> 全部只收 <code>size + bold</code>，字体由字符串内容选（有汉字走中文字体，纯 ASCII 才走等宽）。两边不可能再算出不同宽度。另外「bold」对汉字会退化成常规字重——9–10 px 下粗体汉字会糊成一团。</p><h4>顺带</h4><ul><li><strong>DFC 监视器终端</strong>标题右侧的「· 核心名」也是标签，同样会变方框；底部状态条在「数据中断」时那一条也带汉字。两处一起修了。</li><li><strong>日志里的版本号</strong>：<code>Client attempting to join with ... hbmzz@2.0.0</code> 这句话从 2.0.0 起就没变过，五个版本都在报旧号——<code>HBMZZ.VERSION</code> 是编译期常量，一直没人跟着改。现在是对的。</li></ul><h4>自检（regcheck 共 21 条，新增 2 条，都做过回退验证）</h4><p>```</p><p>FAIL  the terminal window never picks a face by hand</p><p>-- a Chinese tag drawn as monospaced becomes boxes: TermCanvas.java:346</p><p>FAIL  the three version stamps agree (build.gradle / mcmod.info / HBMZZ.VERSION)</p><p>-- got 2.5.1 / 2.5.1 / 2.0.0</p><p>```</p><p><code>regcheck 21</code> / <code>termcheck 46</code> / <code>cecpcheck 8</code> / <code>videocheck 26</code> / <code>linkercheck 21</code>（1 skip）全绿；站点 <code>sync_site --check</code> 与 <code>audit_html</code> 通过。</p><p><code>tools/PreviewCtrl</code> 加了一屏 <code>term-console.png</code>：中文提示符 + 中文槽位 + 中文机器名，正是这次漏掉的组合。</p><h4>校验和</h4><p>```</p><p>dd6a5f6307dcdc27cc6a0bfc800d618a3e2a36fd2b9df034db7c366eb57926b8</p><p>hbmzz-2.5.1.jar</p><p>4f146ef5ea5eb73c0bb0875a8dde8747bf1bd26e786d1610923c345b0179c49f</p><p>hbmzz-2.5.1-sources.jar</p><p>```</p>"
+        },
         {
           "id": "hbmzz#v2.5.0",
           "modId": "hbmzz",
@@ -587,30 +249,30 @@
         }
       ],
       "latest": {
-        "id": "hbmzz#v2.5.0",
+        "id": "hbmzz#v2.5.1",
         "modId": "hbmzz",
         "platform": "github",
         "repo": "ysb-discowave/HBMZZ-MOD",
-        "tag": "v2.5.0",
-        "version": "2.5.0",
+        "tag": "v2.5.1",
+        "version": "2.5.1",
         "channel": "release",
-        "name": "v2.5.0 终端搬进 CE 控制台",
-        "publishedAt": "2026-11-05T13:57:41Z",
-        "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/tag/v2.5.0",
+        "name": "v2.5.1 中文槽位名不再印成豆腐块",
+        "publishedAt": "2026-11-05T15:10:44Z",
+        "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/tag/v2.5.1",
         "prerelease": false,
         "draft": false,
         "assets": [
           {
-            "name": "hbmzz-2.5.0.jar",
+            "name": "hbmzz-2.5.1.jar",
             "kind": "mod",
-            "size": 1007665,
-            "downloads": 1,
-            "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.5.0/hbmzz-2.5.0.jar",
+            "size": 1007579,
+            "downloads": 0,
+            "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.5.1/hbmzz-2.5.1.jar",
             "mirror": null
           }
         ],
-        "notesText": "终端搬进 CE 控制台\n终端原来只长在模组自己的 32×18 控制面板上（A–F 六个槽位）。这次它作为控件进了从诅咒版移植过来的那张控制台：编辑器控件列表最后一行多一个「终端」，用联动器给它起名字绑机器，右键它开窗。\n两块面板不共享任何一个类，所以这次不是复制一份命令解析，而是先把它抽象出来。\n 怎么用\n1. 打开 CE 控制台编辑器（手持扳手右键），控件类型里选终端，拖到画布上、保存。\n2. 用联动器（数据线）右键机器记录，再右键这个终端控件——你在联动器页签里起的名字就是槽位名。\n3. 右键终端控件开窗，ls 看有几台，use 名字 或 use 2 切换，read / ev / set 照旧。\n \n 改了什么\n- 命令语言与面板解耦。 新增 com.hbmzz.ctrl.TerminalHost，补全与执行都只认这个接口；TerminalShell 不再认识 CtrlPanel。\n- 槽位是标签名，按名字排序。 那块 taggedLinks 是从 HashMap 重建的，插入顺序不可靠——不排序的话，use 2 今天指反应堆、明天指涡轮机。序号越界退回第一个，而不是列着槽位却一个都读不了。\n- 目标跟着面板存档走。 选中的槽位存在控件自己的 vars 里，随 NBT 保存，多人看到的是同一个目标。\n- 补全不联网。 服务端每次回包带上槽位表 + 当前目标的键名/事件/变量，客户端对着本地 SnapshotHost 补零延迟；执行仍然只在服务端解析。\n- resolve() 认四种写法： 标签、机器名、唯一前缀、字母/序号。\n- 限流 每终端每秒 10 行。\n 自检\nregcheck 加到 19 条，新加三条都做过回退验证（确认会红）：\n \nregcheck 19 / termcheck 46 / cecpcheck 8 / videocheck 26 / linkercheck 21 全绿；站点 syncsite --check 与 audithtml 通过。\n另加 tools/quickcheck.py：单遍 javac 打整个 src/main/java（约 40 秒），绕开 ForgeGradle 每次十几分钟的初始化；传文件名可以只看自己改过的文件里的错。\n 校验和",
-        "notesHtml": "<h4>终端搬进 CE 控制台</h4><p>终端原来只长在模组自己的 32×18 控制面板上（A–F 六个槽位）。这次它作为<strong>控件</strong>进了从诅咒版移植过来的那张控制台：编辑器控件列表最后一行多一个「终端」，用联动器给它起名字绑机器，右键它开窗。</p><p>两块面板不共享任何一个类，所以这次不是复制一份命令解析，而是先把它抽象出来。</p><h4>怎么用</h4><p>1. 打开 CE 控制台编辑器（手持扳手右键），控件类型里选<strong>终端</strong>，拖到画布上、保存。</p><p>2. 用联动器（数据线）右键机器记录，再右键这个终端控件——<strong>你在联动器页签里起的名字就是槽位名</strong>。</p><p>3. 右键终端控件开窗，<code>ls</code> 看有几台，<code>use 名字</code> 或 <code>use 2</code> 切换，<code>read</code> / <code>ev</code> / <code>set</code> 照旧。</p><p>```</p><p>ls                    列出本控件绑定的机器，* 是当前目标</p><p>use RBMK 控制棒组      带空格的标签整行都算名字</p><p>use 2                 也可以按序号</p><p>read heat             读一个键</p><p>ev rbmk_ctrl_set_level level=40</p><p>set level 40          只写变量名，终端自己找事件</p><p>```</p><h4>改了什么</h4><ul><li><strong>命令语言与面板解耦。</strong> 新增 <code>com.hbmzz.ctrl.TerminalHost</code>，补全与执行都只认这个接口；<code>TerminalShell</code> 不再认识 <code>CtrlPanel</code>。</li><li><strong>槽位是标签名，按名字排序。</strong> 那块 <code>taggedLinks</code> 是从 <code>HashMap</code> 重建的，插入顺序不可靠——不排序的话，<code>use 2</code> 今天指反应堆、明天指涡轮机。序号越界退回第一个，而不是列着槽位却一个都读不了。</li><li><strong>目标跟着面板存档走。</strong> 选中的槽位存在控件自己的 <code>vars</code> 里，随 NBT 保存，多人看到的是同一个目标。</li><li><strong>补全不联网。</strong> 服务端每次回包带上槽位表 + 当前目标的键名/事件/变量，客户端对着本地 <code>SnapshotHost</code> 补零延迟；执行仍然只在服务端解析。</li><li><strong><code>resolve()</code> 认四种写法：</strong> 标签、机器名、唯一前缀、字母/序号。</li><li><strong>限流</strong> 每终端每秒 10 行。</li></ul><h4>自检</h4><p><code>regcheck</code> 加到 <strong>19 条</strong>，新加三条都做过回退验证（确认会红）：</p><p>```</p><p>FAIL  every addon control type has a Chinese display name  -- menu shows the English key: Terminal</p><p>FAIL  every addon control class is in the control registry  -- never instantiated: TerminalControl</p><p>FAIL  every addon control has its own registry name  -- silently overwrites another control: leafia_nixie</p><p>```</p><p><code>regcheck 19</code> / <code>termcheck 46</code> / <code>cecpcheck 8</code> / <code>videocheck 26</code> / <code>linkercheck 21</code> 全绿；站点 <code>sync_site --check</code> 与 <code>audit_html</code> 通过。</p><p>另加 <code>tools/quickcheck.py</code>：单遍 javac 打整个 <code>src/main/java</code>（约 40 秒），绕开 ForgeGradle 每次十几分钟的初始化；传文件名可以只看自己改过的文件里的错。</p><h4>校验和</h4><p>```</p><p>0888dbffeeaad0efd1cfa17f45b4204951a7d8311ae36151a542a9537d10404c</p><p>hbmzz-2.5.0.jar</p><p>8251a424d29338c7daaab5a2acbe9e165b6d117e389b23263bd8230f56fd8e98</p><p>hbmzz-2.5.0-sources.jar</p><p>```</p>"
+        "notesText": "中文槽位名不再印成豆腐块\n终端输入行左边的提示符，在 CE 控制台上会变成一排空方框。自研面板的槽位是 A–F，那个位置永远只有三个字母；CE 控制台的槽位是你自己起的中文标签（反应堆），而它被固定用等宽字体画——等宽字体没有汉字，AWT 就画自己的「缺字」方框。不报错、不崩溃，只是看着像坏了。\n 根因\n不是漏了一处字体调用，而是量宽度和画字各挑各的字体。TermCanvas 里同一个字符串，可能用 A 字体量宽度、用 B 字体画出来，光标位置和裁剪边界就都算错了。\n现在原语统一收口：\n \ntext / width / center / clip 全部只收 size + bold，字体由字符串内容选（有汉字走中文字体，纯 ASCII 才走等宽）。两边不可能再算出不同宽度。另外「bold」对汉字会退化成常规字重——9–10 px 下粗体汉字会糊成一团。\n 顺带\n- DFC 监视器终端标题右侧的「· 核心名」也是标签，同样会变方框；底部状态条在「数据中断」时那一条也带汉字。两处一起修了。\n- 日志里的版本号：Client attempting to join with ... hbmzz@2.0.0 这句话从 2.0.0 起就没变过，五个版本都在报旧号——HBMZZ.VERSION 是编译期常量，一直没人跟着改。现在是对的。\n 自检（regcheck 共 21 条，新增 2 条，都做过回退验证）\n \nregcheck 21 / termcheck 46 / cecpcheck 8 / videocheck 26 / linkercheck 21（1 skip）全绿；站点 syncsite --check 与 audithtml 通过。\ntools/PreviewCtrl 加了一屏 term-console.png：中文提示符 + 中文槽位 + 中文机器名，正是这次漏掉的组合。\n 校验和",
+        "notesHtml": "<h4>中文槽位名不再印成豆腐块</h4><p>终端输入行左边的提示符，在 CE 控制台上会变成一排空方框。自研面板的槽位是 <code>A</code>–<code>F</code>，那个位置永远只有三个字母；CE 控制台的槽位是你自己起的中文标签（<code>反应堆</code>），而它被固定用等宽字体画——等宽字体没有汉字，AWT 就画自己的「缺字」方框。不报错、不崩溃，只是看着像坏了。</p><h4>根因</h4><p>不是漏了一处字体调用，而是<strong>量宽度和画字各挑各的字体</strong>。<code>TermCanvas</code> 里同一个字符串，可能用 A 字体量宽度、用 B 字体画出来，光标位置和裁剪边界就都算错了。</p><p>现在原语统一收口：</p><p>```java</p><p>// 改动前：调用方传 Font，量宽度时另算</p><p>text(g, view.prompt, x, y, AMBER, ScreenFonts.monoBold(10));</p><p>// 改动后：字体由要画的那个字符串决定</p><p>text(g, view.prompt, x, y, AMBER, 10, true);</p><p>```</p><p><code>text</code> / <code>width</code> / <code>center</code> / <code>clip</code> 全部只收 <code>size + bold</code>，字体由字符串内容选（有汉字走中文字体，纯 ASCII 才走等宽）。两边不可能再算出不同宽度。另外「bold」对汉字会退化成常规字重——9–10 px 下粗体汉字会糊成一团。</p><h4>顺带</h4><ul><li><strong>DFC 监视器终端</strong>标题右侧的「· 核心名」也是标签，同样会变方框；底部状态条在「数据中断」时那一条也带汉字。两处一起修了。</li><li><strong>日志里的版本号</strong>：<code>Client attempting to join with ... hbmzz@2.0.0</code> 这句话从 2.0.0 起就没变过，五个版本都在报旧号——<code>HBMZZ.VERSION</code> 是编译期常量，一直没人跟着改。现在是对的。</li></ul><h4>自检（regcheck 共 21 条，新增 2 条，都做过回退验证）</h4><p>```</p><p>FAIL  the terminal window never picks a face by hand</p><p>-- a Chinese tag drawn as monospaced becomes boxes: TermCanvas.java:346</p><p>FAIL  the three version stamps agree (build.gradle / mcmod.info / HBMZZ.VERSION)</p><p>-- got 2.5.1 / 2.5.1 / 2.0.0</p><p>```</p><p><code>regcheck 21</code> / <code>termcheck 46</code> / <code>cecpcheck 8</code> / <code>videocheck 26</code> / <code>linkercheck 21</code>（1 skip）全绿；站点 <code>sync_site --check</code> 与 <code>audit_html</code> 通过。</p><p><code>tools/PreviewCtrl</code> 加了一屏 <code>term-console.png</code>：中文提示符 + 中文槽位 + 中文机器名，正是这次漏掉的组合。</p><h4>校验和</h4><p>```</p><p>dd6a5f6307dcdc27cc6a0bfc800d618a3e2a36fd2b9df034db7c366eb57926b8</p><p>hbmzz-2.5.1.jar</p><p>4f146ef5ea5eb73c0bb0875a8dde8747bf1bd26e786d1610923c345b0179c49f</p><p>hbmzz-2.5.1-sources.jar</p><p>```</p>"
       },
       "error": null
     }
