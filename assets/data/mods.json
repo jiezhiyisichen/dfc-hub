@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-04T23:35:36.310Z",
+  "generatedAt": "2026-11-05T06:34:21.089Z",
   "count": 2,
   "mods": [
     {
@@ -368,6 +368,58 @@
       "requires": "HBM 的核科技社区版（NTM:CE）或它的 Leafia 诅咒版附属",
       "releases": [
         {
+          "id": "hbmzz#v2.4.1",
+          "modId": "hbmzz",
+          "platform": "github",
+          "repo": "ysb-discowave/HBMZZ-MOD",
+          "tag": "v2.4.1",
+          "version": "2.4.1",
+          "channel": "release",
+          "name": "v2.4.1 终端里的豆腐块",
+          "publishedAt": "2026-11-05T05:18:01Z",
+          "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/tag/v2.4.1",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "hbmzz-2.4.1.jar",
+              "kind": "mod",
+              "size": 987937,
+              "downloads": 2,
+              "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.4.1/hbmzz-2.4.1.jar",
+              "mirror": null
+            }
+          ],
+          "notesText": "终端上那排方框\n2.4.0 的终端里，ls 用 ▸ 标当前目标。这个字符在 Consolas 里有字形，在 Microsoft YaHei 里没有——而终端窗口是逐行选字体的：哪一行带中文，就用中文字体。机器名恰好都是中文，于是这个标记只在最该看清的那几行变成了方框，纯英文行反而是好的。\n现在换成 ：四个候选字体（Consolas / Microsoft YaHei / SimHei / Dialog）都有字形，9 px 下宽度只差 1 像素，名字列不会歪。\n 一并修掉\n- 补全列表角上的 +N 原来画在候选文字尾巴上，读起来像候选名的一部分。现在给它留了单独一列，候选按剩余宽度截断。\n- 视频广播器的预览行用了 ✔ / ⚠，原版字体同样没有这两个字形（在 1.12.2 里也是方框）。改成文字，靠颜色区分「本机已有 / 本机没有」。\n 新增一道自检\ntools/regcheck 第 14 条现在扫全部 Java 字符串字面量：凡是不在四个字体交集里的装饰符号都报红，并给到「文件:行 U+XXXX」。\n这类问题的可怕之处在于它不编译失败、不看源码也看不出、只在进游戏之后出现在某几行——正是 regcheck 存在的理由。回退验证过：把 ▸ 放回去，检查立刻报\n \n 顺带\ntools/PreviewCtrl.java 现在也能把终端窗口渲染成 PNG（term-open / term-suggest / term-help 三张），不用进游戏就能看字体大小、补全浮层遮挡、翻屏指示。上面那个方框就是这样被抓到的。\n 验证\n- regcheck 14/14、termcheck 38/38、videocheck 26/26、linkercheck 21 通过 1 跳过\n- 仍需进游戏确认的部分没有变化：GUI 缩放 2/3 下的字号、对着真 RBMK 控制棒打 ev 的手感",
+          "notesHtml": "<h4>终端上那排方框</h4><p>2.4.0 的终端里，<code>ls</code> 用 <code>▸</code> 标当前目标。这个字符在 Consolas 里有字形，在 Microsoft YaHei 里没有——而终端窗口是<strong>逐行</strong>选字体的：哪一行带中文，就用中文字体。机器名恰好都是中文，于是这个标记只在最该看清的那几行变成了方框，纯英文行反而是好的。</p><p>现在换成 <code>*</code>：四个候选字体（Consolas / Microsoft YaHei / SimHei / Dialog）都有字形，9 px 下宽度只差 1 像素，名字列不会歪。</p><h4>一并修掉</h4><ul><li>补全列表角上的 <code>+N</code> 原来画在候选文字尾巴上，读起来像候选名的一部分。现在给它留了单独一列，候选按剩余宽度截断。</li><li>视频广播器的预览行用了 <code>✔</code> / <code>⚠</code>，原版字体同样没有这两个字形（在 1.12.2 里也是方框）。改成文字，靠颜色区分「本机已有 / 本机没有」。</li></ul><h4>新增一道自检</h4><p><code>tools/regcheck</code> 第 14 条现在扫全部 Java 字符串字面量：凡是不在四个字体交集里的装饰符号都报红，并给到「文件:行 U+XXXX」。</p><p>这类问题的可怕之处在于它不编译失败、不看源码也看不出、只在进游戏之后出现在某几行——正是 regcheck 存在的理由。回退验证过：把 <code>▸</code> 放回去，检查立刻报</p><p>```</p><p>FAIL  no string uses a glyph the UI fonts cannot draw</p><p>renders as a box: src/main/java/com/hbmzz/ctrl/TerminalShell.java:369 U+25B8</p><p>```</p><h4>顺带</h4><p><code>tools/PreviewCtrl.java</code> 现在也能把终端窗口渲染成 PNG（<code>term-open</code> / <code>term-suggest</code> / <code>term-help</code> 三张），不用进游戏就能看字体大小、补全浮层遮挡、翻屏指示。上面那个方框就是这样被抓到的。</p><h4>验证</h4><ul><li>regcheck 14/14、termcheck 38/38、videocheck 26/26、linkercheck 21 通过 1 跳过</li><li>仍需进游戏确认的部分没有变化：GUI 缩放 2/3 下的字号、对着真 RBMK 控制棒打 <code>ev</code> 的手感</li></ul>"
+        },
+        {
+          "id": "hbmzz#v2.4.0",
+          "modId": "hbmzz",
+          "platform": "github",
+          "repo": "ysb-discowave/HBMZZ-MOD",
+          "tag": "v2.4.0",
+          "version": "2.4.0",
+          "channel": "release",
+          "name": "v2.4.0 控制面板的终端",
+          "publishedAt": "2026-11-05T04:50:17Z",
+          "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/tag/v2.4.0",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "hbmzz-2.4.0.jar",
+              "kind": "mod",
+              "size": 987849,
+              "downloads": 2,
+              "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.4.0/hbmzz-2.4.0.jar",
+              "mirror": null
+            }
+          ],
+          "notesText": "表盘回答「现在多少」，回答不了「4 号机组现在怎么样」\n新增控件「终端」：放在机器控制面板的画布上，右键它开窗，用命令读写 A–F 上绑定的所有机器。不必为了一个读数摆一排表盘，也不必为了改一个值去转旋钮。\n 怎么用\n| 命令 | 作用 |\n| --- | --- |\n| ls | 列出 A–F：名字、坐标、可读键数、可发事件数；▸ 是当前目标 |\n| use B | 切换目标（也认 sel，字母大小写都行） |\n| read / read heat | 读全部数据，或只读一个键 |\n| keys / events | 只列可读键名 / 只列事件与它带的变量 |\n| ev rbmkctrlsetlevel level=40 | 发事件；不带等号的词按 1 处理，适合 turretsettarget passive |\n| set level 40 | 只知道变量名就行，终端自己找对应事件 |\n| help / clear | 命令列表 / 清屏（历史仍在键盘上） |\n目标机器两个入口：窗口上方 A–F 六个标签点一下，或直接打 use B。提示符会变成 B，面板上那块终端贴纸显示同一个目标——它存的是面板的存档字段，所以多人看到的目标一致。\n补全：Tab 按上下文给候选——命令名 → 已绑定槽位 → 当前机器的数据键 → 该事件携带的变量（ev … 之后补出 level=）。多候选时列表浮在输入框上方，继续 Tab 循环、Shift+Tab 反向、Enter 采用并执行；↑/↓ 取回历史，PgUp/PgDn 翻屏，Ctrl+V 粘贴，Esc 退回面板。\n 三个设计决定\n1. 它是第三族控件。 原有控件只分「读机器」和「写机器」，方向相反。终端两边都做，而且不绑某一台机器——它绑整块面板。所以它既不能算读也不能算写，CtrlType 里单独加了一个 TERMINAL。\n2. widget.link 对终端 = 当前目标，不是接线。复用同一字段让存档、解绑、越界校验全部免费；刚放下或目标被解绑时会自动落到第一个已绑定槽位，不会挂在一格空气上。\n3. 解析在服务端，补全在客户端。 窗口只把一行文本交给服务端，机器、事件、变量都由服务端拿自己那份面板解析。所以终端能做的事和手动转一个旋钮完全一样，改过的客户端多不出一件事。命令限速 10 条/秒——旋钮一次只发一个值，回车可以一直按。\n失败会说人话：没选目标、槽位是空的、机器已不在、离面板超过 8 格、事件被拒，各有各的提示，不给沉默。\n 顺带修的两个静默失效\n- GuiCtrlPanel.mouseClicked 的右键分支无条件 return，会吞掉运行页的所有右键——「右键终端开窗」本来会是死的。现在只有编辑器的 widget: 前缀删除后 return。\n- 控件库行数原来写死 5 行，第 16 个类型就会盖",
+          "notesHtml": "<h4>表盘回答「现在多少」，回答不了「4 号机组现在怎么样」</h4><p>新增控件「终端」：放在机器控制面板的画布上，<strong>右键它</strong>开窗，用命令读写 A–F 上绑定的<strong>所有</strong>机器。不必为了一个读数摆一排表盘，也不必为了改一个值去转旋钮。</p><h4>怎么用</h4><p>| 命令 | 作用 |</p><p>| --- | --- |</p><p>| <code>ls</code> | 列出 A–F：名字、坐标、可读键数、可发事件数；<code>▸</code> 是当前目标 |</p><p>| <code>use B</code> | 切换目标（也认 <code>sel</code>，字母大小写都行） |</p><p>| <code>read</code> / <code>read heat</code> | 读全部数据，或只读一个键 |</p><p>| <code>keys</code> / <code>events</code> | 只列可读键名 / 只列事件与它带的变量 |</p><p>| <code>ev rbmk_ctrl_set_level level=40</code> | 发事件；不带等号的词按 1 处理，适合 <code>turret_set_target passive</code> |</p><p>| <code>set level 40</code> | 只知道变量名就行，终端自己找对应事件 |</p><p>| <code>help</code> / <code>clear</code> | 命令列表 / 清屏（历史仍在键盘上） |</p><p><strong>目标机器两个入口</strong>：窗口上方 A–F 六个标签点一下，或直接打 <code>use B</code>。提示符会变成 <code>B&gt;</code>，面板上那块终端贴纸显示同一个目标——它存的是面板的存档字段，所以多人看到的目标一致。</p><p><strong>补全</strong>：<code>Tab</code> 按上下文给候选——命令名 → 已绑定槽位 → 当前机器的数据键 → 该事件携带的变量（<code>ev …</code> 之后补出 <code>level=</code>）。多候选时列表浮在输入框上方，继续 <code>Tab</code> 循环、<code>Shift</code>+<code>Tab</code> 反向、<code>Enter</code> 采用并执行；<code>↑</code>/<code>↓</code> 取回历史，<code>PgUp</code>/<code>PgDn</code> 翻屏，<code>Ctrl+V</code> 粘贴，<code>Esc</code> 退回面板。</p><h4>三个设计决定</h4><p>1. <strong>它是第三族控件。</strong> 原有控件只分「读机器」和「写机器」，方向相反。终端两边都做，而且不绑某一台机器——它绑整块面板。所以它既不能算读也不能算写，<code>CtrlType</code> 里单独加了一个 <code>TERMINAL</code>。</p><p>2. <strong><code>widget.link</code> 对终端 = 当前目标</strong>，不是接线。复用同一字段让存档、解绑、越界校验全部免费；刚放下或目标被解绑时会自动落到第一个已绑定槽位，不会挂在一格空气上。</p><p>3. <strong>解析在服务端，补全在客户端。</strong> 窗口只把<strong>一行文本</strong>交给服务端，机器、事件、变量都由服务端拿自己那份面板解析。所以终端能做的事和手动转一个旋钮完全一样，改过的客户端多不出一件事。命令限速 10 条/秒——旋钮一次只发一个值，回车可以一直按。</p><p>失败会说人话：没选目标、槽位是空的、机器已不在、离面板超过 8 格、事件被拒，各有各的提示，不给沉默。</p><h4>顺带修的两个静默失效</h4><ul><li><code>GuiCtrlPanel.mouseClicked</code> 的右键分支无条件 <code>return</code>，会吞掉运行页的所有右键——「右键终端开窗」本来会是死的。现在只有编辑器的 <code>widget:</code> 前缀删除后 return。</li><li>控件库行数原来写死 5 行，第 16 个类型就会盖住检查器；改成按类型数推导。</li></ul><h4>自检</h4><ul><li><strong>新增 <code>tools/termcheck</code>（38 项）</strong>：跑真 <code>TerminalShell</code> + 真 <code>CtrlPanel</code>/<code>CtrlWidget</code>，复用 <code>linkercheck</code> 的 MC 桩。专测游戏里只能靠按 Tab 才看得见的补全行为：起始位置、前缀过滤、<code>use</code> 只给已绑定槽位、<code>ev …</code> 之后补 <code>level=</code>、行中间光标补全、改目标标脏、各种报错路径。</li><li><strong><code>regcheck</code> 5 → 13 条</strong>：每种 <code>CtrlType</code> 是否都有 <code>CtrlPainter</code> 分支（漏了就静默画成灰板）、是否都有面板说明、终端命令表与 <code>help</code> 是否一致。做了回退验证：删掉 <code>case TERMINAL:</code> 和一条 <code>USAGE.put</code>，两条都准确报红，再恢复。</li><li><code>videocheck</code> 26/26，<code>linkercheck</code> 21 passed / 1 skipped。</li></ul><h4>仍需进游戏确认</h4><p>终端窗口在 GUI scale 2/3 下的字号观感、按 Tab 时补全列表的浮层遮挡、以及真机上 <code>ev</code> 打到 RBMK 控制棒的手感。</p>"
+        },
+        {
           "id": "hbmzz#v2.3.2",
           "modId": "hbmzz",
           "platform": "github",
@@ -447,30 +499,30 @@
         }
       ],
       "latest": {
-        "id": "hbmzz#v2.3.2",
+        "id": "hbmzz#v2.4.1",
         "modId": "hbmzz",
         "platform": "github",
         "repo": "ysb-discowave/HBMZZ-MOD",
-        "tag": "v2.3.2",
-        "version": "2.3.2",
+        "tag": "v2.4.1",
+        "version": "2.4.1",
         "channel": "release",
-        "name": "v2.3.2 连不上的线，点不开的窗",
-        "publishedAt": "2026-11-04T13:52:14Z",
-        "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/tag/v2.3.2",
+        "name": "v2.4.1 终端里的豆腐块",
+        "publishedAt": "2026-11-05T05:18:01Z",
+        "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/tag/v2.4.1",
         "prerelease": false,
         "draft": false,
         "assets": [
           {
-            "name": "hbmzz-2.3.2.jar",
+            "name": "hbmzz-2.4.1.jar",
             "kind": "mod",
-            "size": 946930,
-            "downloads": 3,
-            "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.3.2/hbmzz-2.3.2.jar",
+            "size": 987937,
+            "downloads": 2,
+            "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.4.1/hbmzz-2.4.1.jar",
             "mirror": null
           }
         ],
-        "notesText": "两个「写了但永远走不到」的 bug\n 1. 视频广播器右键没反应\n方块在客户端调 HBMZZ.proxy.openVideoBroadcaster(...) 开窗，而 ClientProxy 从来没覆盖过这个方法 —— 于是落到 CommonProxy 的空实现：手挥了，什么都没发生，也没有任何报错。补上覆盖即可。\n 2. 监控屏连不上任何东西\n1.12.2 的 PlayerInteractionManager 只在方块 onBlockActivated 返回 false 之后才调用 Item.onItemUse。监控屏、摄像头、控制面板都无条件返回 true，所以拿数据线点屏只会打开终端，绑定代码一次都没被执行过——不是绑定写错了，是根本进不去。\n现在拿着数据线时方块让位：点屏 = 绑定；数据线里没有记录时仍然打开终端。大屏的边缘格子经 BlockDFCMonitorPart.findController 转给控制器再绑。\n 摄像头这条链此前也没接通\n- 数据线右键摄像头记录坐标（原来落到「已记录坐标，但这个方块不受控制面板控制」的通用分支）\n- 点屏绑定后自动翻到第 4 页；潜行点屏断开；上限 64 格，失败会说明原因（不在 / 太远）\n- cameraPos / cameraEnabled 写进 NBT —— 原来不存档，退出重进就断线\n- 画面改 100 ms 缓存：墙面渲染器与窗口本来就每帧取一次，一帧 160 条射线、每条约 72 次方块查询，等于在渲染线程上按 60 Hz 空转\n- 服务端 snapshot() 不再为读一个名字去射线追踪整幅画面再把像素丢掉\n 自检\ntools/regcheck/check.py 从 5 条加到 10 条，新增：\n- 每个 proxy.openX(...) 调用是否在 ClientProxy 有实现（第 1 个 bug）\n- 代码里用到的 hbmzz. 翻译 key 是否两种语言都有（顺手补上 enus 缺的两个旧 key）\n- 绑定目标方块是否把右键让给了数据线（第 2 个 bug）\nall 10 checks passed；tools/videocheck 26/26、tools/linkercheck 21 passed / 1 skipped。\n 仍需进游戏确认\n绑定后第 4 页的画面观感、摄像头 100 ms 缓存的顺滑度、多人下两人同时改同一块屏。",
-        "notesHtml": "<h4>两个「写了但永远走不到」的 bug</h4><h4>1. 视频广播器右键没反应</h4><p>方块在客户端调 <code>HBMZZ.proxy.openVideoBroadcaster(...)</code> 开窗，而 <code>ClientProxy</code> 从来没覆盖过这个方法 —— 于是落到 <code>CommonProxy</code> 的空实现：手挥了，什么都没发生，也没有任何报错。补上覆盖即可。</p><h4>2. 监控屏连不上任何东西</h4><p>1.12.2 的 <code>PlayerInteractionManager</code> 只在方块 <code>onBlockActivated</code> 返回 <strong>false</strong> 之后才调用 <code>Item.onItemUse</code>。监控屏、摄像头、控制面板都无条件返回 <code>true</code>，所以拿数据线点屏只会打开终端，绑定代码一次都没被执行过——不是绑定写错了，是根本进不去。</p><p>现在拿着数据线时方块让位：点屏 = 绑定；数据线里没有记录时仍然打开终端。大屏的边缘格子经 <code>BlockDFCMonitorPart.findController</code> 转给控制器再绑。</p><h4>摄像头这条链此前也没接通</h4><ul><li>数据线右键摄像头记录坐标（原来落到「已记录坐标，但这个方块不受控制面板控制」的通用分支）</li><li>点屏绑定后自动翻到第 4 页；潜行点屏断开；上限 64 格，失败会说明原因（不在 / 太远）</li><li><code>cameraPos</code> / <code>cameraEnabled</code> 写进 NBT —— 原来不存档，退出重进就断线</li><li>画面改 100 ms 缓存：墙面渲染器与窗口本来就每帧取一次，一帧 160 条射线、每条约 72 次方块查询，等于在渲染线程上按 60 Hz 空转</li><li>服务端 <code>snapshot()</code> 不再为读一个名字去射线追踪整幅画面再把像素丢掉</li></ul><h4>自检</h4><p><code>tools/regcheck/check.py</code> 从 5 条加到 10 条，新增：</p><ul><li>每个 <code>proxy.openX(...)</code> 调用是否在 <code>ClientProxy</code> 有实现（第 1 个 bug）</li><li>代码里用到的 <code>hbmzz.*</code> 翻译 key 是否两种语言都有（顺手补上 <code>en_us</code> 缺的两个旧 key）</li><li>绑定目标方块是否把右键让给了数据线（第 2 个 bug）</li></ul><p><code>all 10 checks passed</code>；<code>tools/videocheck</code> 26/26、<code>tools/linkercheck</code> 21 passed / 1 skipped。</p><h4>仍需进游戏确认</h4><p>绑定后第 4 页的画面观感、摄像头 100 ms 缓存的顺滑度、多人下两人同时改同一块屏。</p>"
+        "notesText": "终端上那排方框\n2.4.0 的终端里，ls 用 ▸ 标当前目标。这个字符在 Consolas 里有字形，在 Microsoft YaHei 里没有——而终端窗口是逐行选字体的：哪一行带中文，就用中文字体。机器名恰好都是中文，于是这个标记只在最该看清的那几行变成了方框，纯英文行反而是好的。\n现在换成 ：四个候选字体（Consolas / Microsoft YaHei / SimHei / Dialog）都有字形，9 px 下宽度只差 1 像素，名字列不会歪。\n 一并修掉\n- 补全列表角上的 +N 原来画在候选文字尾巴上，读起来像候选名的一部分。现在给它留了单独一列，候选按剩余宽度截断。\n- 视频广播器的预览行用了 ✔ / ⚠，原版字体同样没有这两个字形（在 1.12.2 里也是方框）。改成文字，靠颜色区分「本机已有 / 本机没有」。\n 新增一道自检\ntools/regcheck 第 14 条现在扫全部 Java 字符串字面量：凡是不在四个字体交集里的装饰符号都报红，并给到「文件:行 U+XXXX」。\n这类问题的可怕之处在于它不编译失败、不看源码也看不出、只在进游戏之后出现在某几行——正是 regcheck 存在的理由。回退验证过：把 ▸ 放回去，检查立刻报\n \n 顺带\ntools/PreviewCtrl.java 现在也能把终端窗口渲染成 PNG（term-open / term-suggest / term-help 三张），不用进游戏就能看字体大小、补全浮层遮挡、翻屏指示。上面那个方框就是这样被抓到的。\n 验证\n- regcheck 14/14、termcheck 38/38、videocheck 26/26、linkercheck 21 通过 1 跳过\n- 仍需进游戏确认的部分没有变化：GUI 缩放 2/3 下的字号、对着真 RBMK 控制棒打 ev 的手感",
+        "notesHtml": "<h4>终端上那排方框</h4><p>2.4.0 的终端里，<code>ls</code> 用 <code>▸</code> 标当前目标。这个字符在 Consolas 里有字形，在 Microsoft YaHei 里没有——而终端窗口是<strong>逐行</strong>选字体的：哪一行带中文，就用中文字体。机器名恰好都是中文，于是这个标记只在最该看清的那几行变成了方框，纯英文行反而是好的。</p><p>现在换成 <code>*</code>：四个候选字体（Consolas / Microsoft YaHei / SimHei / Dialog）都有字形，9 px 下宽度只差 1 像素，名字列不会歪。</p><h4>一并修掉</h4><ul><li>补全列表角上的 <code>+N</code> 原来画在候选文字尾巴上，读起来像候选名的一部分。现在给它留了单独一列，候选按剩余宽度截断。</li><li>视频广播器的预览行用了 <code>✔</code> / <code>⚠</code>，原版字体同样没有这两个字形（在 1.12.2 里也是方框）。改成文字，靠颜色区分「本机已有 / 本机没有」。</li></ul><h4>新增一道自检</h4><p><code>tools/regcheck</code> 第 14 条现在扫全部 Java 字符串字面量：凡是不在四个字体交集里的装饰符号都报红，并给到「文件:行 U+XXXX」。</p><p>这类问题的可怕之处在于它不编译失败、不看源码也看不出、只在进游戏之后出现在某几行——正是 regcheck 存在的理由。回退验证过：把 <code>▸</code> 放回去，检查立刻报</p><p>```</p><p>FAIL  no string uses a glyph the UI fonts cannot draw</p><p>renders as a box: src/main/java/com/hbmzz/ctrl/TerminalShell.java:369 U+25B8</p><p>```</p><h4>顺带</h4><p><code>tools/PreviewCtrl.java</code> 现在也能把终端窗口渲染成 PNG（<code>term-open</code> / <code>term-suggest</code> / <code>term-help</code> 三张），不用进游戏就能看字体大小、补全浮层遮挡、翻屏指示。上面那个方框就是这样被抓到的。</p><h4>验证</h4><ul><li>regcheck 14/14、termcheck 38/38、videocheck 26/26、linkercheck 21 通过 1 跳过</li><li>仍需进游戏确认的部分没有变化：GUI 缩放 2/3 下的字号、对着真 RBMK 控制棒打 <code>ev</code> 的手感</li></ul>"
       },
       "error": null
     }
