@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-05T06:34:21.089Z",
+  "generatedAt": "2026-11-05T14:49:04.922Z",
   "count": 2,
   "mods": [
     {
@@ -9,11 +9,42 @@
       "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
       "repoUrl": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor",
       "author": "baldih",
-      "desc": "在节枝特效工具基础上加入 RBMK 反应堆监控的二创版本。",
+      "desc": "HBM 核科技 RBMK 沸水堆的实时监控大屏，显示系统由节枝特效工具改出。",
       "note": "二创作品 · 原作为树上的节枝 JiezhiMod",
-      "coexist": false,
-      "requires": "",
+      "requiresJiezhimod": false,
+      "requires": "无 · HBM NTM-CE 可选（不装只显示「数据源未绑定」，不会崩）",
+      "hint": "自带改好的显示系统，不需要节枝本体。和本体一起装不会崩，但屏幕、遥控器会各有一套，没必要。",
+      "minecraft": "1.12.2",
+      "loader": "Forge 14.23.5.2864",
+      "license": "GPL-3.0",
+      "homepage": "",
       "releases": [
+        {
+          "id": "rbmk-monitor#10.0",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "10.0",
+          "version": "10.0",
+          "channel": "preview",
+          "name": "RBMK-Monitor-10.0",
+          "publishedAt": "2026-11-05T20:14:40+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/10.0",
+          "prerelease": true,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-10.0.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": 0,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/10.0/RBMK-Monitor-10.0.jar",
+              "mirror": null
+            }
+          ],
+          "notesText": "请勿下载！",
+          "notesHtml": "<p>请勿下载！</p>"
+        },
         {
           "id": "rbmk-monitor#9.0",
           "modId": "rbmk-monitor",
@@ -328,30 +359,30 @@
         }
       ],
       "latest": {
-        "id": "rbmk-monitor#9.0",
+        "id": "rbmk-monitor#10.0",
         "modId": "rbmk-monitor",
         "platform": "gitee",
         "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
-        "tag": "9.0",
-        "version": "9.0",
-        "channel": "release",
-        "name": "RBMK-Monitor-9.0",
-        "publishedAt": "2026-11-01T17:02:12+08:00",
-        "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/9.0",
-        "prerelease": false,
+        "tag": "10.0",
+        "version": "10.0",
+        "channel": "preview",
+        "name": "RBMK-Monitor-10.0",
+        "publishedAt": "2026-11-05T20:14:40+08:00",
+        "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/10.0",
+        "prerelease": true,
         "draft": false,
         "assets": [
           {
-            "name": "RBMK-Monitor-9.0.jar",
+            "name": "RBMK-Monitor-10.0.jar",
             "kind": "mod",
             "size": 0,
             "downloads": 0,
-            "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/9.0/RBMK-Monitor-9.0.jar",
+            "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/10.0/RBMK-Monitor-10.0.jar",
             "mirror": null
           }
         ],
-        "notesText": "方块类 (Blocks)\n在创造模式物品栏的 jiezhirbmkmod 标签页里可以找到\nRBMK 显示屏 (RBMK Screen)：基础的多方块屏幕（挂在天花板上，4x3 结构），用来显示反应堆的总体运行数据。\nRBMK 堆芯监视器 (RBMK Monitor)：进阶屏幕，可以显示反应堆 15x15 的网格细节，直观看到每一根柱子的状态。\nRBMK 自定义屏 (Custom Screen)：可以绑定储罐、电池等设备，用来显示液位、电量等自定义数据。\nRBMK 曲线屏 (Graph Screen)：专门用来显示温度、中子通量、水量等数据的历史折线图（支持自动轮换显示）。\n独立警报器 (RBMK Siren) 🚨（最新加入）：\n不需要多方块结构，单格方块即可放置。\n通上红石信号就会响（自带 HBM 的防空警报音效）。\n支持 16 种颜色染色。\n右键点击可以打开设置界面，自定义：警报颜色、声音类型（预警/严重）、音量大小。\n🛠️ 物品类 (Items)\nRBMK 遥控器 (RBMK Remote)：\n右键 RBMK 控制台或反应堆柱：记录数据源。\n右键 你的屏幕：将屏幕绑定到该反应堆。\n潜行+右键 储罐/电池：记录设备（最多 8 个）。\n潜行+右键 自定义屏：将记录的数据导入屏幕。\n喷气背包 (Jetpack) & 喷气开关 (Jet Switch)：\n穿在胸甲栏，手持开关右键长按即可喷射飞行。\n注意：有温度过热机制，飞太久会强制熄火冷却（屏幕下方会有热量条）。\n速度线圈 (Speed Coil)：拿在手上，移动速度提升至 5 倍。\n重力线圈 (Gravity Coil)：拿在手上，跳跃高度大幅提升。\n治愈线圈 (Healing Coil)：拿在手上，每秒恢复 4 点（2颗心）生命值。\n⚙️ 隐藏的核心机制（玩家可能不知道）\n超温红石联动：对着屏幕 蹲下+空手右键，可以打开告警设置。你可以设定“超过 800℃ 输出红石信号”。把这个红石信号接出来，连到你的独立警报器上，就能实现自动化超温防空警报。\n去抖（Debounce）机制：红石信号在温度上下浮动时不会疯狂闪烁，而是连续 4 拍（约0.8秒）确认超温后才会拉响，防止服务器卡顿和红石狂闪。",
-        "notesHtml": "<p>方块类 (Blocks)</p><p>在创造模式物品栏的 jiezhirbmkmod 标签页里可以找到</p><p>RBMK 显示屏 (RBMK Screen)：基础的多方块屏幕（挂在天花板上，4x3 结构），用来显示反应堆的总体运行数据。</p><p>RBMK 堆芯监视器 (RBMK Monitor)：进阶屏幕，可以显示反应堆 15x15 的网格细节，直观看到每一根柱子的状态。</p><p>RBMK 自定义屏 (Custom Screen)：可以绑定储罐、电池等设备，用来显示液位、电量等自定义数据。</p><p>RBMK 曲线屏 (Graph Screen)：专门用来显示温度、中子通量、水量等数据的历史折线图（支持自动轮换显示）。</p><p>独立警报器 (RBMK Siren) 🚨（最新加入）：</p><p>不需要多方块结构，单格方块即可放置。</p><p>通上红石信号就会响（自带 HBM 的防空警报音效）。</p><p>支持 16 种颜色染色。</p><p>右键点击可以打开设置界面，自定义：警报颜色、声音类型（预警/严重）、音量大小。</p><p>🛠️ 物品类 (Items)</p><p>RBMK 遥控器 (RBMK Remote)：</p><p>右键 RBMK 控制台或反应堆柱：记录数据源。</p><p>右键 你的屏幕：将屏幕绑定到该反应堆。</p><p>潜行+右键 储罐/电池：记录设备（最多 8 个）。</p><p>潜行+右键 自定义屏：将记录的数据导入屏幕。</p><p>喷气背包 (Jetpack) &amp; 喷气开关 (Jet Switch)：</p><p>穿在胸甲栏，手持开关右键长按即可喷射飞行。</p><p>注意：有温度过热机制，飞太久会强制熄火冷却（屏幕下方会有热量条）。</p><p>速度线圈 (Speed Coil)：拿在手上，移动速度提升至 5 倍。</p><p>重力线圈 (Gravity Coil)：拿在手上，跳跃高度大幅提升。</p><p>治愈线圈 (Healing Coil)：拿在手上，每秒恢复 4 点（2颗心）生命值。</p><p>⚙️ 隐藏的核心机制（玩家可能不知道）</p><p>超温红石联动：对着屏幕 蹲下+空手右键，可以打开告警设置。你可以设定“超过 800℃ 输出红石信号”。把这个红石信号接出来，连到你的独立警报器上，就能实现自动化超温防空警报。</p><p>去抖（Debounce）机制：红石信号在温度上下浮动时不会疯狂闪烁，而是连续 4 拍（约0.8秒）确认超温后才会拉响，防止服务器卡顿和红石狂闪。</p>"
+        "notesText": "请勿下载！",
+        "notesHtml": "<p>请勿下载！</p>"
       },
       "error": null
     },
@@ -364,9 +395,66 @@
       "author": "ysb-discowave",
       "desc": "DFC 监控屏 + 机器控制面板 + 制式枪械 + Roblox 线圈／喷气背包，面向 HBM 核科技社区版的附属。",
       "note": "二创作品 · 显示屏渲染取自树上的节枝 JiezhiMod（已获授权）",
-      "coexist": true,
-      "requires": "HBM 的核科技社区版（NTM:CE）或它的 Leafia 诅咒版附属",
+      "requiresJiezhimod": false,
+      "requires": "无 · HBM NTM-CE / Leafia 诅咒版可选（不装则读不到反应堆数据）",
+      "hint": "独立模组，不需要 JiezhiMod，两件一起加载也不会冲突：各有各的 modid、方块和物品。",
+      "minecraft": "1.12.2",
+      "loader": "Forge 14.23.5.2864",
+      "license": "GPL-3.0",
+      "homepage": "https://hbm-zz.ysbdwz.dpdns.org/",
       "releases": [
+        {
+          "id": "hbmzz#v2.5.0",
+          "modId": "hbmzz",
+          "platform": "github",
+          "repo": "ysb-discowave/HBMZZ-MOD",
+          "tag": "v2.5.0",
+          "version": "2.5.0",
+          "channel": "release",
+          "name": "v2.5.0 终端搬进 CE 控制台",
+          "publishedAt": "2026-11-05T13:57:41Z",
+          "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/tag/v2.5.0",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "hbmzz-2.5.0.jar",
+              "kind": "mod",
+              "size": 1007665,
+              "downloads": 1,
+              "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.5.0/hbmzz-2.5.0.jar",
+              "mirror": null
+            }
+          ],
+          "notesText": "终端搬进 CE 控制台\n终端原来只长在模组自己的 32×18 控制面板上（A–F 六个槽位）。这次它作为控件进了从诅咒版移植过来的那张控制台：编辑器控件列表最后一行多一个「终端」，用联动器给它起名字绑机器，右键它开窗。\n两块面板不共享任何一个类，所以这次不是复制一份命令解析，而是先把它抽象出来。\n 怎么用\n1. 打开 CE 控制台编辑器（手持扳手右键），控件类型里选终端，拖到画布上、保存。\n2. 用联动器（数据线）右键机器记录，再右键这个终端控件——你在联动器页签里起的名字就是槽位名。\n3. 右键终端控件开窗，ls 看有几台，use 名字 或 use 2 切换，read / ev / set 照旧。\n \n 改了什么\n- 命令语言与面板解耦。 新增 com.hbmzz.ctrl.TerminalHost，补全与执行都只认这个接口；TerminalShell 不再认识 CtrlPanel。\n- 槽位是标签名，按名字排序。 那块 taggedLinks 是从 HashMap 重建的，插入顺序不可靠——不排序的话，use 2 今天指反应堆、明天指涡轮机。序号越界退回第一个，而不是列着槽位却一个都读不了。\n- 目标跟着面板存档走。 选中的槽位存在控件自己的 vars 里，随 NBT 保存，多人看到的是同一个目标。\n- 补全不联网。 服务端每次回包带上槽位表 + 当前目标的键名/事件/变量，客户端对着本地 SnapshotHost 补零延迟；执行仍然只在服务端解析。\n- resolve() 认四种写法： 标签、机器名、唯一前缀、字母/序号。\n- 限流 每终端每秒 10 行。\n 自检\nregcheck 加到 19 条，新加三条都做过回退验证（确认会红）：\n \nregcheck 19 / termcheck 46 / cecpcheck 8 / videocheck 26 / linkercheck 21 全绿；站点 syncsite --check 与 audithtml 通过。\n另加 tools/quickcheck.py：单遍 javac 打整个 src/main/java（约 40 秒），绕开 ForgeGradle 每次十几分钟的初始化；传文件名可以只看自己改过的文件里的错。\n 校验和",
+          "notesHtml": "<h4>终端搬进 CE 控制台</h4><p>终端原来只长在模组自己的 32×18 控制面板上（A–F 六个槽位）。这次它作为<strong>控件</strong>进了从诅咒版移植过来的那张控制台：编辑器控件列表最后一行多一个「终端」，用联动器给它起名字绑机器，右键它开窗。</p><p>两块面板不共享任何一个类，所以这次不是复制一份命令解析，而是先把它抽象出来。</p><h4>怎么用</h4><p>1. 打开 CE 控制台编辑器（手持扳手右键），控件类型里选<strong>终端</strong>，拖到画布上、保存。</p><p>2. 用联动器（数据线）右键机器记录，再右键这个终端控件——<strong>你在联动器页签里起的名字就是槽位名</strong>。</p><p>3. 右键终端控件开窗，<code>ls</code> 看有几台，<code>use 名字</code> 或 <code>use 2</code> 切换，<code>read</code> / <code>ev</code> / <code>set</code> 照旧。</p><p>```</p><p>ls                    列出本控件绑定的机器，* 是当前目标</p><p>use RBMK 控制棒组      带空格的标签整行都算名字</p><p>use 2                 也可以按序号</p><p>read heat             读一个键</p><p>ev rbmk_ctrl_set_level level=40</p><p>set level 40          只写变量名，终端自己找事件</p><p>```</p><h4>改了什么</h4><ul><li><strong>命令语言与面板解耦。</strong> 新增 <code>com.hbmzz.ctrl.TerminalHost</code>，补全与执行都只认这个接口；<code>TerminalShell</code> 不再认识 <code>CtrlPanel</code>。</li><li><strong>槽位是标签名，按名字排序。</strong> 那块 <code>taggedLinks</code> 是从 <code>HashMap</code> 重建的，插入顺序不可靠——不排序的话，<code>use 2</code> 今天指反应堆、明天指涡轮机。序号越界退回第一个，而不是列着槽位却一个都读不了。</li><li><strong>目标跟着面板存档走。</strong> 选中的槽位存在控件自己的 <code>vars</code> 里，随 NBT 保存，多人看到的是同一个目标。</li><li><strong>补全不联网。</strong> 服务端每次回包带上槽位表 + 当前目标的键名/事件/变量，客户端对着本地 <code>SnapshotHost</code> 补零延迟；执行仍然只在服务端解析。</li><li><strong><code>resolve()</code> 认四种写法：</strong> 标签、机器名、唯一前缀、字母/序号。</li><li><strong>限流</strong> 每终端每秒 10 行。</li></ul><h4>自检</h4><p><code>regcheck</code> 加到 <strong>19 条</strong>，新加三条都做过回退验证（确认会红）：</p><p>```</p><p>FAIL  every addon control type has a Chinese display name  -- menu shows the English key: Terminal</p><p>FAIL  every addon control class is in the control registry  -- never instantiated: TerminalControl</p><p>FAIL  every addon control has its own registry name  -- silently overwrites another control: leafia_nixie</p><p>```</p><p><code>regcheck 19</code> / <code>termcheck 46</code> / <code>cecpcheck 8</code> / <code>videocheck 26</code> / <code>linkercheck 21</code> 全绿；站点 <code>sync_site --check</code> 与 <code>audit_html</code> 通过。</p><p>另加 <code>tools/quickcheck.py</code>：单遍 javac 打整个 <code>src/main/java</code>（约 40 秒），绕开 ForgeGradle 每次十几分钟的初始化；传文件名可以只看自己改过的文件里的错。</p><h4>校验和</h4><p>```</p><p>0888dbffeeaad0efd1cfa17f45b4204951a7d8311ae36151a542a9537d10404c</p><p>hbmzz-2.5.0.jar</p><p>8251a424d29338c7daaab5a2acbe9e165b6d117e389b23263bd8230f56fd8e98</p><p>hbmzz-2.5.0-sources.jar</p><p>```</p>"
+        },
+        {
+          "id": "hbmzz#v2.4.2",
+          "modId": "hbmzz",
+          "platform": "github",
+          "repo": "ysb-discowave/HBMZZ-MOD",
+          "tag": "v2.4.2",
+          "version": "2.4.2",
+          "channel": "release",
+          "name": "v2.4.2 控制台编辑器一开就崩",
+          "publishedAt": "2026-11-05T10:17:36Z",
+          "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/tag/v2.4.2",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "hbmzz-2.4.2.jar",
+              "kind": "mod",
+              "size": 988998,
+              "downloads": 4,
+              "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.4.2/hbmzz-2.4.2.jar",
+              "mirror": null
+            }
+          ],
+          "notesText": "控制台编辑器一开就崩\n崩溃报告指向 updateScreen 里的 ArrayDeque.getFirst()。那只是最后一帧——真凶在前两帧。\nControlType 的类型表是静态初始化时一条条填的，而 addon（Leafia）的 3 个类型要等某个类第一次碰到它们才登记。编辑器的类型菜单恰好一边遍历这张表、一边通过注册表解析每个类型：\n \n于是 ConcurrentModificationException 打断 initGui，元素栈没被填上，下一 tick 崩在空栈上。\n离线复现（不启动游戏）：遍历前 9 个类型 → 抛 CME → 遍历后 12 个，与游戏日志逐行一致。\n 修法\n- 类型表在启动时就补齐。 ControlRegistry.init() 先调 AddonControlType.register() 强制静态初始化，之后再没有任何代码能改这张表。\n- 表变私有。 ALLVALUES 改成 private，对外只有 all()（快照）和 at(int)。再有谁想在遍历时读到一张会长的表，先编译不过。\n- 菜单遍历快照。 按钮 id 与点击时的解析共用同一份快照，表后来变长也不会让按钮错位。\n- 编辑器不再被一个子菜单带走。 先入栈再初始化子元素，所有取栈顶都换成可空的 top()；子元素 initGui 抛异常只记一条 ERROR，界面照常打开。一个 bug 不该以另一个更严重的面目出现。\n- 顺带修掉：窗口缩放会让类型菜单的按钮累积副本，越缩越多。\n 新增自检\ntools/cecpcheck（8 项）直接断言这次修复的不变量：注册表 init 之后类型表就应该是完整的，然后按菜单的方式遍历一遍。回退验证：去掉那行强制登记，立刻报\n \nregcheck 加到 16 条：编辑器不得无保护地取空栈顶；类型表只能经 all() 读。\n 验证\nregcheck 16/16、cecpcheck 8/8、termcheck 38/38、videocheck 26/26、linkercheck 21 通过 1 跳过。\n升级后请重新打开 CE 控制台确认——这次的问题在 initGui，离线能证到 CME 已消失、栈不会空，但\"手感\"仍要你点一下。",
+          "notesHtml": "<h4>控制台编辑器一开就崩</h4><p>崩溃报告指向 <code>updateScreen</code> 里的 <code>ArrayDeque.getFirst()</code>。那只是最后一帧——真凶在前两帧。</p><p><code>ControlType</code> 的类型表是<strong>静态初始化时一条条填的</strong>，而 addon（Leafia）的 3 个类型要等某个类第一次碰到它们才登记。编辑器的类型菜单恰好一边遍历这张表、一边通过注册表解析每个类型：</p><p>```</p><p>for (ControlType t : ControlType.ALL_VALUES)          // 正在遍历</p><p>ControlRegistry.getAllControlsOfType(t);           // 解析 → 触发 addon 类型登记</p><p>//      → 往正在遍历的列表里追加</p><p>```</p><p>于是 <code>ConcurrentModificationException</code> 打断 <code>initGui</code>，元素栈没被填上，下一 tick 崩在空栈上。</p><p>离线复现（不启动游戏）：<strong>遍历前 9 个类型 → 抛 CME → 遍历后 12 个</strong>，与游戏日志逐行一致。</p><h4>修法</h4><ul><li><strong>类型表在启动时就补齐。</strong> <code>ControlRegistry.init()</code> 先调 <code>AddonControlType.register()</code> 强制静态初始化，之后再没有任何代码能改这张表。</li><li><strong>表变私有。</strong> <code>ALL_VALUES</code> 改成 <code>private</code>，对外只有 <code>all()</code>（快照）和 <code>at(int)</code>。再有谁想在遍历时读到一张会长的表，先编译不过。</li><li><strong>菜单遍历快照。</strong> 按钮 id 与点击时的解析共用同一份快照，表后来变长也不会让按钮错位。</li><li><strong>编辑器不再被一个子菜单带走。</strong> 先入栈再初始化子元素，所有取栈顶都换成可空的 <code>top()</code>；子元素 <code>initGui</code> 抛异常只记一条 ERROR，界面照常打开。一个 bug 不该以另一个更严重的面目出现。</li><li>顺带修掉：窗口缩放会让类型菜单的按钮累积副本，越缩越多。</li></ul><h4>新增自检</h4><p><code>tools/cecpcheck</code>（8 项）直接断言这次修复的不变量：<strong>注册表 init 之后类型表就应该是完整的</strong>，然后按菜单的方式遍历一遍。回退验证：去掉那行强制登记，立刻报</p><p>```</p><p>FAIL  registry init leaves the type table complete  -- got 9</p><p>FAIL  the walk adds no types  -- 9 -&gt; 12</p><p>```</p><p><code>regcheck</code> 加到 16 条：编辑器不得无保护地取空栈顶；类型表只能经 <code>all()</code> 读。</p><h4>验证</h4><p>regcheck 16/16、cecpcheck 8/8、termcheck 38/38、videocheck 26/26、linkercheck 21 通过 1 跳过。</p><p>升级后请重新打开 CE 控制台确认——这次的问题在 <code>initGui</code>，离线能证到 CME 已消失、栈不会空，但&quot;手感&quot;仍要你点一下。</p>"
+        },
         {
           "id": "hbmzz#v2.4.1",
           "modId": "hbmzz",
@@ -385,7 +473,7 @@
               "name": "hbmzz-2.4.1.jar",
               "kind": "mod",
               "size": 987937,
-              "downloads": 2,
+              "downloads": 3,
               "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.4.1/hbmzz-2.4.1.jar",
               "mirror": null
             }
@@ -437,7 +525,7 @@
               "name": "hbmzz-2.3.2.jar",
               "kind": "mod",
               "size": 946930,
-              "downloads": 3,
+              "downloads": 4,
               "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.3.2/hbmzz-2.3.2.jar",
               "mirror": null
             }
@@ -499,30 +587,30 @@
         }
       ],
       "latest": {
-        "id": "hbmzz#v2.4.1",
+        "id": "hbmzz#v2.5.0",
         "modId": "hbmzz",
         "platform": "github",
         "repo": "ysb-discowave/HBMZZ-MOD",
-        "tag": "v2.4.1",
-        "version": "2.4.1",
+        "tag": "v2.5.0",
+        "version": "2.5.0",
         "channel": "release",
-        "name": "v2.4.1 终端里的豆腐块",
-        "publishedAt": "2026-11-05T05:18:01Z",
-        "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/tag/v2.4.1",
+        "name": "v2.5.0 终端搬进 CE 控制台",
+        "publishedAt": "2026-11-05T13:57:41Z",
+        "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/tag/v2.5.0",
         "prerelease": false,
         "draft": false,
         "assets": [
           {
-            "name": "hbmzz-2.4.1.jar",
+            "name": "hbmzz-2.5.0.jar",
             "kind": "mod",
-            "size": 987937,
-            "downloads": 2,
-            "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.4.1/hbmzz-2.4.1.jar",
+            "size": 1007665,
+            "downloads": 1,
+            "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.5.0/hbmzz-2.5.0.jar",
             "mirror": null
           }
         ],
-        "notesText": "终端上那排方框\n2.4.0 的终端里，ls 用 ▸ 标当前目标。这个字符在 Consolas 里有字形，在 Microsoft YaHei 里没有——而终端窗口是逐行选字体的：哪一行带中文，就用中文字体。机器名恰好都是中文，于是这个标记只在最该看清的那几行变成了方框，纯英文行反而是好的。\n现在换成 ：四个候选字体（Consolas / Microsoft YaHei / SimHei / Dialog）都有字形，9 px 下宽度只差 1 像素，名字列不会歪。\n 一并修掉\n- 补全列表角上的 +N 原来画在候选文字尾巴上，读起来像候选名的一部分。现在给它留了单独一列，候选按剩余宽度截断。\n- 视频广播器的预览行用了 ✔ / ⚠，原版字体同样没有这两个字形（在 1.12.2 里也是方框）。改成文字，靠颜色区分「本机已有 / 本机没有」。\n 新增一道自检\ntools/regcheck 第 14 条现在扫全部 Java 字符串字面量：凡是不在四个字体交集里的装饰符号都报红，并给到「文件:行 U+XXXX」。\n这类问题的可怕之处在于它不编译失败、不看源码也看不出、只在进游戏之后出现在某几行——正是 regcheck 存在的理由。回退验证过：把 ▸ 放回去，检查立刻报\n \n 顺带\ntools/PreviewCtrl.java 现在也能把终端窗口渲染成 PNG（term-open / term-suggest / term-help 三张），不用进游戏就能看字体大小、补全浮层遮挡、翻屏指示。上面那个方框就是这样被抓到的。\n 验证\n- regcheck 14/14、termcheck 38/38、videocheck 26/26、linkercheck 21 通过 1 跳过\n- 仍需进游戏确认的部分没有变化：GUI 缩放 2/3 下的字号、对着真 RBMK 控制棒打 ev 的手感",
-        "notesHtml": "<h4>终端上那排方框</h4><p>2.4.0 的终端里，<code>ls</code> 用 <code>▸</code> 标当前目标。这个字符在 Consolas 里有字形，在 Microsoft YaHei 里没有——而终端窗口是<strong>逐行</strong>选字体的：哪一行带中文，就用中文字体。机器名恰好都是中文，于是这个标记只在最该看清的那几行变成了方框，纯英文行反而是好的。</p><p>现在换成 <code>*</code>：四个候选字体（Consolas / Microsoft YaHei / SimHei / Dialog）都有字形，9 px 下宽度只差 1 像素，名字列不会歪。</p><h4>一并修掉</h4><ul><li>补全列表角上的 <code>+N</code> 原来画在候选文字尾巴上，读起来像候选名的一部分。现在给它留了单独一列，候选按剩余宽度截断。</li><li>视频广播器的预览行用了 <code>✔</code> / <code>⚠</code>，原版字体同样没有这两个字形（在 1.12.2 里也是方框）。改成文字，靠颜色区分「本机已有 / 本机没有」。</li></ul><h4>新增一道自检</h4><p><code>tools/regcheck</code> 第 14 条现在扫全部 Java 字符串字面量：凡是不在四个字体交集里的装饰符号都报红，并给到「文件:行 U+XXXX」。</p><p>这类问题的可怕之处在于它不编译失败、不看源码也看不出、只在进游戏之后出现在某几行——正是 regcheck 存在的理由。回退验证过：把 <code>▸</code> 放回去，检查立刻报</p><p>```</p><p>FAIL  no string uses a glyph the UI fonts cannot draw</p><p>renders as a box: src/main/java/com/hbmzz/ctrl/TerminalShell.java:369 U+25B8</p><p>```</p><h4>顺带</h4><p><code>tools/PreviewCtrl.java</code> 现在也能把终端窗口渲染成 PNG（<code>term-open</code> / <code>term-suggest</code> / <code>term-help</code> 三张），不用进游戏就能看字体大小、补全浮层遮挡、翻屏指示。上面那个方框就是这样被抓到的。</p><h4>验证</h4><ul><li>regcheck 14/14、termcheck 38/38、videocheck 26/26、linkercheck 21 通过 1 跳过</li><li>仍需进游戏确认的部分没有变化：GUI 缩放 2/3 下的字号、对着真 RBMK 控制棒打 <code>ev</code> 的手感</li></ul>"
+        "notesText": "终端搬进 CE 控制台\n终端原来只长在模组自己的 32×18 控制面板上（A–F 六个槽位）。这次它作为控件进了从诅咒版移植过来的那张控制台：编辑器控件列表最后一行多一个「终端」，用联动器给它起名字绑机器，右键它开窗。\n两块面板不共享任何一个类，所以这次不是复制一份命令解析，而是先把它抽象出来。\n 怎么用\n1. 打开 CE 控制台编辑器（手持扳手右键），控件类型里选终端，拖到画布上、保存。\n2. 用联动器（数据线）右键机器记录，再右键这个终端控件——你在联动器页签里起的名字就是槽位名。\n3. 右键终端控件开窗，ls 看有几台，use 名字 或 use 2 切换，read / ev / set 照旧。\n \n 改了什么\n- 命令语言与面板解耦。 新增 com.hbmzz.ctrl.TerminalHost，补全与执行都只认这个接口；TerminalShell 不再认识 CtrlPanel。\n- 槽位是标签名，按名字排序。 那块 taggedLinks 是从 HashMap 重建的，插入顺序不可靠——不排序的话，use 2 今天指反应堆、明天指涡轮机。序号越界退回第一个，而不是列着槽位却一个都读不了。\n- 目标跟着面板存档走。 选中的槽位存在控件自己的 vars 里，随 NBT 保存，多人看到的是同一个目标。\n- 补全不联网。 服务端每次回包带上槽位表 + 当前目标的键名/事件/变量，客户端对着本地 SnapshotHost 补零延迟；执行仍然只在服务端解析。\n- resolve() 认四种写法： 标签、机器名、唯一前缀、字母/序号。\n- 限流 每终端每秒 10 行。\n 自检\nregcheck 加到 19 条，新加三条都做过回退验证（确认会红）：\n \nregcheck 19 / termcheck 46 / cecpcheck 8 / videocheck 26 / linkercheck 21 全绿；站点 syncsite --check 与 audithtml 通过。\n另加 tools/quickcheck.py：单遍 javac 打整个 src/main/java（约 40 秒），绕开 ForgeGradle 每次十几分钟的初始化；传文件名可以只看自己改过的文件里的错。\n 校验和",
+        "notesHtml": "<h4>终端搬进 CE 控制台</h4><p>终端原来只长在模组自己的 32×18 控制面板上（A–F 六个槽位）。这次它作为<strong>控件</strong>进了从诅咒版移植过来的那张控制台：编辑器控件列表最后一行多一个「终端」，用联动器给它起名字绑机器，右键它开窗。</p><p>两块面板不共享任何一个类，所以这次不是复制一份命令解析，而是先把它抽象出来。</p><h4>怎么用</h4><p>1. 打开 CE 控制台编辑器（手持扳手右键），控件类型里选<strong>终端</strong>，拖到画布上、保存。</p><p>2. 用联动器（数据线）右键机器记录，再右键这个终端控件——<strong>你在联动器页签里起的名字就是槽位名</strong>。</p><p>3. 右键终端控件开窗，<code>ls</code> 看有几台，<code>use 名字</code> 或 <code>use 2</code> 切换，<code>read</code> / <code>ev</code> / <code>set</code> 照旧。</p><p>```</p><p>ls                    列出本控件绑定的机器，* 是当前目标</p><p>use RBMK 控制棒组      带空格的标签整行都算名字</p><p>use 2                 也可以按序号</p><p>read heat             读一个键</p><p>ev rbmk_ctrl_set_level level=40</p><p>set level 40          只写变量名，终端自己找事件</p><p>```</p><h4>改了什么</h4><ul><li><strong>命令语言与面板解耦。</strong> 新增 <code>com.hbmzz.ctrl.TerminalHost</code>，补全与执行都只认这个接口；<code>TerminalShell</code> 不再认识 <code>CtrlPanel</code>。</li><li><strong>槽位是标签名，按名字排序。</strong> 那块 <code>taggedLinks</code> 是从 <code>HashMap</code> 重建的，插入顺序不可靠——不排序的话，<code>use 2</code> 今天指反应堆、明天指涡轮机。序号越界退回第一个，而不是列着槽位却一个都读不了。</li><li><strong>目标跟着面板存档走。</strong> 选中的槽位存在控件自己的 <code>vars</code> 里，随 NBT 保存，多人看到的是同一个目标。</li><li><strong>补全不联网。</strong> 服务端每次回包带上槽位表 + 当前目标的键名/事件/变量，客户端对着本地 <code>SnapshotHost</code> 补零延迟；执行仍然只在服务端解析。</li><li><strong><code>resolve()</code> 认四种写法：</strong> 标签、机器名、唯一前缀、字母/序号。</li><li><strong>限流</strong> 每终端每秒 10 行。</li></ul><h4>自检</h4><p><code>regcheck</code> 加到 <strong>19 条</strong>，新加三条都做过回退验证（确认会红）：</p><p>```</p><p>FAIL  every addon control type has a Chinese display name  -- menu shows the English key: Terminal</p><p>FAIL  every addon control class is in the control registry  -- never instantiated: TerminalControl</p><p>FAIL  every addon control has its own registry name  -- silently overwrites another control: leafia_nixie</p><p>```</p><p><code>regcheck 19</code> / <code>termcheck 46</code> / <code>cecpcheck 8</code> / <code>videocheck 26</code> / <code>linkercheck 21</code> 全绿；站点 <code>sync_site --check</code> 与 <code>audit_html</code> 通过。</p><p>另加 <code>tools/quickcheck.py</code>：单遍 javac 打整个 <code>src/main/java</code>（约 40 秒），绕开 ForgeGradle 每次十几分钟的初始化；传文件名可以只看自己改过的文件里的错。</p><h4>校验和</h4><p>```</p><p>0888dbffeeaad0efd1cfa17f45b4204951a7d8311ae36151a542a9537d10404c</p><p>hbmzz-2.5.0.jar</p><p>8251a424d29338c7daaab5a2acbe9e165b6d117e389b23263bd8230f56fd8e98</p><p>hbmzz-2.5.0-sources.jar</p><p>```</p>"
       },
       "error": null
     }

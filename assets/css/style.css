@@ -2233,16 +2233,6 @@ ul {
   color: #ffd39a;
 }
 
-/* 独立附属（可与本体共存）时那条提示转绿，和「互斥」的琥珀色区分开 */
-.callout--ok {
-  border-color: rgba(56, 224, 180, 0.26);
-  background: rgba(56, 224, 180, 0.06);
-}
-
-.callout--ok b {
-  color: #9df5d2;
-}
-
 /* ---------- 19. Footer ---------- */
 .site-footer {
   border-top: 1px solid var(--line);
@@ -2788,5 +2778,97 @@ ul {
   .mod-tab {
     padding: 8px 13px;
     font-size: 13px;
+  }
+}
+
+/* 模组参数表：放在选项卡下方，随模组切换 */
+.mod-info {
+  margin: 18px 0 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(11, 17, 32, 0.55);
+  overflow: hidden;
+}
+
+.mod-spec {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.2px;
+}
+
+.mod-spec caption {
+  padding: 11px 18px;
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+}
+
+.mod-spec th,
+.mod-spec td {
+  padding: 10px 18px;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid var(--line);
+  line-height: 1.6;
+}
+
+.mod-spec tr:first-child th,
+.mod-spec tr:first-child td {
+  border-top: 0;
+}
+
+.mod-spec th {
+  width: 30%;
+  min-width: 132px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.mod-spec td {
+  color: var(--text);
+}
+
+.mod-spec td.is-no {
+  color: #6fe3b4;
+}
+
+.mod-spec td.is-yes {
+  color: var(--amber);
+}
+
+.mod-info-hint {
+  margin: 0;
+  padding: 11px 18px;
+  border-top: 1px solid var(--line);
+  font-size: 12.5px;
+  line-height: 1.75;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.015);
+}
+
+/* 来源格里「打开仓库」和「官网」并排 */
+.version-board .vb-note a + a {
+  margin-left: 10px;
+}
+
+@media (max-width: 560px) {
+  .mod-spec th,
+  .mod-spec td {
+    padding: 9px 14px;
+    font-size: 12.6px;
+  }
+
+  .mod-spec th {
+    width: 40%;
+    min-width: 0;
+  }
+
+  .mod-info-hint {
+    padding: 10px 14px;
+    font-size: 12px;
   }
 }

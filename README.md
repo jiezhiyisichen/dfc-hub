@@ -94,23 +94,31 @@ dfc-hub/
   "author": "baldih",
   "desc": "一句话介绍",
   "note": "二创作品 · 原作为树上的节枝 JiezhiMod",
-  "coexist": false,                     // 见下方「互斥还是共存」
-  "requires": "前置模组",                // 仅 coexist: true 时展示
+  "requiresJiezhimod": false,           // 参数表第 1 行，也是「怎么装」第 3 步的依据
+  "requires": "无 · HBM NTM-CE 可选",    // 参数表第 2 行
+  "minecraft": "1.12.2",                // 省略即默认 1.12.2
+  "loader": "Forge 14.23.5.2864",       // 省略即默认上面这个
+  "license": "GPL-3.0",                 // 省略会自动从仓库 API 读
+  "homepage": "https://example.com/",   // 可选，看板里多一个「官网 ↗」
+  "hint": "一句提醒，显示在参数表下面",   // 可选
   "ignore": ["ForgeGradle-example"],    // 可选：正则，命中的附件直接丢掉
   "enabled": true                       // false 可以临时下架
 }
 ```
 
-### 互斥还是共存
+### 模组参数表
 
-页面上那条提示由 `coexist` 决定，切换选项卡时会跟着换：
+选项卡下方那张表由上面这些字段渲染，**切换选项卡时整表重画**，所以不会出现「表格说不用、说明却让你装」的矛盾：
 
-| `coexist` | 提示 | 「怎么装」第 3 步 |
+| 行 | 数据来源 | 缺省 |
 | --- | --- | --- |
-| `false`（默认） | 琥珀色：二创包与本体的 jar 互斥，装之前先移走本体 | 移走本体的节枝特效工具 jar |
-| `true` | 绿色：独立附属，和本体一起装；前置是 `requires` | 保留本体的 jar，两者一起装 |
+| 需要 JiezhiMod 作为前置 | `requiresJiezhimod` | `false`（显示「否，可独立安装」） |
+| 前置模组 | `requires` | 需要本体时写 JiezhiMod，否则「无」 |
+| 游戏版本 | `minecraft` | `1.12.2` |
+| 模组加载器 | `loader` | `Forge 14.23.5.2864` |
+| 开源许可 | `license`，没写就问仓库 API（GitHub `license.spdx_id` / Gitee `license`） | `未标注` |
 
-改过本体逻辑的 fork（如 RBMK 监视器）用 `false`；只是引用了代码、自己另起 modid 的独立附属（如 HBMZZ）用 `true`。
+同一份 `requiresJiezhimod` 还驱动「怎么装」第 3 步：`true` → 本体 jar 也要放进去；`false` → 明确写「不需要再装节枝特效工具本体」。
 
 ### 同步规则
 
@@ -125,10 +133,10 @@ dfc-hub/
 | 频率 | 跟着主流水线走，**每小时**一次（满足「至少每 2 小时」）；也可以在看板里点「手动刷新数据」 |
 | 凭据 | 可选 `GITEE_TOKEN` / `GITHUB_TOKEN`，提高 API 额度；匿名也能读公开仓库 |
 
-> **二创包与本体是否互斥，看模组的 `coexist`**：`false` 时两个 jar 同时放进 `mods/` 会因模组 ID 冲突启动失败；
-> `true` 时是独立附属，必须和本体一起装。页面上的提示与安装步骤会按当前选中的模组自动切换。
+> **二创不等于「必须装本体」**：这两条二创都是独立 modid（`jiezhirbmkmod` / `hbmzz`），不需要 JiezhiMod 也能跑。
+> 页面上不要再写「需要和本体一起装」——那会被读成「必须加载 jiezhimod」。要表达的是「和本体一起装也不冲突」。
 
-当前收录：**RBMK 监视器**（Gitee · 互斥）、**HBMZZ**（GitHub · 独立附属）。
+当前收录：**RBMK 监视器**（Gitee · 独立 modid，自带改好的显示系统）、**HBMZZ**（GitHub · 独立附属，有官网）。
 
 ---
 

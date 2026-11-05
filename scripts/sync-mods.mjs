@@ -170,6 +170,26 @@ async function fetchGitee(repo) {
   return fetchJson(url);
 }
 
+/** 仓库元信息：只取开源许可与官网地址，用来补参数表里没手填的项。
+ *  拿不到就算了，绝不能因为它让整个 mod 变成 error。 */
+async function fetchRepoMeta(platform, repo) {
+  try {
+    if (platform === "gitee") {
+      const d = await fetchJson(`${API.gitee}/repos/${repo}`);
+      return { license: (d && d.license) || "", homepage: (d && d.homepage) || "" };
+    }
+    const headers = GITHUB_TOKEN ? { Authorization: `Bearer ${GITHUB_TOKEN}` } : {};
+    const d = await fetchJson(`${API.github}/repos/${repo}`, headers);
+    return {
+      license: (d && d.license && (d.license.spdx_id || d.license.name)) || "",
+      homepage: (d && d.homepage) || "",
+    };
+  } catch (err) {
+    warn(`仓库信息读取失败（不影响版本列表）：${err.message || err}`);
+    return {};
+  }
+}
+
 /* -------------------------------------------------------------- normalize */
 
 function normalizeRelease(raw, mod, ignoreRes) {
@@ -247,10 +267,15 @@ async function main() {
       author: mod.author || mod.repo.split("/")[0],
       desc: mod.desc || "",
       note: mod.note || "",
-      /* coexist 决定页面上那条提示：false = 与本体互斥（改过本体的二创），
-         true = 独立附属，可以一起装，此时 requires 写它的前置。 */
-      coexist: mod.coexist === true,
+      /* 参数表（页面选项卡下方那张）：这些值都能在 data/mods.json 里覆盖，
+         不写就走站点默认 —— MC 1.12.2 / Forge 14.23.5.2864。 */
+      requiresJiezhimod: mod.requiresJiezhimod === true,
       requires: mod.requires || "",
+      hint: mod.hint || "",
+      minecraft: mod.minecraft || "1.12.2",
+      loader: mod.loader || "Forge 14.23.5.2864",
+      license: mod.license || "",
+      homepage: mod.homepage || "",
       releases: [],
       latest: null,
       error: null,
@@ -269,10 +294,19 @@ async function main() {
       entry.releases.sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
       entry.latest = pickLatest(entry.releases);
 
+      /* 参数表里没手填的许可 / 官网，尽量从仓库元信息补齐 */
+      if (!entry.license || !entry.homepage) {
+        const meta = await fetchRepoMeta(entry.platform, entry.repo);
+        if (!entry.license) entry.license = meta.license || "";
+        if (!entry.homepage) entry.homepage = meta.homepage || "";
+      }
+      if (!entry.license) entry.license = "未标注";
+
       const assetCount = entry.releases.reduce((n, r) => n + r.assets.length, 0);
       log(
         `${entry.name} (${entry.platform} ${entry.repo}): ${entry.releases.length} 个版本 · ${assetCount} 个文件` +
-          (entry.latest ? ` · 最新 ${entry.latest.tag}` : "")
+          (entry.latest ? ` · 最新 ${entry.latest.tag}` : "") +
+          ` · ${entry.license}`
       );
     } catch (err) {
       entry.error = err.message || String(err);

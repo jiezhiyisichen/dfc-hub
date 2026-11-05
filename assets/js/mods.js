@@ -274,30 +274,77 @@
     var repoLink = boardEl.querySelector("[data-mod-repo]");
     if (repoLink) repoLink.setAttribute("href", mod.repoUrl || "#");
 
-    renderNotice(mod);
-  }
-
-  /* 顶上那条提示：改过本体的二创与本体互斥，独立附属则要一起装。
-     由 data/mods.json 的 coexist / requires 决定，切换选项卡时同步换掉。 */
-  function renderNotice(mod) {
-    var coexist = !!(mod && mod.coexist);
-
-    var noticeEl = document.getElementById("modNotice");
-    if (noticeEl) {
-      noticeEl.classList.toggle("callout--ok", coexist);
-      var conflictP = noticeEl.querySelector("[data-notice-conflict]");
-      var coexistP = noticeEl.querySelector("[data-notice-coexist]");
-      if (conflictP) conflictP.hidden = coexist;
-      if (coexistP) coexistP.hidden = !coexist;
-      var reqEl = noticeEl.querySelector("[data-mod-requires]");
-      if (reqEl) reqEl.textContent = (mod && mod.requires) || "无额外前置";
+    var homeLink = boardEl.querySelector("[data-mod-homepage]");
+    if (homeLink) {
+      if (mod.homepage) {
+        homeLink.setAttribute("href", mod.homepage);
+        homeLink.hidden = false;
+      } else {
+        homeLink.hidden = true;
+      }
     }
 
+    renderInfo(mod);
+  }
+
+  /* 选项卡下方的参数表：是否需要本体、前置、游戏版本、加载器、许可。
+     全部来自 assets/data/mods.json 里对应模组的字段，切选项卡时重画。 */
+  function renderInfo(mod) {
+    var box = document.getElementById("modInfo");
+    if (!box) return;
+
+    if (!mod) {
+      box.hidden = true;
+      return;
+    }
+    box.hidden = false;
+
+    var needsJz = !!mod.requiresJiezhimod;
+
+    var rows = [
+      {
+        k: "需要 JiezhiMod 作为前置",
+        v: needsJz ? "是" : "否，可独立安装",
+        cls: needsJz ? "is-yes" : "is-no",
+      },
+      {
+        k: "前置模组",
+        v: mod.requires || (needsJz ? "节枝特效工具（JiezhiMod）" : "无"),
+      },
+      { k: "游戏版本", v: "Minecraft " + (mod.minecraft || "1.12.2") },
+      { k: "模组加载器", v: mod.loader || "Forge 14.23.5.2864" },
+      { k: "开源许可", v: mod.license || "见仓库" },
+    ];
+
+    var body = box.querySelector("[data-mod-spec]");
+    if (body) {
+      body.innerHTML = rows
+        .map(function (r) {
+          return (
+            "<tr><th scope=\"row\">" +
+            esc(r.k) +
+            "</th><td" +
+            (r.cls ? ' class="' + r.cls + '"' : "") +
+            ">" +
+            esc(r.v) +
+            "</td></tr>"
+          );
+        })
+        .join("");
+    }
+
+    var hint = box.querySelector("[data-mod-hint]");
+    if (hint) {
+      hint.textContent = mod.hint || "";
+      hint.hidden = !mod.hint;
+    }
+
+    /* 「怎么装」第 3 步跟着同一份数据走，避免表格说不用、步骤却让你移走 */
     var step3 = document.querySelector("[data-mod-step3]");
     if (step3) {
-      step3.innerHTML = coexist
-        ? "<b>保留本体的节枝特效工具 jar</b>，两者一起装。"
-        : "<b>移走本体的节枝特效工具 jar</b>，两个不要同时装。";
+      step3.innerHTML = needsJz
+        ? "<b>本体的节枝特效工具 jar 也要放进 mods/</b>，缺了会启动失败。"
+        : "<b>不需要再装节枝特效工具本体</b>，这个 jar 自带所需内容。";
     }
   }
 
