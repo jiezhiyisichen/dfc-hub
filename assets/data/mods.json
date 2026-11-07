@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-06T23:02:01.087Z",
+  "generatedAt": "2026-11-07T02:43:44.833Z",
   "count": 2,
   "mods": [
     {
@@ -19,6 +19,32 @@
       "license": "GPL-3.0",
       "homepage": "",
       "releases": [
+        {
+          "id": "rbmk-monitor#11.0",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "11.0",
+          "version": "11.0",
+          "channel": "release",
+          "name": "RBMK-Monitor-11.0",
+          "publishedAt": "2026-11-07T09:50:22+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/11.0",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-11.0.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": 0,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/11.0/RBMK-Monitor-11.0.jar",
+              "mirror": null
+            }
+          ],
+          "notesText": "更新了“终端显示屏”有方块和显示屏2个状态！输入“help”可查看所有控制RBMK的指令，（不是抄袭hbmzz，是ta的终端我觉得好，于是自己做了一个）",
+          "notesHtml": "<p>更新了“终端显示屏”有方块和显示屏2个状态！输入“help”可查看所有控制RBMK的指令，（不是抄袭hbmzz，是ta的终端我觉得好，于是自己做了一个）</p>"
+        },
         {
           "id": "rbmk-monitor#9.0",
           "modId": "rbmk-monitor",
@@ -333,30 +359,30 @@
         }
       ],
       "latest": {
-        "id": "rbmk-monitor#9.0",
+        "id": "rbmk-monitor#11.0",
         "modId": "rbmk-monitor",
         "platform": "gitee",
         "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
-        "tag": "9.0",
-        "version": "9.0",
+        "tag": "11.0",
+        "version": "11.0",
         "channel": "release",
-        "name": "RBMK-Monitor-9.0",
-        "publishedAt": "2026-11-01T17:02:12+08:00",
-        "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/9.0",
+        "name": "RBMK-Monitor-11.0",
+        "publishedAt": "2026-11-07T09:50:22+08:00",
+        "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/11.0",
         "prerelease": false,
         "draft": false,
         "assets": [
           {
-            "name": "RBMK-Monitor-9.0.jar",
+            "name": "RBMK-Monitor-11.0.jar",
             "kind": "mod",
             "size": 0,
             "downloads": 0,
-            "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/9.0/RBMK-Monitor-9.0.jar",
+            "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/11.0/RBMK-Monitor-11.0.jar",
             "mirror": null
           }
         ],
-        "notesText": "方块类 (Blocks)\n在创造模式物品栏的 jiezhirbmkmod 标签页里可以找到\nRBMK 显示屏 (RBMK Screen)：基础的多方块屏幕（挂在天花板上，4x3 结构），用来显示反应堆的总体运行数据。\nRBMK 堆芯监视器 (RBMK Monitor)：进阶屏幕，可以显示反应堆 15x15 的网格细节，直观看到每一根柱子的状态。\nRBMK 自定义屏 (Custom Screen)：可以绑定储罐、电池等设备，用来显示液位、电量等自定义数据。\nRBMK 曲线屏 (Graph Screen)：专门用来显示温度、中子通量、水量等数据的历史折线图（支持自动轮换显示）。\n独立警报器 (RBMK Siren) 🚨（最新加入）：\n不需要多方块结构，单格方块即可放置。\n通上红石信号就会响（自带 HBM 的防空警报音效）。\n支持 16 种颜色染色。\n右键点击可以打开设置界面，自定义：警报颜色、声音类型（预警/严重）、音量大小。\n🛠️ 物品类 (Items)\nRBMK 遥控器 (RBMK Remote)：\n右键 RBMK 控制台或反应堆柱：记录数据源。\n右键 你的屏幕：将屏幕绑定到该反应堆。\n潜行+右键 储罐/电池：记录设备（最多 8 个）。\n潜行+右键 自定义屏：将记录的数据导入屏幕。\n喷气背包 (Jetpack) & 喷气开关 (Jet Switch)：\n穿在胸甲栏，手持开关右键长按即可喷射飞行。\n注意：有温度过热机制，飞太久会强制熄火冷却（屏幕下方会有热量条）。\n速度线圈 (Speed Coil)：拿在手上，移动速度提升至 5 倍。\n重力线圈 (Gravity Coil)：拿在手上，跳跃高度大幅提升。\n治愈线圈 (Healing Coil)：拿在手上，每秒恢复 4 点（2颗心）生命值。\n⚙️ 隐藏的核心机制（玩家可能不知道）\n超温红石联动：对着屏幕 蹲下+空手右键，可以打开告警设置。你可以设定“超过 800℃ 输出红石信号”。把这个红石信号接出来，连到你的独立警报器上，就能实现自动化超温防空警报。\n去抖（Debounce）机制：红石信号在温度上下浮动时不会疯狂闪烁，而是连续 4 拍（约0.8秒）确认超温后才会拉响，防止服务器卡顿和红石狂闪。",
-        "notesHtml": "<p>方块类 (Blocks)</p><p>在创造模式物品栏的 jiezhirbmkmod 标签页里可以找到</p><p>RBMK 显示屏 (RBMK Screen)：基础的多方块屏幕（挂在天花板上，4x3 结构），用来显示反应堆的总体运行数据。</p><p>RBMK 堆芯监视器 (RBMK Monitor)：进阶屏幕，可以显示反应堆 15x15 的网格细节，直观看到每一根柱子的状态。</p><p>RBMK 自定义屏 (Custom Screen)：可以绑定储罐、电池等设备，用来显示液位、电量等自定义数据。</p><p>RBMK 曲线屏 (Graph Screen)：专门用来显示温度、中子通量、水量等数据的历史折线图（支持自动轮换显示）。</p><p>独立警报器 (RBMK Siren) 🚨（最新加入）：</p><p>不需要多方块结构，单格方块即可放置。</p><p>通上红石信号就会响（自带 HBM 的防空警报音效）。</p><p>支持 16 种颜色染色。</p><p>右键点击可以打开设置界面，自定义：警报颜色、声音类型（预警/严重）、音量大小。</p><p>🛠️ 物品类 (Items)</p><p>RBMK 遥控器 (RBMK Remote)：</p><p>右键 RBMK 控制台或反应堆柱：记录数据源。</p><p>右键 你的屏幕：将屏幕绑定到该反应堆。</p><p>潜行+右键 储罐/电池：记录设备（最多 8 个）。</p><p>潜行+右键 自定义屏：将记录的数据导入屏幕。</p><p>喷气背包 (Jetpack) &amp; 喷气开关 (Jet Switch)：</p><p>穿在胸甲栏，手持开关右键长按即可喷射飞行。</p><p>注意：有温度过热机制，飞太久会强制熄火冷却（屏幕下方会有热量条）。</p><p>速度线圈 (Speed Coil)：拿在手上，移动速度提升至 5 倍。</p><p>重力线圈 (Gravity Coil)：拿在手上，跳跃高度大幅提升。</p><p>治愈线圈 (Healing Coil)：拿在手上，每秒恢复 4 点（2颗心）生命值。</p><p>⚙️ 隐藏的核心机制（玩家可能不知道）</p><p>超温红石联动：对着屏幕 蹲下+空手右键，可以打开告警设置。你可以设定“超过 800℃ 输出红石信号”。把这个红石信号接出来，连到你的独立警报器上，就能实现自动化超温防空警报。</p><p>去抖（Debounce）机制：红石信号在温度上下浮动时不会疯狂闪烁，而是连续 4 拍（约0.8秒）确认超温后才会拉响，防止服务器卡顿和红石狂闪。</p>"
+        "notesText": "更新了“终端显示屏”有方块和显示屏2个状态！输入“help”可查看所有控制RBMK的指令，（不是抄袭hbmzz，是ta的终端我觉得好，于是自己做了一个）",
+        "notesHtml": "<p>更新了“终端显示屏”有方块和显示屏2个状态！输入“help”可查看所有控制RBMK的指令，（不是抄袭hbmzz，是ta的终端我觉得好，于是自己做了一个）</p>"
       },
       "error": null
     },
@@ -395,7 +421,7 @@
               "name": "hbmzz-2.7.0.jar",
               "kind": "mod",
               "size": 1057581,
-              "downloads": 1,
+              "downloads": 2,
               "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.7.0/hbmzz-2.7.0.jar",
               "mirror": null
             }
@@ -682,7 +708,7 @@
             "name": "hbmzz-2.7.0.jar",
             "kind": "mod",
             "size": 1057581,
-            "downloads": 1,
+            "downloads": 2,
             "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.7.0/hbmzz-2.7.0.jar",
             "mirror": null
           }
