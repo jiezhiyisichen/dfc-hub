@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-07T09:57:08.468Z",
+  "generatedAt": "2026-11-07T16:21:57.797Z",
   "count": 2,
   "mods": [
     {
@@ -404,6 +404,58 @@
       "homepage": "https://hbm-zz.ysbdwz.dpdns.org/",
       "releases": [
         {
+          "id": "hbmzz#v2.8.0",
+          "modId": "hbmzz",
+          "platform": "github",
+          "repo": "ysb-discowave/HBMZZ-MOD",
+          "tag": "v2.8.0",
+          "version": "2.8.0",
+          "channel": "release",
+          "name": "HBMZZ 2.8.0 — 掀盖真的把盖掀了",
+          "publishedAt": "2026-11-07T15:58:46Z",
+          "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/tag/v2.8.0",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "hbmzz-2.8.0.jar",
+              "kind": "mod",
+              "size": 1082691,
+              "downloads": 1,
+              "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.8.0/hbmzz-2.8.0.jar",
+              "mirror": null
+            }
+          ],
+          "notesText": "2.8.0 — 掀盖真的把盖掀了\n顶盖从来没飞过。 2.7.x 把顶盖信息找错了方块：RBMK 的顶盖种类记在柱芯那块的 META（10 + 朝向序号），堆在上面的方块只带一个不参与判定的占位值。旧代码从柱芯往上找，永远找不到，顶盖列表为空，于是安静地走进「没有顶盖，那就只炸一下」的分支——就是那句「连 TNT 都不如的一下」。\n 改了什么\n- 顶盖判定改读柱芯（getBlockMetadata：12 无盖 / 15 钢板 / 13 玻璃）。找不到整片顶盖时不再退化成小爆炸，而是在日志里写明「N 根柱子其中 M 根带盖」。\n- 砸回柱芯那一下换成氢弹尺度：新增 rbmk.lidBlastPower（默认 30）；第二下落地只取它的 22%——第一个坑已经在，满威力只会把证据擦掉。\n- 刻意没有蘑菇云。蘑菇是地爆的产物，而这台机器是压力容器在露天散架；那片云还会挡住整段演出唯一要展示的东西。留下的三样：白闪光、贴地扩散的尘环、喷射的水汽。\n- 冲击波打到玩家身上：相机三轴各叠两条失谐正弦（不会连成一条斜向抖动），振幅按距离平方衰减；物品栏整条平移而不是整个 HUD；地上再画一圈向外跑的尘环。全部由一个 37 字节的包在客户端本地生成。\n- 顶盖飞行更像一块被炸飞的板：横向分量、蒸汽尾迹、下落速度封顶 2.5 格/tick、水平位置全程夹在反应堆正上方，只有落定才松开。\n- 新 gamerule zdtx（默认 false）：RBMK 开始跳棒时视角缓慢绕堆旋转直到掀盖爆炸，DFC 进入坍缩最后 5 秒时绕 DFC 旋转直到它炸。两处都在爆炸那一刻把镜头交还。参数在 cinematic.（转速 0.72 / 2.0 度每 tick、半径 18、高 7）。\n 文件\n- hbmzz-2.8.0.jar —— 装进 mods/\n- hbmzz-2.8.0-sources.jar —— 源码\n 要求\nMC 1.12.2 + Forge 14.23.5.2847 + HBM's Nuclear Tech（诅咒版）。\n跳棒动画需要 CE Addon / Leafia；没装也能跑，只是看不见棒子在跳。\n许可 GPL-3.0-only，来源与授权见仓库的 NOTICE.md 与 AUTHORIZATION.md。",
+          "notesHtml": "<h4>2.8.0 — 掀盖真的把盖掀了</h4><p><strong>顶盖从来没飞过。</strong> 2.7.x 把顶盖信息找错了方块：RBMK 的顶盖种类记在<strong>柱芯那块</strong>的 <code>META</code>（<code>10 + 朝向序号</code>），堆在上面的方块只带一个不参与判定的占位值。旧代码从柱芯往上找，永远找不到，顶盖列表为空，于是安静地走进「没有顶盖，那就只炸一下」的分支——就是那句「连 TNT 都不如的一下」。</p><h4>改了什么</h4><ul><li><strong>顶盖判定改读柱芯</strong>（<code>getBlockMetadata</code>：12 无盖 / 15 钢板 / 13 玻璃）。找不到整片顶盖时不再退化成小爆炸，而是在日志里写明「N 根柱子其中 M 根带盖」。</li><li><strong>砸回柱芯那一下换成氢弹尺度</strong>：新增 <code>rbmk.lidBlastPower</code>（默认 30）；第二下落地只取它的 22%——第一个坑已经在，满威力只会把证据擦掉。</li><li><strong>刻意没有蘑菇云</strong>。蘑菇是地爆的产物，而这台机器是压力容器在露天散架；那片云还会挡住整段演出唯一要展示的东西。留下的三样：白闪光、贴地扩散的尘环、喷射的水汽。</li><li><strong>冲击波打到玩家身上</strong>：相机三轴各叠两条失谐正弦（不会连成一条斜向抖动），振幅按距离平方衰减；物品栏整条平移而不是整个 HUD；地上再画一圈向外跑的尘环。全部由一个 37 字节的包在客户端本地生成。</li><li><strong>顶盖飞行更像一块被炸飞的板</strong>：横向分量、蒸汽尾迹、下落速度封顶 2.5 格/tick、水平位置全程夹在反应堆正上方，只有落定才松开。</li><li><strong>新 gamerule <code>zd_tx</code>（默认 false）</strong>：RBMK 开始跳棒时视角缓慢绕堆旋转直到掀盖爆炸，DFC 进入坍缩最后 5 秒时绕 DFC 旋转直到它炸。两处都在爆炸那一刻把镜头交还。参数在 <code>cinematic.*</code>（转速 0.72 / 2.0 度每 tick、半径 18、高 7）。</li></ul><h4>文件</h4><ul><li><code>hbmzz-2.8.0.jar</code> —— 装进 <code>mods/</code></li><li><code>hbmzz-2.8.0-sources.jar</code> —— 源码</li></ul><h4>要求</h4><p>MC 1.12.2 + Forge 14.23.5.2847 + HBM&#39;s Nuclear Tech（诅咒版）。</p><p>跳棒动画需要 CE Addon / Leafia；没装也能跑，只是看不见棒子在跳。</p><p>许可 GPL-3.0-only，来源与授权见仓库的 <code>NOTICE.md</code> 与 <code>AUTHORIZATION.md</code>。</p>"
+        },
+        {
+          "id": "hbmzz#v2.7.1",
+          "modId": "hbmzz",
+          "platform": "github",
+          "repo": "ysb-discowave/HBMZZ-MOD",
+          "tag": "v2.7.1",
+          "version": "2.7.1",
+          "channel": "release",
+          "name": "2.7.1 — 碎块不再能长成反应堆，事故链路学会失败",
+          "publishedAt": "2026-11-07T11:56:41Z",
+          "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/tag/v2.7.1",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "hbmzz-2.7.1.jar",
+              "kind": "mod",
+              "size": 1059457,
+              "downloads": 1,
+              "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.7.1/hbmzz-2.7.1.jar",
+              "mirror": null
+            }
+          ],
+          "notesText": "2.7.1：掀盖那一刻崩掉的那一类原因\n2.7.0 发布后第一次实机就崩了。这一版修掉两条能确定的地雷，并把整条链路改成「出错就记日志、不把游戏带走」。\n 修掉的：碎块能长成反应堆\n2.7.0 爆炸时会把附近方块做成 EntityFallingBlock 抛出去。落块落地会把自己放回世界——对石头没问题，对机器就是灾难：一根 RBMK 柱子被扔到地上，就地长出一根带方块实体、能继续运行的反应堆柱。\n我们给顶盖立过「绝不落地变方块」这条规矩（regcheck 第 30 条就在盯它），却在碎块上违反了同一条。现在带方块实体的方块一律不当碎块抛：hasTileEntity(state) 与 getTileEntity(pos) 两道判断，石头、泥土、混凝土照旧飞。\n 加上的：三处失败边界\n| 位置 | 原来 | 现在 |\n|---|---|---|\n| 顶盖自身的 tick | 任何异常直接抛到主循环 | 捕获、写完整堆栈、顶盖消失 |\n| 客户端绘制 | 画不出来就抛进渲染循环 | 捕获、复原矩阵与光照、记一次日志、不画 |\n| 「哪台堆要炸」的推进 | 一台堆出错，整个世界 tick 就断 | 捕获、丢掉这台堆、继续跑 |\n理由很实际：熔毁本来就会把存档点着，一个因为渲染失败而关掉客户端的模组只会让玩家连崩溃报告都读不到。\n 说清楚的：ntm-it\n启动时如果发现 ntm-it（准确说：进存档后的第一次世界 tick），日志会写一行警告。那个模组也在做同一套事故——自己的跳棒、自己的顶盖实体、自己的足迹爆炸，落定时还有一发强度 50 的核爆（EntityNukeExplosionMK5.statFac(..., 50, ...)）。两个模组同时反应在一台堆上，就是两块顶盖、两次熔毁、两种爆炸数量叠在一起。\n出问题时第一个该看的就是这一行。 要我们的版本就删掉 ntm-it；要它的版本就把 rbmk.surge 设成 false。\n 没改的\n触发条件、一分钟倒数、240→1150 的跳动曲线、两次掀盖的初速（2.0 / 4.25 格每秒）、tools/rbmkcheck 的 50 条离线用例，全部照旧。\n 自检\nregcheck 33 / 33、rbmkcheck 50 / 50、站点 sync --check 与 audithtml 全过。",
+          "notesHtml": "<h4>2.7.1：掀盖那一刻崩掉的那一类原因</h4><p>2.7.0 发布后第一次实机就崩了。这一版修掉两条能确定的地雷，并把整条链路改成「出错就记日志、不把游戏带走」。</p><h4>修掉的：碎块能长成反应堆</h4><p>2.7.0 爆炸时会把附近方块做成 <code>EntityFallingBlock</code> 抛出去。落块落地会<strong>把自己放回世界</strong>——对石头没问题，对机器就是灾难：一根 RBMK 柱子被扔到地上，就地长出一根<strong>带方块实体、能继续运行</strong>的反应堆柱。</p><p>我们给顶盖立过「绝不落地变方块」这条规矩（<code>regcheck</code> 第 30 条就在盯它），却在碎块上违反了同一条。现在带方块实体的方块一律不当碎块抛：<code>hasTileEntity(state)</code> 与 <code>getTileEntity(pos)</code> 两道判断，石头、泥土、混凝土照旧飞。</p><h4>加上的：三处失败边界</h4><p>| 位置 | 原来 | 现在 |</p><p>|---|---|---|</p><p>| 顶盖自身的 tick | 任何异常直接抛到主循环 | 捕获、写完整堆栈、顶盖消失 |</p><p>| 客户端绘制 | 画不出来就抛进渲染循环 | 捕获、复原矩阵与光照、记一次日志、不画 |</p><p>| 「哪台堆要炸」的推进 | 一台堆出错，整个世界 tick 就断 | 捕获、丢掉这台堆、继续跑 |</p><p>理由很实际：熔毁本来就会把存档点着，一个因为渲染失败而关掉客户端的模组只会让玩家连崩溃报告都读不到。</p><h4>说清楚的：ntm-it</h4><p>启动时如果发现 <code>ntm-it</code>（准确说：进存档后的第一次世界 tick），日志会写一行警告。那个模组也在做<strong>同一套事故</strong>——自己的跳棒、自己的顶盖实体、自己的足迹爆炸，落定时还有一发强度 50 的核爆（<code>EntityNukeExplosionMK5.statFac(..., 50, ...)</code>）。两个模组同时反应在一台堆上，就是两块顶盖、两次熔毁、两种爆炸数量叠在一起。</p><p><strong>出问题时第一个该看的就是这一行。</strong> 要我们的版本就删掉 ntm-it；要它的版本就把 <code>rbmk.surge</code> 设成 false。</p><h4>没改的</h4><p>触发条件、一分钟倒数、240→1150 的跳动曲线、两次掀盖的初速（2.0 / 4.25 格每秒）、<code>tools/rbmkcheck</code> 的 50 条离线用例，全部照旧。</p><h4>自检</h4><p>regcheck 33 / 33、rbmkcheck 50 / 50、站点 <code>sync --check</code> 与 <code>audit_html</code> 全过。</p>"
+        },
+        {
           "id": "hbmzz#v2.7.0",
           "modId": "hbmzz",
           "platform": "github",
@@ -691,30 +743,30 @@
         }
       ],
       "latest": {
-        "id": "hbmzz#v2.7.0",
+        "id": "hbmzz#v2.8.0",
         "modId": "hbmzz",
         "platform": "github",
         "repo": "ysb-discowave/HBMZZ-MOD",
-        "tag": "v2.7.0",
-        "version": "2.7.0",
+        "tag": "v2.8.0",
+        "version": "2.8.0",
         "channel": "release",
-        "name": "2.7.0 — RBMK 过热先跳一分钟，再把顶盖掀两次",
-        "publishedAt": "2026-11-06T12:02:15Z",
-        "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/tag/v2.7.0",
+        "name": "HBMZZ 2.8.0 — 掀盖真的把盖掀了",
+        "publishedAt": "2026-11-07T15:58:46Z",
+        "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/tag/v2.8.0",
         "prerelease": false,
         "draft": false,
         "assets": [
           {
-            "name": "hbmzz-2.7.0.jar",
+            "name": "hbmzz-2.8.0.jar",
             "kind": "mod",
-            "size": 1057581,
-            "downloads": 5,
-            "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.7.0/hbmzz-2.7.0.jar",
+            "size": 1082691,
+            "downloads": 1,
+            "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.8.0/hbmzz-2.8.0.jar",
             "mirror": null
           }
         ],
-        "notesText": "这一版只做一件事：RBMK 不再是一个 tick 就没了\n基座模组把一台过热的堆在一个 tick 内变成废墟。行为是对的，但它是发生在你身上，不是发生给你看：上一秒还在跑，下一秒就是瓦砾，唯一的证据是你没来得及截的那张图。这一版把那一 tick 换成一分钟，以及一分钟之后真正会飞的东西。\n 什么时候开始\n两件事同时成立才算事故：\n- 温度：这台堆里任何一根柱子的 heat 超过 1000（rbmk.heat）。不取 maxHeat()（默认 1500）是因为基座在那个值上自己就动手了——取 1500 等于没有警告。\n- ReaSim 蒸汽满了：所有存着蒸汽的柱子都顶到容量，或蒸汽总量连续三次采样（约 2 秒）一动不动。取并集是必须的：基座把 maxSteam 写死成 16000，而几个常见附属把真实容量抬到 80000 却不改字段，只看字段会在一台 20% 满的堆上直接引爆。\n只有热，是一台正常在跑的堆；只有蒸汽满，是一台在干活的锅炉。\n 然后的一分钟\n控制棒开始上下跳动。跳动是诅咒版自己的——只写 leafia$damage 这个字段，不重画、不另起动画，所以手感和本体完全一致；再画一套只会让同一根通道里出现两根棒。损伤沿平方根曲线从 240 缓升到 1150，全程压在 1200 那条自毁线以下：到 1200 附属自己就 meltdown() 了，一分钟倒数还没走完堆就没了。\n同一分钟里堆温被按在 maxHeat()-50 以下，同样是为了不提前走本体那条熔毁路径——发射那一刻松手。这一分钟里蒸汽从每根柱子的顶上往外冒，夹着灭火声。\n 一分钟整\n整片顶盖被掀飞。顶盖是实体不是方块：落下来若变成方块，就地生成一根活着的堆芯柱，等于凭空造燃料。实体按每根柱子的实际位置以半格精度拼回顶盖形状，贴的是各柱自己的盖板贴图，一路翻滚下落。\n落地即二次爆炸，顶盖以更高初速（4.25 格/秒，第一次是 2.0）再被掀一次——这次是堆芯把它顶出去的，不是第一发爆炸。第二次落地才是收尾：小范围爆炸，然后对反应堆本体调用基座自己的 meltdown()，残骸是玩家已经认得的那一种，而不是本模组发明的第二种弹坑。之后顶盖留在原地一段时间再消失。\n 配置\n| 键 | 默认 | 说明 |\n|---|---|---|\n| rbmk.surge | true | 总开关 |\n| rbmk.heat | 1000 | 触发温度 |\n| rbmk.jumpTicks | 1200 | 跳动时长（tick） |\n| rbmk.blastPower | 10 | 爆炸威力 |\n| rbmk.melt | true | 收尾是否调用本体熔毁；关掉就只炸不熔 |\n 自检\n- tools/rbmkcheck：50 条纯逻辑用例，不启 JVM 之外的东西——倒数在 1199 tick 不会提前、跳动损伤",
-        "notesHtml": "<h4>这一版只做一件事：RBMK 不再是一个 tick 就没了</h4><p>基座模组把一台过热的堆在一个 tick 内变成废墟。行为是对的，但它是<strong>发生在你身上</strong>，不是<strong>发生给你看</strong>：上一秒还在跑，下一秒就是瓦砾，唯一的证据是你没来得及截的那张图。这一版把那一 tick 换成一分钟，以及一分钟之后真正会飞的东西。</p><h4>什么时候开始</h4><p>两件事同时成立才算事故：</p><ul><li><strong>温度</strong>：这台堆里任何一根柱子的 <code>heat</code> 超过 <strong>1000</strong>（<code>rbmk.heat</code>）。不取 <code>maxHeat()</code>（默认 1500）是因为基座在那个值上自己就动手了——取 1500 等于没有警告。</li><li><strong>ReaSim 蒸汽满了</strong>：所有存着蒸汽的柱子都顶到容量，<strong>或</strong>蒸汽总量连续三次采样（约 2 秒）一动不动。取并集是必须的：基座把 <code>maxSteam</code> 写死成 16000，而几个常见附属把真实容量抬到 80000 却不改字段，只看字段会在一台 20% 满的堆上直接引爆。</li></ul><p>只有热，是一台正常在跑的堆；只有蒸汽满，是一台在干活的锅炉。</p><h4>然后的一分钟</h4><p>控制棒开始上下跳动。<strong>跳动是诅咒版自己的</strong>——只写 <code>leafia$damage</code> 这个字段，不重画、不另起动画，所以手感和本体完全一致；再画一套只会让同一根通道里出现两根棒。损伤沿平方根曲线从 240 缓升到 1150，全程压在 1200 那条自毁线以下：到 1200 附属自己就 <code>meltdown()</code> 了，一分钟倒数还没走完堆就没了。</p><p>同一分钟里堆温被按在 <code>maxHeat()-50</code> 以下，同样是为了不提前走本体那条熔毁路径——发射那一刻松手。这一分钟里蒸汽从每根柱子的顶上往外冒，夹着灭火声。</p><h4>一分钟整</h4><p>整片顶盖被掀飞。顶盖是<strong>实体不是方块</strong>：落下来若变成方块，就地生成一根活着的堆芯柱，等于凭空造燃料。实体按每根柱子的实际位置以半格精度拼回顶盖形状，贴的是各柱自己的盖板贴图，一路翻滚下落。</p><p>落地即<strong>二次爆炸</strong>，顶盖以更高初速（4.25 格/秒，第一次是 2.0）再被掀一次——这次是堆芯把它顶出去的，不是第一发爆炸。第二次落地才是收尾：小范围爆炸，然后对反应堆本体调用基座自己的 <code>meltdown()</code>，残骸是玩家已经认得的那一种，而不是本模组发明的第二种弹坑。之后顶盖留在原地一段时间再消失。</p><h4>配置</h4><p>| 键 | 默认 | 说明 |</p><p>|---|---|---|</p><p>| <code>rbmk.surge</code> | <code>true</code> | 总开关 |</p><p>| <code>rbmk.heat</code> | <code>1000</code> | 触发温度 |</p><p>| <code>rbmk.jumpTicks</code> | <code>1200</code> | 跳动时长（tick） |</p><p>| <code>rbmk.blastPower</code> | <code>10</code> | 爆炸威力 |</p><p>| <code>rbmk.melt</code> | <code>true</code> | 收尾是否调用本体熔毁；关掉就只炸不熔 |</p><h4>自检</h4><ul><li><code>tools/rbmkcheck</code>：<strong>50 条</strong>纯逻辑用例，不启 JVM 之外的东西——倒数在 1199 tick 不会提前、跳动损伤单调且绝不越过 1200、温度与蒸汽缺一不可、对角不算相邻、半格偏移不丢、坏贴图只赔一个盖。</li><li><code>tools/regcheck</code>：<strong>33 条</strong>（新增 5 条）——不许 <code>import com.hbm.*</code>、反射只许出现在 <code>RbmkParts</code>、<code>DAMAGE_END</code> 必须 &lt; 1200、顶盖实体不许 <code>setBlockState</code>、计时层不许 import <code>net.minecraft</code>。后两条是这次事故里最容易犯的两类错误：把顶盖落地写成放方块，和把游戏类拖进本该能离线跑的计时逻辑。</li><li>其余五套（cecpcheck / linkercheck / termcheck / videocheck / 站点校验）全绿。</li></ul><h4>已知边界</h4><ul><li>没装诅咒版附属（Leafia）时棒子不会跳——字段不存在，日志里说一次，倒数和爆炸照常进行。</li><li>顶盖实体只在服务端推进，客户端靠同步的 yaw/pitch 复现姿态；实体被 <code>/kill</code> 掉时不会补炸，反应堆保持敞口。</li><li>一次最多带走 1024 个盖、8 种贴图；超出的柱子保持原状。</li></ul>"
+        "notesText": "2.8.0 — 掀盖真的把盖掀了\n顶盖从来没飞过。 2.7.x 把顶盖信息找错了方块：RBMK 的顶盖种类记在柱芯那块的 META（10 + 朝向序号），堆在上面的方块只带一个不参与判定的占位值。旧代码从柱芯往上找，永远找不到，顶盖列表为空，于是安静地走进「没有顶盖，那就只炸一下」的分支——就是那句「连 TNT 都不如的一下」。\n 改了什么\n- 顶盖判定改读柱芯（getBlockMetadata：12 无盖 / 15 钢板 / 13 玻璃）。找不到整片顶盖时不再退化成小爆炸，而是在日志里写明「N 根柱子其中 M 根带盖」。\n- 砸回柱芯那一下换成氢弹尺度：新增 rbmk.lidBlastPower（默认 30）；第二下落地只取它的 22%——第一个坑已经在，满威力只会把证据擦掉。\n- 刻意没有蘑菇云。蘑菇是地爆的产物，而这台机器是压力容器在露天散架；那片云还会挡住整段演出唯一要展示的东西。留下的三样：白闪光、贴地扩散的尘环、喷射的水汽。\n- 冲击波打到玩家身上：相机三轴各叠两条失谐正弦（不会连成一条斜向抖动），振幅按距离平方衰减；物品栏整条平移而不是整个 HUD；地上再画一圈向外跑的尘环。全部由一个 37 字节的包在客户端本地生成。\n- 顶盖飞行更像一块被炸飞的板：横向分量、蒸汽尾迹、下落速度封顶 2.5 格/tick、水平位置全程夹在反应堆正上方，只有落定才松开。\n- 新 gamerule zdtx（默认 false）：RBMK 开始跳棒时视角缓慢绕堆旋转直到掀盖爆炸，DFC 进入坍缩最后 5 秒时绕 DFC 旋转直到它炸。两处都在爆炸那一刻把镜头交还。参数在 cinematic.（转速 0.72 / 2.0 度每 tick、半径 18、高 7）。\n 文件\n- hbmzz-2.8.0.jar —— 装进 mods/\n- hbmzz-2.8.0-sources.jar —— 源码\n 要求\nMC 1.12.2 + Forge 14.23.5.2847 + HBM's Nuclear Tech（诅咒版）。\n跳棒动画需要 CE Addon / Leafia；没装也能跑，只是看不见棒子在跳。\n许可 GPL-3.0-only，来源与授权见仓库的 NOTICE.md 与 AUTHORIZATION.md。",
+        "notesHtml": "<h4>2.8.0 — 掀盖真的把盖掀了</h4><p><strong>顶盖从来没飞过。</strong> 2.7.x 把顶盖信息找错了方块：RBMK 的顶盖种类记在<strong>柱芯那块</strong>的 <code>META</code>（<code>10 + 朝向序号</code>），堆在上面的方块只带一个不参与判定的占位值。旧代码从柱芯往上找，永远找不到，顶盖列表为空，于是安静地走进「没有顶盖，那就只炸一下」的分支——就是那句「连 TNT 都不如的一下」。</p><h4>改了什么</h4><ul><li><strong>顶盖判定改读柱芯</strong>（<code>getBlockMetadata</code>：12 无盖 / 15 钢板 / 13 玻璃）。找不到整片顶盖时不再退化成小爆炸，而是在日志里写明「N 根柱子其中 M 根带盖」。</li><li><strong>砸回柱芯那一下换成氢弹尺度</strong>：新增 <code>rbmk.lidBlastPower</code>（默认 30）；第二下落地只取它的 22%——第一个坑已经在，满威力只会把证据擦掉。</li><li><strong>刻意没有蘑菇云</strong>。蘑菇是地爆的产物，而这台机器是压力容器在露天散架；那片云还会挡住整段演出唯一要展示的东西。留下的三样：白闪光、贴地扩散的尘环、喷射的水汽。</li><li><strong>冲击波打到玩家身上</strong>：相机三轴各叠两条失谐正弦（不会连成一条斜向抖动），振幅按距离平方衰减；物品栏整条平移而不是整个 HUD；地上再画一圈向外跑的尘环。全部由一个 37 字节的包在客户端本地生成。</li><li><strong>顶盖飞行更像一块被炸飞的板</strong>：横向分量、蒸汽尾迹、下落速度封顶 2.5 格/tick、水平位置全程夹在反应堆正上方，只有落定才松开。</li><li><strong>新 gamerule <code>zd_tx</code>（默认 false）</strong>：RBMK 开始跳棒时视角缓慢绕堆旋转直到掀盖爆炸，DFC 进入坍缩最后 5 秒时绕 DFC 旋转直到它炸。两处都在爆炸那一刻把镜头交还。参数在 <code>cinematic.*</code>（转速 0.72 / 2.0 度每 tick、半径 18、高 7）。</li></ul><h4>文件</h4><ul><li><code>hbmzz-2.8.0.jar</code> —— 装进 <code>mods/</code></li><li><code>hbmzz-2.8.0-sources.jar</code> —— 源码</li></ul><h4>要求</h4><p>MC 1.12.2 + Forge 14.23.5.2847 + HBM&#39;s Nuclear Tech（诅咒版）。</p><p>跳棒动画需要 CE Addon / Leafia；没装也能跑，只是看不见棒子在跳。</p><p>许可 GPL-3.0-only，来源与授权见仓库的 <code>NOTICE.md</code> 与 <code>AUTHORIZATION.md</code>。</p>"
       },
       "error": null
     }
