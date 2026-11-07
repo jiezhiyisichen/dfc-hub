@@ -170,24 +170,84 @@ async function fetchGitee(repo) {
   return fetchJson(url);
 }
 
-/** 仓库元信息：只取开源许可与官网地址，用来补参数表里没手填的项。
+/** 仓库元信息：开源许可、官网、默认分支。
  *  拿不到就算了，绝不能因为它让整个 mod 变成 error。 */
 async function fetchRepoMeta(platform, repo) {
   try {
     if (platform === "gitee") {
       const d = await fetchJson(`${API.gitee}/repos/${repo}`);
-      return { license: (d && d.license) || "", homepage: (d && d.homepage) || "" };
+      return {
+        license: (d && d.license) || "",
+        homepage: (d && d.homepage) || "",
+        branch: (d && d.default_branch) || "master",
+      };
     }
     const headers = GITHUB_TOKEN ? { Authorization: `Bearer ${GITHUB_TOKEN}` } : {};
     const d = await fetchJson(`${API.github}/repos/${repo}`, headers);
     return {
       license: (d && d.license && (d.license.spdx_id || d.license.name)) || "",
       homepage: (d && d.homepage) || "",
+      branch: (d && d.default_branch) || "master",
     };
   } catch (err) {
     warn(`仓库信息读取失败（不影响版本列表）：${err.message || err}`);
     return {};
   }
+}
+
+async function fetchText(url) {
+  const res = await fetch(url, { headers: { "User-Agent": "dfc-hub-sync" } });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.text();
+}
+
+/* 平台不一定填了 license 字段（Gitee 经常是 null），所以还要读 LICENSE 正文自己认。
+   顺序很重要：GPL 的正文里会同时出现 "Lesser"/"Affero" 字样，长名字要先判。 */
+const LICENSE_SIGNS = [
+  { id: "AGPL-3.0", re: /gnu\s+affero\s+general\s+public\s+license/i },
+  { id: "LGPL-3.0", re: /gnu\s+(lesser|library)\s+general\s+public\s+license[\s\S]{0,120}?version\s*3/i },
+  { id: "LGPL-2.1", re: /gnu\s+(lesser|library)\s+general\s+public\s+license[\s\S]{0,120}?version\s*2\.1/i },
+  { id: "GPL-3.0", re: /gnu\s+general\s+public\s+license[\s\S]{0,120}?version\s*3/i },
+  { id: "GPL-2.0", re: /gnu\s+general\s+public\s+license[\s\S]{0,120}?version\s*2/i },
+  { id: "MPL-2.0", re: /mozilla\s+public\s+license[\s\S]{0,40}?2\.0|mozilla\s*公共许可协议\s*2\.0/i },
+  { id: "Apache-2.0", re: /apache\s+license[\s\S]{0,80}?version\s*2\.0/i },
+  { id: "CC-BY-4.0", re: /creative\s+commons\s+attribution[\s\S]{0,80}?4\.0/i },
+  { id: "Unlicense", re: /free\s+and\s+unencumbered\s+software\s+released\s+into\s+the\s+public\s+domain/i },
+  { id: "MIT", re: /mit\s+license|permission\s+is\s+hereby\s+granted,\s*free\s+of\s+charge/i },
+  { id: "BSD-3-Clause", re: /neither\s+the\s+name\s+of/i },
+  { id: "BSD-2-Clause", re: /redistribution\s+and\s+use\s+in\s+source\s+and\s+binary\s+forms/i },
+];
+
+function detectLicense(text) {
+  if (!text) return "";
+  const head = text.slice(0, 6000);
+  for (const s of LICENSE_SIGNS) {
+    if (s.re.test(head)) return s.id;
+  }
+  /* 认不出来又确实是自定义协议：截一行标题当名字，比写「未知」有用 */
+  const firstLine = head
+    .split(/\r?\n/)
+    .map((l) => l.replace(/^[#\s*]+/, "").trim())
+    .find((l) => l.length > 3);
+  return firstLine ? firstLine.slice(0, 40) : "";
+}
+
+/** 读仓库里的 LICENSE 正文（Gitee / GitHub 都能读 raw） */
+async function fetchLicenseText(platform, repo, branch) {
+  const names = ["LICENSE", "LICENSE.md", "LICENSE.txt", "LICENCE", "COPYING", "COPYING.md"];
+  for (const name of names) {
+    const url =
+      platform === "gitee"
+        ? `https://gitee.com/${repo}/raw/${branch || "master"}/${name}`
+        : `https://raw.githubusercontent.com/${repo}/${branch || "master"}/${name}`;
+    try {
+      const text = await fetchText(url);
+      if (text && text.trim().length > 40 && !/^\s*404/i.test(text)) return text;
+    } catch (err) {
+      /* 该文件名不存在，试下一个 */
+    }
+  }
+  return "";
 }
 
 /* -------------------------------------------------------------- normalize */
@@ -208,7 +268,9 @@ function normalizeRelease(raw, mod, ignoreRes) {
         name: a.name,
         kind,
         size: a.size || 0,
-        downloads: a.download_count || 0,
+        /* GitHub 给 download_count，Gitee 的接口压根没有这个字段 —— 用 null 表示「不知道」，
+           别和「确实 0 次」混为一谈 */
+        downloads: typeof a.download_count === "number" ? a.download_count : null,
         url: a.browser_download_url,
         mirror: null,
       };
@@ -216,6 +278,7 @@ function normalizeRelease(raw, mod, ignoreRes) {
     .filter((a) => a.kind !== "other" && a.url && !ignoreRes.some((re) => re.test(a.name)));
 
   const body = raw.body || "";
+  const counted = assets.filter((a) => typeof a.downloads === "number");
 
   return {
     id: `${mod.id}#${tag}`,
@@ -231,9 +294,17 @@ function normalizeRelease(raw, mod, ignoreRes) {
     prerelease: !!raw.prerelease,
     draft: !!raw.draft,
     assets,
+    /* 该版本合计下载：平台给了数字才算，全都没给就是 null */
+    downloads: counted.length ? counted.reduce((n, a) => n + a.downloads, 0) : null,
     notesText: mdToText(body),
     notesHtml: mdToHtml(body),
   };
+}
+
+/** 汇总一个 mod 的下载次数：不把 null 当 0 加 */
+function sumDownloads(list) {
+  const nums = list.filter((n) => typeof n === "number");
+  return nums.length ? nums.reduce((a, b) => a + b, 0) : null;
 }
 
 function pickLatest(releases) {
@@ -278,6 +349,7 @@ async function main() {
       homepage: mod.homepage || "",
       releases: [],
       latest: null,
+      downloads: null,
       error: null,
     };
 
@@ -294,13 +366,21 @@ async function main() {
       entry.releases.sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
       entry.latest = pickLatest(entry.releases);
 
-      /* 参数表里没手填的许可 / 官网，尽量从仓库元信息补齐 */
-      if (!entry.license || !entry.homepage) {
-        const meta = await fetchRepoMeta(entry.platform, entry.repo);
-        if (!entry.license) entry.license = meta.license || "";
-        if (!entry.homepage) entry.homepage = meta.homepage || "";
+      /* 开源许可：**以仓库为准**，data/mods.json 里写的只当离线兜底。
+         上游会换协议（比如 RBMK 从 GPL-3.0 换成 MPL-2.0），手写值必然过期。
+         顺序：平台 license 字段 → LICENSE 正文识别 → 手写值 → 未标注。 */
+      const meta = await fetchRepoMeta(entry.platform, entry.repo);
+      if (!entry.homepage) entry.homepage = meta.homepage || "";
+
+      let lic = String(meta.license || "").trim();
+      if (!lic) {
+        const text = await fetchLicenseText(entry.platform, entry.repo, meta.branch);
+        lic = detectLicense(text);
       }
-      if (!entry.license) entry.license = "未标注";
+      entry.license = lic || entry.license || "未标注";
+      entry.licenseSource = lic ? "repo" : entry.license === "未标注" ? "none" : "manual";
+
+      entry.downloads = sumDownloads(entry.releases.map((r) => r.downloads));
 
       const assetCount = entry.releases.reduce((n, r) => n + r.assets.length, 0);
       log(

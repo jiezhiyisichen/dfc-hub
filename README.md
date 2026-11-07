@@ -1,13 +1,13 @@
-# DFC Hub
+# HBM-DFC圈下载站
 
-Minecraft **1.12.2 · HBM 诅咒版 · DFC** 地图与节枝特效工具的发布 / 下载站。
+Minecraft **1.12.2 · HBM 核科技** 圈子的下载站：节枝特效工具（JiezhiMod）本体 + 社区附属 mod。
 纯静态（HTML + CSS + 原生 JS），托管在 Cloudflare Pages，版本号由 GitHub Actions 定时从上游 Release 同步。
 **上游同时托管在 GitHub 与 Gitee**，站点把两边按 tag 合并，下载页可选线路。
 
 - 线上地址：<https://dfc-hub.pages.dev>
 - 上游工具仓库（GitHub）：<https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool>
 - 上游工具仓库（Gitee 镜像）：<https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool>
-- 宣传视频：<https://www.bilibili.com/video/BV1VRYe6gEga/>
+- 演示视频：<https://www.bilibili.com/video/BV1upnG6BEtF/> · <https://www.bilibili.com/video/BV12vnt6yEt9/>
 
 ---
 
@@ -15,10 +15,13 @@ Minecraft **1.12.2 · HBM 诅咒版 · DFC** 地图与节枝特效工具的发�
 
 ```
 dfc-hub/
-├── index.html                  首页：标题 / 下载中心与使用教程两个入口 / 四张截图
-├── wiki.html                   百科：安装、指令手册、倒计时、DFC 显示器、物品、FAQ、视频
-├── downloads.html              下载中心：版本看板 / 搜索 / 通道筛选 / 资产列表 / 安装说明
-├── mods.html                   其他下载：二创 Mod，按模组名切换选项卡
+├── index.html                  首页：标题 / 下载中心与使用教程两个入口 / 两张截图
+├── wiki.html                   百科（本体）：安装、指令手册、倒计时、DFC 显示器、物品、FAQ、视频
+├── wiki-rbmk.html              百科：RBMK 监视器（附属）
+├── wiki-hbmzz.html             百科：HBMZZ（附属）
+├── downloads.html              下载中心：模组选项卡（本体★ + 附属）/ 参数表 / 版本列表 / 筛选 / 安装说明
+├── submit.html                 收录说明：怎么提交、标签怎么打、联系方式
+├── mods.html                   旧地址，整页跳转到 downloads.html（保留 ?mod= 参数）
 ├── 404.html                    错误页（复用同一套样式）
 ├── data/                       ★ 站点内容（由本地后台读写）
 │   ├── config.json             全部可编辑文案
@@ -76,10 +79,13 @@ dfc-hub/
 
 ---
 
-## 其他下载（二创 Mod）
+## 下载中心与附属 mod
 
-`mods.html` 是「下载中心」旁边的第二个下载页，专门列社区作者的二创版本。页面结构与下载中心一致：
-顶部选项卡按 **模组名** 切换 → 版本看板（当前模组 / 最新版本 / 来源）→ 版本卡片列表 → 安装说明。
+附属 mod 已经并进 `downloads.html`，不再单独一个页面。页面从上到下是：
+**模组选项卡**（`★ JiezhiMod 本体` 固定第一位，后面是各附属）→ **参数表**（仅附属显示）→ **版本看板** → 筛选 → 版本列表 → 安装说明。
+
+本体走 `releases.json`，附属走 `mods.json`，两边的版本在 `downloads.js` 里归一成同一种形状再渲染，
+所以搜索、通道筛选、卡片、更新说明都只有一套代码。附属没有紧急修复 / 重大更新 / 镜像线路这些概念，对应的筛选项会自动隐藏。
 
 ### 加一个二创 mod
 

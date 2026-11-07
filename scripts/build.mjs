@@ -21,6 +21,9 @@ const ROOT_FILES = [
   "wiki.html",
   "mods.html",
   "downloads.html",
+  "submit.html",
+  "wiki-rbmk.html",
+  "wiki-hbmzz.html",
   "404.html",
   "robots.txt",
   "_headers",
@@ -35,7 +38,7 @@ const BUILD_ID = (process.env.GITHUB_SHA || "").slice(0, 7) || Date.now().toStri
  * 直接失效，不需要访客手动 Ctrl+F5。只改 dist，不动仓库里的源文件。
  */
 async function stampAssets() {
-  const pages = ["index.html", "wiki.html", "mods.html", "downloads.html", "404.html"];
+  const pages = ["index.html", "wiki.html", "mods.html", "downloads.html", "submit.html", "wiki-rbmk.html", "wiki-hbmzz.html", "404.html"];
   const re = /(\s(?:src|href)=")((?:assets|data)\/[^"?#]+)(")/g;
   let touched = 0;
 

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-title="收录说明 · HBM-DFC圈下载站">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>收录说明 · HBM-DFC圈下载站</title>
+    <meta
+      name="description"
+      content="怎么把你自己做的 DFC 附属 mod 收录到本站：提交方式、收录条件、参数表怎么自动生成，以及正式版 / 测试版 / 预览版 / 紧急修复 / 重大更新 的标签规则。"
+    />
+    <meta name="theme-color" content="#0a0b0d" />
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/wiki.css" />
+    <script src="data/config.js"></script>
+  </head>
+  <body class="wiki-page">
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <div class="ticker">
+      <div class="wrap ticker-inner">
+        <span class="ticker-badge">收录</span>
+        <p>
+          <span>想让自己的 mod 出现在下载中心？</span>
+          <span class="sep hide-sm"></span>
+          <span class="hide-sm">提交仓库地址就行，之后全自动</span>
+          <span class="sep hide-sm"></span>
+          <a href="#contact">联系方式 →</a>
+        </p>
+      </div>
+    </div>
+
+    <header class="site-header" id="siteHeader">
+      <div class="wrap header-inner">
+        <a class="brand" href="./" aria-label="HBM-DFC 圈下载站首页">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M12 2.6 20.4 7v10L12 21.4 3.6 17V7L12 2.6Z" stroke-linejoin="round" />
+              <circle cx="12" cy="12" r="2.6" />
+            </svg>
+          </span>
+          <span class="brand-text">
+            <strong>HBM-DFC 圈</strong>
+            <em>下载站</em>
+          </span>
+        </a>
+
+        <nav class="nav" id="primaryNav" aria-label="主导航">
+          <a href="./">首页</a>
+          <a href="wiki.html">百科</a>
+          <a href="downloads.html">下载中心</a>
+          <a href="submit.html" class="is-active" aria-current="page">收录说明</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="version-pill" href="downloads.html" title="本体最新正式版">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="vp-label">LATEST</span>
+            <span class="vp-num" data-latest-version>—</span>
+          </a>
+          <a class="btn btn-primary btn-sm" href="downloads.html">下载</a>
+          <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="primaryNav">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="wiki-main">
+      <div class="wrap wiki-layout">
+        <aside class="wiki-toc" aria-label="本页目录">
+          <p class="wiki-toc-title">目录</p>
+          <a href="#how">怎么提交</a>
+          <a href="#rules">收录条件</a>
+          <a href="#auto">收录之后</a>
+          <a href="#channel">通道标签</a>
+          <a href="#nature">紧急修复 / 重大更新</a>
+          <a href="#cheat">速查表</a>
+          <a href="#contact">联系方式</a>
+        </aside>
+
+        <article class="wiki-body">
+          <header class="wiki-head">
+            <h1>收录说明</h1>
+            <p class="wiki-lede">
+              只要你做的 DFC 附属 mod 有公开仓库、有挂 jar 的 Release，就能加到这里。
+              提交一次，之后版本更新全自动同步，不需要反复找我。
+            </p>
+            <ul class="wiki-meta">
+              <li>支持 Gitee / GitHub</li>
+              <li>整点自动同步</li>
+              <li>署名保留在你自己仓库</li>
+            </ul>
+          </header>
+
+          <section id="how" class="doc-section">
+            <h2>怎么提交</h2>
+            <p>把这三样发给我就行，不用写文档：</p>
+            <ol class="doc-list">
+              <li><strong>仓库地址</strong>（Gitee 或 GitHub 都行，公开仓库）；</li>
+              <li><strong>模组名字</strong>和一句话介绍；</li>
+              <li><strong>作者署名</strong>想怎么写。</li>
+            </ol>
+            <p>发到 B 站私信最快：<a href="https://space.bilibili.com/3494363348863838" target="_blank" rel="noopener noreferrer">space.bilibili.com/3494363348863838</a>。
+              不想私信的话，在本站的 GitHub 仓库提个 issue 也一样。</p>
+          </section>
+
+          <section id="rules" class="doc-section">
+            <h2>收录条件</h2>
+            <div class="table-wrap">
+              <table class="doc-table">
+                <thead><tr><th>项</th><th>要求</th></tr></thead>
+                <tbody>
+                  <tr><td>仓库</td><td>公开可读，Gitee / GitHub 均可</td></tr>
+                  <tr><td>Release</td><td>至少一个发行版，且把 <code>.jar</code> 作为附件挂在发行版上（不要只推源码）</td></tr>
+                  <tr><td>许可证</td><td>仓库里有 LICENSE 文件。本站直接读它显示，不做二次判断</td></tr>
+                  <tr><td>署名</td><td>如果用了别人的代码，请在 README 里写清来源</td></tr>
+                  <tr><td>内容</td><td>与 DFC 地图 / 特效工具相关，或者同属 HBM-DFC 圈</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="doc-hint">源码包、<code>-sources.jar</code>、<code>-javadoc.jar</code> 会被自动过滤，不显示成可下载文件。</p>
+          </section>
+
+          <section id="auto" class="doc-section">
+            <h2>收录之后</h2>
+            <p>站点每小时跑一次同步，直接从你的仓库读这些内容，<strong>都不需要手动改</strong>：</p>
+            <ul class="doc-list">
+              <li><strong>版本列表</strong>：发行版的 Tag、标题、更新时间、附件、更新说明；</li>
+              <li><strong>通道与性质标签</strong>：按下面第三节的规则从 Tag / 标题 / 说明里识别；</li>
+              <li><strong>参数表</strong>：开源许可读仓库的 LICENSE，游戏版本与加载器默认 1.12.2 / Forge 14.23.5.2864；</li>
+              <li><strong>下载次数</strong>：GitHub 会给出每个附件的下载数，Gitee 接口没有这个字段，那边显示「不提供」。</li>
+            </ul>
+            <p class="doc-hint">「需要 JiezhiMod 作为前置」这一行默认是「否」。真的需要本体时告诉我，我会改成「是」。</p>
+          </section>
+
+          <section id="channel" class="doc-section">
+            <h2>通道标签：正式版 / 测试版 / 预览版</h2>
+            <p>看 <strong>Tag 的后缀</strong>，没有后缀就是正式版。</p>
+            <div class="table-wrap">
+              <table class="doc-table">
+                <thead><tr><th>你写的 Tag</th><th>站点认成</th></tr></thead>
+                <tbody>
+                  <tr><td><code>v3.9</code>、<code>3.9</code>、<code>v3.9-release</code></td><td>正式版</td></tr>
+                  <tr><td><code>v3.9-beta</code>、<code>v3.9-beta.2</code></td><td>测试版</td></tr>
+                  <tr><td><code>v3.9-preview</code>、<code>-alpha</code>、<code>-rc1</code>、<code>-snapshot</code></td><td>预览版</td></tr>
+                  <tr><td>Tag 没后缀，但标题以「测试版 / beta」结尾</td><td>测试版</td></tr>
+                  <tr><td>Tag 没后缀，但在 GitHub 勾了 Pre-release</td><td>预览版</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="doc-hint">顺序是：先看 Tag 后缀 → 再看标题末尾 → 最后看 Pre-release 勾选。所以 <code>v3.9.1</code> + 标题「v3.9.1 测试版」会算测试版。</p>
+          </section>
+
+          <section id="nature" class="doc-section">
+            <h2>紧急修复 / 重大更新</h2>
+            <p>这两个是<strong>叠加标签</strong>，不影响通道，可以和正式版、测试版同时出现。</p>
+
+            <h3>紧急修复</h3>
+            <p>适合「刚发出去就发现严重 bug，得马上补一个」的版本。下面任意一条命中就算：</p>
+            <ul class="doc-list">
+              <li>Tag 里有 <code>hotfix</code> / <code>hot-fix</code> / <code>urgentfix</code> / <code>emergencyfix</code>，或者以 <code>-fix</code> 结尾；
+                例：<code>v3.9.1-hotfix</code>、<code>v3.9.1-hotfix-beta</code>、<code>v3.9.1-fix</code></li>
+              <li>标题里出现「紧急修复」或 <code>hotfix</code>；例：<code>v3.9.1 紧急修复版 + 测试版</code></li>
+              <li>说明的前 200 字里出现「紧急修复版」或 <code>hotfix</code></li>
+            </ul>
+            <p class="doc-hint">普通更新日志里写「修复了几个崩溃」<strong>不会</strong>被认成紧急修复 —— 只认「紧急修复版」这种明确说法。</p>
+
+            <h3>重大更新</h3>
+            <p>只给正式版用。测试版 / 预览版即使写了「重大更新」也不会打这个标签。</p>
+            <ul class="doc-list">
+              <li>Tag 里有 <code>major</code>；例：<code>v3.10-major</code></li>
+              <li>标题里有「重大更新」或 <code>major</code>；例：<code>v3.10 重大更新</code></li>
+              <li>说明的前 200 字里有「重大更新」</li>
+            </ul>
+            <p class="doc-hint"><code>v3.10-major-beta</code> 会被认成「测试版」，不带重大更新 —— 这是故意的：转正之前不算重大更新。</p>
+
+            <h3>想同时要两个</h3>
+            <p>直接组合就行：<code>v3.9.2-hotfix-major</code> 会同时带上「紧急修复」和「重大更新」（前提是它是正式版）。
+              更常见的做法是 Tag 写干净，在标题里描述，比如 <code>v3.9.2 紧急修复：密码盘错位</code>。</p>
+          </section>
+
+          <section id="cheat" class="doc-section">
+            <h2>速查表</h2>
+            <div class="table-wrap">
+              <table class="doc-table">
+                <thead><tr><th>场景</th><th>建议怎么写</th><th>站点显示</th></tr></thead>
+                <tbody>
+                  <tr><td>正常发版</td><td><code>v4.0</code></td><td>正式版</td></tr>
+                  <tr><td>小范围测试</td><td><code>v4.0-beta</code></td><td>测试版</td></tr>
+                  <tr><td>只给几个人试</td><td><code>v4.0-preview</code></td><td>预览版</td></tr>
+                  <tr><td>正式版出了大问题</td><td><code>v4.0.1-hotfix</code></td><td>紧急修复 · 正式版</td></tr>
+                  <tr><td>测试版里补大 bug</td><td><code>v4.1-beta-hotfix</code></td><td>紧急修复 · 测试版</td></tr>
+                  <tr><td>大版本重构</td><td><code>v5.0</code> + 标题写「重大更新」</td><td>重大更新 · 正式版</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="contact" class="doc-section">
+            <h2>联系方式</h2>
+            <ul class="doc-list">
+              <li><strong>B 站</strong>：<a href="https://space.bilibili.com/3494363348863838" target="_blank" rel="noopener noreferrer">树上的节枝</a>（私信即可）</li>
+              <li><strong>本站仓库</strong>：<a href="https://github.com/jiezhiyisichen/dfc-hub" target="_blank" rel="noopener noreferrer">jiezhiyisichen/dfc-hub</a>（提 issue）</li>
+              <li><strong>本体仓库</strong>：<a href="https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool" target="_blank" rel="noopener noreferrer">DFC-Map-Creation-Tool</a> ·
+                <a href="https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool" target="_blank" rel="noopener noreferrer">Gitee 镜像</a></li>
+            </ul>
+            <p class="doc-hint">收录是免费的，也不会要求你改许可证。转载和二创请保留原作者署名，禁止商业使用。</p>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="brand" href="./">
+              <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M12 2.6 20.4 7v10L12 21.4 3.6 17V7L12 2.6Z" stroke-linejoin="round" />
+                  <circle cx="12" cy="12" r="2.6" />
+                </svg>
+              </span>
+              <span class="brand-text">
+                <strong>HBM-DFC 圈</strong>
+                <em>下载站</em>
+              </span>
+            </a>
+            <p>由「树上的节枝」维护。文件都在作者自己的仓库里。</p>
+          </div>
+          <div class="footer-col">
+            <h4>导航</h4>
+            <a href="./">首页</a>
+            <a href="wiki.html">百科</a>
+            <a href="downloads.html">下载中心</a>
+            <a href="submit.html">收录说明</a>
+          </div>
+          <div class="footer-col">
+            <h4>资源</h4>
+            <a href="https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool" target="_blank" rel="noopener noreferrer">本体源码</a>
+            <a href="https://space.bilibili.com/3494363348863838" target="_blank" rel="noopener noreferrer">B 站主页</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© <span data-year>2026</span> 树上的节枝 · 转载与二创请保留署名，禁止商业使用。</span>
+          <span class="mono" data-sync-line>DATA SYNC · —</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/data/releases.js" defer></script>
+    <script src="assets/js/content.js" defer></script>
+    <script src="assets/js/site.js" defer></script>
+  </body>
+</html>

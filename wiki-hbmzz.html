@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-title="HBMZZ · 百科">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>HBMZZ · 百科</title>
+    <meta name="description" content="HBMZZ 百科：DFC 监控屏、AHBSSMFI-OS 四个视图、面板工坊、终端操作、功率计绑定与融毁倒计时。" />
+    <meta name="theme-color" content="#0a0b0d" />
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/wiki.css" />
+    <script src="data/config.js"></script>
+  </head>
+  <body class="wiki-page">
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <div class="ticker">
+      <div class="wrap ticker-inner">
+        <span class="ticker-badge">WIKI</span>
+        <p>
+          <span>附属模组 · <b>HBMZZ</b></span>
+          <span class="sep hide-sm"></span>
+          <span class="hide-sm">面向 NTM:CE 与其 Leafia 附属</span>
+          <span class="sep hide-sm"></span>
+          <a href="downloads.html?mod=hbmzz">去下载 →</a>
+        </p>
+      </div>
+    </div>
+
+    <header class="site-header" id="siteHeader">
+      <div class="wrap header-inner">
+        <a class="brand" href="./" aria-label="HBM-DFC 圈下载站首页">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M12 2.6 20.4 7v10L12 21.4 3.6 17V7L12 2.6Z" stroke-linejoin="round" />
+              <circle cx="12" cy="12" r="2.6" />
+            </svg>
+          </span>
+          <span class="brand-text">
+            <strong>HBM-DFC 圈</strong>
+            <em>下载站</em>
+          </span>
+        </a>
+
+        <nav class="nav" id="primaryNav" aria-label="主导航">
+          <a href="./">首页</a>
+          <a href="wiki.html" class="is-active" aria-current="page">百科</a>
+          <a href="downloads.html">下载中心</a>
+          <a href="submit.html">收录说明</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="version-pill" href="downloads.html" title="本体最新正式版">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="vp-label">LATEST</span>
+            <span class="vp-num" data-latest-version>—</span>
+          </a>
+          <a class="btn btn-primary btn-sm" href="downloads.html">下载</a>
+          <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="primaryNav">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="wiki-main">
+      <div class="wrap wiki-layout">
+        <aside class="wiki-toc" aria-label="本页目录">
+          <p class="wiki-toc-title">目录</p>
+          <a href="#what">这是什么</a>
+          <a href="#install">前置与安装</a>
+          <a href="#screen">监控屏</a>
+          <a href="#views">四个视图</a>
+          <a href="#workshop">面板工坊</a>
+          <a href="#terminal">终端操作</a>
+          <a href="#extra">控制台与武器</a>
+          <a href="#faq">常见问题</a>
+          <a href="#credit">许可与署名</a>
+          <p class="wiki-toc-title wiki-toc-title--sub">其他模组</p>
+          <a href="wiki.html">节枝特效工具</a>
+          <a href="wiki-rbmk.html">RBMK 监视器</a>
+        </aside>
+
+        <article class="wiki-body">
+          <header class="wiki-head">
+            <h1>HBMZZ</h1>
+            <p class="wiki-lede">
+              面向 HBM 核科技社区版（NTM:CE）与其 Leafia 诅咒版附属的附属模组。
+              放下一台 DFC 监控屏，它的正面就是一台工业控制台：开机自检、滚动 POST 日志，然后进入实时遥测。
+            </p>
+            <ul class="wiki-meta">
+              <li>Minecraft 1.12.2</li>
+              <li>Forge 1.12.2</li>
+              <li><strong>不需要</strong> JiezhiMod 本体</li>
+              <li>NTM:CE 可选</li>
+              <li>模组 ID <code>hbmzz</code></li>
+              <li>GPL-3.0</li>
+            </ul>
+          </header>
+
+          <section id="what" class="doc-section">
+            <h2>这是什么</h2>
+            <p>除了一块真在绘制的 DFC 监控屏，还带了机器控制面板、诅咒版控制台移植、制式枪械，
+              以及 Roblox 风格的线圈与喷气背包。屏幕的渲染结构借鉴了节枝特效工具（已获作者授权），
+              屏上那套叫 <strong>AHBSSMFI-OS</strong> 的界面是本项目自己写的。</p>
+            <p class="doc-hint">它有自己的模组 ID，<strong>不需要装本体</strong>，和本体一起加载也不冲突。</p>
+          </section>
+
+          <section id="install" class="doc-section">
+            <h2>前置与安装</h2>
+            <div class="table-wrap">
+              <table class="doc-table">
+                <thead><tr><th>项</th><th>说明</th></tr></thead>
+                <tbody>
+                  <tr><td>JiezhiMod</td><td>不需要</td></tr>
+                  <tr><td>HBM NTM-CE</td><td>可选。不装则读不到反应堆数据，屏幕会写「离线」</td></tr>
+                  <tr><td>Leafia 诅咒版附属</td><td>可选。装了之后控制台能多出一批附属节点与控件</td></tr>
+                  <tr><td>Java</td><td>8</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>把 <code>hbmzz-x.x.x.jar</code> 丢进 <code>mods/</code> 就行。官网在
+              <a href="https://hbm-zz.ysbdwz.dpdns.org/" target="_blank" rel="noopener noreferrer">hbm-zz.ysbdwz.dpdns.org</a>。</p>
+          </section>
+
+          <section id="screen" class="doc-section">
+            <h2>监控屏</h2>
+            <p>屏幕正面不是贴图，是一台真在绘制的显示器：内容用 AWT 离屏画布画到一张位图上，
+              再作为单个纹理贴到一个 quad。画布按 256×192 逻辑像素排版，实际纹理 768×576（3 倍超采样）。</p>
+            <ul class="doc-list">
+              <li><strong>任意墙屏尺寸不变形</strong>：面板可跨 1–4 格宽、1–3 格高，内容始终 4:3 等比居中，多出来的地方是黑边。</li>
+              <li><strong>整面墙只渲染一次</strong>：只有控制器格有方块实体，其余是无实体的占位块。</li>
+              <li><strong>吊装</strong>：贴着天花板下表面放置即吊装，面板绕顶边下倾，倾角 0/15/30/45/60 五档。</li>
+              <li><strong>被打掉</strong>：挂钩留在天花板，电缆吊着整块屏掉下来摆动，切成 NO SIGNAL，30 秒后断电。</li>
+              <li><strong>离线与故障</strong>：温度不到 100°C 整屏显示「离线」；坍缩时切 ERROR 301，4 秒后自动重启。</li>
+              <li><strong>链路指示灯</strong>：LINK OK / LINK SLOW / 数据中断，按最新样本的年龄变色。</li>
+            </ul>
+          </section>
+
+          <section id="views" class="doc-section">
+            <h2>四个视图</h2>
+            <div class="table-wrap">
+              <table class="doc-table">
+                <thead><tr><th>视图</th><th>内容</th></tr></thead>
+                <tbody>
+                  <tr><td>01 核心</td><td>双环量表：外环是「当前温度 / 熔点」并带指针刻度，内环是稳定度；右侧七路结构灯柱（STA / ABS / PLS / EMT / INJ / EXC / CMT），往下是储能 / 输出 / 增益、崩溃风险条与熔毁预测</td></tr>
+                  <tr><td>02 部件</td><td>MIMIC 结构图：七路通道摆成环接到堆芯，装了的通道连线是琥珀色；下方 A/B 两列燃料条</td></tr>
+                  <tr><td>03 曲线</td><td>温度填色曲线 + 发电量细线，各用各的量程；顶部时间刻度，图底标 <code>-60s / now</code>，下方六项统计</td></tr>
+                  <tr><td>04 自定义</td><td>自己搭的面板，显示什么、怎么排、什么时候报警都由「面板工坊」定义</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="doc-hint">开机动画只在三个时机播放：屏刚放下、存档刚加载、堆芯开始坍缩（这时播的是 ERROR 301）。其余时间一直停在实时主界面。</p>
+          </section>
+
+          <section id="workshop" class="doc-section">
+            <h2>面板工坊</h2>
+            <p>终端左列的「面板工坊」打开独立编辑窗口，改的是这块屏的一份副本，只有点「保存并应用」才写回世界。</p>
+            <ul class="doc-list">
+              <li>画布 <strong>31×19 格</strong>（1 格 = 8 个逻辑像素），标题带与页脚不参与布局。</li>
+              <li>控件 7 种：数值表、条形仪表、环形仪表、状态灯、文本标签等；最多 24 个。</li>
+              <li>规则最多 8 条，每条 4 个条件 + 4 个动作。</li>
+              <li>预设最多存 32 个，可以复制粘贴。</li>
+            </ul>
+            <p class="doc-hint">网格是编辑器和方块共用的坐标：窗口里排好的位置，在 1×1 和 4×3 的屏上都按同一比例缩放，不重排也不拉伸。</p>
+          </section>
+
+          <section id="terminal" class="doc-section">
+            <h2>终端操作</h2>
+            <ul class="doc-list">
+              <li><strong>缩放</strong>：拖右下角、滚轮、双击标题栏最大化、点「复位」。上限就是游戏窗口。</li>
+              <li><strong>左列</strong>：电源与四个视图（2×2 排布），下面是面板工坊入口。</li>
+              <li><strong>底边</strong>：墙屏宽 / 高 / 复位固定在这里，窗口再小也点得到。</li>
+              <li><strong>右侧</strong>：这块屏的实时预览，跑的是同一套画布。</li>
+              <li><strong>服务端权威</strong>：页面、电源、尺寸都发消息由服务端改再广播，两人同时开终端不会各改各的。</li>
+            </ul>
+            <h3>功率计绑定</h3>
+            <p>用「监控数据线」右键一个 NTM 功率计（红色电缆仪表 <code>red_cable_gauge</code>），再右键监控屏，
+              就能读到每 tick / 每秒输出。</p>
+            <h3>融毁倒计时</h3>
+            <p>坍缩阶段直接用 DFC 的 <code>explosionIn</code>（精确到秒）；稳定阶段按两颗催化剂 damage 的实测增长速率
+              （滑动平均）推算到 100 的时间。损伤不再增长时不显示预测，而不是拿写死的速率假装在算。</p>
+          </section>
+
+          <section id="extra" class="doc-section">
+            <h2>控制台与武器</h2>
+            <p><strong>机器控制面板</strong>是本项目自己设计的扁平版：6 个槽位、一句话规则。
+              <strong>机器控制台</strong>则把 NTM 诅咒版的 <code>com.hbm.inventory.control_panel</code> 整套搬了过来 ——
+              控件、事件、变量、节点图、连线器都在，界面文字改成了中文。</p>
+            <p>另外还有制式枪械、Roblox 风格的线圈（加速 / 重力 / 治愈）与喷气背包套装。</p>
+          </section>
+
+          <section id="faq" class="doc-section">
+            <h2>常见问题</h2>
+            <details class="doc-faq">
+              <summary>屏上一直写「离线」</summary>
+              <p>堆芯温度不到 100°C 就是离线，正常。堆启动后会自己切到实时界面。</p>
+            </details>
+            <details class="doc-faq">
+              <summary>看不到数据 / 侧栏写了原因</summary>
+              <p>模组用反射读 NTM，不编译依赖。装不上或者版本对不上时会降级成「读不到数据」并把原因写在侧栏，不会崩。</p>
+            </details>
+            <details class="doc-faq">
+              <summary>要装节枝特效工具吗？</summary>
+              <p>不用。两者 modid 不同，各自管各自的方块；一起装也没问题。</p>
+            </details>
+          </section>
+
+          <section id="credit" class="doc-section">
+            <h2>许可与署名</h2>
+            <p>作者 ysb-discowave，仓库在
+              <a href="https://github.com/ysb-discowave/HBMZZ-MOD" target="_blank" rel="noopener noreferrer">GitHub</a>。</p>
+            <p>显示屏的整机 TESR 渲染、控制器 + 占位格结构、吊装变换、画布到纹理的上传管线取自「树上的节枝」的
+              DFC-Map-Creation-Tool，已获作者书面授权；屏上界面与配色是本项目自己的实现。</p>
+            <p>开源许可：<strong>GPL-3.0</strong>（以仓库里的 LICENSE 为准，本站每小时同步一次）。</p>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="brand" href="./">
+              <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M12 2.6 20.4 7v10L12 21.4 3.6 17V7L12 2.6Z" stroke-linejoin="round" />
+                  <circle cx="12" cy="12" r="2.6" />
+                </svg>
+              </span>
+              <span class="brand-text">
+                <strong>HBM-DFC 圈</strong>
+                <em>下载站</em>
+              </span>
+            </a>
+            <p>由「树上的节枝」维护。文件都在作者自己的仓库里。</p>
+          </div>
+          <div class="footer-col">
+            <h4>导航</h4>
+            <a href="./">首页</a>
+            <a href="wiki.html">百科</a>
+            <a href="downloads.html">下载中心</a>
+            <a href="submit.html">收录说明</a>
+          </div>
+          <div class="footer-col">
+            <h4>资源</h4>
+            <a href="https://github.com/ysb-discowave/HBMZZ-MOD" target="_blank" rel="noopener noreferrer">模组仓库</a>
+            <a href="https://hbm-zz.ysbdwz.dpdns.org/" target="_blank" rel="noopener noreferrer">模组官网</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© <span data-year>2026</span> 树上的节枝 · 转载与二创请保留署名，禁止商业使用。</span>
+          <span class="mono" data-sync-line>DATA SYNC · —</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/data/releases.js" defer></script>
+    <script src="assets/js/content.js" defer></script>
+    <script src="assets/js/site.js" defer></script>
+  </body>
+</html>

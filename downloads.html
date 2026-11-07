@@ -1,35 +1,31 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-page-title="下载中心 · HBM-DFC圈下载站">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>下载中心 · DFC Hub</title>
+    <title>下载中心 · HBM-DFC圈下载站</title>
     <meta
       name="description"
-      content="DFC 地图整合包与节枝特效工具（JiezhiMod）下载。工具按预览版 / 测试版 / 正式版分类，支持搜索与筛选；地图整合包放在 123 云盘。"
+      content="HBM-DFC 圈下载站：节枝特效工具（JiezhiMod）本体与社区附属 mod 的版本下载，按正式版 / 测试版 / 预览版自动归类。"
     />
-    <meta name="theme-color" content="#05070f" />
+    <meta name="theme-color" content="#0b0d10" />
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="data/config.js"></script>
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="下载中心 · DFC Hub" />
-    <meta property="og:description" content="特效工具按版本直接下载，地图整合包在 123 云盘，点击新标签页打开。" />
+    <meta property="og:title" content="下载中心 · HBM-DFC圈下载站" />
+    <meta property="og:description" content="本体与附属 mod 的版本列表，文件直链到作者自己的仓库。" />
   </head>
   <body>
-    <div class="bg-fx" aria-hidden="true"></div>
     <div class="bg-grid" aria-hidden="true"></div>
 
     <div class="ticker">
       <div class="wrap ticker-inner">
         <span class="ticker-badge">SYNC</span>
         <p>
-          <span
-            >上游最新正式版
-            <b data-latest-version>—</b>
-          </span>
+          <span>本体最新正式版 <b data-latest-version>—</b></span>
           <span class="sep hide-sm"></span>
-          <span class="hide-sm">工具直连 GitHub Release · 地图在 123 云盘</span>
+          <span class="hide-sm">数据每小时自动拉一次</span>
           <span class="sep hide-sm"></span>
           <a href="#install">安装说明 →</a>
         </p>
@@ -38,7 +34,7 @@
 
     <header class="site-header" id="siteHeader">
       <div class="wrap header-inner">
-        <a class="brand" href="./" aria-label="DFC Hub 首页">
+        <a class="brand" href="./" aria-label="HBM-DFC 圈下载站首页">
           <span class="brand-mark" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
               <path d="M12 2.6 20.4 7v10L12 21.4 3.6 17V7L12 2.6Z" stroke-linejoin="round" />
@@ -47,25 +43,24 @@
             </svg>
           </span>
           <span class="brand-text">
-            <strong data-cfg="site.brandName">DFC HUB</strong>
-            <em data-cfg="site.brandSub">地图与特效工具</em>
+            <strong>HBM-DFC 圈</strong>
+            <em>下载站</em>
           </span>
         </a>
 
         <nav class="nav" id="primaryNav" aria-label="主导航">
-          <a href="index.html" data-cfg="footer.navHome">首页</a>
-          <a href="wiki.html" data-cfg="footer.navWiki">百科</a>
-          <a href="downloads.html" class="is-active" aria-current="page" data-cfg="footer.navDownloads">下载中心</a>
-          <a href="mods.html">其他下载</a>
+          <a href="./">首页</a>
+          <a href="wiki.html">百科</a>
+          <a href="downloads.html" class="is-active" aria-current="page">下载中心</a>
+          <a href="submit.html">收录说明</a>
         </nav>
 
         <div class="header-actions">
-          <a class="version-pill" href="downloads.html" title="最新正式版">
+          <a class="version-pill" href="downloads.html" title="本体最新正式版">
             <span class="dot" aria-hidden="true"></span>
             <span class="vp-label">LATEST</span>
             <span class="vp-num" data-latest-version>—</span>
           </a>
-          <a class="btn btn-primary btn-sm" href="index.html">返回首页</a>
           <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="primaryNav">
             <span></span><span></span><span></span>
           </button>
@@ -74,41 +69,55 @@
     </header>
 
     <main>
-      <!-- ============ PAGE HEAD ============ -->
       <section class="page-head">
         <div class="wrap">
-          <span class="eyebrow">Download Center</span>
-          <h1 data-cfg="downloadsPage.title">下载中心</h1>
-          <p class="lede" data-cfg="downloadsPage.lede">
-            工具（.jar）在下方按版本列出，直接下载；地图整合包放在 123 云盘。同一版本同时托管在 GitHub 与 Gitee，可在筛选栏切换下载线路（自动线路会优先走 Gitee，国内更快）。版本按 Tag 自动归类：含 -beta 为测试版，含 -preview 为预览版，其余为正式版。带 hotfix 或「紧急修复」标记的版本会额外加一个红色「紧急修复」标签，它独立于三条通道，可以与测试版或正式版叠加。带 major 或「重大更新」标记的正式版会再加一个蓝色「重大更新」标签。
+          <h1>下载中心</h1>
+          <p class="lede">
+            本体和社区附属都在这一页。上面点名字切换，下面按版本列文件；版本归类只看 Tag，不用手动改。
           </p>
 
-          <div class="version-board">
+          <!-- 模组选项卡：由 downloads.js 按数据生成，本体固定排第一 -->
+          <div class="mod-tabs" id="modTabs" role="tablist" aria-label="选择模组">
+            <button class="mod-tab is-on" type="button" role="tab" aria-selected="true">载入中…</button>
+          </div>
+
+          <!-- 附属参数表：只对附属显示 -->
+          <div class="mod-info" id="modInfo" hidden>
+            <table class="mod-spec">
+              <caption>模组参数</caption>
+              <tbody data-mod-spec></tbody>
+            </table>
+            <p class="mod-info-hint" data-mod-hint hidden></p>
+            <p class="mod-info-links" data-mod-links></p>
+          </div>
+
+          <div class="version-board" id="versionBoard">
             <div class="vb-cell">
-              <div class="vb-label"><span class="dot" style="color: var(--green)"></span> <span data-cfg="downloadsPage.boardLatest">最新正式版</span></div>
-              <div class="vb-value" data-latest-slot>
+              <div class="vb-label"><span class="dot" style="color: var(--green)"></span> <span data-board-label>最新正式版</span></div>
+              <div class="vb-value">
                 <span data-latest-version>—</span>
                 <small data-latest-date>—</small>
               </div>
-              <p class="vb-note" data-latest-name>节枝特效工具</p>
+              <p class="vb-note" data-board-desc>节枝特效工具本体</p>
+              <p class="vb-note vb-downloads" data-board-downloads>—</p>
             </div>
-            <div class="vb-cell">
-              <div class="vb-label"><span class="dot" style="color: var(--magenta)"></span> <span data-cfg="downloadsPage.boardMap">地图整合包</span></div>
+            <div class="vb-cell" data-cell-map>
+              <div class="vb-label"><span class="dot" style="color: var(--amber)"></span> 地图整合包</div>
               <div class="vb-action">
-                <a class="btn btn-primary btn-sm" href="https://1824933551.share.123pan.cn/123pan/9O42jv-Aebdh" data-cfg-href="links.mapPan" target="_blank" rel="noopener noreferrer">
+                <a class="btn btn-primary btn-sm" href="https://1824933551.share.123pan.cn/123pan/9O42jv-Aebdh" target="_blank" rel="noopener noreferrer">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 19h16" />
                   </svg>
-                  <span data-cfg="downloadsPage.mapCta">前往网盘下载地图</span>
+                  前往网盘下载地图
                 </a>
               </div>
-              <p class="vb-note" data-cfg="downloadsPage.mapNote">123 云盘 · 新标签页打开</p>
+              <p class="vb-note">123 云盘 · 新标签页打开</p>
             </div>
             <div class="vb-cell">
-              <div class="vb-label"><span class="dot" style="color: var(--cyan)"></span> <span data-cfg="downloadsPage.boardSync">数据同步</span></div>
+              <div class="vb-label"><span class="dot" style="color: var(--muted)"></span> 数据同步</div>
               <div class="vb-value"><span class="mono" style="font-size: 15px" data-sync-time>—</span></div>
-              <p class="vb-note" data-cfg="downloadsPage.boardSyncNote">自动任务每小时拉取一次上游 Release</p>
-              <button class="btn btn-quiet vb-refresh" type="button" data-refresh title="立刻重新拉取最新的版本清单，不用等下一次自动同步">
+              <p class="vb-note">Actions 每小时拉一次上游 Release</p>
+              <button class="btn btn-quiet vb-refresh" type="button" data-refresh title="立刻重新拉取版本清单，不用等下一次自动同步">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M20 11a8 8 0 1 0-2.3 5.7" />
                   <path d="M20 4v7h-7" />
@@ -120,7 +129,6 @@
         </div>
       </section>
 
-      <!-- ============ TOOLBAR ============ -->
       <div class="toolbar">
         <div class="wrap toolbar-inner">
           <div class="search" id="searchWrap">
@@ -128,13 +136,7 @@
               <circle cx="11" cy="11" r="7" />
               <path d="m20 20-3.5-3.5" />
             </svg>
-            <input
-              id="q"
-              type="search"
-              autocomplete="off"
-              placeholder="搜索版本号、文件名或更新内容…"
-              aria-label="搜索版本"
-            />
+            <input id="q" type="search" autocomplete="off" placeholder="搜版本号、文件名或更新内容…" aria-label="搜索版本" />
             <button class="clear" id="qClear" type="button" aria-label="清除搜索">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                 <path d="m6 6 12 12M18 6 6 18" />
@@ -158,34 +160,17 @@
               </button>
             </div>
 
-            <div class="filter-group" role="group" aria-label="按版本性质筛选">
+            <div class="filter-group" data-only-base role="group" aria-label="按版本性质筛选">
               <button class="chip-btn is-on" data-filter="nature" data-value="all" type="button">不限性质</button>
-              <button
-                class="chip-btn chip-btn--hotfix"
-                data-filter="nature"
-                data-value="hotfix"
-                type="button"
-                title="包含重大紧急 bug 的修复，可与测试版 / 正式版叠加"
-              >
+              <button class="chip-btn chip-btn--hotfix" data-filter="nature" data-value="hotfix" type="button" title="包含重大紧急 bug 的修复，可与测试版 / 正式版叠加">
                 紧急修复 <span class="n" data-count="hotfix">0</span>
               </button>
-              <button
-                class="chip-btn chip-btn--major"
-                data-filter="nature"
-                data-value="major"
-                type="button"
-                title="重大更新，只会出现在正式版上"
-              >
+              <button class="chip-btn chip-btn--major" data-filter="nature" data-value="major" type="button" title="重大更新，只会出现在正式版上">
                 重大更新 <span class="n" data-count="major">0</span>
               </button>
             </div>
 
-            <div class="filter-group" role="group" aria-label="按资产类型筛选">
-              <button class="chip-btn is-on" data-filter="type" data-value="all" type="button">全部资产</button>
-              <button class="chip-btn" data-filter="type" data-value="tool" type="button">工具 .jar</button>
-            </div>
-
-            <div class="filter-group" role="group" aria-label="选择下载线路">
+            <div class="filter-group" data-only-base role="group" aria-label="选择下载线路">
               <button class="chip-btn is-on" data-filter="mirror" data-value="auto" type="button" title="有 Gitee 镜像就优先走 Gitee">自动线路</button>
               <button class="chip-btn" data-filter="mirror" data-value="gitee" type="button" title="国内直连更快">Gitee</button>
               <button class="chip-btn" data-filter="mirror" data-value="github" type="button" title="上游发布源">GitHub</button>
@@ -194,7 +179,6 @@
         </div>
       </div>
 
-      <!-- ============ LIST ============ -->
       <section class="section--tight">
         <div class="wrap">
           <div class="result-bar">
@@ -215,60 +199,43 @@
               </svg>
             </div>
             <h3>没有匹配的版本</h3>
-            <p>试试换一个关键词，或者点「全部」重置筛选条件。</p>
+            <p>换个关键词，或者点「全部」重置筛选。</p>
             <button class="btn btn-ghost" id="resetFilters" type="button">重置筛选</button>
           </div>
         </div>
       </section>
 
-      <!-- ============ INSTALL ============ -->
       <section class="section" id="install">
         <div class="wrap">
           <div class="section-head reveal">
-            <span class="eyebrow" data-cfg="downloadsPage.installEyebrow">Installation</span>
-            <h2 class="section-title" data-cfg="downloadsPage.installTitle">三分钟装好开档</h2>
-            <p class="section-sub" data-cfg="downloadsPage.installSub">工具与地图互不依赖，但一起装才有完整效果。以下路径以官方启动器为例。</p>
+            <h2 class="section-title">怎么装</h2>
+            <p class="section-sub">本体和附属都走同一条路：装好 Forge，把 jar 丢进 mods。区别只在要不要前置。</p>
           </div>
 
-          <div class="steps" data-cfg-steps="downloadsPage.installSteps">
+          <div class="steps">
             <div class="step reveal">
               <h3>装 Forge 1.12.2</h3>
-              <p>
-                安装 <code>Forge 14.23.5.2864</code>（1.12.2 的任意 14.23.x 均可），启动一次游戏生成
-                <code>.minecraft/mods</code> 目录。
-              </p>
+              <p>用 <code>Forge 14.23.5.2864</code>（1.12.2 的任意 14.23.x 都行），启动一次游戏生成 <code>.minecraft/mods</code>。</p>
             </div>
             <div class="step reveal" data-delay="1">
-              <h3>放入工具 jar</h3>
-              <p>
-                把下载到的 <code>jiezhi-1.12.2-dfcmaptools-x.x.jar</code> 直接丢进
-                <code>.minecraft/mods/</code>。不需要解压。
-              </p>
+              <h3>放 jar 进 mods</h3>
+              <p>把下载到的 <code>.jar</code> 直接丢进 <code>.minecraft/mods/</code>，不用解压。附属装几个都行，只要 modid 不撞。</p>
             </div>
             <div class="step reveal" data-delay="2">
-              <h3>解压地图整合包</h3>
-              <p>
-                地图整合包在 123 云盘（见页面上方）。下载后把里面的存档目录解压到 <code>.minecraft/saves/</code>，启动器里选择该存档进入即可。
-                首次进入请允许命令方块运行。
-              </p>
+              <h3>看上面的参数表</h3>
+              <p>「需要 JiezhiMod 作为前置」写「否」就说明不用再放本体；写「是」才需要另外下本体一起装。</p>
             </div>
             <div class="step reveal">
-              <h3>校准 DFC 显示器</h3>
-              <p>
-                放下 DFC 显示器搭成 4×3 多方块，手持 DFC 遥控器右键核心绑定，屏幕会自动完成开机自检。
-              </p>
+              <h3>地图整合包</h3>
+              <p>地图在 123 云盘（见页面上方）。解压出来的存档目录放进 <code>.minecraft/saves/</code>，首次进入允许命令方块运行。</p>
             </div>
             <div class="step reveal" data-delay="1">
-              <h3>没装 HBM？</h3>
-              <p>
-                屏幕会显示 <code>NO LINK</code> 而不是崩溃。特效类指令（抖屏 / 白屏 / 倒计时）不受影响，可单独使用。
-              </p>
+              <h3>联机</h3>
+              <p>本体在服务端注册指令、客户端负责渲染，<b>两边要同一个版本</b>，否则指令能用但看不到特效。</p>
             </div>
             <div class="step reveal" data-delay="2">
-              <h3>联机注意</h3>
-              <p>
-                工具在服务端注册指令、客户端负责渲染，<b>两侧都要装同一个版本</b>，否则指令可用但看不到特效。
-              </p>
+              <h3>装完没反应</h3>
+              <p>先看启动日志里有没有 <code>JiezhiMod ... is loading.</code> 或对应的 modid。没有就是没加载，多半是 Forge 版本或 jar 放错目录。</p>
             </div>
           </div>
 
@@ -280,9 +247,8 @@
               </svg>
             </span>
             <p>
-              <b>关于下载链接：</b>工具按钮直接指向 GitHub Release 的
-              <code class="mono">browser_download_url</code>，不做二次转存；地图整合包放在 123 云盘，点击后在新标签页打开。
-              若某个工具版本被作者删除，按钮会退回该版本的发布页。
+              <b>文件不转存。</b>下载按钮直连作者自己的仓库（GitHub / Gitee），站点只做索引。
+              作者删了某个版本，按钮会跳回发布页。下载次数是仓库自己统计的，Gitee 没有这个数据，所以那边显示「不提供」。
             </p>
           </div>
         </div>
@@ -301,34 +267,32 @@
                 </svg>
               </span>
               <span class="brand-text">
-                <strong data-cfg="site.brandName">DFC HUB</strong>
-                <em data-cfg="site.brandSub">地图与特效工具</em>
+                <strong>HBM-DFC 圈</strong>
+                <em>下载站</em>
               </span>
             </a>
-            <p data-cfg="footer.note">由「树上的节枝」维护的个人分享站。文件托管于 GitHub Release，站点本身是纯静态页面。</p>
+            <p>由「树上的节枝」维护。文件都在作者自己的仓库里，这里只有索引和说明。</p>
           </div>
 
           <div class="footer-col">
-            <h4 data-cfg="footer.navTitle">导航</h4>
-            <a href="index.html" data-cfg="footer.navHome">首页</a>
-            <a href="wiki.html" data-cfg="footer.navWiki">百科</a>
-            <a href="downloads.html" data-cfg="footer.navDownloads">下载中心</a>
-            <a href="mods.html">其他下载</a>
-            <a href="#install">安装说明</a>
+            <h4>导航</h4>
+            <a href="./">首页</a>
+            <a href="wiki.html">百科</a>
+            <a href="downloads.html">下载中心</a>
+            <a href="submit.html">收录说明</a>
           </div>
 
           <div class="footer-col">
-            <h4 data-cfg="footer.resourcesTitle">资源</h4>
-            <a href="https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool" data-cfg-href="links.toolRepo" target="_blank" rel="noopener noreferrer" data-cfg="footer.linkToolRepo">工具源码</a>
-            <a href="https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases" data-cfg-href="links.toolReleases" target="_blank" rel="noopener noreferrer" data-cfg="footer.linkReleases">全部 Release</a>
-            <a href="https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool" data-cfg-href="links.giteeRepo" target="_blank" rel="noopener noreferrer" data-cfg="footer.linkGitee">Gitee 镜像</a>
-            <a href="https://space.bilibili.com/3494363348863838" data-cfg-href="links.bilibiliSpace" target="_blank" rel="noopener noreferrer" data-cfg="footer.linkBilibili">B 站主页</a>
-            <a href="wiki.html#videos" data-cfg="footer.linkVideo">演示视频</a>
+            <h4>资源</h4>
+            <a href="https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool" target="_blank" rel="noopener noreferrer">本体源码</a>
+            <a href="https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases" target="_blank" rel="noopener noreferrer">全部 Release</a>
+            <a href="https://gitee.com/yi-sichen-jiezhi/DFC-Map-Creation-Tool" target="_blank" rel="noopener noreferrer">Gitee 镜像</a>
+            <a href="https://space.bilibili.com/3494363348863838" target="_blank" rel="noopener noreferrer">B 站主页</a>
           </div>
         </div>
 
         <div class="footer-bottom">
-          <span>© <span data-year>2026</span> <span data-cfg="footer.copyright">树上的节枝 · 转载 / 二创请保留署名，禁止商业使用。</span></span>
+          <span>© <span data-year>2026</span> 树上的节枝 · 转载与二创请保留署名，禁止商业使用。</span>
           <span class="mono" data-sync-line>DATA SYNC · —</span>
         </div>
       </div>
@@ -336,6 +300,7 @@
 
     <script src="assets/data/releases.js" defer></script>
     <script src="data/releases.js" defer></script>
+    <script src="assets/data/mods.js" defer></script>
     <script src="assets/js/content.js" defer></script>
     <script src="assets/js/site.js" defer></script>
     <script src="assets/js/downloads.js" defer></script>

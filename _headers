@@ -29,6 +29,36 @@
 /downloads.html
   Cache-Control: no-store
 
+/wiki
+  Cache-Control: no-store
+
+/wiki.html
+  Cache-Control: no-store
+
+/wiki-rbmk
+  Cache-Control: no-store
+
+/wiki-rbmk.html
+  Cache-Control: no-store
+
+/wiki-hbmzz
+  Cache-Control: no-store
+
+/wiki-hbmzz.html
+  Cache-Control: no-store
+
+/submit
+  Cache-Control: no-store
+
+/submit.html
+  Cache-Control: no-store
+
+/mods
+  Cache-Control: no-store
+
+/mods.html
+  Cache-Control: no-store
+
 /404
   Cache-Control: no-store
 

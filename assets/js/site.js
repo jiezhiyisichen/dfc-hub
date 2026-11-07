@@ -395,9 +395,20 @@
             DATA = json;
             window.__DFC_DATA__ = json;
             applyData();
-            if (typeof window.__DFC_RERENDER__ === "function") window.__DFC_RERENDER__();
-            var tag = json && json.latest && json.latest.release ? json.latest.release.tag : "—";
-            reset("已是最新 " + tag, 2200);
+            /* 附属的版本清单也一起刷，否则点完按钮只有本体更新了 */
+            return fetch("assets/data/mods.json?t=" + Date.now(), { cache: "no-store" })
+              .then(function (res) {
+                return res.ok ? res.json() : null;
+              })
+              .catch(function () {
+                return null;
+              })
+              .then(function (mods) {
+                if (mods) window.__DFC_MODS__ = mods;
+                if (typeof window.__DFC_RERENDER__ === "function") window.__DFC_RERENDER__();
+                var tag = json && json.latest && json.latest.release ? json.latest.release.tag : "—";
+                reset("已是最新 " + tag, 2200);
+              });
           })
           .catch(function () {
             reset("同步失败，稍后再试", 2400);

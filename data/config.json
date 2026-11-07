@@ -1,18 +1,18 @@
 {
   "site": {
-    "title": "DFC Hub · 节枝 DFC 地图与特效工具",
-    "description": "Minecraft 1.12.2 HBM 诅咒版 DFC 地图与节枝特效工具（JiezhiMod）的下载站与百科：特效指令、DFC 显示器、灯圈与红石工具。",
-    "brandName": "DFC HUB",
-    "brandSub": "地图与特效工具",
+    "title": "HBM-DFC圈下载站",
+    "description": "HBM-DFC 圈下载站：节枝特效工具（JiezhiMod）本体与社区附属 mod 的下载、百科和收录说明。Minecraft 1.12.2 Forge。",
+    "brandName": "HBM-DFC 圈",
+    "brandSub": "下载站",
     "tickerBadge": "SYNC",
-    "tickerLabel": "上游最新正式版",
-    "tickerNote": "与 GitHub / Gitee Release 每小时自动同步",
+    "tickerLabel": "本体最新正式版",
+    "tickerNote": "与仓库每小时自动同步",
     "tickerLinkText": "前往下载中心 →"
   },
   "hero": {
-    "tag": "Minecraft 1.12.2 · HBM 诅咒版 · DFC",
-    "title": "DFC 地图与节枝特效工具",
-    "lede": "一张围绕暗核聚变堆的 Minecraft 地图，和一套做屏幕与特效的小工具。",
+    "tag": "Minecraft 1.12.2 · Forge · HBM 核科技",
+    "title": "HBM-DFC 圈下载站",
+    "lede": "节枝特效工具本体，和社区做的附属 mod，都在这里下。",
     "primaryText": "下载中心",
     "secondaryText": "使用教程",
     "mapLink": "地图整合包在 123 云盘 ↗"

@@ -13,9 +13,10 @@
       "requires": "无 · HBM NTM-CE 可选（不装只显示「数据源未绑定」，不会崩）",
       "minecraft": "1.12.2",
       "loader": "Forge 14.23.5.2864",
-      "license": "GPL-3.0",
       "hint": "自带改好的显示系统，不需要节枝本体。和本体一起装不会崩，但屏幕、遥控器会各有一套，没必要。",
-      "ignore": ["ForgeGradle-example"],
+      "ignore": [
+        "ForgeGradle-example"
+      ],
       "enabled": true
     },
     {
@@ -30,7 +31,6 @@
       "requires": "无 · HBM NTM-CE / Leafia 诅咒版可选（不装则读不到反应堆数据）",
       "minecraft": "1.12.2",
       "loader": "Forge 14.23.5.2864",
-      "license": "GPL-3.0",
       "homepage": "https://hbm-zz.ysbdwz.dpdns.org/",
       "hint": "独立模组，不需要 JiezhiMod，两件一起加载也不会冲突：各有各的 modid、方块和物品。",
       "enabled": true

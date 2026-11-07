@@ -1,27 +1,30 @@
 /* ==========================================================================
-   DFC HUB — downloads page controller
-   Renders release cards from window.__DFC_DATA__, with search + filters.
+   HBM-DFC 圈下载站 — 下载中心
+   一个页面管所有：本体（JiezhiMod）+ 各附属 mod。
+   数据来自 assets/data/releases.js（window.__DFC_DATA__）与 assets/data/mods.js
+   （window.__DFC_MODS__），都由 Actions 定时重新生成。
    ========================================================================== */
 (function () {
   "use strict";
 
-  var DATA = window.__DFC_DATA__ || null;
+  var BASE = window.__DFC_DATA__ || null;
   var LOCAL = window.__DFC_LOCAL__ || null;
+  var MODS = window.__DFC_MODS__ || null;
+
   var listEl = document.getElementById("releaseList");
   var emptyEl = document.getElementById("emptyState");
   var resultLine = document.querySelector("[data-result-line]");
   var searchWrap = document.getElementById("searchWrap");
   var qInput = document.getElementById("q");
   var qClear = document.getElementById("qClear");
+  var tabsEl = document.getElementById("modTabs");
+  var boardEl = document.getElementById("versionBoard");
+  var infoEl = document.getElementById("modInfo");
 
   if (!listEl) return;
 
-  var CHANNEL_LABEL = {
-    release: "正式版",
-    beta: "测试版",
-    preview: "预览版",
-  };
-
+  var CHANNEL_LABEL = { release: "正式版", beta: "测试版", preview: "预览版" };
+  var PLATFORM_LABEL = { gitee: "Gitee", github: "GitHub" };
   var MIRROR_KEY = "dfc-hub:mirror";
 
   function readMirror() {
@@ -43,15 +46,11 @@
   }
 
   var state = {
+    mod: "jiezhimod",
     channel: "all",
-    type: "all",
-    /* 版本性质：all / hotfix / major。
-       两者都是叠加属性，不占 channel —— 紧急修复可配任意通道，
-       重大更新只配正式版。筛选时与 channel 叠加生效。 */
     nature: "all",
+    type: "all",
     q: "",
-    /* 下载线路：auto / gitee / github。
-       auto = 有 Gitee 镜像就优先走 Gitee（国内直连快），没有才回落 GitHub。 */
     mirror: readMirror(),
   };
 
@@ -77,6 +76,11 @@
     return (i === 0 ? n : n.toFixed(n < 10 ? 1 : 0)) + " " + units[i];
   }
 
+  function fmtNum(n) {
+    if (typeof n !== "number") return "";
+    return n.toLocaleString("zh-CN");
+  }
+
   function fmtDate(iso, withTime) {
     if (!iso) return "—";
     var d = new Date(iso);
@@ -97,21 +101,142 @@
     return null;
   }
 
-  function releaseUrl(release) {
-    if (release.source === "local") return "";
-    return (
-      release.url ||
-      "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/tag/" + release.tag
-    );
+  /* ---------------------------------------------------------------- 模型
+   * 本体和附属最后都归一成同一个形状：
+   *   { id, name, sub, star, isBase, releases[], latest, desc, params, platform, repoUrl, homepage }
+   * 这样列表、筛选、卡片渲染只写一套。 */
+
+  function manualToRelease(item) {
+    return {
+      id: item.id,
+      tag: item.tag,
+      version: String(item.tag || "").replace(/^v/i, ""),
+      channel: item.channel || "release",
+      name: item.name || item.fileName,
+      publishedAt: item.publishedAt,
+      url: "",
+      source: "local",
+      downloads: null,
+      assets: [
+        {
+          name: item.fileName,
+          kind: item.kind === "tool" ? "tool" : "map",
+          size: item.size || 0,
+          downloads: null,
+          url: item.url,
+        },
+      ],
+      notesHtml: item.notes ? "<p>" + esc(item.notes) + "</p>" : "",
+      notesText: item.notes || "",
+    };
+  }
+
+  /** 附属的附件类型叫 mod / pack，本体的叫 tool / map，这里统一 */
+  function normalizeModRelease(r) {
+    return {
+      id: r.id,
+      tag: r.tag,
+      version: r.version,
+      channel: r.channel || "release",
+      name: r.name,
+      publishedAt: r.publishedAt,
+      url: r.url,
+      source: "mod",
+      hotfix: !!r.hotfix,
+      major: !!r.major,
+      downloads: typeof r.downloads === "number" ? r.downloads : null,
+      assets: (r.assets || []).map(function (a) {
+        return {
+          name: a.name,
+          kind: a.kind === "mod" ? "tool" : a.kind === "pack" ? "map" : a.kind,
+          size: a.size || 0,
+          downloads: typeof a.downloads === "number" ? a.downloads : null,
+          url: a.url,
+          mirrors: a.mirrors || null,
+        };
+      }),
+      notesHtml: r.notesHtml || "",
+      notesText: r.notesText || "",
+    };
+  }
+
+  function baseModel() {
+    var upstream = BASE && Array.isArray(BASE.releases) ? BASE.releases : [];
+    var local = LOCAL && Array.isArray(LOCAL.items) ? LOCAL.items : [];
+    var latest = BASE && BASE.latest && BASE.latest.release ? BASE.latest.release : null;
+    return {
+      id: "jiezhimod",
+      name: "JiezhiMod",
+      sub: "本体",
+      star: true,
+      isBase: true,
+      releases: local.map(manualToRelease).concat(upstream),
+      latest: latest,
+      desc: "节枝特效工具本体：特效指令、DFC 显示器、灯圈、红石工具。",
+      params: null,
+      platform: "github",
+      repoUrl: "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool",
+      homepage: "",
+    };
+  }
+
+  function modModels() {
+    var list = MODS && Array.isArray(MODS.mods) ? MODS.mods : [];
+    return list.map(function (m) {
+      return {
+        id: m.id,
+        name: m.name,
+        sub: "",
+        star: false,
+        isBase: false,
+        releases: (m.releases || []).map(normalizeModRelease),
+        latest: m.latest || null,
+        desc: m.desc || "",
+        params: m,
+        platform: m.platform,
+        repoUrl: m.repoUrl,
+        homepage: m.homepage || "",
+        error: m.error || null,
+      };
+    });
+  }
+
+  function models() {
+    return [baseModel()].concat(modModels());
+  }
+
+  function currentModel() {
+    var all = models();
+    for (var i = 0; i < all.length; i++) {
+      if (all[i].id === state.mod) return all[i];
+    }
+    return all[0];
+  }
+
+  /** 该模组的下载合计；平台不给数字时返回 null（不是 0） */
+  function modelDownloads(model) {
+    var sum = 0;
+    var counted = 0;
+    (model.releases || []).forEach(function (r) {
+      if (typeof r.downloads === "number") {
+        sum += r.downloads;
+        counted++;
+        return;
+      }
+      (r.assets || []).forEach(function (a) {
+        if (typeof a.downloads === "number") {
+          sum += a.downloads;
+          counted++;
+        }
+      });
+    });
+    if (!counted) return model.platform === "github" ? 0 : null;
+    return sum;
   }
 
   /* --------------------------------------------------------------- 下载线路
-   * 同一个文件可能同时存在于 GitHub Release 和 Gitee 发行版里：
-   *   asset.url        → GitHub 地址（主源，sync-releases.mjs 归一化时写入）
-   *   asset.mirrors[]  → 备用线路，目前只有 { host: "gitee", url }
-   * 选"自动"时优先 Gitee（国内直连明显更快），没有镜像才回落 GitHub。
-   * 数据结构里没有 mirrors 时全部退化成老行为 —— 旧数据不会报错。 */
-
+   * 同一文件可能同时挂在 GitHub Release 和 Gitee 发行版：asset.url 是主源，
+   * asset.mirrors[] 是备用线路。「自动」优先 Gitee（国内直连快）。 */
   function hostLabel(host) {
     return host === "gitee" ? "Gitee" : "GitHub";
   }
@@ -124,7 +249,6 @@
     return null;
   }
 
-  /** 返回 { host, url } —— 按用户选定的线路挑一个可用地址 */
   function pickPrimary(asset, mirror) {
     var gitee = mirrorUrl(asset, "gitee");
     var github = asset.url || null;
@@ -137,7 +261,6 @@
     return gitee ? { host: "gitee", url: gitee } : { host: "github", url: github };
   }
 
-  /** 另一条线路的地址（没有、或与主地址相同就返回 null） */
   function pickAlt(asset, primary) {
     var otherHost = primary.host === "gitee" ? "github" : "gitee";
     var url = otherHost === "gitee" ? mirrorUrl(asset, "gitee") : asset.url || null;
@@ -145,9 +268,22 @@
     return { host: otherHost, url: url };
   }
 
-  /** 发布页链接：GitHub 一定有（本地条目除外），Gitee 有镜像才显示 */
-  function releaseLinksHtml(release) {
+  function releaseUrl(release) {
+    if (release.source === "local") return "";
+    return release.url || "";
+  }
+
+  function releaseLinksHtml(release, model) {
     if (release.source === "local") return "<span>本地文件</span>";
+    if (release.source === "mod") {
+      return (
+        '<a href="' +
+        esc(releaseUrl(release)) +
+        '" target="_blank" rel="noopener noreferrer">' +
+        (PLATFORM_LABEL[model.platform] || "发布页") +
+        " 发布页 ↗</a>"
+      );
+    }
     var parts = [
       '<a href="' +
         esc(releaseUrl(release)) +
@@ -155,48 +291,12 @@
     ];
     var gitee = release.mirrors && release.mirrors.gitee && release.mirrors.gitee.url;
     if (gitee) {
-      parts.push(
-        '<a href="' + esc(gitee) + '" target="_blank" rel="noopener noreferrer">Gitee ↗</a>'
-      );
+      parts.push('<a href="' + esc(gitee) + '" target="_blank" rel="noopener noreferrer">Gitee ↗</a>');
     }
     return parts.join('<span class="sep"></span>');
   }
 
-  /* ------------------------------------------------- 本地手动上传的包
-   * data/releases.json 里由管理后台上传的条目，结构比 Release 简单，
-   * 这里转成同一套形状，和上游数据混排。 */
-
-  function manualToRelease(item) {
-    return {
-      id: item.id,
-      tag: item.tag,
-      version: String(item.tag || "").replace(/^v/i, ""),
-      channel: item.channel || "release",
-      name: item.name || item.fileName,
-      publishedAt: item.publishedAt,
-      url: "",
-      source: "local",
-      assets: [
-        {
-          name: item.fileName,
-          kind: item.kind === "tool" ? "tool" : "map",
-          size: item.size || 0,
-          downloads: 0,
-          url: item.url,
-        },
-      ],
-      notesHtml: item.notes ? "<p>" + esc(item.notes) + "</p>" : "",
-      notesText: item.notes || "",
-    };
-  }
-
-  function allReleases() {
-    var upstream = DATA && Array.isArray(DATA.releases) ? DATA.releases : [];
-    var local = LOCAL && Array.isArray(LOCAL.items) ? LOCAL.items : [];
-    return local.map(manualToRelease).concat(upstream);
-  }
-
-  /** Release 标题通常以 Tag 开头（"v3.6 · 自定义屏…"），卡片左侧已经单独展示 Tag，这里去掉重复部分 */
+  /** Release 标题常以 Tag 开头，卡片左侧已单独展示 Tag，这里去掉重复部分 */
   function displayName(release) {
     var name = String(release.name || "").trim();
     var tag = String(release.tag || "").trim();
@@ -204,8 +304,6 @@
     if (!tag) return name;
     var safeTag = tag.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     var stripped = name.replace(new RegExp("^" + safeTag + "\\s*[·:：—–-]?\\s*", "i"), "").trim();
-    /* Tag 带通道后缀时（v3.9.1-hotfix-beta）标题往往只写版本号（"v3.9.1 紧急修复版 + 测试版"），
-       再兜一次版本号前缀，避免卡片上出现两遍版本信息 */
     var noVersion = stripped.replace(/^v?\d+(?:\.\d+)*(?=$|[\s·:：—–+,，、])[\s·:：—–+,，、]*/i, "").trim();
     if (noVersion) stripped = noVersion;
     return stripped || name;
@@ -223,7 +321,7 @@
       release.notesText || "",
       (release.assets || [])
         .map(function (a) {
-          return a.name + " " + (a.kind === "tool" ? "jar 工具" : "zip 地图 整合包");
+          return a.name + " " + (a.kind === "tool" ? "jar 模组 工具" : "zip 地图 整合包");
         })
         .join(" "),
     ]
@@ -233,18 +331,169 @@
   }
 
   /* --------------------------------------------------------------- render */
-  function assetRow(asset, release) {
+  function renderTabs() {
+    if (!tabsEl) return;
+    tabsEl.innerHTML = models()
+      .map(function (m) {
+        var on = m.id === state.mod;
+        var count = (m.releases || []).length;
+        return (
+          '<button class="mod-tab' +
+          (on ? " is-on" : "") +
+          (m.star ? " mod-tab--star" : "") +
+          '" type="button" role="tab" data-mod-id="' +
+          esc(m.id) +
+          '" aria-selected="' +
+          (on ? "true" : "false") +
+          '">' +
+          (m.star ? '<span class="star" aria-hidden="true">★</span>' : "") +
+          esc(m.name) +
+          (m.sub ? '<span class="mod-tab-sub">' + esc(m.sub) + "</span>" : "") +
+          '<span class="n">' + count + "</span>" +
+          "</button>"
+        );
+      })
+      .join("");
+
+    tabsEl.querySelectorAll("[data-mod-id]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        selectModel(btn.getAttribute("data-mod-id"));
+      });
+    });
+  }
+
+  function selectModel(id) {
+    if (!id || id === state.mod) return;
+    state.mod = id;
+    /* 换模组等于换一池版本，筛选条件跟着清掉，免得看到空列表 */
+    state.channel = "all";
+    state.nature = "all";
+    state.type = "all";
+    state.q = "";
+    if (qInput) qInput.value = "";
+    if (searchWrap) searchWrap.classList.remove("has-value");
+    applyChips();
+    renderTabs();
+    render();
+    syncUrl();
+  }
+
+  function renderBoard(model) {
+    if (!boardEl) return;
+    boardEl.classList.toggle("is-mod", !model.isBase);
+
+    var latest = model.latest;
+    var setText = function (sel, text) {
+      var el = boardEl.querySelector(sel);
+      if (el) el.textContent = text;
+    };
+
+    setText("[data-board-label]", model.isBase ? "最新正式版" : "最新版本");
+    setText("[data-latest-version]", latest ? latest.tag : "暂无");
+    setText("[data-latest-date]", latest ? fmtDate(latest.publishedAt) : "");
+    setText("[data-board-desc]", model.desc || "");
+
+    var mapCell = boardEl.querySelector("[data-cell-map]");
+    if (mapCell) mapCell.hidden = !model.isBase;
+
+    var totalEl = boardEl.querySelector("[data-board-downloads]");
+    if (totalEl) {
+      var total = modelDownloads(model);
+      totalEl.textContent =
+        total == null ? "平台未统计下载次数" : "累计下载 " + fmtNum(total) + " 次";
+    }
+  }
+
+  function renderParams(model) {
+    if (!infoEl) return;
+    if (model.isBase || !model.params) {
+      infoEl.hidden = true;
+      return;
+    }
+    infoEl.hidden = false;
+
+    var p = model.params;
+    var needsJz = !!p.requiresJiezhimod;
+    var rows = [
+      {
+        k: "需要 JiezhiMod 作为前置",
+        v: needsJz ? "是" : "否，可独立安装",
+        cls: needsJz ? "is-yes" : "is-no",
+      },
+      { k: "前置模组", v: p.requires || (needsJz ? "节枝特效工具（JiezhiMod）" : "无") },
+      { k: "游戏版本", v: "Minecraft " + (p.minecraft || "1.12.2") },
+      { k: "模组加载器", v: p.loader || "Forge 14.23.5.2864" },
+      { k: "开源许可", v: p.license || "见仓库" },
+    ];
+
+    var body = infoEl.querySelector("[data-mod-spec]");
+    if (body) {
+      body.innerHTML = rows
+        .map(function (r) {
+          return (
+            '<tr><th scope="row">' +
+            esc(r.k) +
+            "</th><td" +
+            (r.cls ? ' class="' + r.cls + '"' : "") +
+            ">" +
+            esc(r.v) +
+            "</td></tr>"
+          );
+        })
+        .join("");
+    }
+
+    var hint = infoEl.querySelector("[data-mod-hint]");
+    if (hint) {
+      hint.textContent = p.hint || "";
+      hint.hidden = !p.hint;
+    }
+
+    var repo = infoEl.querySelector("[data-mod-links]");
+    if (repo) {
+      var links = [];
+      if (model.repoUrl) {
+        links.push(
+          '<a href="' +
+            esc(model.repoUrl) +
+            '" target="_blank" rel="noopener noreferrer">' +
+            (PLATFORM_LABEL[model.platform] || "仓库") +
+            " 仓库 ↗</a>"
+        );
+      }
+      /* 有的仓库把 homepage 填成了本站旧地址，那不叫官网，跳过去只会绕圈 */
+      if (model.homepage && !/dfc-hub\.pages\.dev|\/mods/i.test(model.homepage)) {
+        links.push(
+          '<a href="' + esc(model.homepage) + '" target="_blank" rel="noopener noreferrer">官网 ↗</a>'
+        );
+      }
+      repo.innerHTML = links.join("");
+      repo.hidden = !links.length;
+    }
+  }
+
+  /** 附属没有紧急修复 / 重大更新 / 镜像线路这些概念，对应的筛选组直接隐藏 */
+  function renderFilterVisibility(model) {
+    document.querySelectorAll("[data-only-base]").forEach(function (el) {
+      el.hidden = !model.isBase;
+    });
+  }
+
+  function assetRow(asset, release, model) {
     var isTool = asset.kind === "tool";
     var label = isTool ? "下载 .jar" : "下载整合包";
-    var kindText = isTool ? "工具 · 客户端 + 服务端" : "地图 · 整合包";
+    var kindText = isTool
+      ? model.isBase
+        ? "工具 · 客户端 + 服务端"
+        : "模组 jar"
+      : "地图 · 整合包";
 
     var primary = pickPrimary(asset, state.mirror);
     var alt = pickAlt(asset, primary);
 
     var meta = [kindText];
     if (asset.size) meta.push(fmtBytes(asset.size));
-    if (asset.downloads) meta.push("↓ " + asset.downloads);
-    // 只有真的存在备用线路时才标注"经哪条线"，否则纯属噪音
+    if (typeof asset.downloads === "number") meta.push("已下载 " + fmtNum(asset.downloads) + " 次");
     if (alt) meta.push("线路 " + hostLabel(primary.host));
 
     var isLocal = release.source === "local";
@@ -281,26 +530,21 @@
           esc(alt.url) +
           '" rel="noopener noreferrer" download title="换一条线路下载同一个文件">' +
           hostLabel(alt.host) +
-          " 备用" +
-          "</a>"
+          " 备用</a>"
         : "") +
       (isLocal
         ? ""
         : '<a class="btn btn-ghost btn-sm" href="' +
           esc(releaseUrl(release)) +
-          '" target="_blank" rel="noopener noreferrer" title="查看发布页">' +
-          "发布页 ↗" +
-          "</a>") +
+          '" target="_blank" rel="noopener noreferrer" title="查看发布页">发布页 ↗</a>') +
       "</div>" +
       "</div>"
     );
   }
 
-  function releaseCard(release, index) {
+  function releaseCard(release, model, isLatest) {
     var channel = release.channel || "release";
     var isLocal = release.source === "local";
-    var latestTag = DATA && DATA.latest && DATA.latest.release ? DATA.latest.release.tag : null;
-    var isLatest = !isLocal && latestTag === release.tag;
 
     var assets = (release.assets || []).filter(function (a) {
       if (state.type === "all") return a.kind === "tool" || a.kind === "map";
@@ -314,34 +558,29 @@
     var openNotes = isLatest;
 
     var badges = "";
-    /* 叠加标签在前、通道在后：读起来就是「紧急修复 · 重大更新 · 正式版」 */
     if (release.hotfix) {
       badges +=
         '<span class="badge badge--hotfix" title="包含重大紧急 bug 的修复，可与任意通道叠加">' +
-        '<span class="dot"></span>' +
-        "紧急修复" +
-        "</span>";
+        '<span class="dot"></span>紧急修复</span>';
     }
     if (release.major) {
       badges +=
-        '<span class="badge badge--major" title="标记重大更新，只与正式版一起出现">' +
-        '<span class="dot"></span>' +
-        "重大更新" +
-        "</span>";
+        '<span class="badge badge--major" title="重大更新，只与正式版一起出现">' +
+        '<span class="dot"></span>重大更新</span>';
     }
     badges +=
       '<span class="badge badge--' +
       (channel === "release" ? "release" : channel === "beta" ? "beta" : "preview") +
-      '">' +
-      '<span class="dot"></span>' +
+      '"><span class="dot"></span>' +
       CHANNEL_LABEL[channel] +
       "</span>";
-    if (isLatest) badges += '<span class="badge badge--muted">LATEST</span>';
-    if (isLocal) badges += '<span class="badge badge--muted">LOCAL</span>';
+    if (isLatest) badges += '<span class="badge badge--muted">最新</span>';
+    if (isLocal) badges += '<span class="badge badge--muted">本站上传</span>';
 
     var totalSize = assets.reduce(function (sum, a) {
       return sum + (a.size || 0);
     }, 0);
+    var dl = typeof release.downloads === "number" ? release.downloads : null;
 
     return (
       '<article class="release' +
@@ -367,8 +606,9 @@
       " 个文件" +
       (totalSize ? " · " + fmtBytes(totalSize) : "") +
       "</span>" +
+      (dl != null ? '<span class="sep"></span><span>下载 ' + fmtNum(dl) + " 次</span>" : "") +
       '<span class="sep"></span>' +
-      releaseLinksHtml(release) +
+      releaseLinksHtml(release, model) +
       "</div>" +
       "</div>" +
       '<div class="release-badges">' +
@@ -378,7 +618,7 @@
       '<div class="asset-list">' +
       assets
         .map(function (a) {
-          return assetRow(a, release);
+          return assetRow(a, release, model);
         })
         .join("") +
       "</div>" +
@@ -428,27 +668,22 @@
 
   /* --------------------------------------------------------------- render */
   function render() {
-    var pool = allReleases();
+    var model = currentModel();
+    var pool = model.releases || [];
+
+    renderTabs();
+    renderBoard(model);
+    renderParams(model);
+    renderFilterVisibility(model);
+    updateCounts(pool);
 
     if (!pool.length) {
-      if (resultLine) resultLine.textContent = "版本数据未能载入";
       listEl.innerHTML = "";
-      if (emptyEl) {
-        emptyEl.hidden = false;
-        emptyEl.querySelector("h3").textContent = "版本数据载入失败";
-        emptyEl.querySelector("p").textContent =
-          "可能是数据文件缺失或未生成。请稍后重试，或直接前往 GitHub / Gitee 的 Release 页面下载。";
-        var resetBtn = document.getElementById("resetFilters");
-        if (resetBtn) {
-          resetBtn.textContent = "前往 GitHub Release";
-          resetBtn.onclick = function () {
-            window.open(
-              "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases",
-              "_blank",
-              "noopener"
-            );
-          };
-        }
+      if (emptyEl) emptyEl.hidden = false;
+      if (resultLine) {
+        resultLine.textContent = model.error
+          ? model.name + "：取不到版本数据（" + model.error + "），可以直接去发布页看"
+          : "还没拿到版本数据，稍后重试或直接去发布页";
       }
       return;
     }
@@ -462,33 +697,40 @@
       return matchesQuery(r, q);
     });
 
-    var html = filtered.map(releaseCard).join("");
-    // releaseCard returns "" when a release has no assets of the requested type
-    var visible = filtered.filter(function (r) {
-      return state.type === "all" || !!firstAsset(r, state.type);
-    });
+    var latestTag = model.latest ? model.latest.tag : null;
+    var html = filtered
+      .map(function (r) {
+        return releaseCard(r, model, !!latestTag && r.tag === latestTag);
+      })
+      .join("");
 
     listEl.innerHTML = html;
 
     if (!html) {
-      listEl.innerHTML = "";
       if (emptyEl) emptyEl.hidden = false;
       if (resultLine) resultLine.textContent = "没有匹配的版本";
-    } else {
-      if (emptyEl) emptyEl.hidden = true;
-      if (resultLine) {
-        var assetCount = visible.reduce(function (sum, r) {
-          return (
-            sum +
-            (r.assets || []).filter(function (a) {
-              if (state.type === "all") return a.kind === "tool" || a.kind === "map";
-              return a.kind === state.type;
-            }).length
-          );
-        }, 0);
-        resultLine.textContent =
-          "共 " + visible.length + " 个版本 · " + assetCount + " 个可下载文件" + (q ? " · 关键词「" + state.q.trim() + "」" : "");
-      }
+      return;
+    }
+
+    if (emptyEl) emptyEl.hidden = true;
+    if (resultLine) {
+      var visible = filtered.filter(function (r) {
+        return state.type === "all" || !!firstAsset(r, state.type);
+      });
+      var assetCount = visible.reduce(function (sum, r) {
+        return (
+          sum +
+          (r.assets || []).filter(function (a) {
+            if (state.type === "all") return a.kind === "tool" || a.kind === "map";
+            return a.kind === state.type;
+          }).length
+        );
+      }, 0);
+      var total = modelDownloads(model);
+      resultLine.textContent =
+        "共 " + visible.length + " 个版本 · " + assetCount + " 个文件" +
+        (total == null ? " · 该平台不提供下载次数" : " · 累计下载 " + fmtNum(total) + " 次") +
+        (q ? " · 关键词「" + state.q.trim() + "」" : "");
     }
 
     bindNotes();
@@ -518,6 +760,7 @@
   /* --------------------------------------------------------------- filters */
   function syncUrl() {
     var params = new URLSearchParams();
+    if (state.mod !== "jiezhimod") params.set("mod", state.mod);
     if (state.channel !== "all") params.set("channel", state.channel);
     if (state.nature !== "all") params.set("nature", state.nature);
     if (state.type !== "all") params.set("type", state.type);
@@ -613,6 +856,8 @@
   function readUrl() {
     try {
       var params = new URLSearchParams(window.location.search);
+      var md = params.get("mod");
+      if (md) state.mod = md;
       var ch = params.get("channel");
       var tp = params.get("type");
       var q = params.get("q");
@@ -620,7 +865,6 @@
       if (ch === "release" || ch === "beta" || ch === "preview") state.channel = ch;
       var nt = params.get("nature");
       if (nt === "hotfix" || nt === "major") state.nature = nt;
-      /* 旧链接兼容：?hotfix=1 */
       if (params.get("hotfix") === "1") state.nature = "hotfix";
       if (tp === "tool" || tp === "map") state.type = tp;
       if (mh === "gitee" || mh === "github" || mh === "auto") state.mirror = mh;
@@ -638,7 +882,6 @@
 
   /* ----------------------------------------------------------------- boot */
   function boot() {
-    updateCounts(allReleases());
     readUrl();
     applyChips();
     bindFilters();
@@ -653,8 +896,7 @@
 
   /* 供「手动刷新数据」按钮调用：拉到新数据后就地重渲染，不用刷新整页 */
   window.__DFC_RERENDER__ = function () {
-    if (typeof readUrl === "function") applyChips();
-    updateCounts(allReleases());
+    applyChips();
     render();
   };
 })();
