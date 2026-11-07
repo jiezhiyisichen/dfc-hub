@@ -1314,6 +1314,11 @@ ul {
   grid-column: span 6;
 }
 
+/* 首页只有一张截图时居中，别铺满整行 */
+.shot--solo {
+  grid-column: 3 / span 8;
+}
+
 /* 首页截图有竖图（物品/方块一览），用 contain 避免裁掉内容 */
 .shot--half img {
   object-fit: contain;
@@ -1347,6 +1352,11 @@ ul {
 .lightbox.is-open {
   opacity: 1;
   visibility: visible;
+}
+
+/* 只有一张图时不显示翻页箭头 */
+.lightbox.is-single .lightbox-nav {
+  display: none;
 }
 
 .lightbox figure {

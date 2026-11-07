@@ -310,6 +310,7 @@
       img.src = src;
       img.alt = caption;
       cap.textContent = caption + "  ·  " + (current + 1) + " / " + list.length;
+      box.classList.toggle("is-single", list.length <= 1);
       box.classList.add("is-open");
       document.body.classList.add("is-locked");
     }
