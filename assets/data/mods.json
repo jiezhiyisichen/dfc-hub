@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-11T21:23:00.295Z",
+  "generatedAt": "2026-11-12T02:54:22.433Z",
   "count": 2,
   "mods": [
     {
@@ -19,6 +19,33 @@
       "license": "MPL-2.0",
       "homepage": "https://dfc-hub.pages.dev/mods?mod=rbmk-monitor",
       "releases": [
+        {
+          "id": "rbmk-monitor#v11.3-hotfix-beta",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "v11.3-hotfix-beta",
+          "version": "11.3-hotfix-beta",
+          "channel": "beta",
+          "name": "v11.3-hotfix-beta",
+          "publishedAt": "2026-11-12T10:12:36+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/v11.3-hotfix-beta",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-11.3.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/v11.3-hotfix-beta/RBMK-Monitor-11.3.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "已把这几类问题一起修了，核心原因不止一个：\n修复内容\n1. 终端右键打不开（落地终端 / 便携终端 / 警报设置 / 汽笛调音）\n1.12.2 的 Forge openGui() 只有服务端返回非 null Container 时才会发打开 GUI 的数据包。原代码对 GUI 2/3/4/5 全部返回 null，所以客户端永远收不到打开界面的包。\n修复：CommonProxy.java 为这些无容器界面返回一个空的 EmptyContainer。\n2. 便携终端只能对空气右键\nonItemRightClick() 在“右键方块”时不会触发。现在改成：\n右键 RBMK 控制台/部件 → 连接反应堆\n右键普通方块 → 直接打开便携终端\n右键空气 → 打开便携终端\n支持主手/副手\n修复：ItemRbmkLaptop.java、RbmkClientProxy.java、MessageTerminalCommand.java\n3. 无法识别 RBMK 反应堆\n这是最关键的兼容性问题，有三个根因：\nHBM 1.12.2 的 RBMK 部件用的是 getConsoleType() + getNBTForConsole()，原来只认旧版 getConsoleData()，导致所有 RBMK 柱子都识别失败。现在两套 API 都支持。\nHBM 的 RBMK 控制台和柱子是 BlockDummyable 多方块，只有核心方块有 TileEntity，右键外壳方块时 world.getTileEntity(pos) 是 null。现在通过反射调用方块的 findCore() 找到核心再读取。\nHBM 代理方块 TileEntityProxyBase 没有 cachedPosition 字段，原来的代理解析条件永远不成立。现在改为检测 getTE()。\n修复：RbmkBridge.java、RbmkBridge.java\n4. 终端 status 全部读成 0 / 永远 COLD\nHBM 1.12.2 控制台的 columns 里，数值不在列对象字段上，而在 RBMKColumn.data 这个 NBT 里；中子通量也不在 fluxBuffer，而在 graph.dataBuffer。现在改为从 NBT 读取：\n柱温 / 熔毁阈值\n燃料富集度、氙毒、堆芯温度\n控制棒抽出率\n锅炉水量、蒸汽量\n中子通量\n熔毁百分比\n同时修了“曾经离线后永远显示离线”和“部件扫描数据越刷越大”的状态残留问题。\n修复：RbmkBridge.java\n5. 控制棒命令找不到堆芯\nrods / scram 原来只依赖控制台的 targetX/Y/Z，如果这些字段没设置，控制台又在反应堆边缘，就会只操作到一部分控制棒。现在会扫描周围 RBMK 柱子计算反应堆包围盒中心作为回退。\n修复：RbmkControl.j",
+          "notesHtml": "<p>已把这几类问题一起修了，核心原因不止一个：</p><p>修复内容</p><p>1. 终端右键打不开（落地终端 / 便携终端 / 警报设置 / 汽笛调音）</p><p>1.12.2 的 Forge openGui() 只有服务端返回非 null Container 时才会发打开 GUI 的数据包。原代码对 GUI 2/3/4/5 全部返回 null，所以客户端永远收不到打开界面的包。</p><p>修复：CommonProxy.java 为这些无容器界面返回一个空的 EmptyContainer。</p><p>2. 便携终端只能对空气右键</p><p>onItemRightClick() 在“右键方块”时不会触发。现在改成：</p><p>右键 RBMK 控制台/部件 → 连接反应堆</p><p>右键普通方块 → 直接打开便携终端</p><p>右键空气 → 打开便携终端</p><p>支持主手/副手</p><p>修复：ItemRbmkLaptop.java、RbmkClientProxy.java、MessageTerminalCommand.java</p><p>3. 无法识别 RBMK 反应堆</p><p>这是最关键的兼容性问题，有三个根因：</p><p>HBM 1.12.2 的 RBMK 部件用的是 getConsoleType() + getNBTForConsole()，原来只认旧版 getConsoleData()，导致所有 RBMK 柱子都识别失败。现在两套 API 都支持。</p><p>HBM 的 RBMK 控制台和柱子是 BlockDummyable 多方块，只有核心方块有 TileEntity，右键外壳方块时 world.getTileEntity(pos) 是 null。现在通过反射调用方块的 findCore() 找到核心再读取。</p><p>HBM 代理方块 TileEntityProxyBase 没有 cachedPosition 字段，原来的代理解析条件永远不成立。现在改为检测 getTE()。</p><p>修复：RbmkBridge.java、RbmkBridge.java</p><p>4. 终端 status 全部读成 0 / 永远 COLD</p><p>HBM 1.12.2 控制台的 columns 里，数值不在列对象字段上，而在 RBMKColumn.data 这个 NBT 里；中子通量也不在 fluxBuffer，而在 graph.dataBuffer。现在改为从 NBT 读取：</p><p>柱温 / 熔毁阈值</p><p>燃料富集度、氙毒、堆芯温度</p><p>控制棒抽出率</p><p>锅炉水量、蒸汽量</p><p>中子通量</p><p>熔毁百分比</p><p>同时修了“曾经离线后永远显示离线”和“部件扫描数据越刷越大”的状态残留问题。</p><p>修复：RbmkBridge.java</p><p>5. 控制棒命令找不到堆芯</p><p>rods / scram 原来只依赖控制台的 targetX/Y/Z，如果这些字段没设置，控制台又在反应堆边缘，就会只操作到一部分控制棒。现在会扫描周围 RBMK 柱子计算反应堆包围盒中心作为回退。</p><p>修复：RbmkControl.java</p><p>6. 遥控器/显示屏绑定</p><p>遥控器、便携终端、落地终端、监控屏现在都会先解析多方块核心位置再绑定，旧存档里记录了外壳坐标的绑定也能恢复。</p><p>修复：ItemRbmkRemote.java、BlockRbmkTerminal.java、TileRbmkMonitorScreen.java</p>"
+        },
         {
           "id": "rbmk-monitor#11.2",
           "modId": "rbmk-monitor",
@@ -399,31 +426,31 @@
         }
       ],
       "latest": {
-        "id": "rbmk-monitor#11.2",
+        "id": "rbmk-monitor#v11.3-hotfix-beta",
         "modId": "rbmk-monitor",
         "platform": "gitee",
         "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
-        "tag": "11.2",
-        "version": "11.2",
-        "channel": "release",
-        "name": "RBMK-Monitor-11.2-beta",
-        "publishedAt": "2026-11-08T13:36:50+08:00",
-        "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/11.2",
+        "tag": "v11.3-hotfix-beta",
+        "version": "11.3-hotfix-beta",
+        "channel": "beta",
+        "name": "v11.3-hotfix-beta",
+        "publishedAt": "2026-11-12T10:12:36+08:00",
+        "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/v11.3-hotfix-beta",
         "prerelease": false,
         "draft": false,
         "assets": [
           {
-            "name": "RBMK-Monitor-11.2.jar",
+            "name": "RBMK-Monitor-11.3.jar",
             "kind": "mod",
             "size": 0,
             "downloads": null,
-            "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/11.2/RBMK-Monitor-11.2.jar",
+            "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/v11.3-hotfix-beta/RBMK-Monitor-11.3.jar",
             "mirror": null
           }
         ],
         "downloads": null,
-        "notesText": "更新了“便携式终端显示屏”",
-        "notesHtml": "<p>更新了“便携式终端显示屏”</p>"
+        "notesText": "已把这几类问题一起修了，核心原因不止一个：\n修复内容\n1. 终端右键打不开（落地终端 / 便携终端 / 警报设置 / 汽笛调音）\n1.12.2 的 Forge openGui() 只有服务端返回非 null Container 时才会发打开 GUI 的数据包。原代码对 GUI 2/3/4/5 全部返回 null，所以客户端永远收不到打开界面的包。\n修复：CommonProxy.java 为这些无容器界面返回一个空的 EmptyContainer。\n2. 便携终端只能对空气右键\nonItemRightClick() 在“右键方块”时不会触发。现在改成：\n右键 RBMK 控制台/部件 → 连接反应堆\n右键普通方块 → 直接打开便携终端\n右键空气 → 打开便携终端\n支持主手/副手\n修复：ItemRbmkLaptop.java、RbmkClientProxy.java、MessageTerminalCommand.java\n3. 无法识别 RBMK 反应堆\n这是最关键的兼容性问题，有三个根因：\nHBM 1.12.2 的 RBMK 部件用的是 getConsoleType() + getNBTForConsole()，原来只认旧版 getConsoleData()，导致所有 RBMK 柱子都识别失败。现在两套 API 都支持。\nHBM 的 RBMK 控制台和柱子是 BlockDummyable 多方块，只有核心方块有 TileEntity，右键外壳方块时 world.getTileEntity(pos) 是 null。现在通过反射调用方块的 findCore() 找到核心再读取。\nHBM 代理方块 TileEntityProxyBase 没有 cachedPosition 字段，原来的代理解析条件永远不成立。现在改为检测 getTE()。\n修复：RbmkBridge.java、RbmkBridge.java\n4. 终端 status 全部读成 0 / 永远 COLD\nHBM 1.12.2 控制台的 columns 里，数值不在列对象字段上，而在 RBMKColumn.data 这个 NBT 里；中子通量也不在 fluxBuffer，而在 graph.dataBuffer。现在改为从 NBT 读取：\n柱温 / 熔毁阈值\n燃料富集度、氙毒、堆芯温度\n控制棒抽出率\n锅炉水量、蒸汽量\n中子通量\n熔毁百分比\n同时修了“曾经离线后永远显示离线”和“部件扫描数据越刷越大”的状态残留问题。\n修复：RbmkBridge.java\n5. 控制棒命令找不到堆芯\nrods / scram 原来只依赖控制台的 targetX/Y/Z，如果这些字段没设置，控制台又在反应堆边缘，就会只操作到一部分控制棒。现在会扫描周围 RBMK 柱子计算反应堆包围盒中心作为回退。\n修复：RbmkControl.j",
+        "notesHtml": "<p>已把这几类问题一起修了，核心原因不止一个：</p><p>修复内容</p><p>1. 终端右键打不开（落地终端 / 便携终端 / 警报设置 / 汽笛调音）</p><p>1.12.2 的 Forge openGui() 只有服务端返回非 null Container 时才会发打开 GUI 的数据包。原代码对 GUI 2/3/4/5 全部返回 null，所以客户端永远收不到打开界面的包。</p><p>修复：CommonProxy.java 为这些无容器界面返回一个空的 EmptyContainer。</p><p>2. 便携终端只能对空气右键</p><p>onItemRightClick() 在“右键方块”时不会触发。现在改成：</p><p>右键 RBMK 控制台/部件 → 连接反应堆</p><p>右键普通方块 → 直接打开便携终端</p><p>右键空气 → 打开便携终端</p><p>支持主手/副手</p><p>修复：ItemRbmkLaptop.java、RbmkClientProxy.java、MessageTerminalCommand.java</p><p>3. 无法识别 RBMK 反应堆</p><p>这是最关键的兼容性问题，有三个根因：</p><p>HBM 1.12.2 的 RBMK 部件用的是 getConsoleType() + getNBTForConsole()，原来只认旧版 getConsoleData()，导致所有 RBMK 柱子都识别失败。现在两套 API 都支持。</p><p>HBM 的 RBMK 控制台和柱子是 BlockDummyable 多方块，只有核心方块有 TileEntity，右键外壳方块时 world.getTileEntity(pos) 是 null。现在通过反射调用方块的 findCore() 找到核心再读取。</p><p>HBM 代理方块 TileEntityProxyBase 没有 cachedPosition 字段，原来的代理解析条件永远不成立。现在改为检测 getTE()。</p><p>修复：RbmkBridge.java、RbmkBridge.java</p><p>4. 终端 status 全部读成 0 / 永远 COLD</p><p>HBM 1.12.2 控制台的 columns 里，数值不在列对象字段上，而在 RBMKColumn.data 这个 NBT 里；中子通量也不在 fluxBuffer，而在 graph.dataBuffer。现在改为从 NBT 读取：</p><p>柱温 / 熔毁阈值</p><p>燃料富集度、氙毒、堆芯温度</p><p>控制棒抽出率</p><p>锅炉水量、蒸汽量</p><p>中子通量</p><p>熔毁百分比</p><p>同时修了“曾经离线后永远显示离线”和“部件扫描数据越刷越大”的状态残留问题。</p><p>修复：RbmkBridge.java</p><p>5. 控制棒命令找不到堆芯</p><p>rods / scram 原来只依赖控制台的 targetX/Y/Z，如果这些字段没设置，控制台又在反应堆边缘，就会只操作到一部分控制棒。现在会扫描周围 RBMK 柱子计算反应堆包围盒中心作为回退。</p><p>修复：RbmkControl.java</p><p>6. 遥控器/显示屏绑定</p><p>遥控器、便携终端、落地终端、监控屏现在都会先解析多方块核心位置再绑定，旧存档里记录了外壳坐标的绑定也能恢复。</p><p>修复：ItemRbmkRemote.java、BlockRbmkTerminal.java、TileRbmkMonitorScreen.java</p>"
       },
       "downloads": null,
       "error": null,
@@ -464,14 +491,14 @@
               "name": "hbmzz-2.9.0.jar",
               "kind": "mod",
               "size": 2091887,
-              "downloads": 2,
+              "downloads": 3,
               "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.9.0/hbmzz-2.9.0.jar",
               "mirror": null
             }
           ],
-          "downloads": 2,
-          "notesText": "先说最要紧的一句：这版把 rsaudio 整个装进了同一枚 jar，所以升级前先把旧的 rsaudio-.jar 从 mods/ 里拿走。 两份同时在 mods/ 里就是 duplicate modid，FML 会在加载阶段直接崩，而它的报错完全指不到「你装了两份」这件事上。tools/deploy.py 已经会自动把它改名成 .jar.merged。\n rsaudio 全套进来\n191 个源文件、367 个资源，逐文件原样搬运：音频播放器、红石延迟器、结构加载器、自动化红石计算机、六色警报灯、防核门、广播器、DMR 与 F9 两台反应堆、电梯、监控、门禁与气闸、远程面板、列车与货运卡车。\n它仍然是一个独立模组——保留自己的 @Mod 容器与 modid = rsaudio，只是和 hbmzz 打在同一枚 jar 里由 FML 同时加载两个容器。这不是偷懒：rsaudio: 的方块与方块实体 id 已经写进存档了，改成 hbmzz: 等于让老存档里的机器凭空消失。\n reasim：让播放器学会装破喇叭\n播放器界面多了一个 REASIM 按钮，进去是一整屏滑条。总开关默认关，关着的时候走原来的 ISound 路径，声音和 2.8.0 一个字节都不差。\n打开之后换成一条自己推流的 DSP 链。为什么非这么干：ISound 只给了音量（线性缩放）和音高（重采样）两个旋钮，而失真需要波形整形、沙沙声需要加噪声、回声需要一条带反馈的延迟线——这三件事都必须拿到采样。所以 reasim 自己解码 ogg、跑一遍 DSP、再把 PCM 喂进 Minecraft 自带的 paulscode 引擎。\n| 滑条 | 范围 | 默认 | 干什么 |\n| --- | --- | --- | --- |\n| 音量 | 0 – 200% | 100% | 功放旋钮，1.0 = 原音量。再往上没意义，要削波请用失真 |\n| 回声 | 0 – 100% | 30% | 湿声比例。延迟 90–280 ms 跟着它走，反馈 0.20–0.65，回路里带低通 |\n| 失真 | 0 – 100% | 0% | tanh 软削波（drive 1→25）+ 位深 16→6 位，末尾去直流 |\n| 电流声 | 0 – 100% | 18% | 50 Hz 工频哼声 + 二次三次谐波 |\n| 沙沙声 | 0 – 100% | 10% | 带限白噪 + 稀疏爆裂（接触不良的电位器） |\n链路顺序是固定的：增益 → 失真 → 电流声/沙沙声 → 回声 → 软限幅。噪声加在增益之后而不是相乘，所以音量拧到 0 还剩一点嗡嗡声——真实的功放底噪不跟着音量旋钮走，这一条是刻意留的。\n自动回声：六向各打一条 16 格射线量空间感，再统计半径 4 格内的实心方块占比，头顶能看见天就把混响砍到 35%，算出来的值在 0–",
-          "notesHtml": "<p>先说最要紧的一句：**这版把 rsaudio 整个装进了同一枚 jar，所以升级前先把旧的 <code>rsaudio-*.jar</code> 从 <code>mods/</code> 里拿走。** 两份同时在 <code>mods/</code> 里就是 duplicate modid，FML 会在加载阶段直接崩，而它的报错完全指不到「你装了两份」这件事上。<code>tools/deploy.py</code> 已经会自动把它改名成 <code>.jar.merged</code>。</p><h4>rsaudio 全套进来</h4><p>191 个源文件、367 个资源，逐文件原样搬运：音频播放器、红石延迟器、结构加载器、自动化红石计算机、六色警报灯、防核门、广播器、DMR 与 F9 两台反应堆、电梯、监控、门禁与气闸、远程面板、列车与货运卡车。</p><p>它仍然是一个独立模组——保留自己的 <code>@Mod</code> 容器与 <code>modid = rsaudio</code>，只是和 hbmzz 打在同一枚 jar 里由 FML 同时加载两个容器。这不是偷懒：<code>rsaudio:</code> 的方块与方块实体 id 已经写进存档了，改成 <code>hbmzz:</code> 等于让老存档里的机器凭空消失。</p><h4>reasim：让播放器学会装破喇叭</h4><p>播放器界面多了一个 <code>REASIM</code> 按钮，进去是一整屏滑条。总开关默认关，关着的时候走原来的 <code>ISound</code> 路径，声音和 2.8.0 一个字节都不差。</p><p>打开之后换成一条自己推流的 DSP 链。为什么非这么干：<code>ISound</code> 只给了音量（线性缩放）和音高（重采样）两个旋钮，而失真需要波形整形、沙沙声需要加噪声、回声需要一条带反馈的延迟线——这三件事都必须拿到采样。所以 reasim 自己解码 ogg、跑一遍 DSP、再把 PCM 喂进 Minecraft 自带的 paulscode 引擎。</p><p>| 滑条 | 范围 | 默认 | 干什么 |</p><p>| --- | --- | --- | --- |</p><p>| 音量 | 0 – 200% | 100% | 功放旋钮，1.0 = 原音量。再往上没意义，要削波请用失真 |</p><p>| 回声 | 0 – 100% | 30% | 湿声比例。延迟 90–280 ms 跟着它走，反馈 0.20–0.65，回路里带低通 |</p><p>| 失真 | 0 – 100% | 0% | tanh 软削波（drive 1→25）+ 位深 16→6 位，末尾去直流 |</p><p>| 电流声 | 0 – 100% | 18% | 50 Hz 工频哼声 + 二次三次谐波 |</p><p>| 沙沙声 | 0 – 100% | 10% | 带限白噪 + 稀疏爆裂（接触不良的电位器） |</p><p>链路顺序是固定的：增益 → 失真 → 电流声/沙沙声 → 回声 → 软限幅。噪声加在增益之后而不是相乘，所以<strong>音量拧到 0 还剩一点嗡嗡声</strong>——真实的功放底噪不跟着音量旋钮走，这一条是刻意留的。</p><p><strong>自动回声</strong>：六向各打一条 16 格射线量空间感，再统计半径 4 格内的实心方块占比，头顶能看见天就把混响砍到 35%，算出来的值在 0–0.95 之间，每 20 tick 重算一次。开着自动时回声滑条变灰并显示量到的数；点它一次就接管成手动值。</p><p><strong>开关逻辑</strong>：开关只在开播那一刻决定走哪条路。播放中途关掉不会重开音频，只是把整条 DSP 旁路掉——重开会「咔」一下，那是不必要的噪声。参数存在方块实体上（服务端权威），改完立刻作用于正在跑的链路，多人服务器里所有人听到同一种破喇叭，而且只有服务端能改。拿不到声音引擎时安静退回普通播放，只是没有这些效果，日志和界面都会写明原因，不会静音。</p><h4>其它</h4><ul><li>regcheck 35 → 36 条：新增「reasim 的 DSP 不引用 Minecraft」，并把 TE / proxy / 字形三条规则的作用域收窄到 <code>com/hbmzz</code>（移植进来的第二个模组有自己的注册表、代理和字形集，不收窄会多出 41 条误报）。</li><li><code>tools/reasimcheck</code> 可以在裸 JVM 上跑整条 DSP 链，9 条断言，其中「关闭时逐字节不变」是「不改原有行为」的硬保证。</li></ul><h4>装法</h4><p>Minecraft 1.12.2 + Forge 2847 + HBM&#39;s Nuclear Tech（诅咒版/节枝）。把 <code>hbmzz-2.9.0.jar</code> 丢进 <code>mods/</code>，确认里面没有 <code>rsaudio-*.jar</code>。</p>"
+          "downloads": 3,
+          "notesText": "先说最要紧的一句：这版把 rsaudio 整个装进了同一枚 jar，所以升级前先把旧的 rsaudio-.jar 从 mods/ 里拿走。 两份同时在 mods/ 里就是 duplicate modid，FML 会在加载阶段直接崩，而它的报错完全指不到「你装了两份」这件事上。tools/deploy.py 已经会自动把它改名成 .jar.merged。\n rsaudio 全套进来\n先把归属说清楚：Redstone Audio（红石音频 / rsaudio）不是搬来的第三方模组，它是本模组作者自己写的另一个独立模组——以前单独发一枚 rsaudio-1.0.0.jar。这版只是把它改成随同一枚 jar 一起带，作者没变，代码也没有换人写；它不在 NOTICE.md / 许可页的第三方来源名单里。\n191 个源文件、367 个资源，逐文件原样搬运：音频播放器、红石延迟器、结构加载器、自动化红石计算机、六色警报灯、防核门、广播器、DMR 与 F9 两台反应堆、电梯、监控、门禁与气闸、远程面板、列车与货运卡车。\n它仍然是一个独立模组——保留自己的 @Mod 容器与 modid = rsaudio，只是和 hbmzz 打在同一枚 jar 里由 FML 同时加载两个容器。这不是偷懒：rsaudio: 的方块与方块实体 id 已经写进存档了，改成 hbmzz: 等于让老存档里的机器凭空消失。\n reasim：让播放器学会装破喇叭\n播放器界面多了一个 REASIM 按钮，进去是一整屏滑条。总开关默认关，关着的时候走原来的 ISound 路径，声音和 2.8.0 一个字节都不差。\n打开之后换成一条自己推流的 DSP 链。为什么非这么干：ISound 只给了音量（线性缩放）和音高（重采样）两个旋钮，而失真需要波形整形、沙沙声需要加噪声、回声需要一条带反馈的延迟线——这三件事都必须拿到采样。所以 reasim 自己解码 ogg、跑一遍 DSP、再把 PCM 喂进 Minecraft 自带的 paulscode 引擎。\n| 滑条 | 范围 | 默认 | 干什么 |\n| --- | --- | --- | --- |\n| 音量 | 0 – 200% | 100% | 功放旋钮，1.0 = 原音量。再往上没意义，要削波请用失真 |\n| 回声 | 0 – 100% | 30% | 湿声比例。延迟 90–280 ms 跟着它走，反馈 0.20–0.65，回路里带低通 |\n| 失真 | 0 – 100% | 0% | tanh 软削波（drive 1→25）+ 位深 16→6 位，末尾去直流 |\n| 电流声 | 0 – 100% | 18% | 50 Hz 工频哼声 + 二次三次谐波 |\n| 沙沙声 | 0 – 100% | 10% | 带限白噪 + 稀疏爆裂（接触不良的电位器） |\n链路顺",
+          "notesHtml": "<p>先说最要紧的一句：**这版把 rsaudio 整个装进了同一枚 jar，所以升级前先把旧的 <code>rsaudio-*.jar</code> 从 <code>mods/</code> 里拿走。** 两份同时在 <code>mods/</code> 里就是 duplicate modid，FML 会在加载阶段直接崩，而它的报错完全指不到「你装了两份」这件事上。<code>tools/deploy.py</code> 已经会自动把它改名成 <code>.jar.merged</code>。</p><h4>rsaudio 全套进来</h4><p><strong>先把归属说清楚：Redstone Audio（红石音频 / <code>rsaudio</code>）不是搬来的第三方模组，它是本模组作者自己写的另一个独立模组</strong>——以前单独发一枚 <code>rsaudio-1.0.0.jar</code>。这版只是把它改成随同一枚 jar 一起带，作者没变，代码也没有换人写；它不在 <code>NOTICE.md</code> / 许可页的第三方来源名单里。</p><p>191 个源文件、367 个资源，逐文件原样搬运：音频播放器、红石延迟器、结构加载器、自动化红石计算机、六色警报灯、防核门、广播器、DMR 与 F9 两台反应堆、电梯、监控、门禁与气闸、远程面板、列车与货运卡车。</p><p>它仍然是一个独立模组——保留自己的 <code>@Mod</code> 容器与 <code>modid = rsaudio</code>，只是和 hbmzz 打在同一枚 jar 里由 FML 同时加载两个容器。这不是偷懒：<code>rsaudio:</code> 的方块与方块实体 id 已经写进存档了，改成 <code>hbmzz:</code> 等于让老存档里的机器凭空消失。</p><h4>reasim：让播放器学会装破喇叭</h4><p>播放器界面多了一个 <code>REASIM</code> 按钮，进去是一整屏滑条。总开关默认关，关着的时候走原来的 <code>ISound</code> 路径，声音和 2.8.0 一个字节都不差。</p><p>打开之后换成一条自己推流的 DSP 链。为什么非这么干：<code>ISound</code> 只给了音量（线性缩放）和音高（重采样）两个旋钮，而失真需要波形整形、沙沙声需要加噪声、回声需要一条带反馈的延迟线——这三件事都必须拿到采样。所以 reasim 自己解码 ogg、跑一遍 DSP、再把 PCM 喂进 Minecraft 自带的 paulscode 引擎。</p><p>| 滑条 | 范围 | 默认 | 干什么 |</p><p>| --- | --- | --- | --- |</p><p>| 音量 | 0 – 200% | 100% | 功放旋钮，1.0 = 原音量。再往上没意义，要削波请用失真 |</p><p>| 回声 | 0 – 100% | 30% | 湿声比例。延迟 90–280 ms 跟着它走，反馈 0.20–0.65，回路里带低通 |</p><p>| 失真 | 0 – 100% | 0% | tanh 软削波（drive 1→25）+ 位深 16→6 位，末尾去直流 |</p><p>| 电流声 | 0 – 100% | 18% | 50 Hz 工频哼声 + 二次三次谐波 |</p><p>| 沙沙声 | 0 – 100% | 10% | 带限白噪 + 稀疏爆裂（接触不良的电位器） |</p><p>链路顺序是固定的：增益 → 失真 → 电流声/沙沙声 → 回声 → 软限幅。噪声加在增益之后而不是相乘，所以<strong>音量拧到 0 还剩一点嗡嗡声</strong>——真实的功放底噪不跟着音量旋钮走，这一条是刻意留的。</p><p><strong>自动回声</strong>：六向各打一条 16 格射线量空间感，再统计半径 4 格内的实心方块占比，头顶能看见天就把混响砍到 35%，算出来的值在 0–0.95 之间，每 20 tick 重算一次。开着自动时回声滑条变灰并显示量到的数；点它一次就接管成手动值。</p><p><strong>开关逻辑</strong>：开关只在开播那一刻决定走哪条路。播放中途关掉不会重开音频，只是把整条 DSP 旁路掉——重开会「咔」一下，那是不必要的噪声。参数存在方块实体上（服务端权威），改完立刻作用于正在跑的链路，多人服务器里所有人听到同一种破喇叭，而且只有服务端能改。拿不到声音引擎时安静退回普通播放，只是没有这些效果，日志和界面都会写明原因，不会静音。</p><h4>其它</h4><ul><li>regcheck 35 → 36 条：新增「reasim 的 DSP 不引用 Minecraft」，并把 TE / proxy / 字形三条规则的作用域收窄到 <code>com/hbmzz</code>（移植进来的第二个模组有自己的注册表、代理和字形集，不收窄会多出 41 条误报）。</li><li><code>tools/reasimcheck</code> 可以在裸 JVM 上跑整条 DSP 链，9 条断言，其中「关闭时逐字节不变」是「不改原有行为」的硬保证。</li></ul><h4>装法</h4><p>Minecraft 1.12.2 + Forge 2847 + HBM&#39;s Nuclear Tech（诅咒版/节枝）。把 <code>hbmzz-2.9.0.jar</code> 丢进 <code>mods/</code>，确认里面没有 <code>rsaudio-*.jar</code>。</p>"
         },
         {
           "id": "hbmzz#v2.8.0",
@@ -843,16 +870,16 @@
             "name": "hbmzz-2.9.0.jar",
             "kind": "mod",
             "size": 2091887,
-            "downloads": 2,
+            "downloads": 3,
             "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.9.0/hbmzz-2.9.0.jar",
             "mirror": null
           }
         ],
-        "downloads": 2,
-        "notesText": "先说最要紧的一句：这版把 rsaudio 整个装进了同一枚 jar，所以升级前先把旧的 rsaudio-.jar 从 mods/ 里拿走。 两份同时在 mods/ 里就是 duplicate modid，FML 会在加载阶段直接崩，而它的报错完全指不到「你装了两份」这件事上。tools/deploy.py 已经会自动把它改名成 .jar.merged。\n rsaudio 全套进来\n191 个源文件、367 个资源，逐文件原样搬运：音频播放器、红石延迟器、结构加载器、自动化红石计算机、六色警报灯、防核门、广播器、DMR 与 F9 两台反应堆、电梯、监控、门禁与气闸、远程面板、列车与货运卡车。\n它仍然是一个独立模组——保留自己的 @Mod 容器与 modid = rsaudio，只是和 hbmzz 打在同一枚 jar 里由 FML 同时加载两个容器。这不是偷懒：rsaudio: 的方块与方块实体 id 已经写进存档了，改成 hbmzz: 等于让老存档里的机器凭空消失。\n reasim：让播放器学会装破喇叭\n播放器界面多了一个 REASIM 按钮，进去是一整屏滑条。总开关默认关，关着的时候走原来的 ISound 路径，声音和 2.8.0 一个字节都不差。\n打开之后换成一条自己推流的 DSP 链。为什么非这么干：ISound 只给了音量（线性缩放）和音高（重采样）两个旋钮，而失真需要波形整形、沙沙声需要加噪声、回声需要一条带反馈的延迟线——这三件事都必须拿到采样。所以 reasim 自己解码 ogg、跑一遍 DSP、再把 PCM 喂进 Minecraft 自带的 paulscode 引擎。\n| 滑条 | 范围 | 默认 | 干什么 |\n| --- | --- | --- | --- |\n| 音量 | 0 – 200% | 100% | 功放旋钮，1.0 = 原音量。再往上没意义，要削波请用失真 |\n| 回声 | 0 – 100% | 30% | 湿声比例。延迟 90–280 ms 跟着它走，反馈 0.20–0.65，回路里带低通 |\n| 失真 | 0 – 100% | 0% | tanh 软削波（drive 1→25）+ 位深 16→6 位，末尾去直流 |\n| 电流声 | 0 – 100% | 18% | 50 Hz 工频哼声 + 二次三次谐波 |\n| 沙沙声 | 0 – 100% | 10% | 带限白噪 + 稀疏爆裂（接触不良的电位器） |\n链路顺序是固定的：增益 → 失真 → 电流声/沙沙声 → 回声 → 软限幅。噪声加在增益之后而不是相乘，所以音量拧到 0 还剩一点嗡嗡声——真实的功放底噪不跟着音量旋钮走，这一条是刻意留的。\n自动回声：六向各打一条 16 格射线量空间感，再统计半径 4 格内的实心方块占比，头顶能看见天就把混响砍到 35%，算出来的值在 0–",
-        "notesHtml": "<p>先说最要紧的一句：**这版把 rsaudio 整个装进了同一枚 jar，所以升级前先把旧的 <code>rsaudio-*.jar</code> 从 <code>mods/</code> 里拿走。** 两份同时在 <code>mods/</code> 里就是 duplicate modid，FML 会在加载阶段直接崩，而它的报错完全指不到「你装了两份」这件事上。<code>tools/deploy.py</code> 已经会自动把它改名成 <code>.jar.merged</code>。</p><h4>rsaudio 全套进来</h4><p>191 个源文件、367 个资源，逐文件原样搬运：音频播放器、红石延迟器、结构加载器、自动化红石计算机、六色警报灯、防核门、广播器、DMR 与 F9 两台反应堆、电梯、监控、门禁与气闸、远程面板、列车与货运卡车。</p><p>它仍然是一个独立模组——保留自己的 <code>@Mod</code> 容器与 <code>modid = rsaudio</code>，只是和 hbmzz 打在同一枚 jar 里由 FML 同时加载两个容器。这不是偷懒：<code>rsaudio:</code> 的方块与方块实体 id 已经写进存档了，改成 <code>hbmzz:</code> 等于让老存档里的机器凭空消失。</p><h4>reasim：让播放器学会装破喇叭</h4><p>播放器界面多了一个 <code>REASIM</code> 按钮，进去是一整屏滑条。总开关默认关，关着的时候走原来的 <code>ISound</code> 路径，声音和 2.8.0 一个字节都不差。</p><p>打开之后换成一条自己推流的 DSP 链。为什么非这么干：<code>ISound</code> 只给了音量（线性缩放）和音高（重采样）两个旋钮，而失真需要波形整形、沙沙声需要加噪声、回声需要一条带反馈的延迟线——这三件事都必须拿到采样。所以 reasim 自己解码 ogg、跑一遍 DSP、再把 PCM 喂进 Minecraft 自带的 paulscode 引擎。</p><p>| 滑条 | 范围 | 默认 | 干什么 |</p><p>| --- | --- | --- | --- |</p><p>| 音量 | 0 – 200% | 100% | 功放旋钮，1.0 = 原音量。再往上没意义，要削波请用失真 |</p><p>| 回声 | 0 – 100% | 30% | 湿声比例。延迟 90–280 ms 跟着它走，反馈 0.20–0.65，回路里带低通 |</p><p>| 失真 | 0 – 100% | 0% | tanh 软削波（drive 1→25）+ 位深 16→6 位，末尾去直流 |</p><p>| 电流声 | 0 – 100% | 18% | 50 Hz 工频哼声 + 二次三次谐波 |</p><p>| 沙沙声 | 0 – 100% | 10% | 带限白噪 + 稀疏爆裂（接触不良的电位器） |</p><p>链路顺序是固定的：增益 → 失真 → 电流声/沙沙声 → 回声 → 软限幅。噪声加在增益之后而不是相乘，所以<strong>音量拧到 0 还剩一点嗡嗡声</strong>——真实的功放底噪不跟着音量旋钮走，这一条是刻意留的。</p><p><strong>自动回声</strong>：六向各打一条 16 格射线量空间感，再统计半径 4 格内的实心方块占比，头顶能看见天就把混响砍到 35%，算出来的值在 0–0.95 之间，每 20 tick 重算一次。开着自动时回声滑条变灰并显示量到的数；点它一次就接管成手动值。</p><p><strong>开关逻辑</strong>：开关只在开播那一刻决定走哪条路。播放中途关掉不会重开音频，只是把整条 DSP 旁路掉——重开会「咔」一下，那是不必要的噪声。参数存在方块实体上（服务端权威），改完立刻作用于正在跑的链路，多人服务器里所有人听到同一种破喇叭，而且只有服务端能改。拿不到声音引擎时安静退回普通播放，只是没有这些效果，日志和界面都会写明原因，不会静音。</p><h4>其它</h4><ul><li>regcheck 35 → 36 条：新增「reasim 的 DSP 不引用 Minecraft」，并把 TE / proxy / 字形三条规则的作用域收窄到 <code>com/hbmzz</code>（移植进来的第二个模组有自己的注册表、代理和字形集，不收窄会多出 41 条误报）。</li><li><code>tools/reasimcheck</code> 可以在裸 JVM 上跑整条 DSP 链，9 条断言，其中「关闭时逐字节不变」是「不改原有行为」的硬保证。</li></ul><h4>装法</h4><p>Minecraft 1.12.2 + Forge 2847 + HBM&#39;s Nuclear Tech（诅咒版/节枝）。把 <code>hbmzz-2.9.0.jar</code> 丢进 <code>mods/</code>，确认里面没有 <code>rsaudio-*.jar</code>。</p>"
+        "downloads": 3,
+        "notesText": "先说最要紧的一句：这版把 rsaudio 整个装进了同一枚 jar，所以升级前先把旧的 rsaudio-.jar 从 mods/ 里拿走。 两份同时在 mods/ 里就是 duplicate modid，FML 会在加载阶段直接崩，而它的报错完全指不到「你装了两份」这件事上。tools/deploy.py 已经会自动把它改名成 .jar.merged。\n rsaudio 全套进来\n先把归属说清楚：Redstone Audio（红石音频 / rsaudio）不是搬来的第三方模组，它是本模组作者自己写的另一个独立模组——以前单独发一枚 rsaudio-1.0.0.jar。这版只是把它改成随同一枚 jar 一起带，作者没变，代码也没有换人写；它不在 NOTICE.md / 许可页的第三方来源名单里。\n191 个源文件、367 个资源，逐文件原样搬运：音频播放器、红石延迟器、结构加载器、自动化红石计算机、六色警报灯、防核门、广播器、DMR 与 F9 两台反应堆、电梯、监控、门禁与气闸、远程面板、列车与货运卡车。\n它仍然是一个独立模组——保留自己的 @Mod 容器与 modid = rsaudio，只是和 hbmzz 打在同一枚 jar 里由 FML 同时加载两个容器。这不是偷懒：rsaudio: 的方块与方块实体 id 已经写进存档了，改成 hbmzz: 等于让老存档里的机器凭空消失。\n reasim：让播放器学会装破喇叭\n播放器界面多了一个 REASIM 按钮，进去是一整屏滑条。总开关默认关，关着的时候走原来的 ISound 路径，声音和 2.8.0 一个字节都不差。\n打开之后换成一条自己推流的 DSP 链。为什么非这么干：ISound 只给了音量（线性缩放）和音高（重采样）两个旋钮，而失真需要波形整形、沙沙声需要加噪声、回声需要一条带反馈的延迟线——这三件事都必须拿到采样。所以 reasim 自己解码 ogg、跑一遍 DSP、再把 PCM 喂进 Minecraft 自带的 paulscode 引擎。\n| 滑条 | 范围 | 默认 | 干什么 |\n| --- | --- | --- | --- |\n| 音量 | 0 – 200% | 100% | 功放旋钮，1.0 = 原音量。再往上没意义，要削波请用失真 |\n| 回声 | 0 – 100% | 30% | 湿声比例。延迟 90–280 ms 跟着它走，反馈 0.20–0.65，回路里带低通 |\n| 失真 | 0 – 100% | 0% | tanh 软削波（drive 1→25）+ 位深 16→6 位，末尾去直流 |\n| 电流声 | 0 – 100% | 18% | 50 Hz 工频哼声 + 二次三次谐波 |\n| 沙沙声 | 0 – 100% | 10% | 带限白噪 + 稀疏爆裂（接触不良的电位器） |\n链路顺",
+        "notesHtml": "<p>先说最要紧的一句：**这版把 rsaudio 整个装进了同一枚 jar，所以升级前先把旧的 <code>rsaudio-*.jar</code> 从 <code>mods/</code> 里拿走。** 两份同时在 <code>mods/</code> 里就是 duplicate modid，FML 会在加载阶段直接崩，而它的报错完全指不到「你装了两份」这件事上。<code>tools/deploy.py</code> 已经会自动把它改名成 <code>.jar.merged</code>。</p><h4>rsaudio 全套进来</h4><p><strong>先把归属说清楚：Redstone Audio（红石音频 / <code>rsaudio</code>）不是搬来的第三方模组，它是本模组作者自己写的另一个独立模组</strong>——以前单独发一枚 <code>rsaudio-1.0.0.jar</code>。这版只是把它改成随同一枚 jar 一起带，作者没变，代码也没有换人写；它不在 <code>NOTICE.md</code> / 许可页的第三方来源名单里。</p><p>191 个源文件、367 个资源，逐文件原样搬运：音频播放器、红石延迟器、结构加载器、自动化红石计算机、六色警报灯、防核门、广播器、DMR 与 F9 两台反应堆、电梯、监控、门禁与气闸、远程面板、列车与货运卡车。</p><p>它仍然是一个独立模组——保留自己的 <code>@Mod</code> 容器与 <code>modid = rsaudio</code>，只是和 hbmzz 打在同一枚 jar 里由 FML 同时加载两个容器。这不是偷懒：<code>rsaudio:</code> 的方块与方块实体 id 已经写进存档了，改成 <code>hbmzz:</code> 等于让老存档里的机器凭空消失。</p><h4>reasim：让播放器学会装破喇叭</h4><p>播放器界面多了一个 <code>REASIM</code> 按钮，进去是一整屏滑条。总开关默认关，关着的时候走原来的 <code>ISound</code> 路径，声音和 2.8.0 一个字节都不差。</p><p>打开之后换成一条自己推流的 DSP 链。为什么非这么干：<code>ISound</code> 只给了音量（线性缩放）和音高（重采样）两个旋钮，而失真需要波形整形、沙沙声需要加噪声、回声需要一条带反馈的延迟线——这三件事都必须拿到采样。所以 reasim 自己解码 ogg、跑一遍 DSP、再把 PCM 喂进 Minecraft 自带的 paulscode 引擎。</p><p>| 滑条 | 范围 | 默认 | 干什么 |</p><p>| --- | --- | --- | --- |</p><p>| 音量 | 0 – 200% | 100% | 功放旋钮，1.0 = 原音量。再往上没意义，要削波请用失真 |</p><p>| 回声 | 0 – 100% | 30% | 湿声比例。延迟 90–280 ms 跟着它走，反馈 0.20–0.65，回路里带低通 |</p><p>| 失真 | 0 – 100% | 0% | tanh 软削波（drive 1→25）+ 位深 16→6 位，末尾去直流 |</p><p>| 电流声 | 0 – 100% | 18% | 50 Hz 工频哼声 + 二次三次谐波 |</p><p>| 沙沙声 | 0 – 100% | 10% | 带限白噪 + 稀疏爆裂（接触不良的电位器） |</p><p>链路顺序是固定的：增益 → 失真 → 电流声/沙沙声 → 回声 → 软限幅。噪声加在增益之后而不是相乘，所以<strong>音量拧到 0 还剩一点嗡嗡声</strong>——真实的功放底噪不跟着音量旋钮走，这一条是刻意留的。</p><p><strong>自动回声</strong>：六向各打一条 16 格射线量空间感，再统计半径 4 格内的实心方块占比，头顶能看见天就把混响砍到 35%，算出来的值在 0–0.95 之间，每 20 tick 重算一次。开着自动时回声滑条变灰并显示量到的数；点它一次就接管成手动值。</p><p><strong>开关逻辑</strong>：开关只在开播那一刻决定走哪条路。播放中途关掉不会重开音频，只是把整条 DSP 旁路掉——重开会「咔」一下，那是不必要的噪声。参数存在方块实体上（服务端权威），改完立刻作用于正在跑的链路，多人服务器里所有人听到同一种破喇叭，而且只有服务端能改。拿不到声音引擎时安静退回普通播放，只是没有这些效果，日志和界面都会写明原因，不会静音。</p><h4>其它</h4><ul><li>regcheck 35 → 36 条：新增「reasim 的 DSP 不引用 Minecraft」，并把 TE / proxy / 字形三条规则的作用域收窄到 <code>com/hbmzz</code>（移植进来的第二个模组有自己的注册表、代理和字形集，不收窄会多出 41 条误报）。</li><li><code>tools/reasimcheck</code> 可以在裸 JVM 上跑整条 DSP 链，9 条断言，其中「关闭时逐字节不变」是「不改原有行为」的硬保证。</li></ul><h4>装法</h4><p>Minecraft 1.12.2 + Forge 2847 + HBM&#39;s Nuclear Tech（诅咒版/节枝）。把 <code>hbmzz-2.9.0.jar</code> 丢进 <code>mods/</code>，确认里面没有 <code>rsaudio-*.jar</code>。</p>"
       },
-      "downloads": 58,
+      "downloads": 59,
       "error": null,
       "licenseSource": "repo"
     }
