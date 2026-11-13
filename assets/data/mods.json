@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T07:50:59.203Z",
+  "generatedAt": "2026-11-13T16:12:55.467Z",
   "count": 2,
   "mods": [
     {
@@ -16,12 +16,688 @@
       "hint": "自带改好的显示系统，不需要节枝本体。和本体一起装不会崩，但屏幕、遥控器会各有一套，没必要。",
       "minecraft": "1.12.2",
       "loader": "Forge 14.23.5.2864",
-      "license": "",
-      "homepage": "",
-      "releases": [],
-      "latest": null,
+      "license": "MPL-2.0",
+      "homepage": "https://dfc-hub.pages.dev/mods?mod=rbmk-monitor",
+      "releases": [
+        {
+          "id": "rbmk-monitor#13.1-beta",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "13.1-beta",
+          "version": "13.1-beta",
+          "channel": "beta",
+          "name": "v13.1-beta",
+          "publishedAt": "2026-11-13T09:09:14+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/13.1-beta",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-13.1-beta.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/13.1-beta/RBMK-Monitor-13.1-beta.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "🚀 RBMK-Monitor v13.1-beta 测试版发布\n本次更新是模组走向“生存模式”的关键一步。我们补齐了全套合成配方，并进行了严苛的底层代码审查。\n 🔨 核心新增：全套生存合成配方\n告别创造模式专属！现在你可以通过收集资源，一步步搭建你的核电站中控室：\n   RBMK 显示屏：红石 + 铁锭 + 玻璃板（有序合成）。\n   RBMK 终端屏幕：显示屏 + 中继器 + 铁锭。\n   RBMK 终端机：铁块 + 红石火把 + 玻璃板。\n   RBMK 路由器 (跨维度核心)：黑曜石 + 末影珍珠 + 红石粉。\n   RBMK 警报汽笛：音符盒 + 红石粉 + 铁锭。\n   RBMK 遥控器：铁锭 + 红石粉 + 末影珍珠。\n 🛡️ 史诗级底层审查与修复\n   JSON 语法校验：全面核对了 recipes 目录下的所有配方文件，修复了可能导致配方失效的语法错误。\n   物品 ID 匹配：重新比对了 ModItems 和 ModBlocks 的注册名，确保配方能够完美匹配。\n   语言文件补全：补齐了所有新物品的 lang 本地化名称，告别乱码。\n   配方死锁检测：确认没有出现“A 需要 B，B 需要 A”的循环材料逻辑。\n ⚠️ 测试说明（重要）\n   本版本为 Beta 测试版，核心测试目标为：生存模式下的合成配方的平衡性与可用性。\n   如果在生存模式下发现无法合成、材料识别错误、或配方可以刷物品，请在 Gitee 提交 Issue 或加群反馈。\n 📦 安装与前置要求\n1. 游戏版本：Minecraft 1.12.2\n2. 加载器：Forge 14.23.5.2859+\n3. 前置模组：无强制前置（HBM NTM-CE 为可选前置）。\n4. 将下载的 .jar 文件放入 .minecraft/mods 文件夹即可。\n ⚖️ 开源与授权说明\n   本项目遵循 MPL-2.0 开源协议。\n   本项目基于 树上的节枝 (Jiezhi) 的源码进行二创，已保留全部授权声明。",
+          "notesHtml": "<h4>🚀 RBMK-Monitor v13.1-beta 测试版发布</h4><p>本次更新是模组走向“生存模式”的关键一步。我们补齐了全套合成配方，并进行了严苛的底层代码审查。</p><h4>🔨 核心新增：全套生存合成配方</h4><p>告别创造模式专属！现在你可以通过收集资源，一步步搭建你的核电站中控室：</p><ul><li><strong>RBMK 显示屏</strong>：红石 + 铁锭 + 玻璃板（有序合成）。</li><li><strong>RBMK 终端屏幕</strong>：显示屏 + 中继器 + 铁锭。</li><li><strong>RBMK 终端机</strong>：铁块 + 红石火把 + 玻璃板。</li><li><strong>RBMK 路由器 (跨维度核心)</strong>：黑曜石 + 末影珍珠 + 红石粉。</li><li><strong>RBMK 警报汽笛</strong>：音符盒 + 红石粉 + 铁锭。</li><li><strong>RBMK 遥控器</strong>：铁锭 + 红石粉 + 末影珍珠。</li></ul><h4>🛡️ 史诗级底层审查与修复</h4><ul><li><strong>JSON 语法校验</strong>：全面核对了 <code>recipes</code> 目录下的所有配方文件，修复了可能导致配方失效的语法错误。</li><li><strong>物品 ID 匹配</strong>：重新比对了 <code>ModItems</code> 和 <code>ModBlocks</code> 的注册名，确保配方能够完美匹配。</li><li><strong>语言文件补全</strong>：补齐了所有新物品的 <code>lang</code> 本地化名称，告别乱码。</li><li><strong>配方死锁检测</strong>：确认没有出现“A 需要 B，B 需要 A”的循环材料逻辑。</li></ul><h4>⚠️ 测试说明（重要）</h4><ul><li>本版本为 <strong>Beta 测试版</strong>，核心测试目标为：<strong>生存模式下的合成配方的平衡性与可用性</strong>。</li><li>如果在生存模式下发现无法合成、材料识别错误、或配方可以刷物品，请在 Gitee 提交 Issue 或加群反馈。</li></ul><h4>📦 安装与前置要求</h4><p>1. 游戏版本：<strong>Minecraft 1.12.2</strong></p><p>2. 加载器：<strong>Forge 14.23.5.2859+</strong></p><p>3. 前置模组：<strong>无强制前置</strong>（HBM NTM-CE 为可选前置）。</p><p>4. 将下载的 <code>.jar</code> 文件放入 <code>.minecraft/mods</code> 文件夹即可。</p><h4>⚖️ 开源与授权说明</h4><ul><li>本项目遵循 <strong>MPL-2.0</strong> 开源协议。</li><li>本项目基于 <strong>树上的节枝 (Jiezhi)</strong> 的源码进行二创，已保留全部授权声明。</li></ul>"
+        },
+        {
+          "id": "rbmk-monitor#13.0",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "13.0",
+          "version": "13.0",
+          "channel": "release",
+          "name": "v13.0",
+          "publishedAt": "2026-11-12T21:12:58+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/13.0",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-13.0.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/13.0/RBMK-Monitor-13.0.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "🚀 RBMK-Monitor v13.0 正式版发布日志\n跨入 13.0 正式版！本次更新为模组带来了真正的“物理级灾难沉浸感”与“跨维度中控网络”，并针对服务器性能与安全性进行了史诗级的底层重构。\n 🌋 核心新增：物理级灾难与震屏特效\n   实体碎片冲击波：反应堆核爆时，不再是单调的粒子效果。系统会向四周抛射出大量实体碎片，对玩家和建筑造成真实物理冲击。（内置 120 个实体硬上限，防止连环核爆导致服务器卡死）。\n   沉浸式屏幕震动：爆炸发生时，50 格范围内的玩家客户端将触发剧烈的摄像机震屏效果与低频轰鸣音效，压迫感拉满。\n 🌐 核心新增：跨维度网络矩阵\n   全新路由器方块：新增 BlockRbmkRouter，用于汇聚周围的反应堆数据。\n   跨维度终端指令：新增 connect <维度ID <X <Y <Z 指令。现在，你可以在主世界的中控室，直接监控远在下界或末地的反应堆。\n   安全与性能拦截：加入了极其严苛的坐标校验（±3000万边界）与区块加载校验（isBlockLoaded）。绝对禁止因为玩家输入错误坐标而导致服务器卡死或区块强制加载。\n 🛡️ 史诗级底层安全重构（解决所有高危 Bug）\n   彻底消灭跨维度 NPE：当目标世界被卸载或不存在时，终端屏幕将安全置为离线，不再回退到主世界误读错误坐标。\n   全量线程安全隔离：所有的网络包（Connect、Hack、AutoScram、Shake）均已通过 addScheduledTask 强制调度到服务端/客户端主线程，彻底杜绝并发崩溃。\n   渲染与音效防崩保护：震屏逻辑已全量包裹 try-catch，异常时立即清零状态，保证客户端绝对不崩。\n 🛡️ 既有核心功能 (Inherited from v12.0)\n   远程黑客与审计日志：hack <玩家ID 跨维度黑入，全服 OP 播报。\n   服务器安全权限：全局开关与普通玩家白名单。\n   自动紧急停堆 (Auto-SCRAM)：温度超限自动插棒。\n   中控屏矩阵渲染：相邻屏幕自动拼接，生成巨型 ASCII 雷达图。\n   切尔诺贝利特效：蒸汽爆炸、抛飞盖子、延迟核爆。\n   数据可视化：history 黑匣子记录、graph ASCII 曲线图。\n 📦 安装与前置要求\n1. 游戏版本：Minecraft 1.12.2。\n2. 加载器：Forge 14.23.5.2859+。\n3. 前置模组：无（HBM NTM-CE 为可选前置）。\n4. 将下载的 .jar 文件放入 .minecraft/mods 文件夹即可。\n ⚖️ 开源与授权说明\n   本项目遵循 MPL-2.0 开源协议。\n   本项目基于 树上的节枝 (Jiezhi) 的源码进行二创，已保留全部授权声明。",
+          "notesHtml": "<h4>🚀 RBMK-Monitor v13.0 正式版发布日志</h4><p>跨入 13.0 正式版！本次更新为模组带来了真正的“物理级灾难沉浸感”与“跨维度中控网络”，并针对服务器性能与安全性进行了史诗级的底层重构。</p><h4>🌋 核心新增：物理级灾难与震屏特效</h4><ul><li><strong>实体碎片冲击波</strong>：反应堆核爆时，不再是单调的粒子效果。系统会向四周抛射出大量实体碎片，对玩家和建筑造成真实物理冲击。<strong>（内置 120 个实体硬上限，防止连环核爆导致服务器卡死）</strong>。</li><li><strong>沉浸式屏幕震动</strong>：爆炸发生时，50 格范围内的玩家客户端将触发剧烈的摄像机震屏效果与低频轰鸣音效，压迫感拉满。</li></ul><h4>🌐 核心新增：跨维度网络矩阵</h4><ul><li><strong>全新路由器方块</strong>：新增 <code>BlockRbmkRouter</code>，用于汇聚周围的反应堆数据。</li><li><strong>跨维度终端指令</strong>：新增 <code>connect &lt;维度ID&gt; &lt;X&gt; &lt;Y&gt; &lt;Z&gt;</code> 指令。现在，你可以在主世界的中控室，直接监控远在下界或末地的反应堆。</li><li><strong>安全与性能拦截</strong>：加入了极其严苛的坐标校验（±3000万边界）与区块加载校验（<code>isBlockLoaded</code>）。<strong>绝对禁止</strong>因为玩家输入错误坐标而导致服务器卡死或区块强制加载。</li></ul><h4>🛡️ 史诗级底层安全重构（解决所有高危 Bug）</h4><ul><li><strong>彻底消灭跨维度 NPE</strong>：当目标世界被卸载或不存在时，终端屏幕将安全置为离线，不再回退到主世界误读错误坐标。</li><li><strong>全量线程安全隔离</strong>：所有的网络包（Connect、Hack、AutoScram、Shake）均已通过 <code>addScheduledTask</code> 强制调度到服务端/客户端主线程，彻底杜绝并发崩溃。</li><li><strong>渲染与音效防崩保护</strong>：震屏逻辑已全量包裹 <code>try-catch</code>，异常时立即清零状态，保证客户端绝对不崩。</li></ul><h4>🛡️ 既有核心功能 (Inherited from v12.0)</h4><ul><li><strong>远程黑客与审计日志</strong>：<code>hack &lt;玩家ID&gt;</code> 跨维度黑入，全服 OP 播报。</li><li><strong>服务器安全权限</strong>：全局开关与普通玩家白名单。</li><li><strong>自动紧急停堆 (Auto-SCRAM)</strong>：温度超限自动插棒。</li><li><strong>中控屏矩阵渲染</strong>：相邻屏幕自动拼接，生成巨型 ASCII 雷达图。</li><li><strong>切尔诺贝利特效</strong>：蒸汽爆炸、抛飞盖子、延迟核爆。</li><li><strong>数据可视化</strong>：<code>history</code> 黑匣子记录、<code>graph</code> ASCII 曲线图。</li></ul><h4>📦 安装与前置要求</h4><p>1. 游戏版本：<strong>Minecraft 1.12.2</strong>。</p><p>2. 加载器：<strong>Forge 14.23.5.2859+</strong>。</p><p>3. 前置模组：<strong>无</strong>（HBM NTM-CE 为可选前置）。</p><p>4. 将下载的 <code>.jar</code> 文件放入 <code>.minecraft/mods</code> 文件夹即可。</p><h4>⚖️ 开源与授权说明</h4><ul><li>本项目遵循 <strong>MPL-2.0</strong> 开源协议。</li><li>本项目基于 <strong>树上的节枝 (Jiezhi)</strong> 的源码进行二创，已保留全部授权声明。</li></ul>"
+        },
+        {
+          "id": "rbmk-monitor#12.0-beta",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "12.0-beta",
+          "version": "12.0-beta",
+          "channel": "beta",
+          "name": "v12.0-beta",
+          "publishedAt": "2026-11-12T18:48:24+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/12.0-beta",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-12.0.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/12.0-beta/RBMK-Monitor-12.0.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "🚀 RBMK-Monitor v12.0 更新日志\n跨入 12.0 时代！本次更新将你的中控系统升维到了“服务器级网络安全与审计”层面，并进行了深度的底层性能重构。\n 🕵️‍♂️ 核心新增：远程黑客与审计系统\n   跨维度远程黑客 (hack <玩家ID)：\n       突破 64 格物理限制！现在可以在终端直接输入指令，对服务器内任意玩家的屏幕发起网络入侵。\n       系统会自动检索目标玩家 64 格范围内最近的 RBMK 屏幕。\n   管理员审计日志 (Admin Log)：\n       每一次成功的黑客入侵，都会向全服 OP 发送黄色系统播报：[AUDIT] 玩家 XXX 在 (X, Y, Z) 黑入了目标屏幕。\n       同时记录到服务器后端日志（RbmkMonitorMod.logger.info），让熊孩子无处遁形。\n 🛡️ 史诗级底层重构：彻底消灭卡顿与崩溃\n   主线程保护（史诗级修复）：重写了目标屏幕的检索逻辑，不再进行极其消耗性能的全图 getTileEntity 扫描。现在只遍历已加载的区块（getLoadedChunk），彻底杜绝了服务器 TPS 掉帧的风险。\n   网络线程安全隔离：所有网络包处理逻辑（AutoScram、Hack）均已使用 addScheduledTask 强制调度回主线程，并全量包裹 try-catch，彻底解决网络线程并发导致的服务器崩溃隐患。\n   全面 NPE 防御：在 refresh、NBT 读写、玩家遍历、日志审计等所有可能返回 null 的地方，追加了极其严格的判空保护。\n 🛡️ 既有核心功能 (Inherited from v11.9)\n   中控屏矩阵渲染：相邻屏幕自动拼接，生成巨型 ASCII 总控雷达图。\n   服务器安全权限：支持配置全局黑客开关及普通玩家白名单。\n   自动紧急停堆 (Auto-SCRAM)：温度超限自动插棒。\n   数据可视化：history 黑匣子记录、graph ASCII 曲线图。\n   切尔诺贝利特效：蒸汽爆炸、抛飞盖子、延迟核爆。\n 📦 安装与前置要求\n1. 游戏版本：Minecraft 1.12.2。\n2. 加载器：Forge 14.23.5.2859+。\n3. 前置模组：无（HBM NTM-CE 为可选前置）。\n4. 将下载的 .jar 文件放入 .minecraft/mods 文件夹即可。\n ⚖️ 开源与授权说明\n   本项目遵循 MPL-2.0 开源协议。\n   本项目基于 树上的节枝 (Jiezhi) 的源码进行二创，已保留全部授权声明。",
+          "notesHtml": "<h4>🚀 RBMK-Monitor v12.0 更新日志</h4><p>跨入 12.0 时代！本次更新将你的中控系统升维到了“服务器级网络安全与审计”层面，并进行了深度的底层性能重构。</p><h4>🕵️‍♂️ 核心新增：远程黑客与审计系统</h4><ul><li><strong>跨维度远程黑客 (<code>hack &lt;玩家ID&gt;</code>)</strong>：</li><li>突破 64 格物理限制！现在可以在终端直接输入指令，对服务器内任意玩家的屏幕发起网络入侵。</li><li>系统会自动检索目标玩家 64 格范围内最近的 RBMK 屏幕。</li><li><strong>管理员审计日志 (Admin Log)</strong>：</li><li>每一次成功的黑客入侵，都会向全服 OP 发送黄色系统播报：<code>[AUDIT] 玩家 XXX 在 (X, Y, Z) 黑入了目标屏幕。</code></li><li>同时记录到服务器后端日志（<code>RbmkMonitorMod.logger.info</code>），让熊孩子无处遁形。</li></ul><h4>🛡️ 史诗级底层重构：彻底消灭卡顿与崩溃</h4><ul><li><strong>主线程保护（史诗级修复）</strong>：重写了目标屏幕的检索逻辑，<strong>不再进行极其消耗性能的全图 <code>getTileEntity</code> 扫描</strong>。现在只遍历已加载的区块（<code>getLoadedChunk</code>），彻底杜绝了服务器 TPS 掉帧的风险。</li><li><strong>网络线程安全隔离</strong>：所有网络包处理逻辑（AutoScram、Hack）均已使用 <code>addScheduledTask</code> 强制调度回主线程，并全量包裹 <code>try-catch</code>，彻底解决网络线程并发导致的服务器崩溃隐患。</li><li><strong>全面 NPE 防御</strong>：在 <code>refresh</code>、NBT 读写、玩家遍历、日志审计等所有可能返回 <code>null</code> 的地方，追加了极其严格的判空保护。</li></ul><h4>🛡️ 既有核心功能 (Inherited from v11.9)</h4><ul><li><strong>中控屏矩阵渲染</strong>：相邻屏幕自动拼接，生成巨型 ASCII 总控雷达图。</li><li><strong>服务器安全权限</strong>：支持配置全局黑客开关及普通玩家白名单。</li><li><strong>自动紧急停堆 (Auto-SCRAM)</strong>：温度超限自动插棒。</li><li><strong>数据可视化</strong>：<code>history</code> 黑匣子记录、<code>graph</code> ASCII 曲线图。</li><li><strong>切尔诺贝利特效</strong>：蒸汽爆炸、抛飞盖子、延迟核爆。</li></ul><h4>📦 安装与前置要求</h4><p>1. 游戏版本：<strong>Minecraft 1.12.2</strong>。</p><p>2. 加载器：<strong>Forge 14.23.5.2859+</strong>。</p><p>3. 前置模组：<strong>无</strong>（HBM NTM-CE 为可选前置）。</p><p>4. 将下载的 <code>.jar</code> 文件放入 <code>.minecraft/mods</code> 文件夹即可。</p><h4>⚖️ 开源与授权说明</h4><ul><li>本项目遵循 <strong>MPL-2.0</strong> 开源协议。</li><li>本项目基于 <strong>树上的节枝 (Jiezhi)</strong> 的源码进行二创，已保留全部授权声明。</li></ul>"
+        },
+        {
+          "id": "rbmk-monitor#11.9-beta",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "11.9-beta",
+          "version": "11.9-beta",
+          "channel": "beta",
+          "name": "v11.9-beta",
+          "publishedAt": "2026-11-12T18:19:54+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/11.9-beta",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-11.9.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/11.9-beta/RBMK-Monitor-11.9.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "🚀 RBMK-Monitor v11.9 更新日志\n本次更新为服务器服主和管理员带来了期待已久的安全控制权。黑客玩法不再是法外之地！\n 🛡️ 核心新增：服务器安全与权限系统\n   全局黑客开关：新增配置项 enableHackerAttack。服主可一键彻底关闭所有玩家的黑客攻击玩法，彻底杜绝熊孩子搞破坏。\n   普通玩家白名单：新增配置项 allowNormalPlayerHack。当设为 false 时，只有拥有 OP 权限的玩家才能使用 hack 指令，普通玩家尝试黑入时将被系统直接拦截并给予红字警告。\n   不限制的“一键修复”：为了防止恶意破坏，fix 修复指令不受权限限制，任何玩家均可随时解除屏幕的黑客状态，挽救中控室。\n 💻 终端 UI 状态同步\n   终端启动横幅会根据服务器配置实时显示安全状态：\n       🔴 红色：[SECURITY] 服务器已禁用黑客攻击。\n       🟡 黄色：[SECURITY] 全员黑客模式已开启。\n       🟢 绿色：[SECURITY] 反黑客保护已启用 (仅限OP)。\n 🛡️ 既有核心功能 (Inherited from v11.8)\n   中控屏矩阵渲染：相邻屏幕自动拼接，生成巨型 ASCII 总控雷达图。\n   黑客对抗玩法：hack 指令篡改数据、强制红屏警告。\n   自动紧急停堆 (Auto-SCRAM)：温度超限自动插棒。\n   底层黑客指令：scram off / scram on 临时屏蔽/恢复核保护。\n   数据可视化：history 黑匣子记录、graph ASCII 曲线图。\n   切尔诺贝利特效：蒸汽爆炸、抛飞盖子、延迟核爆。\n 📦 安装与前置要求\n1. 游戏版本：Minecraft 1.12.2。\n2. 加载器：Forge 14.23.5.2859+。\n3. 前置模组：无（HBM NTM-CE 为可选前置）。\n4. 将下载的 .jar 文件放入 .minecraft/mods 文件夹即可。\n ⚖️ 开源与授权说明\n   本项目遵循 MPL-2.0 开源协议。\n   本项目基于 树上的节枝 (Jiezhi) 的源码进行二创，已保留全部授权声明。",
+          "notesHtml": "<h4>🚀 RBMK-Monitor v11.9 更新日志</h4><p>本次更新为服务器服主和管理员带来了期待已久的安全控制权。黑客玩法不再是法外之地！</p><h4>🛡️ 核心新增：服务器安全与权限系统</h4><ul><li><strong>全局黑客开关</strong>：新增配置项 <code>enableHackerAttack</code>。服主可一键彻底关闭所有玩家的黑客攻击玩法，彻底杜绝熊孩子搞破坏。</li><li><strong>普通玩家白名单</strong>：新增配置项 <code>allowNormalPlayerHack</code>。当设为 <code>false</code> 时，只有拥有 OP 权限的玩家才能使用 <code>hack</code> 指令，普通玩家尝试黑入时将被系统直接拦截并给予红字警告。</li><li><strong>不限制的“一键修复”</strong>：为了防止恶意破坏，<code>fix</code> 修复指令不受权限限制，任何玩家均可随时解除屏幕的黑客状态，挽救中控室。</li></ul><h4>💻 终端 UI 状态同步</h4><ul><li>终端启动横幅会根据服务器配置实时显示安全状态：</li><li>🔴 <strong>红色</strong>：<code>[SECURITY] 服务器已禁用黑客攻击。</code></li><li>🟡 <strong>黄色</strong>：<code>[SECURITY] 全员黑客模式已开启。</code></li><li>🟢 <strong>绿色</strong>：<code>[SECURITY] 反黑客保护已启用 (仅限OP)。</code></li></ul><h4>🛡️ 既有核心功能 (Inherited from v11.8)</h4><ul><li><strong>中控屏矩阵渲染</strong>：相邻屏幕自动拼接，生成巨型 ASCII 总控雷达图。</li><li><strong>黑客对抗玩法</strong>：<code>hack</code> 指令篡改数据、强制红屏警告。</li><li><strong>自动紧急停堆 (Auto-SCRAM)</strong>：温度超限自动插棒。</li><li><strong>底层黑客指令</strong>：<code>scram off</code> / <code>scram on</code> 临时屏蔽/恢复核保护。</li><li><strong>数据可视化</strong>：<code>history</code> 黑匣子记录、<code>graph</code> ASCII 曲线图。</li><li><strong>切尔诺贝利特效</strong>：蒸汽爆炸、抛飞盖子、延迟核爆。</li></ul><h4>📦 安装与前置要求</h4><p>1. 游戏版本：<strong>Minecraft 1.12.2</strong>。</p><p>2. 加载器：<strong>Forge 14.23.5.2859+</strong>。</p><p>3. 前置模组：<strong>无</strong>（HBM NTM-CE 为可选前置）。</p><p>4. 将下载的 <code>.jar</code> 文件放入 <code>.minecraft/mods</code> 文件夹即可。</p><h4>⚖️ 开源与授权说明</h4><ul><li>本项目遵循 <strong>MPL-2.0</strong> 开源协议。</li><li>本项目基于 <strong>树上的节枝 (Jiezhi)</strong> 的源码进行二创，已保留全部授权声明。</li></ul>"
+        },
+        {
+          "id": "rbmk-monitor#11.8-beta",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "11.8-beta",
+          "version": "11.8-beta",
+          "channel": "beta",
+          "name": "v11.8-beta",
+          "publishedAt": "2026-11-12T18:07:51+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/11.8-beta",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-11.8.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/11.8-beta/RBMK-Monitor-11.8.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "🚀 RBMK-Monitor v11.8 更新日志\n本次更新将你的中控室升维到了全新的高度，并加入了极具颠覆性的服务器交互玩法。\n 🖥️ 核心新增：中控室屏幕矩阵\n   跨屏幕无缝渲染：当终端屏幕相邻放置时（例如 3x3 矩阵），系统会自动识别并取消原版 GUI 背景，将终端文字、历史曲线和指令栏横跨所有屏幕宽度进行渲染！\n   巨型总控雷达图：在多屏拼接模式下，背景会自动生成宏大的 ASCII [核电站总控雷达图]，沉浸感与科幻感直接拉满。\n 💻 颠覆玩法：服务器黑客对抗机制\n   黑客指令 (hack)：在终端输入此指令，即可对周围 64 格内的其他玩家屏幕发起网络入侵。\n   数据篡改与红屏警告：被黑入的屏幕每隔 5 秒会随机篡改显示数据（温度在 5001700℃ 之间疯狂跳跃），并强制屏幕闪烁红色高危警报，完美模拟“中控系统被劫持”的绝望感。\n   安全修复 (fix)：输入修复指令即可解除黑客状态，恢复真实的反应堆数据。\n 🔧 底层架构与优化\n   网络协议扩展：新增安全加密网络包（discriminator 9），确保黑客指令在客户端与服务端之间稳定、低延迟地同步。\n   NBT 状态持久化：被黑客入侵的状态（isHacked）会被写入方块 NBT，服务器重启或区块卸载后，入侵状态依然保留。\n 🛡️ 既有核心功能 (Inherited from v11.7)\n   自动紧急停堆 (Auto-SCRAM)：温度超限自动插棒。\n   底层黑客指令：scram off / scram on 临时屏蔽/恢复核保护。\n   数据可视化：history 黑匣子记录、graph ASCII 曲线图。\n   切尔诺贝利特效：蒸汽爆炸、抛飞盖子、延迟核爆。\n 📦 安装与前置要求\n1. 游戏版本：Minecraft 1.12.2。\n2. 加载器：Forge 14.23.5.2859+。\n3. 前置模组：无（HBM NTM-CE 为可选前置）。\n4. 将下载的 .jar 文件放入 .minecraft/mods 文件夹即可。\n ⚠️ 服务器服主注意\n本版本默认开启黑客攻击玩法，允许普通玩家互相攻击。如果您的服务器需要和谐环境，请在配置文件中调整后续版本新增的 [security] 选项（将在 v11.9 版本中提供完整的权限控制）。\n ⚖️ 开源与授权说明\n   本项目遵循 MPL-2.0 开源协议。\n   本项目基于 树上的节枝 (Jiezhi) 的源码进行二创，已保留全部授权声明。",
+          "notesHtml": "<h4>🚀 RBMK-Monitor v11.8 更新日志</h4><p>本次更新将你的中控室升维到了全新的高度，并加入了极具颠覆性的服务器交互玩法。</p><h4>🖥️ 核心新增：中控室屏幕矩阵</h4><ul><li><strong>跨屏幕无缝渲染</strong>：当终端屏幕相邻放置时（例如 3x3 矩阵），系统会自动识别并取消原版 GUI 背景，将终端文字、历史曲线和指令栏<strong>横跨所有屏幕宽度进行渲染</strong>！</li><li><strong>巨型总控雷达图</strong>：在多屏拼接模式下，背景会自动生成宏大的 ASCII [核电站总控雷达图]，沉浸感与科幻感直接拉满。</li></ul><h4>💻 颠覆玩法：服务器黑客对抗机制</h4><ul><li><strong>黑客指令 (<code>hack</code>)</strong>：在终端输入此指令，即可对周围 64 格内的其他玩家屏幕发起网络入侵。</li><li><strong>数据篡改与红屏警告</strong>：被黑入的屏幕每隔 5 秒会随机篡改显示数据（温度在 500~1700℃ 之间疯狂跳跃），并强制屏幕闪烁红色高危警报，完美模拟“中控系统被劫持”的绝望感。</li><li><strong>安全修复 (<code>fix</code>)</strong>：输入修复指令即可解除黑客状态，恢复真实的反应堆数据。</li></ul><h4>🔧 底层架构与优化</h4><ul><li><strong>网络协议扩展</strong>：新增安全加密网络包（discriminator 9），确保黑客指令在客户端与服务端之间稳定、低延迟地同步。</li><li><strong>NBT 状态持久化</strong>：被黑客入侵的状态（<code>isHacked</code>）会被写入方块 NBT，服务器重启或区块卸载后，入侵状态依然保留。</li></ul><h4>🛡️ 既有核心功能 (Inherited from v11.7)</h4><ul><li><strong>自动紧急停堆 (Auto-SCRAM)</strong>：温度超限自动插棒。</li><li><strong>底层黑客指令</strong>：<code>scram off</code> / <code>scram on</code> 临时屏蔽/恢复核保护。</li><li><strong>数据可视化</strong>：<code>history</code> 黑匣子记录、<code>graph</code> ASCII 曲线图。</li><li><strong>切尔诺贝利特效</strong>：蒸汽爆炸、抛飞盖子、延迟核爆。</li></ul><h4>📦 安装与前置要求</h4><p>1. 游戏版本：<strong>Minecraft 1.12.2</strong>。</p><p>2. 加载器：<strong>Forge 14.23.5.2859+</strong>。</p><p>3. 前置模组：<strong>无</strong>（HBM NTM-CE 为可选前置）。</p><p>4. 将下载的 <code>.jar</code> 文件放入 <code>.minecraft/mods</code> 文件夹即可。</p><h4>⚠️ 服务器服主注意</h4><p>本版本默认开启黑客攻击玩法，允许普通玩家互相攻击。如果您的服务器需要和谐环境，请在配置文件中调整后续版本新增的 <code>[security]</code> 选项（将在 v11.9 版本中提供完整的权限控制）。</p><h4>⚖️ 开源与授权说明</h4><ul><li>本项目遵循 <strong>MPL-2.0</strong> 开源协议。</li><li>本项目基于 <strong>树上的节枝 (Jiezhi)</strong> 的源码进行二创，已保留全部授权声明。</li></ul>"
+        },
+        {
+          "id": "rbmk-monitor#11.7-beta",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "11.7-beta",
+          "version": "11.7-beta",
+          "channel": "beta",
+          "name": "v11.7-beta",
+          "publishedAt": "2026-11-12T17:25:16+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/11.7-beta",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-11.7.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/11.7-beta/RBMK-Monitor-11.7.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "🚀 RBMK-Monitor v11.7 更新日志\n本次更新为高级终端操作员们带来了“最高权限”——现在，你可以直接黑进系统，亲手解除核电站的最后一道安全防线。\n ✨ 新增功能 (Features)\n   终端黑客指令：手动接管安全系统\n       新增指令 scram off：在终端输入后，将临时屏蔽自动紧急停堆（Auto-SCRAM）保护。终端会弹出红色警告：[SYSTEM] 自动停堆保护已临时屏蔽！反应堆可能随时熔毁！\n       新增指令 scram on：在终端输入后，将恢复自动保护。终端弹出绿色提示：[SYSTEM] 自动停堆保护已恢复。\n   底层状态持久化 (NBT)：关闭保护的指令状态会被永久保存。无论是退出游戏还是服务器重启，系统都会记住你关闭了保护，直到你再次输入 scram on。\n   安全距离校验：新增了严格的 64 格网络包距离校验。防止玩家利用黑客工具远程恶意关闭其他基地的 RBMK 保护。\n 🛡️ 既有核心功能 (Inherited from previous versions)\n   自动紧急停堆 (Auto-SCRAM)：温度超限（默认 1000℃）自动插棒。\n   终端数据可视化：history 黑匣子记录、graph ASCII 曲线图。\n   分区监控矩阵：支持 255x255 超大反应堆，防卡死截断。\n   切尔诺贝利特效：蒸汽爆炸、抛飞盖子、延迟核爆。\n 📦 安装与前置要求\n1. 游戏版本：Minecraft 1.12.2。\n2. 加载器：Forge 14.23.5.2859+。\n3. 前置模组：无（HBM NTM-CE 为可选前置）。\n4. 将下载的 .jar 文件放入 .minecraft/mods 文件夹即可。\n ⚠️ 警告\n“当你凝视深渊时，深渊也在凝视你。” 请谨慎使用 scram off 指令，否则你的基地大概率会变成一片废土。\n ⚖️ 开源与授权说明\n   本项目遵循 MPL-2.0 开源协议。\n   本项目基于 树上的节枝 (Jiezhi) 的源码进行二创，已保留全部授权声明。",
+          "notesHtml": "<h4>🚀 RBMK-Monitor v11.7 更新日志</h4><p>本次更新为高级终端操作员们带来了“最高权限”——现在，你可以直接黑进系统，亲手解除核电站的最后一道安全防线。</p><h4>✨ 新增功能 (Features)</h4><ul><li><strong>终端黑客指令：手动接管安全系统</strong></li><li>新增指令 <code>scram off</code>：在终端输入后，将<strong>临时屏蔽自动紧急停堆（Auto-SCRAM）保护</strong>。终端会弹出红色警告：<code>[SYSTEM] 自动停堆保护已临时屏蔽！反应堆可能随时熔毁！</code></li><li>新增指令 <code>scram on</code>：在终端输入后，将<strong>恢复自动保护</strong>。终端弹出绿色提示：<code>[SYSTEM] 自动停堆保护已恢复。</code></li><li><strong>底层状态持久化 (NBT)</strong>：关闭保护的指令状态会被永久保存。无论是退出游戏还是服务器重启，系统都会记住你关闭了保护，直到你再次输入 <code>scram on</code>。</li><li><strong>安全距离校验</strong>：新增了严格的 64 格网络包距离校验。防止玩家利用黑客工具远程恶意关闭其他基地的 RBMK 保护。</li></ul><h4>🛡️ 既有核心功能 (Inherited from previous versions)</h4><ul><li><strong>自动紧急停堆 (Auto-SCRAM)</strong>：温度超限（默认 1000℃）自动插棒。</li><li><strong>终端数据可视化</strong>：<code>history</code> 黑匣子记录、<code>graph</code> ASCII 曲线图。</li><li><strong>分区监控矩阵</strong>：支持 255x255 超大反应堆，防卡死截断。</li><li><strong>切尔诺贝利特效</strong>：蒸汽爆炸、抛飞盖子、延迟核爆。</li></ul><h4>📦 安装与前置要求</h4><p>1. 游戏版本：<strong>Minecraft 1.12.2</strong>。</p><p>2. 加载器：<strong>Forge 14.23.5.2859+</strong>。</p><p>3. 前置模组：<strong>无</strong>（HBM NTM-CE 为可选前置）。</p><p>4. 将下载的 <code>.jar</code> 文件放入 <code>.minecraft/mods</code> 文件夹即可。</p><h4>⚠️ 警告</h4><p><strong>“当你凝视深渊时，深渊也在凝视你。”</strong> 请谨慎使用 <code>scram off</code> 指令，否则你的基地大概率会变成一片废土。</p><h4>⚖️ 开源与授权说明</h4><ul><li>本项目遵循 <strong>MPL-2.0</strong> 开源协议。</li><li>本项目基于 <strong>树上的节枝 (Jiezhi)</strong> 的源码进行二创，已保留全部授权声明。</li></ul>"
+        },
+        {
+          "id": "rbmk-monitor#11.6-beta",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "11.6-beta",
+          "version": "11.6-beta",
+          "channel": "beta",
+          "name": "v11.6-beta",
+          "publishedAt": "2026-11-12T17:00:48+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/11.6-beta",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-11.6.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/11.6-beta/RBMK-Monitor-11.6.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "🚀 RBMK-Monitor v11.6 更新日志\n本次更新加入了核电站最核心的安全防御机制，让你的反应堆彻底告别“无人值守”的悲剧时代！\n ✨ 新增功能 (Features)\n   自动紧急停堆 (Auto-SCRAM)：\n       实装底层安全阈值监控。当反应堆堆芯温度达到预设临界值（默认 1000℃）时，系统将自动强制插入所有控制棒，执行紧急停堆，防止灾难性熔毁。\n       终端屏幕会同步输出红色警告：[SYSTEM] 温度超限！已触发自动紧急停堆！\n       内置防重复触发机制，避免系统在高温时无限次重复下发指令导致服务器卡顿（TPS 掉帧）。\n   新增 [safety] 安全配置项：\n       enableAutoScram：是否开启自动停堆（默认：true）。\n       autoScramTemp：触发停堆的临界温度（默认：1000，玩家可根据反应堆规模自行调节）。\n 🛡️ 既有核心功能 (Inherited from v11.5)\n   终端历史数据回放 (history)：查看反应堆“黑匣子”历史数据。\n   ASCII 数据曲线图 (graph)：终端字符折线图实时监控。\n   分区监控与性能保护：支持 255x255 超大型反应堆矩阵监控，内置 2000 根柱子截断熔断机制。\n   切尔诺贝利级特效：熔毁蒸汽爆炸、盖子实体抛飞、延迟核爆。\n 📦 安装与前置要求\n1. 游戏版本：Minecraft 1.12.2。\n2. 加载器：Forge 14.23.5.2859+。\n3. 前置模组：无（HBM NTM-CE 为可选前置，不装仅显示数据源未绑定，不会崩溃）。\n4. 将下载的 .jar 文件放入 .minecraft/mods 文件夹即可。\n ⚖️ 开源与授权说明\n   本项目遵循 MPL-2.0 开源协议。\n   本项目基于 树上的节枝 (Jiezhi) 的源码进行二创，已保留全部授权声明。",
+          "notesHtml": "<h4>🚀 RBMK-Monitor v11.6 更新日志</h4><p>本次更新加入了核电站最核心的<strong>安全防御机制</strong>，让你的反应堆彻底告别“无人值守”的悲剧时代！</p><h4>✨ 新增功能 (Features)</h4><ul><li><strong>自动紧急停堆 (Auto-SCRAM)</strong>：</li><li>实装底层安全阈值监控。当反应堆堆芯温度达到预设临界值（默认 1000℃）时，系统将<strong>自动强制插入所有控制棒</strong>，执行紧急停堆，防止灾难性熔毁。</li><li>终端屏幕会同步输出红色警告：<code>[SYSTEM] 温度超限！已触发自动紧急停堆！</code></li><li>内置防重复触发机制，避免系统在高温时无限次重复下发指令导致服务器卡顿（TPS 掉帧）。</li><li><strong>新增 <code>[safety]</code> 安全配置项</strong>：</li><li><code>enableAutoScram</code>：是否开启自动停堆（默认：<code>true</code>）。</li><li><code>autoScramTemp</code>：触发停堆的临界温度（默认：<code>1000</code>，玩家可根据反应堆规模自行调节）。</li></ul><h4>🛡️ 既有核心功能 (Inherited from v11.5)</h4><ul><li><strong>终端历史数据回放 (<code>history</code>)</strong>：查看反应堆“黑匣子”历史数据。</li><li><strong>ASCII 数据曲线图 (<code>graph</code>)</strong>：终端字符折线图实时监控。</li><li><strong>分区监控与性能保护</strong>：支持 255x255 超大型反应堆矩阵监控，内置 2000 根柱子截断熔断机制。</li><li><strong>切尔诺贝利级特效</strong>：熔毁蒸汽爆炸、盖子实体抛飞、延迟核爆。</li></ul><h4>📦 安装与前置要求</h4><p>1. 游戏版本：<strong>Minecraft 1.12.2</strong>。</p><p>2. 加载器：<strong>Forge 14.23.5.2859+</strong>。</p><p>3. 前置模组：<strong>无</strong>（HBM NTM-CE 为可选前置，不装仅显示数据源未绑定，不会崩溃）。</p><p>4. 将下载的 <code>.jar</code> 文件放入 <code>.minecraft/mods</code> 文件夹即可。</p><h4>⚖️ 开源与授权说明</h4><ul><li>本项目遵循 <strong>MPL-2.0</strong> 开源协议。</li><li>本项目基于 <strong>树上的节枝 (Jiezhi)</strong> 的源码进行二创，已保留全部授权声明。</li></ul>"
+        },
+        {
+          "id": "rbmk-monitor#11.5-beta",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "11.5-beta",
+          "version": "11.5-beta",
+          "channel": "beta",
+          "name": "v11.5-beta",
+          "publishedAt": "2026-11-12T16:39:43+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/11.5-beta",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-11.5.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/11.5-beta/RBMK-Monitor-11.5.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "🚀 RBMK-Monitor v11.5 更新日志\n本次更新为终端系统带来了期待已久的数据可视化功能。\n ✨ 新增功能 (Features)\n   终端历史数据回放 (history)：实装“黑匣子”功能。在终端输入指令，可直接查看反应堆近期的温度与通量历史记录。\n   ASCII 数据曲线图 (graph)：实装动态图表功能。在终端输入指令，可通过字符折线图直观查看堆芯温度波动趋势。\n 🔧 重构与优化 (Refactor & Chores)\n   终端 GUI 渲染逻辑优化，支持更复杂的指令输出排版。\n   底层构建环境优化（增量编译测试通过，构建效率大幅提升）。\n 🛡️ 既有核心功能 (Inherited from v11.4)\n   分区监控与性能保护：支持超大范围（最高 255x255）反应堆扫描，内置 2000 根柱子截断熔断机制，防止卡顿。\n   切尔诺贝利级特效：包含熔毁蒸汽爆炸、盖子实体抛飞、延迟核爆。\n ⚠️ 构建信息\n   已在 Java 8 + Forge 1.12.2 环境下完成编译测试（BUILD SUCCESSFUL）。\n   请务必安装 Forge 14.23.5.2859+ 版本。",
+          "notesHtml": "<h4>🚀 RBMK-Monitor v11.5 更新日志</h4><p>本次更新为终端系统带来了期待已久的数据可视化功能。</p><h4>✨ 新增功能 (Features)</h4><ul><li><strong>终端历史数据回放 (<code>history</code>)</strong>：实装“黑匣子”功能。在终端输入指令，可直接查看反应堆近期的温度与通量历史记录。</li><li><strong>ASCII 数据曲线图 (<code>graph</code>)</strong>：实装动态图表功能。在终端输入指令，可通过字符折线图直观查看堆芯温度波动趋势。</li></ul><h4>🔧 重构与优化 (Refactor &amp; Chores)</h4><ul><li>终端 GUI 渲染逻辑优化，支持更复杂的指令输出排版。</li><li>底层构建环境优化（增量编译测试通过，构建效率大幅提升）。</li></ul><h4>🛡️ 既有核心功能 (Inherited from v11.4)</h4><ul><li><strong>分区监控与性能保护</strong>：支持超大范围（最高 255x255）反应堆扫描，内置 2000 根柱子截断熔断机制，防止卡顿。</li><li><strong>切尔诺贝利级特效</strong>：包含熔毁蒸汽爆炸、盖子实体抛飞、延迟核爆。</li></ul><h4>⚠️ 构建信息</h4><ul><li>已在 Java 8 + Forge 1.12.2 环境下完成编译测试（BUILD SUCCESSFUL）。</li><li>请务必安装 Forge 14.23.5.2859+ 版本。</li></ul>"
+        },
+        {
+          "id": "rbmk-monitor#11.4-beta",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "11.4-beta",
+          "version": "11.4-beta",
+          "channel": "beta",
+          "name": "v11.4-beta",
+          "publishedAt": "2026-11-12T16:13:44+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/11.4-beta",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-11.4.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/11.4-beta/RBMK-Monitor-11.4.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "【v11.4-beta 更新说明】\n⚠️ 注意：本版本包含底层架构重大更新与新特效，请务必在测试后使用。\n💥 核心新增：切尔诺贝利级视觉特效\n- 新增“蒸汽爆炸”逻辑：当反应堆触发熔毁（Meltdown）瞬间，顶部方块将化作实体被蒸汽抛飞。\n- 延迟核爆：蒸汽爆炸后，根据配置文件延迟 1-3 秒（可自定义）触发真正的核爆。\n- 完全可配置：在 config 配置文件中可随时开关蒸汽爆炸、调整延迟时间及是否抛飞盖子。\n🖥️ 性能与底层重构（支持超大/奇葩反应堆）\n- 重写 RbmkBridge 扫描逻辑，支持 255x255 超大规模平面反应堆（单屏最多扫描 2000 个柱子，超出自动截断防止卡死）。\n- 引入分区监控概念：多块屏幕可分别绑定不同区域的控制台，实现分布式矩阵监控。\n- 修复读取 HBM 反应堆 NBT 数据时为 0 的底层 Bug。\n📦 前置要求\n- Minecraft 1.12.2\n- Forge 14.23.5.2859",
+          "notesHtml": "<p>【v11.4-beta 更新说明】</p><p>⚠️ 注意：本版本包含底层架构重大更新与新特效，请务必在测试后使用。</p><p>💥 核心新增：切尔诺贝利级视觉特效</p><ul><li>新增“蒸汽爆炸”逻辑：当反应堆触发熔毁（Meltdown）瞬间，顶部方块将化作实体被蒸汽抛飞。</li><li>延迟核爆：蒸汽爆炸后，根据配置文件延迟 1-3 秒（可自定义）触发真正的核爆。</li><li>完全可配置：在 config 配置文件中可随时开关蒸汽爆炸、调整延迟时间及是否抛飞盖子。</li></ul><p>🖥️ 性能与底层重构（支持超大/奇葩反应堆）</p><ul><li>重写 RbmkBridge 扫描逻辑，支持 255x255 超大规模平面反应堆（单屏最多扫描 2000 个柱子，超出自动截断防止卡死）。</li><li>引入分区监控概念：多块屏幕可分别绑定不同区域的控制台，实现分布式矩阵监控。</li><li>修复读取 HBM 反应堆 NBT 数据时为 0 的底层 Bug。</li></ul><p>📦 前置要求</p><ul><li>Minecraft 1.12.2</li><li>Forge 14.23.5.2859</li></ul>"
+        },
+        {
+          "id": "rbmk-monitor#v11.3-hotfix-beta",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "v11.3-hotfix-beta",
+          "version": "11.3-hotfix-beta",
+          "channel": "beta",
+          "name": "v11.3-hotfix-beta",
+          "publishedAt": "2026-11-12T10:12:36+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/v11.3-hotfix-beta",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-11.3.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/v11.3-hotfix-beta/RBMK-Monitor-11.3.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "已把这几类问题一起修了，核心原因不止一个：\n修复内容\n1. 终端右键打不开（落地终端 / 便携终端 / 警报设置 / 汽笛调音）\n1.12.2 的 Forge openGui() 只有服务端返回非 null Container 时才会发打开 GUI 的数据包。原代码对 GUI 2/3/4/5 全部返回 null，所以客户端永远收不到打开界面的包。\n修复：CommonProxy.java 为这些无容器界面返回一个空的 EmptyContainer。\n2. 便携终端只能对空气右键\nonItemRightClick() 在“右键方块”时不会触发。现在改成：\n右键 RBMK 控制台/部件 → 连接反应堆\n右键普通方块 → 直接打开便携终端\n右键空气 → 打开便携终端\n支持主手/副手\n修复：ItemRbmkLaptop.java、RbmkClientProxy.java、MessageTerminalCommand.java\n3. 无法识别 RBMK 反应堆\n这是最关键的兼容性问题，有三个根因：\nHBM 1.12.2 的 RBMK 部件用的是 getConsoleType() + getNBTForConsole()，原来只认旧版 getConsoleData()，导致所有 RBMK 柱子都识别失败。现在两套 API 都支持。\nHBM 的 RBMK 控制台和柱子是 BlockDummyable 多方块，只有核心方块有 TileEntity，右键外壳方块时 world.getTileEntity(pos) 是 null。现在通过反射调用方块的 findCore() 找到核心再读取。\nHBM 代理方块 TileEntityProxyBase 没有 cachedPosition 字段，原来的代理解析条件永远不成立。现在改为检测 getTE()。\n修复：RbmkBridge.java、RbmkBridge.java\n4. 终端 status 全部读成 0 / 永远 COLD\nHBM 1.12.2 控制台的 columns 里，数值不在列对象字段上，而在 RBMKColumn.data 这个 NBT 里；中子通量也不在 fluxBuffer，而在 graph.dataBuffer。现在改为从 NBT 读取：\n柱温 / 熔毁阈值\n燃料富集度、氙毒、堆芯温度\n控制棒抽出率\n锅炉水量、蒸汽量\n中子通量\n熔毁百分比\n同时修了“曾经离线后永远显示离线”和“部件扫描数据越刷越大”的状态残留问题。\n修复：RbmkBridge.java\n5. 控制棒命令找不到堆芯\nrods / scram 原来只依赖控制台的 targetX/Y/Z，如果这些字段没设置，控制台又在反应堆边缘，就会只操作到一部分控制棒。现在会扫描周围 RBMK 柱子计算反应堆包围盒中心作为回退。\n修复：RbmkControl.j",
+          "notesHtml": "<p>已把这几类问题一起修了，核心原因不止一个：</p><p>修复内容</p><p>1. 终端右键打不开（落地终端 / 便携终端 / 警报设置 / 汽笛调音）</p><p>1.12.2 的 Forge openGui() 只有服务端返回非 null Container 时才会发打开 GUI 的数据包。原代码对 GUI 2/3/4/5 全部返回 null，所以客户端永远收不到打开界面的包。</p><p>修复：CommonProxy.java 为这些无容器界面返回一个空的 EmptyContainer。</p><p>2. 便携终端只能对空气右键</p><p>onItemRightClick() 在“右键方块”时不会触发。现在改成：</p><p>右键 RBMK 控制台/部件 → 连接反应堆</p><p>右键普通方块 → 直接打开便携终端</p><p>右键空气 → 打开便携终端</p><p>支持主手/副手</p><p>修复：ItemRbmkLaptop.java、RbmkClientProxy.java、MessageTerminalCommand.java</p><p>3. 无法识别 RBMK 反应堆</p><p>这是最关键的兼容性问题，有三个根因：</p><p>HBM 1.12.2 的 RBMK 部件用的是 getConsoleType() + getNBTForConsole()，原来只认旧版 getConsoleData()，导致所有 RBMK 柱子都识别失败。现在两套 API 都支持。</p><p>HBM 的 RBMK 控制台和柱子是 BlockDummyable 多方块，只有核心方块有 TileEntity，右键外壳方块时 world.getTileEntity(pos) 是 null。现在通过反射调用方块的 findCore() 找到核心再读取。</p><p>HBM 代理方块 TileEntityProxyBase 没有 cachedPosition 字段，原来的代理解析条件永远不成立。现在改为检测 getTE()。</p><p>修复：RbmkBridge.java、RbmkBridge.java</p><p>4. 终端 status 全部读成 0 / 永远 COLD</p><p>HBM 1.12.2 控制台的 columns 里，数值不在列对象字段上，而在 RBMKColumn.data 这个 NBT 里；中子通量也不在 fluxBuffer，而在 graph.dataBuffer。现在改为从 NBT 读取：</p><p>柱温 / 熔毁阈值</p><p>燃料富集度、氙毒、堆芯温度</p><p>控制棒抽出率</p><p>锅炉水量、蒸汽量</p><p>中子通量</p><p>熔毁百分比</p><p>同时修了“曾经离线后永远显示离线”和“部件扫描数据越刷越大”的状态残留问题。</p><p>修复：RbmkBridge.java</p><p>5. 控制棒命令找不到堆芯</p><p>rods / scram 原来只依赖控制台的 targetX/Y/Z，如果这些字段没设置，控制台又在反应堆边缘，就会只操作到一部分控制棒。现在会扫描周围 RBMK 柱子计算反应堆包围盒中心作为回退。</p><p>修复：RbmkControl.java</p><p>6. 遥控器/显示屏绑定</p><p>遥控器、便携终端、落地终端、监控屏现在都会先解析多方块核心位置再绑定，旧存档里记录了外壳坐标的绑定也能恢复。</p><p>修复：ItemRbmkRemote.java、BlockRbmkTerminal.java、TileRbmkMonitorScreen.java</p>"
+        },
+        {
+          "id": "rbmk-monitor#11.2",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "11.2",
+          "version": "11.2",
+          "channel": "release",
+          "name": "RBMK-Monitor-11.2-beta",
+          "publishedAt": "2026-11-08T13:36:50+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/11.2",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-11.2.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/11.2/RBMK-Monitor-11.2.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "更新了“便携式终端显示屏”",
+          "notesHtml": "<p>更新了“便携式终端显示屏”</p>"
+        },
+        {
+          "id": "rbmk-monitor#11.0",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "11.0",
+          "version": "11.0",
+          "channel": "release",
+          "name": "RBMK-Monitor-11.0",
+          "publishedAt": "2026-11-07T09:50:22+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/11.0",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-11.0.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/11.0/RBMK-Monitor-11.0.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "更新了“终端显示屏”有方块和显示屏2个状态！输入“help”可查看所有控制RBMK的指令，（不是抄袭hbmzz，是ta的终端我觉得好，于是自己做了一个）",
+          "notesHtml": "<p>更新了“终端显示屏”有方块和显示屏2个状态！输入“help”可查看所有控制RBMK的指令，（不是抄袭hbmzz，是ta的终端我觉得好，于是自己做了一个）</p>"
+        },
+        {
+          "id": "rbmk-monitor#9.0",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "9.0",
+          "version": "9.0",
+          "channel": "release",
+          "name": "RBMK-Monitor-9.0",
+          "publishedAt": "2026-11-01T17:02:12+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/9.0",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-9.0.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/9.0/RBMK-Monitor-9.0.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "方块类 (Blocks)\n在创造模式物品栏的 jiezhirbmkmod 标签页里可以找到\nRBMK 显示屏 (RBMK Screen)：基础的多方块屏幕（挂在天花板上，4x3 结构），用来显示反应堆的总体运行数据。\nRBMK 堆芯监视器 (RBMK Monitor)：进阶屏幕，可以显示反应堆 15x15 的网格细节，直观看到每一根柱子的状态。\nRBMK 自定义屏 (Custom Screen)：可以绑定储罐、电池等设备，用来显示液位、电量等自定义数据。\nRBMK 曲线屏 (Graph Screen)：专门用来显示温度、中子通量、水量等数据的历史折线图（支持自动轮换显示）。\n独立警报器 (RBMK Siren) 🚨（最新加入）：\n不需要多方块结构，单格方块即可放置。\n通上红石信号就会响（自带 HBM 的防空警报音效）。\n支持 16 种颜色染色。\n右键点击可以打开设置界面，自定义：警报颜色、声音类型（预警/严重）、音量大小。\n🛠️ 物品类 (Items)\nRBMK 遥控器 (RBMK Remote)：\n右键 RBMK 控制台或反应堆柱：记录数据源。\n右键 你的屏幕：将屏幕绑定到该反应堆。\n潜行+右键 储罐/电池：记录设备（最多 8 个）。\n潜行+右键 自定义屏：将记录的数据导入屏幕。\n喷气背包 (Jetpack) & 喷气开关 (Jet Switch)：\n穿在胸甲栏，手持开关右键长按即可喷射飞行。\n注意：有温度过热机制，飞太久会强制熄火冷却（屏幕下方会有热量条）。\n速度线圈 (Speed Coil)：拿在手上，移动速度提升至 5 倍。\n重力线圈 (Gravity Coil)：拿在手上，跳跃高度大幅提升。\n治愈线圈 (Healing Coil)：拿在手上，每秒恢复 4 点（2颗心）生命值。\n⚙️ 隐藏的核心机制（玩家可能不知道）\n超温红石联动：对着屏幕 蹲下+空手右键，可以打开告警设置。你可以设定“超过 800℃ 输出红石信号”。把这个红石信号接出来，连到你的独立警报器上，就能实现自动化超温防空警报。\n去抖（Debounce）机制：红石信号在温度上下浮动时不会疯狂闪烁，而是连续 4 拍（约0.8秒）确认超温后才会拉响，防止服务器卡顿和红石狂闪。",
+          "notesHtml": "<p>方块类 (Blocks)</p><p>在创造模式物品栏的 jiezhirbmkmod 标签页里可以找到</p><p>RBMK 显示屏 (RBMK Screen)：基础的多方块屏幕（挂在天花板上，4x3 结构），用来显示反应堆的总体运行数据。</p><p>RBMK 堆芯监视器 (RBMK Monitor)：进阶屏幕，可以显示反应堆 15x15 的网格细节，直观看到每一根柱子的状态。</p><p>RBMK 自定义屏 (Custom Screen)：可以绑定储罐、电池等设备，用来显示液位、电量等自定义数据。</p><p>RBMK 曲线屏 (Graph Screen)：专门用来显示温度、中子通量、水量等数据的历史折线图（支持自动轮换显示）。</p><p>独立警报器 (RBMK Siren) 🚨（最新加入）：</p><p>不需要多方块结构，单格方块即可放置。</p><p>通上红石信号就会响（自带 HBM 的防空警报音效）。</p><p>支持 16 种颜色染色。</p><p>右键点击可以打开设置界面，自定义：警报颜色、声音类型（预警/严重）、音量大小。</p><p>🛠️ 物品类 (Items)</p><p>RBMK 遥控器 (RBMK Remote)：</p><p>右键 RBMK 控制台或反应堆柱：记录数据源。</p><p>右键 你的屏幕：将屏幕绑定到该反应堆。</p><p>潜行+右键 储罐/电池：记录设备（最多 8 个）。</p><p>潜行+右键 自定义屏：将记录的数据导入屏幕。</p><p>喷气背包 (Jetpack) &amp; 喷气开关 (Jet Switch)：</p><p>穿在胸甲栏，手持开关右键长按即可喷射飞行。</p><p>注意：有温度过热机制，飞太久会强制熄火冷却（屏幕下方会有热量条）。</p><p>速度线圈 (Speed Coil)：拿在手上，移动速度提升至 5 倍。</p><p>重力线圈 (Gravity Coil)：拿在手上，跳跃高度大幅提升。</p><p>治愈线圈 (Healing Coil)：拿在手上，每秒恢复 4 点（2颗心）生命值。</p><p>⚙️ 隐藏的核心机制（玩家可能不知道）</p><p>超温红石联动：对着屏幕 蹲下+空手右键，可以打开告警设置。你可以设定“超过 800℃ 输出红石信号”。把这个红石信号接出来，连到你的独立警报器上，就能实现自动化超温防空警报。</p><p>去抖（Debounce）机制：红石信号在温度上下浮动时不会疯狂闪烁，而是连续 4 拍（约0.8秒）确认超温后才会拉响，防止服务器卡顿和红石狂闪。</p>"
+        },
+        {
+          "id": "rbmk-monitor#8.0",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "8.0",
+          "version": "8.0",
+          "channel": "release",
+          "name": "RBMK-Monitor-8.0",
+          "publishedAt": "2026-11-01T15:53:45+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/8.0",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-8.0.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/8.0/RBMK-Monitor-8.0.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "RBMK-Monitor-8.0\n最终打包出的 8.0 版本代码，这个模组目前包含了以下物品（Item）：\n1. 🕹️ RBMK 遥控器 (RBMK Remote)\n功能：\n普通右键 RBMK 控制台或反应堆柱，可以记录数据源。\n右键你的显示屏，可以将屏幕绑定到该反应堆。\n潜行+右键 储罐、电池等设备，可以记录这些设备（最多记录 8 个）。\n潜行+右键自定义屏幕，可以把记录的设备导入屏幕显示。\n2. 🧥 喷气背包 (Jetpack) & 喷气开关 (Jet Switch)\n功能：穿在胸甲栏，手持开关右键长按即可喷射飞行。\n注意：有温度过热机制（飞行时右上角/准星下方会显示热量条），过热后会强制熄火冷却。\n3. 🔴 速度线圈 (Speed Coil)\n功能：拿在主手或副手时，移动速度提升至 5 倍。\n4. 🔵 重力线圈 (Gravity Coil)\n功能：拿在主手或副手时，跳跃高度大幅提升。\n5. 🟢 治愈线圈 (Healing Coil)\n功能：拿在主手或副手时，每秒恢复 4 点（2颗心） 生命值。\n🧱 另外，方块（以物品形式存在）也有更新：\nRBMK 显示屏 (RBMK Screen)：基础的多方块屏幕。\nRBMK 堆芯监视器 (RBMK Monitor)：可以查看反应堆的 15x15 网格细节。\nRBMK 自定义屏 (Custom Screen)：可以绑定储罐、电池等设备，显示它们的液位和电量。\nRBMK 曲线屏 (Graph Screen)：新增的屏幕，可以显示温度、通量、水量等历史曲线。\nRBMK 显示屏配件 (Screen Part)：多方块结构的一部分（通常由放置主机时自动生成，不需要手动拿）。\n你进游戏测试的时候，可以直接在创造模式的物品栏里找到名为 “jiezhirbmkmod” 的专属标签页，所有东西都在里面！\n警报器呢\n警报器没有被做成一个“独立的方块”放在物品栏里。\n千问在 8.0 版本里实现的“警报”，是直接嵌在“RBMK显示屏”系统里的。也就是说，屏幕本身就是警报器。\n🔔 怎么触发警报（屏幕报警）？\n不需要额外合成警报器，你只需要：\n放置一个RBMK显示屏，并用RBMK遥控器绑定到你家的核反应堆。\n蹲下 + 空手右键 这块屏幕，会弹出一个“告警设置界面”。\n在这个界面里，你可以设置 “预警温度” 和 “严重温度”（比如设为 800℃）。\n当反应堆的温度超过你设定的数值时：\n屏幕画面会变红闪烁，并在顶部显示告警原因。\n屏幕方块上会飘出红烟。\n如果开启了汽笛，会直接播放 HBM 的警报音效。\n(你看代码里的 ModSounds.java，它注册了 alertwarn 和 alertcrit 两个声音，专门给屏幕超温时播放用的。)\n💡 如果你想要一个“独立的方块警报器”\n那千问确实没有做。如果你想要类似原版 HBM 里的“",
+          "notesHtml": "<p>RBMK-Monitor-8.0</p><p>最终打包出的 8.0 版本代码，这个模组目前包含了以下物品（Item）：</p><p>1. 🕹️ RBMK 遥控器 (RBMK Remote)</p><p>功能：</p><p>普通右键 RBMK 控制台或反应堆柱，可以记录数据源。</p><p>右键你的显示屏，可以将屏幕绑定到该反应堆。</p><p>潜行+右键 储罐、电池等设备，可以记录这些设备（最多记录 8 个）。</p><p>潜行+右键自定义屏幕，可以把记录的设备导入屏幕显示。</p><p>2. 🧥 喷气背包 (Jetpack) &amp; 喷气开关 (Jet Switch)</p><p>功能：穿在胸甲栏，手持开关右键长按即可喷射飞行。</p><p>注意：有温度过热机制（飞行时右上角/准星下方会显示热量条），过热后会强制熄火冷却。</p><p>3. 🔴 速度线圈 (Speed Coil)</p><p>功能：拿在主手或副手时，移动速度提升至 5 倍。</p><p>4. 🔵 重力线圈 (Gravity Coil)</p><p>功能：拿在主手或副手时，跳跃高度大幅提升。</p><p>5. 🟢 治愈线圈 (Healing Coil)</p><p>功能：拿在主手或副手时，每秒恢复 4 点（2颗心） 生命值。</p><p>🧱 另外，方块（以物品形式存在）也有更新：</p><p>RBMK 显示屏 (RBMK Screen)：基础的多方块屏幕。</p><p>RBMK 堆芯监视器 (RBMK Monitor)：可以查看反应堆的 15x15 网格细节。</p><p>RBMK 自定义屏 (Custom Screen)：可以绑定储罐、电池等设备，显示它们的液位和电量。</p><p>RBMK 曲线屏 (Graph Screen)：新增的屏幕，可以显示温度、通量、水量等历史曲线。</p><p>RBMK 显示屏配件 (Screen Part)：多方块结构的一部分（通常由放置主机时自动生成，不需要手动拿）。</p><p>你进游戏测试的时候，可以直接在创造模式的物品栏里找到名为 “jiezhirbmkmod” 的专属标签页，所有东西都在里面！</p><p>警报器呢</p><p>警报器没有被做成一个“独立的方块”放在物品栏里。</p><p>千问在 8.0 版本里实现的“警报”，是直接嵌在“RBMK显示屏”系统里的。也就是说，屏幕本身就是警报器。</p><p>🔔 怎么触发警报（屏幕报警）？</p><p>不需要额外合成警报器，你只需要：</p><p>放置一个RBMK显示屏，并用RBMK遥控器绑定到你家的核反应堆。</p><p>蹲下 + 空手右键 这块屏幕，会弹出一个“告警设置界面”。</p><p>在这个界面里，你可以设置 “预警温度” 和 “严重温度”（比如设为 800℃）。</p><p>当反应堆的温度超过你设定的数值时：</p><p>屏幕画面会变红闪烁，并在顶部显示告警原因。</p><p>屏幕方块上会飘出红烟。</p><p>如果开启了汽笛，会直接播放 HBM 的警报音效。</p><p>(你看代码里的 ModSounds.java，它注册了 alert_warn 和 alert_crit 两个声音，专门给屏幕超温时播放用的。)</p><p>💡 如果你想要一个“独立的方块警报器”</p><p>那千问确实没有做。如果你想要类似原版 HBM 里的“汽笛（Siren）”方块，或者想要一个占地一格、超温就全图响的警报器，那是需要新建一个 Block 和 TileEntity 的。</p><p>如果你觉得“屏幕当警报器”不够硬核，想要一个真正的独立警报器，你可以去跟千问提：</p><p>“千问，能不能帮我做一个独立的警报器方块（Siren Block）？不需要屏幕。只要通上红石信号，或者绑定了反应堆超温，它就能发出 HBM 的警报声，并且不需要多方块结构。”</p><p>🎮 你刚才测试的“红石输出”配合什么用？</p><p>你在设置界面里开了“红石输出”后，当反应堆超温，屏幕方块本身（以及它周围的 12 个隐形配件）会发出红石信号（强度 15）。</p><p>你可以用这个红石信号联动其他东西：</p><p>连到 HBM 自己的原版汽笛方块上，让汽笛响。</p><p>连到活塞上，把控制棒强行降下去（自动停堆）。</p><p>连到 TNT 上……（如果你想让基地上天的话）。</p><p>先去游戏里蹲下右键屏幕，把设置界面调出来，试试超温后屏幕闪烁的效果吧！</p>"
+        },
+        {
+          "id": "rbmk-monitor#7.0",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "7.0",
+          "version": "7.0",
+          "channel": "release",
+          "name": "RBMK-Monitor-7.0",
+          "publishedAt": "2026-11-01T13:39:46+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/7.0",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-7.0.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/7.0/RBMK-Monitor-7.0.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "RBMK-Monitor-7.0",
+          "notesHtml": "<p>RBMK-Monitor-7.0</p>"
+        },
+        {
+          "id": "rbmk-monitor#6.1",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "6.1",
+          "version": "6.1",
+          "channel": "release",
+          "name": "RBMK-Monitor-6.1",
+          "publishedAt": "2026-11-01T08:50:13+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/6.1",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-6.1.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/6.1/RBMK-Monitor-6.1.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "添加曲线显示屏，添加字体文件",
+          "notesHtml": "<p>添加曲线显示屏，添加字体文件</p>"
+        },
+        {
+          "id": "rbmk-monitor#5.2",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "5.2",
+          "version": "5.2",
+          "channel": "release",
+          "name": "RBMK-Monitor-5.2",
+          "publishedAt": "2026-10-31T15:39:03+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/5.2",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-5.2.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/5.2/RBMK-Monitor-5.2.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "RBMK-Monitor-5.2",
+          "notesHtml": "<p>RBMK-Monitor-5.2</p>"
+        },
+        {
+          "id": "rbmk-monitor#5.1",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "5.1",
+          "version": "5.1",
+          "channel": "release",
+          "name": "5.1-重要更新（把modID，包名更改）",
+          "publishedAt": "2026-10-29T06:40:09+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/5.1",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-5.1.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/5.1/RBMK-Monitor-5.1.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "把modID，包名更改，jeizhi应该可以共存，有bug请在lssues",
+          "notesHtml": "<p>把modID，包名更改，jeizhi应该可以共存，有bug请在lssues</p>"
+        },
+        {
+          "id": "rbmk-monitor#5.0.0",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "5.0.0",
+          "version": "5.0.0",
+          "channel": "release",
+          "name": "5.0.0正式版",
+          "publishedAt": "2026-10-28T03:39:02+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/5.0.0",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "jiezhi-rbmk-monitor-1.12.2-5.0.0-rbmk.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/5.0.0/jiezhi-rbmk-monitor-1.12.2-5.0.0-rbmk.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "把原版模组的一些给移植到了这个模组用起来不收心",
+          "notesHtml": "<p>把原版模组的一些给移植到了这个模组用起来不收心</p>"
+        },
+        {
+          "id": "rbmk-monitor#4.1",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "4.1",
+          "version": "4.1",
+          "channel": "release",
+          "name": "4.1版紧急修复",
+          "publishedAt": "2026-10-26T13:04:39+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/4.1",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "jiezhi-rbmk-monitor-1.12.2-1.0.0-rbmk.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/4.1/jiezhi-rbmk-monitor-1.12.2-1.0.0-rbmk.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "上次预览版出现重大错误，原本的RBMK被改消失了，取而代之的是原版的DFC，此版本特指修改。",
+          "notesHtml": "<p>上次预览版出现重大错误，原本的RBMK被改消失了，取而代之的是原版的DFC，此版本特指修改。</p>"
+        },
+        {
+          "id": "rbmk-monitor#4.0",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "4.0",
+          "version": "4.0",
+          "channel": "preview",
+          "name": "jiezhimod and RBMKmod 合并版",
+          "publishedAt": "2026-10-26T06:53:19+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/4.0",
+          "prerelease": true,
+          "draft": false,
+          "assets": [
+            {
+              "name": "jiezhimod-merged-4.0 rbmk (1).jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/4.0/jiezhimod-merged-4.0%20rbmk%20(1).jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "📦 合并包做了什么\n \n以原版 DFC 特效工具 4.0 为基础，把 RBMK 监控屏独有的 22 个 class + 全部资源文件（blockstates/models/textures/lang）都塞进去了。总共 162 个 class。\n \n⚠️ 为什么不能完美合并\n \n两个 jar 虽然 modid 都叫  jiezhimod ，但它们是同一个 mod 的两个不同版本，核心类同名但内容完全不同",
+          "notesHtml": "<p>📦 合并包做了什么</p><p>以原版 DFC 特效工具 4.0 为基础，把 RBMK 监控屏独有的 22 个 class + 全部资源文件（blockstates/models/textures/lang）都塞进去了。总共 162 个 class。</p><p>⚠️ 为什么不能完美合并</p><p>两个 jar 虽然 modid 都叫  jiezhimod ，但它们是同一个 mod 的两个不同版本，核心类同名但内容完全不同</p>"
+        },
+        {
+          "id": "rbmk-monitor#2.0",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "2.0",
+          "version": "2.0",
+          "channel": "release",
+          "name": "jiezhi-rbmk-monitor-1.12.2-2.0-rbmk",
+          "publishedAt": "2026-10-25T19:04:14+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/2.0",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "jiezhi-rbmk-monitor-1.12.2-2.0-rbmk.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/2.0/jiezhi-rbmk-monitor-1.12.2-2.0-rbmk.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "jiezhi-rbmk-monitor-1.12.2-2.0-rbmk",
+          "notesHtml": "<p>jiezhi-rbmk-monitor-1.12.2-2.0-rbmk</p>"
+        },
+        {
+          "id": "rbmk-monitor#1.0.1",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "1.0.1",
+          "version": "1.0.1",
+          "channel": "release",
+          "name": "jiezhi-rbmk-monitor-1.12.2-1.0.1-rbmk",
+          "publishedAt": "2026-10-25T18:57:06+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/1.0.1",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "jiezhi-rbmk-monitor-1.12.2-1.0.1-rbmk.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/1.0.1/jiezhi-rbmk-monitor-1.12.2-1.0.1-rbmk.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "jiezhi-rbmk-monitor-1.12.2-1.0.1-rbmk for  MC HBM 1.12.2",
+          "notesHtml": "<p>jiezhi-rbmk-monitor-1.12.2-1.0.1-rbmk for  _MC HBM 1.12.2_</p>"
+        },
+        {
+          "id": "rbmk-monitor#1.0.0",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "1.0.0",
+          "version": "1.0.0",
+          "channel": "release",
+          "name": "jiezhi-rbmk-monitor-1.12.2-1.0.0-rbmk",
+          "publishedAt": "2026-10-24T15:29:06+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/1.0.0",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "jiezhi-rbmk-monitor-1.12.2-1.0.0-rbmk.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/1.0.0/jiezhi-rbmk-monitor-1.12.2-1.0.0-rbmk.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "改变树上的节枝的jar，原作者bilibili：https://space.bilibili.com/3494363348863838\n本作品基于节枝特效工具 JiezhiMod 二次创作",
+          "notesHtml": "<p>改变树上的节枝的jar，原作者bilibili：https://space.bilibili.com/3494363348863838</p><p>本作品基于节枝特效工具 JiezhiMod 二次创作</p>"
+        }
+      ],
+      "latest": {
+        "id": "rbmk-monitor#13.1-beta",
+        "modId": "rbmk-monitor",
+        "platform": "gitee",
+        "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+        "tag": "13.1-beta",
+        "version": "13.1-beta",
+        "channel": "beta",
+        "name": "v13.1-beta",
+        "publishedAt": "2026-11-13T09:09:14+08:00",
+        "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/13.1-beta",
+        "prerelease": false,
+        "draft": false,
+        "assets": [
+          {
+            "name": "RBMK-Monitor-13.1-beta.jar",
+            "kind": "mod",
+            "size": 0,
+            "downloads": null,
+            "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/13.1-beta/RBMK-Monitor-13.1-beta.jar",
+            "mirror": null
+          }
+        ],
+        "downloads": null,
+        "notesText": "🚀 RBMK-Monitor v13.1-beta 测试版发布\n本次更新是模组走向“生存模式”的关键一步。我们补齐了全套合成配方，并进行了严苛的底层代码审查。\n 🔨 核心新增：全套生存合成配方\n告别创造模式专属！现在你可以通过收集资源，一步步搭建你的核电站中控室：\n   RBMK 显示屏：红石 + 铁锭 + 玻璃板（有序合成）。\n   RBMK 终端屏幕：显示屏 + 中继器 + 铁锭。\n   RBMK 终端机：铁块 + 红石火把 + 玻璃板。\n   RBMK 路由器 (跨维度核心)：黑曜石 + 末影珍珠 + 红石粉。\n   RBMK 警报汽笛：音符盒 + 红石粉 + 铁锭。\n   RBMK 遥控器：铁锭 + 红石粉 + 末影珍珠。\n 🛡️ 史诗级底层审查与修复\n   JSON 语法校验：全面核对了 recipes 目录下的所有配方文件，修复了可能导致配方失效的语法错误。\n   物品 ID 匹配：重新比对了 ModItems 和 ModBlocks 的注册名，确保配方能够完美匹配。\n   语言文件补全：补齐了所有新物品的 lang 本地化名称，告别乱码。\n   配方死锁检测：确认没有出现“A 需要 B，B 需要 A”的循环材料逻辑。\n ⚠️ 测试说明（重要）\n   本版本为 Beta 测试版，核心测试目标为：生存模式下的合成配方的平衡性与可用性。\n   如果在生存模式下发现无法合成、材料识别错误、或配方可以刷物品，请在 Gitee 提交 Issue 或加群反馈。\n 📦 安装与前置要求\n1. 游戏版本：Minecraft 1.12.2\n2. 加载器：Forge 14.23.5.2859+\n3. 前置模组：无强制前置（HBM NTM-CE 为可选前置）。\n4. 将下载的 .jar 文件放入 .minecraft/mods 文件夹即可。\n ⚖️ 开源与授权说明\n   本项目遵循 MPL-2.0 开源协议。\n   本项目基于 树上的节枝 (Jiezhi) 的源码进行二创，已保留全部授权声明。",
+        "notesHtml": "<h4>🚀 RBMK-Monitor v13.1-beta 测试版发布</h4><p>本次更新是模组走向“生存模式”的关键一步。我们补齐了全套合成配方，并进行了严苛的底层代码审查。</p><h4>🔨 核心新增：全套生存合成配方</h4><p>告别创造模式专属！现在你可以通过收集资源，一步步搭建你的核电站中控室：</p><ul><li><strong>RBMK 显示屏</strong>：红石 + 铁锭 + 玻璃板（有序合成）。</li><li><strong>RBMK 终端屏幕</strong>：显示屏 + 中继器 + 铁锭。</li><li><strong>RBMK 终端机</strong>：铁块 + 红石火把 + 玻璃板。</li><li><strong>RBMK 路由器 (跨维度核心)</strong>：黑曜石 + 末影珍珠 + 红石粉。</li><li><strong>RBMK 警报汽笛</strong>：音符盒 + 红石粉 + 铁锭。</li><li><strong>RBMK 遥控器</strong>：铁锭 + 红石粉 + 末影珍珠。</li></ul><h4>🛡️ 史诗级底层审查与修复</h4><ul><li><strong>JSON 语法校验</strong>：全面核对了 <code>recipes</code> 目录下的所有配方文件，修复了可能导致配方失效的语法错误。</li><li><strong>物品 ID 匹配</strong>：重新比对了 <code>ModItems</code> 和 <code>ModBlocks</code> 的注册名，确保配方能够完美匹配。</li><li><strong>语言文件补全</strong>：补齐了所有新物品的 <code>lang</code> 本地化名称，告别乱码。</li><li><strong>配方死锁检测</strong>：确认没有出现“A 需要 B，B 需要 A”的循环材料逻辑。</li></ul><h4>⚠️ 测试说明（重要）</h4><ul><li>本版本为 <strong>Beta 测试版</strong>，核心测试目标为：<strong>生存模式下的合成配方的平衡性与可用性</strong>。</li><li>如果在生存模式下发现无法合成、材料识别错误、或配方可以刷物品，请在 Gitee 提交 Issue 或加群反馈。</li></ul><h4>📦 安装与前置要求</h4><p>1. 游戏版本：<strong>Minecraft 1.12.2</strong></p><p>2. 加载器：<strong>Forge 14.23.5.2859+</strong></p><p>3. 前置模组：<strong>无强制前置</strong>（HBM NTM-CE 为可选前置）。</p><p>4. 将下载的 <code>.jar</code> 文件放入 <code>.minecraft/mods</code> 文件夹即可。</p><h4>⚖️ 开源与授权说明</h4><ul><li>本项目遵循 <strong>MPL-2.0</strong> 开源协议。</li><li>本项目基于 <strong>树上的节枝 (Jiezhi)</strong> 的源码进行二创，已保留全部授权声明。</li></ul>"
+      },
       "downloads": null,
-      "error": "fetch failed"
+      "error": null,
+      "licenseSource": "repo"
     },
     {
       "id": "hbmzz",
@@ -58,12 +734,12 @@
               "name": "hbmzz-2.9.0.jar",
               "kind": "mod",
               "size": 2091887,
-              "downloads": 6,
+              "downloads": 8,
               "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.9.0/hbmzz-2.9.0.jar",
               "mirror": null
             }
           ],
-          "downloads": 6,
+          "downloads": 8,
           "notesText": "先说最要紧的一句：这版把 rsaudio 整个装进了同一枚 jar，所以升级前先把旧的 rsaudio-.jar 从 mods/ 里拿走。 两份同时在 mods/ 里就是 duplicate modid，FML 会在加载阶段直接崩，而它的报错完全指不到「你装了两份」这件事上。tools/deploy.py 已经会自动把它改名成 .jar.merged。\n rsaudio 全套进来\n先把归属说清楚：Redstone Audio（红石音频 / rsaudio）不是搬来的第三方模组，它是本模组作者自己写的另一个独立模组——以前单独发一枚 rsaudio-1.0.0.jar。这版只是把它改成随同一枚 jar 一起带，作者没变，代码也没有换人写；它不在 NOTICE.md / 许可页的第三方来源名单里。\n191 个源文件、367 个资源，逐文件原样搬运：音频播放器、红石延迟器、结构加载器、自动化红石计算机、六色警报灯、防核门、广播器、DMR 与 F9 两台反应堆、电梯、监控、门禁与气闸、远程面板、列车与货运卡车。\n它仍然是一个独立模组——保留自己的 @Mod 容器与 modid = rsaudio，只是和 hbmzz 打在同一枚 jar 里由 FML 同时加载两个容器。这不是偷懒：rsaudio: 的方块与方块实体 id 已经写进存档了，改成 hbmzz: 等于让老存档里的机器凭空消失。\n reasim：让播放器学会装破喇叭\n播放器界面多了一个 REASIM 按钮，进去是一整屏滑条。总开关默认关，关着的时候走原来的 ISound 路径，声音和 2.8.0 一个字节都不差。\n打开之后换成一条自己推流的 DSP 链。为什么非这么干：ISound 只给了音量（线性缩放）和音高（重采样）两个旋钮，而失真需要波形整形、沙沙声需要加噪声、回声需要一条带反馈的延迟线——这三件事都必须拿到采样。所以 reasim 自己解码 ogg、跑一遍 DSP、再把 PCM 喂进 Minecraft 自带的 paulscode 引擎。\n| 滑条 | 范围 | 默认 | 干什么 |\n| --- | --- | --- | --- |\n| 音量 | 0 – 200% | 100% | 功放旋钮，1.0 = 原音量。再往上没意义，要削波请用失真 |\n| 回声 | 0 – 100% | 30% | 湿声比例。延迟 90–280 ms 跟着它走，反馈 0.20–0.65，回路里带低通 |\n| 失真 | 0 – 100% | 0% | tanh 软削波（drive 1→25）+ 位深 16→6 位，末尾去直流 |\n| 电流声 | 0 – 100% | 18% | 50 Hz 工频哼声 + 二次三次谐波 |\n| 沙沙声 | 0 – 100% | 10% | 带限白噪 + 稀疏爆裂（接触不良的电位器） |\n链路顺",
           "notesHtml": "<p>先说最要紧的一句：**这版把 rsaudio 整个装进了同一枚 jar，所以升级前先把旧的 <code>rsaudio-*.jar</code> 从 <code>mods/</code> 里拿走。** 两份同时在 <code>mods/</code> 里就是 duplicate modid，FML 会在加载阶段直接崩，而它的报错完全指不到「你装了两份」这件事上。<code>tools/deploy.py</code> 已经会自动把它改名成 <code>.jar.merged</code>。</p><h4>rsaudio 全套进来</h4><p><strong>先把归属说清楚：Redstone Audio（红石音频 / <code>rsaudio</code>）不是搬来的第三方模组，它是本模组作者自己写的另一个独立模组</strong>——以前单独发一枚 <code>rsaudio-1.0.0.jar</code>。这版只是把它改成随同一枚 jar 一起带，作者没变，代码也没有换人写；它不在 <code>NOTICE.md</code> / 许可页的第三方来源名单里。</p><p>191 个源文件、367 个资源，逐文件原样搬运：音频播放器、红石延迟器、结构加载器、自动化红石计算机、六色警报灯、防核门、广播器、DMR 与 F9 两台反应堆、电梯、监控、门禁与气闸、远程面板、列车与货运卡车。</p><p>它仍然是一个独立模组——保留自己的 <code>@Mod</code> 容器与 <code>modid = rsaudio</code>，只是和 hbmzz 打在同一枚 jar 里由 FML 同时加载两个容器。这不是偷懒：<code>rsaudio:</code> 的方块与方块实体 id 已经写进存档了，改成 <code>hbmzz:</code> 等于让老存档里的机器凭空消失。</p><h4>reasim：让播放器学会装破喇叭</h4><p>播放器界面多了一个 <code>REASIM</code> 按钮，进去是一整屏滑条。总开关默认关，关着的时候走原来的 <code>ISound</code> 路径，声音和 2.8.0 一个字节都不差。</p><p>打开之后换成一条自己推流的 DSP 链。为什么非这么干：<code>ISound</code> 只给了音量（线性缩放）和音高（重采样）两个旋钮，而失真需要波形整形、沙沙声需要加噪声、回声需要一条带反馈的延迟线——这三件事都必须拿到采样。所以 reasim 自己解码 ogg、跑一遍 DSP、再把 PCM 喂进 Minecraft 自带的 paulscode 引擎。</p><p>| 滑条 | 范围 | 默认 | 干什么 |</p><p>| --- | --- | --- | --- |</p><p>| 音量 | 0 – 200% | 100% | 功放旋钮，1.0 = 原音量。再往上没意义，要削波请用失真 |</p><p>| 回声 | 0 – 100% | 30% | 湿声比例。延迟 90–280 ms 跟着它走，反馈 0.20–0.65，回路里带低通 |</p><p>| 失真 | 0 – 100% | 0% | tanh 软削波（drive 1→25）+ 位深 16→6 位，末尾去直流 |</p><p>| 电流声 | 0 – 100% | 18% | 50 Hz 工频哼声 + 二次三次谐波 |</p><p>| 沙沙声 | 0 – 100% | 10% | 带限白噪 + 稀疏爆裂（接触不良的电位器） |</p><p>链路顺序是固定的：增益 → 失真 → 电流声/沙沙声 → 回声 → 软限幅。噪声加在增益之后而不是相乘，所以<strong>音量拧到 0 还剩一点嗡嗡声</strong>——真实的功放底噪不跟着音量旋钮走，这一条是刻意留的。</p><p><strong>自动回声</strong>：六向各打一条 16 格射线量空间感，再统计半径 4 格内的实心方块占比，头顶能看见天就把混响砍到 35%，算出来的值在 0–0.95 之间，每 20 tick 重算一次。开着自动时回声滑条变灰并显示量到的数；点它一次就接管成手动值。</p><p><strong>开关逻辑</strong>：开关只在开播那一刻决定走哪条路。播放中途关掉不会重开音频，只是把整条 DSP 旁路掉——重开会「咔」一下，那是不必要的噪声。参数存在方块实体上（服务端权威），改完立刻作用于正在跑的链路，多人服务器里所有人听到同一种破喇叭，而且只有服务端能改。拿不到声音引擎时安静退回普通播放，只是没有这些效果，日志和界面都会写明原因，不会静音。</p><h4>其它</h4><ul><li>regcheck 35 → 36 条：新增「reasim 的 DSP 不引用 Minecraft」，并把 TE / proxy / 字形三条规则的作用域收窄到 <code>com/hbmzz</code>（移植进来的第二个模组有自己的注册表、代理和字形集，不收窄会多出 41 条误报）。</li><li><code>tools/reasimcheck</code> 可以在裸 JVM 上跑整条 DSP 链，9 条断言，其中「关闭时逐字节不变」是「不改原有行为」的硬保证。</li></ul><h4>装法</h4><p>Minecraft 1.12.2 + Forge 2847 + HBM&#39;s Nuclear Tech（诅咒版/节枝）。把 <code>hbmzz-2.9.0.jar</code> 丢进 <code>mods/</code>，确认里面没有 <code>rsaudio-*.jar</code>。</p>"
         },
@@ -437,16 +1113,16 @@
             "name": "hbmzz-2.9.0.jar",
             "kind": "mod",
             "size": 2091887,
-            "downloads": 6,
+            "downloads": 8,
             "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v2.9.0/hbmzz-2.9.0.jar",
             "mirror": null
           }
         ],
-        "downloads": 6,
+        "downloads": 8,
         "notesText": "先说最要紧的一句：这版把 rsaudio 整个装进了同一枚 jar，所以升级前先把旧的 rsaudio-.jar 从 mods/ 里拿走。 两份同时在 mods/ 里就是 duplicate modid，FML 会在加载阶段直接崩，而它的报错完全指不到「你装了两份」这件事上。tools/deploy.py 已经会自动把它改名成 .jar.merged。\n rsaudio 全套进来\n先把归属说清楚：Redstone Audio（红石音频 / rsaudio）不是搬来的第三方模组，它是本模组作者自己写的另一个独立模组——以前单独发一枚 rsaudio-1.0.0.jar。这版只是把它改成随同一枚 jar 一起带，作者没变，代码也没有换人写；它不在 NOTICE.md / 许可页的第三方来源名单里。\n191 个源文件、367 个资源，逐文件原样搬运：音频播放器、红石延迟器、结构加载器、自动化红石计算机、六色警报灯、防核门、广播器、DMR 与 F9 两台反应堆、电梯、监控、门禁与气闸、远程面板、列车与货运卡车。\n它仍然是一个独立模组——保留自己的 @Mod 容器与 modid = rsaudio，只是和 hbmzz 打在同一枚 jar 里由 FML 同时加载两个容器。这不是偷懒：rsaudio: 的方块与方块实体 id 已经写进存档了，改成 hbmzz: 等于让老存档里的机器凭空消失。\n reasim：让播放器学会装破喇叭\n播放器界面多了一个 REASIM 按钮，进去是一整屏滑条。总开关默认关，关着的时候走原来的 ISound 路径，声音和 2.8.0 一个字节都不差。\n打开之后换成一条自己推流的 DSP 链。为什么非这么干：ISound 只给了音量（线性缩放）和音高（重采样）两个旋钮，而失真需要波形整形、沙沙声需要加噪声、回声需要一条带反馈的延迟线——这三件事都必须拿到采样。所以 reasim 自己解码 ogg、跑一遍 DSP、再把 PCM 喂进 Minecraft 自带的 paulscode 引擎。\n| 滑条 | 范围 | 默认 | 干什么 |\n| --- | --- | --- | --- |\n| 音量 | 0 – 200% | 100% | 功放旋钮，1.0 = 原音量。再往上没意义，要削波请用失真 |\n| 回声 | 0 – 100% | 30% | 湿声比例。延迟 90–280 ms 跟着它走，反馈 0.20–0.65，回路里带低通 |\n| 失真 | 0 – 100% | 0% | tanh 软削波（drive 1→25）+ 位深 16→6 位，末尾去直流 |\n| 电流声 | 0 – 100% | 18% | 50 Hz 工频哼声 + 二次三次谐波 |\n| 沙沙声 | 0 – 100% | 10% | 带限白噪 + 稀疏爆裂（接触不良的电位器） |\n链路顺",
         "notesHtml": "<p>先说最要紧的一句：**这版把 rsaudio 整个装进了同一枚 jar，所以升级前先把旧的 <code>rsaudio-*.jar</code> 从 <code>mods/</code> 里拿走。** 两份同时在 <code>mods/</code> 里就是 duplicate modid，FML 会在加载阶段直接崩，而它的报错完全指不到「你装了两份」这件事上。<code>tools/deploy.py</code> 已经会自动把它改名成 <code>.jar.merged</code>。</p><h4>rsaudio 全套进来</h4><p><strong>先把归属说清楚：Redstone Audio（红石音频 / <code>rsaudio</code>）不是搬来的第三方模组，它是本模组作者自己写的另一个独立模组</strong>——以前单独发一枚 <code>rsaudio-1.0.0.jar</code>。这版只是把它改成随同一枚 jar 一起带，作者没变，代码也没有换人写；它不在 <code>NOTICE.md</code> / 许可页的第三方来源名单里。</p><p>191 个源文件、367 个资源，逐文件原样搬运：音频播放器、红石延迟器、结构加载器、自动化红石计算机、六色警报灯、防核门、广播器、DMR 与 F9 两台反应堆、电梯、监控、门禁与气闸、远程面板、列车与货运卡车。</p><p>它仍然是一个独立模组——保留自己的 <code>@Mod</code> 容器与 <code>modid = rsaudio</code>，只是和 hbmzz 打在同一枚 jar 里由 FML 同时加载两个容器。这不是偷懒：<code>rsaudio:</code> 的方块与方块实体 id 已经写进存档了，改成 <code>hbmzz:</code> 等于让老存档里的机器凭空消失。</p><h4>reasim：让播放器学会装破喇叭</h4><p>播放器界面多了一个 <code>REASIM</code> 按钮，进去是一整屏滑条。总开关默认关，关着的时候走原来的 <code>ISound</code> 路径，声音和 2.8.0 一个字节都不差。</p><p>打开之后换成一条自己推流的 DSP 链。为什么非这么干：<code>ISound</code> 只给了音量（线性缩放）和音高（重采样）两个旋钮，而失真需要波形整形、沙沙声需要加噪声、回声需要一条带反馈的延迟线——这三件事都必须拿到采样。所以 reasim 自己解码 ogg、跑一遍 DSP、再把 PCM 喂进 Minecraft 自带的 paulscode 引擎。</p><p>| 滑条 | 范围 | 默认 | 干什么 |</p><p>| --- | --- | --- | --- |</p><p>| 音量 | 0 – 200% | 100% | 功放旋钮，1.0 = 原音量。再往上没意义，要削波请用失真 |</p><p>| 回声 | 0 – 100% | 30% | 湿声比例。延迟 90–280 ms 跟着它走，反馈 0.20–0.65，回路里带低通 |</p><p>| 失真 | 0 – 100% | 0% | tanh 软削波（drive 1→25）+ 位深 16→6 位，末尾去直流 |</p><p>| 电流声 | 0 – 100% | 18% | 50 Hz 工频哼声 + 二次三次谐波 |</p><p>| 沙沙声 | 0 – 100% | 10% | 带限白噪 + 稀疏爆裂（接触不良的电位器） |</p><p>链路顺序是固定的：增益 → 失真 → 电流声/沙沙声 → 回声 → 软限幅。噪声加在增益之后而不是相乘，所以<strong>音量拧到 0 还剩一点嗡嗡声</strong>——真实的功放底噪不跟着音量旋钮走，这一条是刻意留的。</p><p><strong>自动回声</strong>：六向各打一条 16 格射线量空间感，再统计半径 4 格内的实心方块占比，头顶能看见天就把混响砍到 35%，算出来的值在 0–0.95 之间，每 20 tick 重算一次。开着自动时回声滑条变灰并显示量到的数；点它一次就接管成手动值。</p><p><strong>开关逻辑</strong>：开关只在开播那一刻决定走哪条路。播放中途关掉不会重开音频，只是把整条 DSP 旁路掉——重开会「咔」一下，那是不必要的噪声。参数存在方块实体上（服务端权威），改完立刻作用于正在跑的链路，多人服务器里所有人听到同一种破喇叭，而且只有服务端能改。拿不到声音引擎时安静退回普通播放，只是没有这些效果，日志和界面都会写明原因，不会静音。</p><h4>其它</h4><ul><li>regcheck 35 → 36 条：新增「reasim 的 DSP 不引用 Minecraft」，并把 TE / proxy / 字形三条规则的作用域收窄到 <code>com/hbmzz</code>（移植进来的第二个模组有自己的注册表、代理和字形集，不收窄会多出 41 条误报）。</li><li><code>tools/reasimcheck</code> 可以在裸 JVM 上跑整条 DSP 链，9 条断言，其中「关闭时逐字节不变」是「不改原有行为」的硬保证。</li></ul><h4>装法</h4><p>Minecraft 1.12.2 + Forge 2847 + HBM&#39;s Nuclear Tech（诅咒版/节枝）。把 <code>hbmzz-2.9.0.jar</code> 丢进 <code>mods/</code>，确认里面没有 <code>rsaudio-*.jar</code>。</p>"
       },
-      "downloads": 62,
+      "downloads": 64,
       "error": null,
       "licenseSource": "repo"
     }
