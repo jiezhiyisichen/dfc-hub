@@ -367,6 +367,14 @@ ul {
   border-color: rgba(56, 189, 248, 0.42);
 }
 
+/* 不稳定：实验性构建。橙色 + 虚线边，一眼和上面几种实线标签分开 */
+.badge--unstable {
+  color: #ffbf7a;
+  background: rgba(255, 157, 66, 0.12);
+  border-color: rgba(255, 157, 66, 0.46);
+  border-style: dashed;
+}
+
 .badge--muted {
   color: var(--muted);
   background: rgba(255, 255, 255, 0.04);
@@ -1810,6 +1818,17 @@ ul {
   background: rgba(0, 0, 0, 0.28);
 }
 
+/* 不稳定筛选：橙色系，和紧急修复的红、重大更新的青蓝分开 */
+.chip-btn--unstable.is-on {
+  color: #2a1404;
+  background: linear-gradient(135deg, #ffb066, #ffd08a);
+}
+
+.chip-btn--unstable.is-on .n {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.28);
+}
+
 .result-bar {
   display: flex;
   align-items: center;
@@ -2950,5 +2969,201 @@ ul {
 @media (max-width: 860px) {
   .version-board.is-mod {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- 24. 首页：收录一览 ---------- */
+.catalog-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.catalog-title {
+  margin: 0;
+  font-size: clamp(16px, 1.8vw, 19px);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--text);
+}
+
+.catalog-count {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.catalog {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+
+/* 表头只做视觉提示，和行共用同一套栅格 */
+.catalog-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr) auto 20px;
+  align-items: center;
+  gap: 16px;
+  padding: 0 12px 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.catalog-cols span:nth-child(3) {
+  text-align: right;
+}
+
+.cat-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr) auto 20px;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--line);
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.22s, border-color 0.22s;
+}
+
+.cat-row:hover {
+  background: rgba(255, 255, 255, 0.028);
+  border-bottom-color: var(--line-strong);
+}
+
+/* 本体那行给一点琥珀底，和附属区分开 */
+.cat-row--star {
+  background: rgba(224, 163, 85, 0.045);
+}
+
+.cat-row--error .cat-ver b {
+  color: var(--red);
+}
+
+.cat-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.cat-name em {
+  font-style: normal;
+  font-size: 10.5px;
+  font-weight: 500;
+  padding: 1px 6px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.cat-star {
+  font-style: normal;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--amber);
+}
+
+.cat-ver {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-width: 0;
+}
+
+.cat-ver b {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.cat-ver .badge {
+  font-size: 10.5px;
+  padding: 1px 7px;
+}
+
+.cat-dl {
+  text-align: right;
+  white-space: nowrap;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.cat-dl b {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.cat-unknown {
+  opacity: 0.72;
+}
+
+.cat-go {
+  color: var(--muted);
+  transition: color 0.2s, transform 0.2s var(--ease);
+}
+
+.cat-row:hover .cat-go {
+  color: var(--cyan);
+  transform: translateX(2px);
+}
+
+.catalog-note {
+  margin: 12px 0 0;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.catalog-empty {
+  margin: 0;
+  padding: 18px 2px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+@media (max-width: 720px) {
+  .catalog-cols {
+    display: none;
+  }
+
+  .cat-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    row-gap: 7px;
+    padding: 13px 6px;
+  }
+
+  .cat-name {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .cat-go {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .cat-ver {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .cat-dl {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 12px;
   }
 }

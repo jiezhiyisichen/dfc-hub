@@ -144,6 +144,7 @@
       source: "mod",
       hotfix: !!r.hotfix,
       major: !!r.major,
+      unstable: !!r.unstable,
       downloads: typeof r.downloads === "number" ? r.downloads : null,
       assets: (r.assets || []).map(function (a) {
         return {
@@ -318,6 +319,7 @@
       CHANNEL_LABEL[release.channel] || "",
       release.hotfix ? "紧急修复 紧急修复版 hotfix" : "",
       release.major ? "重大更新 重大版本 major" : "",
+      release.unstable ? "不稳定 不稳定版 unstable experimental experimental 实验版" : "",
       release.notesText || "",
       (release.assets || [])
         .map(function (a) {
@@ -472,7 +474,8 @@
     }
   }
 
-  /** 附属没有紧急修复 / 重大更新 / 镜像线路这些概念，对应的筛选组直接隐藏 */
+  /** 下载线路只有本体有（附属只有单一托管平台）；
+      通道 / 性质筛选对本体和附属都适用，不隐藏。 */
   function renderFilterVisibility(model) {
     document.querySelectorAll("[data-only-base]").forEach(function (el) {
       el.hidden = !model.isBase;
@@ -568,6 +571,11 @@
         '<span class="badge badge--major" title="重大更新，只与正式版一起出现">' +
         '<span class="dot"></span>重大更新</span>';
     }
+    if (release.unstable) {
+      badges +=
+        '<span class="badge badge--unstable" title="不稳定：实验性构建，可能崩溃，官方不建议日常使用">' +
+        '<span class="dot"></span>不稳定</span>';
+    }
     badges +=
       '<span class="badge badge--' +
       (channel === "release" ? "release" : channel === "beta" ? "beta" : "preview") +
@@ -649,11 +657,12 @@
 
   /* ---------------------------------------------------------------- stats */
   function computeCounts(releases) {
-    var counts = { all: releases.length, release: 0, beta: 0, preview: 0, hotfix: 0, major: 0 };
+    var counts = { all: releases.length, release: 0, beta: 0, preview: 0, hotfix: 0, major: 0, unstable: 0 };
     releases.forEach(function (r) {
       if (counts[r.channel] != null) counts[r.channel]++;
       if (r.hotfix) counts.hotfix++;
       if (r.major) counts.major++;
+      if (r.unstable) counts.unstable++;
     });
     return counts;
   }
@@ -693,6 +702,7 @@
       if (state.channel !== "all" && r.channel !== state.channel) return false;
       if (state.nature === "hotfix" && !r.hotfix) return false;
       if (state.nature === "major" && !r.major) return false;
+      if (state.nature === "unstable" && !r.unstable) return false;
       if (state.type !== "all" && !firstAsset(r, state.type)) return false;
       return matchesQuery(r, q);
     });
@@ -864,7 +874,7 @@
       var mh = params.get("mirror");
       if (ch === "release" || ch === "beta" || ch === "preview") state.channel = ch;
       var nt = params.get("nature");
-      if (nt === "hotfix" || nt === "major") state.nature = nt;
+      if (nt === "hotfix" || nt === "major" || nt === "unstable") state.nature = nt;
       if (params.get("hotfix") === "1") state.nature = "hotfix";
       if (tp === "tool" || tp === "map") state.type = tp;
       if (mh === "gitee" || mh === "github" || mh === "auto") state.mirror = mh;

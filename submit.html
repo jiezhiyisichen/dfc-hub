@@ -6,7 +6,7 @@
     <title>收录说明 · HBM-DFC圈下载站</title>
     <meta
       name="description"
-      content="怎么把你自己做的 DFC 附属 mod 收录到本站：提交方式、收录条件、参数表怎么自动生成，以及正式版 / 测试版 / 预览版 / 紧急修复 / 重大更新 的标签规则。"
+      content="怎么把你自己做的 DFC 附属 mod 收录到本站：提交方式、收录条件、参数表怎么自动生成，以及正式版 / 测试版 / 预览版 / 紧急修复 / 重大更新 / 不稳定 的标签规则。"
     />
     <meta name="theme-color" content="#0a0b0d" />
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
@@ -74,7 +74,7 @@
           <a href="#rules">收录条件</a>
           <a href="#auto">收录之后</a>
           <a href="#channel">通道标签</a>
-          <a href="#nature">紧急修复 / 重大更新</a>
+          <a href="#nature">紧急修复 / 重大更新 / 不稳定</a>
           <a href="#cheat">速查表</a>
           <a href="#contact">联系方式</a>
         </aside>
@@ -153,8 +153,8 @@
           </section>
 
           <section id="nature" class="doc-section">
-            <h2>紧急修复 / 重大更新</h2>
-            <p>这两个是<strong>叠加标签</strong>，不影响通道，可以和正式版、测试版同时出现。</p>
+            <h2>紧急修复 / 重大更新 / 不稳定</h2>
+            <p>这三个是<strong>叠加标签</strong>，不影响通道，可以和正式版、测试版、预览版同时出现。</p>
 
             <h3>紧急修复</h3>
             <p>适合「刚发出去就发现严重 bug，得马上补一个」的版本。下面任意一条命中就算：</p>
@@ -175,8 +175,20 @@
             </ul>
             <p class="doc-hint"><code>v3.10-major-beta</code> 会被认成「测试版」，不带重大更新 —— 这是故意的：转正之前不算重大更新。</p>
 
+            <h3>不稳定</h3>
+            <p>给「能跑，但可能崩」的实验构建用：还在改的渲染、没验证过的新功能、临时凑出来的编译。
+              任何通道都能挂这个标签，所以「不稳定 + 测试版」是最常见的组合。</p>
+            <ul class="doc-list">
+              <li>Tag 里有 <code>unstable</code> / <code>experimental</code> / <code>exp</code> / <code>nightly</code> / <code>dev</code>；
+                例：<code>v4.0-unstable</code>、<code>v4.0-beta-unstable</code></li>
+              <li>标题里有「不稳定」「实验版」「实验性」，或 <code>unstable</code> / <code>experimental</code></li>
+              <li>说明的前 200 字里有「不稳定版」或「实验性版本」</li>
+            </ul>
+            <p class="doc-hint">不确定能不能用就别标。这个标签是给玩家看的警告，标多了会变成「反正都不稳定」。</p>
+
             <h3>想同时要两个</h3>
-            <p>直接组合就行：<code>v3.9.2-hotfix-major</code> 会同时带上「紧急修复」和「重大更新」（前提是它是正式版）。
+            <p>直接组合就行：<code>v3.9.2-hotfix-major</code> 会同时带上「紧急修复」和「重大更新」（前提是它是正式版），
+              <code>v4.0-beta-unstable</code> 会带上「不稳定」和「测试版」。
               更常见的做法是 Tag 写干净，在标题里描述，比如 <code>v3.9.2 紧急修复：密码盘错位</code>。</p>
           </section>
 
@@ -192,6 +204,8 @@
                   <tr><td>正式版出了大问题</td><td><code>v4.0.1-hotfix</code></td><td>紧急修复 · 正式版</td></tr>
                   <tr><td>测试版里补大 bug</td><td><code>v4.1-beta-hotfix</code></td><td>紧急修复 · 测试版</td></tr>
                   <tr><td>大版本重构</td><td><code>v5.0</code> + 标题写「重大更新」</td><td>重大更新 · 正式版</td></tr>
+                  <tr><td>还在改的实验构建</td><td><code>v4.2-beta-unstable</code></td><td>不稳定 · 测试版</td></tr>
+                  <tr><td>临时编译给几个人测</td><td><code>v4.2-experimental</code></td><td>不稳定 · 正式版</td></tr>
                 </tbody>
               </table>
             </div>

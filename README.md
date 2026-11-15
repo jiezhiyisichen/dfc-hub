@@ -15,7 +15,7 @@ Minecraft **1.12.2 · HBM 核科技** 圈子的下载站：节枝特效工具（
 
 ```
 dfc-hub/
-├── index.html                  首页：标题 / 下载中心与使用教程两个入口 / 两张截图
+├── index.html                  首页：标题 / 两个入口 / 收录一览（每个 mod 的最新版本与下载量）
 ├── wiki.html                   百科（本体）：安装、指令手册、倒计时、DFC 显示器、物品、FAQ、视频
 ├── wiki-rbmk.html              百科：RBMK 监视器（附属）
 ├── wiki-hbmzz.html             百科：HBMZZ（附属）
@@ -50,6 +50,7 @@ dfc-hub/
 │   └── img/                    游戏内截图 + favicon
 ├── scripts/
 │   ├── sync-releases.mjs       拉取 GitHub + Gitee 发行版 → 合并生成数据
+│   ├── release-labels.mjs      ★ 四个标签的判定规则（本体与附属共用这一份）
 │   ├── smoke-downloads.mjs     下载页脚本的 DOM 冒烟测试（npm run smoke）
 │   ├── build.mjs               组装 dist/（含 data/ 与 public/）
 │   └── dev-server.mjs          零依赖本地预览服务器
@@ -65,7 +66,7 @@ dfc-hub/
 
 ## 首页与百科
 
-- **首页**只保留标题、两个按钮（下载中心 / 使用教程）和四张截图，点击截图开灯箱。不放视频与长文案。
+- **首页**只保留标题、两个按钮（下载中心 / 使用教程），下面是一张收录一览：每个 mod 一行，显示最新版本、性质标签和累计下载量，点了直接进对应选项卡。不放截图、视频和长文案。
 - **百科（`wiki.html`）** 承载使用教程：安装、指令手册、倒计时 6 样式、DFC 显示器、物品与方块、常见问题、视频演示。
   内容依据模组仓库的 `README.md` 与 `docs/*.md` 整理，对应 v3.9；**改版后请同步更新这一页**。
 - 百科样式单独放在 `assets/css/wiki.css`，只负责正文排版，头部与页脚仍用 `style.css`。
@@ -85,7 +86,7 @@ dfc-hub/
 **模组选项卡**（`★ JiezhiMod 本体` 固定第一位，后面是各附属）→ **参数表**（仅附属显示）→ **版本看板** → 筛选 → 版本列表 → 安装说明。
 
 本体走 `releases.json`，附属走 `mods.json`，两边的版本在 `downloads.js` 里归一成同一种形状再渲染，
-所以搜索、通道筛选、卡片、更新说明都只有一套代码。附属没有紧急修复 / 重大更新 / 镜像线路这些概念，对应的筛选项会自动隐藏。
+所以搜索、通道筛选、性质筛选、卡片、更新说明都只有一套代码。只有「下载线路」是本体独有的，切到附属时那一组会自动隐藏。
 
 ### 加一个二创 mod
 
@@ -322,6 +323,21 @@ Tag 没写通道后缀时，会再看 Release 标题结尾：`… + 测试版` /
 `重大更新` `正式版`，如果同时是紧急修复则是 `紧急修复` `重大更新` `正式版`。
 
 筛选对应的 URL 是 `?nature=major`（旧链接 `?hotfix=1` 仍然兼容）。
+
+### 不稳定（叠加标签，任何通道都能挂）
+
+给「能跑但可能崩」的实验构建用。橙色虚线标签，排在紧急修复 / 重大更新之后、通道之前。
+
+| 位置 | 命中条件 |
+| --- | --- |
+| Tag | `unstable` / `experimental` / `exp` / `nightly` / `dev`（附 `v4.0-beta-unstable`） |
+| Release 标题 | 含「不稳定」「实验版」「实验性」或 `unstable` / `experimental` |
+| Release 说明前 200 字 | 含「不稳定版」或「实验性版本」 |
+
+数据字段 `unstable: true/false`，另有 `counts.unstable`、`latest.unstable`；筛选 URL `?nature=unstable`。
+
+四个标签的规则都写在 `scripts/release-labels.mjs`，`sync-releases.mjs`（本体）和 `sync-mods.mjs`（附属）
+import 同一份，所以附属 mod 的版本也能正确打上「紧急修复 / 重大更新 / 不稳定」。
 
 ### 资产分拣
 

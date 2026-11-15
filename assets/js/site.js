@@ -107,6 +107,9 @@
     $$("[data-year]").forEach(function (el) {
       el.textContent = String(new Date().getFullYear());
     });
+
+    /* 手动刷新数据后，首页的收录一览也要跟着重画 */
+    if (typeof window.__DFC_CATALOG_REFRESH__ === "function") window.__DFC_CATALOG_REFRESH__();
   }
 
   /* --------------------------------------------------------------- header */
@@ -282,6 +285,141 @@
   }
 
   /* ------------------------------------------------------------- lightbox */
+  /* ------------------------------------------------------- 首页收录一览
+   * 一行一个 mod：名字 / 最新版本 / 累计下载。
+   * 本体读 __DFC_DATA__，附属读 __DFC_MODS__，两边字段形状不同，各取各的。
+   * 下载量拿不到时显示「平台未统计」，不把 null 当 0。
+   * ---------------------------------------------------------------------- */
+  var CHANNEL_LABEL = { release: "正式版", beta: "测试版", preview: "预览版" };
+
+  function esc(str) {
+    return String(str == null ? "" : str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function sumDownloads(list) {
+    var sum = 0;
+    var has = false;
+    (list || []).forEach(function (r) {
+      if (typeof r.downloads === "number") {
+        sum += r.downloads;
+        has = true;
+        return;
+      }
+      (r.assets || []).forEach(function (a) {
+        if (typeof a.downloads === "number") {
+          sum += a.downloads;
+          has = true;
+        }
+      });
+    });
+    return has ? sum : null;
+  }
+
+  function fmtCount(n) {
+    return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+  function miniBadges(release) {
+    if (!release) return "";
+    var out = "";
+    if (release.hotfix) out += '<span class="badge badge--hotfix">紧急修复</span>';
+    if (release.major) out += '<span class="badge badge--major">重大更新</span>';
+    if (release.unstable) out += '<span class="badge badge--unstable">不稳定</span>';
+    var ch = release.channel;
+    if (ch) {
+      var tone = ch === "release" ? "release" : ch === "beta" ? "beta" : "preview";
+      out +=
+        '<span class="badge badge--' + tone + '">' + (CHANNEL_LABEL[ch] || ch) + "</span>";
+    }
+    return out;
+  }
+
+  function catalogRow(o) {
+    var dl =
+      o.downloads === null
+        ? '<span class="cat-unknown">平台未统计</span>'
+        : "<b>" + fmtCount(o.downloads) + "</b> 次下载";
+    return (
+      '<a class="cat-row' +
+      (o.star ? " cat-row--star" : "") +
+      (o.error ? " cat-row--error" : "") +
+      '" href="' +
+      o.href +
+      '">' +
+      '<span class="cat-name">' +
+      (o.star ? '<i class="cat-star" aria-hidden="true">★</i>' : "") +
+      esc(o.name) +
+      (o.kind ? "<em>" + esc(o.kind) + "</em>" : "") +
+      "</span>" +
+      '<span class="cat-ver"><b class="mono">' +
+      esc(o.version) +
+      "</b>" +
+      miniBadges(o.release) +
+      "</span>" +
+      '<span class="cat-dl">' +
+      dl +
+      "</span>" +
+      '<span class="cat-go" aria-hidden="true">→</span>' +
+      "</a>"
+    );
+  }
+
+  function initModBoard() {
+    var board = $("[data-mod-board]");
+    if (!board) return;
+
+    function paint() {
+      var base = DATA || window.__DFC_DATA__ || null;
+      var mods = (window.__DFC_MODS__ && window.__DFC_MODS__.mods) || [];
+      var rows = [];
+
+      if (base) {
+        var latest = (base.latest && base.latest.release) || null;
+        rows.push(
+          catalogRow({
+            href: "downloads.html",
+            name: "JiezhiMod",
+            kind: "本体",
+            star: true,
+            version: latest ? latest.tag : "—",
+            release: latest,
+            downloads: sumDownloads(base.releases),
+          })
+        );
+      }
+
+      mods.forEach(function (m) {
+        rows.push(
+          catalogRow({
+            href: "downloads.html?mod=" + encodeURIComponent(m.id),
+            name: m.name,
+            kind: m.error ? "读取失败" : "附属",
+            star: false,
+            version: m.latest ? m.latest.tag : "—",
+            release: m.latest,
+            downloads: sumDownloads(m.releases),
+            error: !!m.error,
+          })
+        );
+      });
+
+      board.innerHTML = rows.length
+        ? rows.join("")
+        : '<p class="catalog-empty">还没有收录任何 mod。</p>';
+
+      $$("[data-mod-count]").forEach(function (el) {
+        el.textContent = rows.length + " 个";
+      });
+    }
+
+    paint();
+    window.__DFC_CATALOG_REFRESH__ = paint;
+  }
+
   function initLightbox() {
     var box = $("#lightbox");
     if (!box) return;
@@ -421,6 +559,7 @@
   /* ----------------------------------------------------------------- boot */
   function boot() {
     applyData();
+    initModBoard();
     initHeader();
     initReveal();
     initScrollSpy();

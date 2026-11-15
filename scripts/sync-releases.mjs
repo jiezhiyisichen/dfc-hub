@@ -30,6 +30,13 @@
 import { writeFile, readFile, mkdir } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  CHANNEL_NAMES,
+  detectChannel,
+  detectHotfix,
+  detectMajor,
+  detectUnstable,
+} from "./release-labels.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..");
@@ -91,7 +98,8 @@ function stripV(tag) {
 }
 
 /** 通道中文名，日志用 */
-const CHANNEL_NAMES = { release: "正式版", beta: "测试版", preview: "预览版" };
+/* CHANNEL_NAMES 与四个标签判定函数都放在 scripts/release-labels.mjs，
+   和 sync-mods.mjs 共用一份，避免两边规则不一致。 */
 
 /* ------------------------------------------------------------- Gitee 镜像
  * Gitee 的 OpenAPI v5 与 GitHub 不同：
@@ -201,79 +209,8 @@ function mergeGiteeMirrors(releases, giteeRawList, giteeRepo) {
   return { mergedAssets, leftovers };
 }
 
-/**
- * 版本通道判定（只管「正式 / 测试 / 预览」，紧急修复不在这里）：
- *   -preview / -alpha / -rc  → preview
- *   -beta                   → beta
- *   其它（含纯数字）          → release
- *
- * Tag 没写通道后缀时，再退一步看 Release 标题末尾的显式措辞，
- * 例如「v3.9.1 紧急修复版 + 测试版」这种只把通道写在标题里的情况。
- * 只认标题结尾的 测试版 / beta / 预览版 / preview，避免正文里随口提到就被带偏。
- * GitHub 上勾了 Pre-release 但仍无任何线索的，按 preview 处理。
- */
-function detectChannel(tag, prerelease, name) {
-  const t = String(tag || "").toLowerCase();
-  if (/-preview\b|-alpha\b|-rc\d*\b|-snapshot\b/.test(t)) return "preview";
-  if (/-beta\b/.test(t)) return "beta";
-
-  const n = String(name || "").trim();
-  if (/(^|[+＋·、,，\s])(测试版|beta)\s*$/i.test(n)) return "beta";
-  if (/(^|[+＋·、,，\s])(预览版|preview|alpha|rc)\s*$/i.test(n)) return "preview";
-
-  if (prerelease) return "preview";
-  return "release";
-}
-
-/**
- * 紧急修复版判定 —— 与通道「正交」，不参与 channel 计算。
- * 所以一个版本可以同时是「紧急修复版 + 测试版」或「紧急修复版 + 正式版」。
- *
- * 识别来源（任意一条命中即算紧急修复）：
- *   1) Tag 里的 hotfix / hot-fix / hot_fix / urgentfix / emergencyfix，或 -fix 收尾
- *      例：v3.9.1-hotfix、v3.9.1-hotfix-beta、v3.9.1-beta-hotfix、v3.9.1-fix
- *   2) Release 标题里出现「紧急修复」或 hotfix
- *      例：v3.9.1 紧急修复版 + 测试版
- *   3) Release 说明前 200 字出现「紧急修复版」或 hotfix（只认这个明确措辞，
- *      避免「修复了 xx 崩溃」这类普通更新被误判）
- */
-function detectHotfix(tag, name, body) {
-  const t = String(tag || "").toLowerCase();
-  const n = String(name || "").toLowerCase();
-
-  if (/(^|[^a-z])(hot[-_]?fix|urgent[-_]?fix|emergency[-_]?fix)([^a-z]|$)/.test(t)) return true;
-  if (/(^|[^a-z])fix([^a-z]|$)/.test(t)) return true;
-  if (/hot\s*fix|紧急修复/.test(n)) return true;
-
-  const lead = String(body || "").slice(0, 200).toLowerCase();
-  if (/紧急修复版|hotfix/.test(lead)) return true;
-
-  return false;
-}
-
-/**
- * 重大更新判定 —— 与通道「正交」，但只允许挂在正式版上。
- * 也就是说：v3.9.1-major（正式版）会打标；v3.9.1-major-beta（测试版）不会。
- *
- * 识别来源（任意一条命中即算重大更新）：
- *   1) Tag 里的 major（v3.9.1-major、v3.9.1-major-release）
- *   2) Release 标题里出现「重大更新」或 major
- *   3) Release 说明前 200 字出现「重大更新」
- */
-function detectMajor(tag, name, body, channel) {
-  if (channel !== "release") return false;
-
-  const t = String(tag || "").toLowerCase();
-  if (/(^|[^a-z])major([^a-z]|$)/.test(t)) return true;
-
-  const n = String(name || "");
-  if (/重大更新|重大版本/.test(n) || /(^|[^a-z])major([^a-z]|$)/i.test(n)) return true;
-
-  const lead = String(body || "").slice(0, 200);
-  if (/重大更新|重大版本/.test(lead)) return true;
-
-  return false;
-}
+/* 标签判定：CHANNEL_NAMES 与 detectChannel / detectHotfix / detectMajor / detectUnstable
+   全部在 scripts/release-labels.mjs，本体与附属 mod 共用一份规则。 */
 
 /** 资产归类：只收 .jar → tool。
  *  地图整合包已改为走 123 云盘，Release 里的 zip 一律忽略。 */
@@ -502,6 +439,7 @@ function normalizeRelease(raw, repo) {
   const channel = detectChannel(raw.tag_name, raw.prerelease, raw.name);
   const hotfix = detectHotfix(raw.tag_name, raw.name, raw.body);
   const major = detectMajor(raw.tag_name, raw.name, raw.body, channel);
+  const unstable = detectUnstable(raw.tag_name, raw.name, raw.body);
   const assets = (raw.assets || [])
     .map((a) => ({
       name: a.name,
@@ -525,6 +463,8 @@ function normalizeRelease(raw, repo) {
     hotfix,
     /* 重大更新标记：独立于 channel，但只在正式版上生效 */
     major,
+    /* 不稳定标记：独立于 channel，实验性 / 可能崩的构建 */
+    unstable,
     name: raw.name || raw.tag_name,
     publishedAt: raw.published_at || raw.created_at,
     url: raw.html_url,
@@ -650,11 +590,12 @@ async function main() {
     return d !== 0 ? d : compareVersion(b, a);
   });
 
-  const counts = { all: releases.length, release: 0, beta: 0, preview: 0, hotfix: 0, major: 0 };
+  const counts = { all: releases.length, release: 0, beta: 0, preview: 0, hotfix: 0, major: 0, unstable: 0 };
   releases.forEach((r) => {
     counts[r.channel] = (counts[r.channel] || 0) + 1;
     if (r.hotfix) counts.hotfix++;
     if (r.major) counts.major++;
+    if (r.unstable) counts.unstable++;
   });
 
   const latestRelease = pickLatest(releases, "release");
@@ -665,6 +606,10 @@ async function main() {
     .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
   const latestHotfix = hotfixReleases.length ? hotfixReleases[0] : null;
   const latestMajor = latestRelease && latestRelease.major ? latestRelease : null;
+  const unstableReleases = releases
+    .filter((r) => r.unstable && !r.draft)
+    .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+  const latestUnstable = unstableReleases.length ? unstableReleases[0] : null;
 
   const data = {
     generatedAt: new Date().toISOString(),
@@ -680,6 +625,7 @@ async function main() {
       preview: latestPreview,
       hotfix: latestHotfix,
       major: latestMajor,
+      unstable: latestUnstable,
       tool: pickLatestWithAsset(releases, "tool"),
     },
     releases,
@@ -716,6 +662,15 @@ async function main() {
     log(`识别到 ${counts.major} 个重大更新版本：${majors}`);
   } else {
     log("暂无重大更新标记（正式版的 Tag / 标题 / 说明里出现 major 或「重大更新」即自动识别）");
+  }
+  /* 不稳定同理，任何通道都能挂 */
+  if (counts.unstable) {
+    const list = unstableReleases
+      .map((r) => `${r.tag} = 不稳定+${CHANNEL_NAMES[r.channel] || r.channel}`)
+      .join("，");
+    log(`识别到 ${counts.unstable} 个不稳定版本：${list}`);
+  } else {
+    log("暂无不稳定标记（Tag / 标题 / 说明里出现 unstable、experimental 或「不稳定」即自动识别）");
   }
   if (giteeInfo.ok) {
     log(

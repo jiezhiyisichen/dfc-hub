@@ -186,6 +186,68 @@ if (majorTag) {
   );
 }
 
+/* 「不稳定」是这次新加的叠加性质，真实数据里可能一个都没有，
+   所以注入一个假版本，专门验徽章顺序与筛选。 */
+section("不稳定标记（任何通道都能挂）");
+{
+  function runPatched(search) {
+    const { win, document, els } = buildEnv(search);
+    new Function("window", DATA_JS)(win);
+    new Function("window", LOCAL_JS)(win);
+    const patched = JSON.parse(JSON.stringify(win.__DFC_DATA__));
+    const sample = JSON.parse(JSON.stringify(patched.releases[0]));
+    sample.tag = "v9.9-beta-unstable";
+    sample.version = "9.9-beta-unstable";
+    sample.channel = "beta";
+    sample.hotfix = false;
+    sample.major = false;
+    sample.unstable = true;
+    sample.name = "v9.9 不稳定测试版";
+    patched.releases.unshift(sample);
+    patched.counts.unstable = (patched.counts.unstable || 0) + 1;
+    win.__DFC_DATA__ = patched;
+    new Function("window", "document", "URLSearchParams", "setTimeout", "clearTimeout", PAGE_JS)(
+      win, document, URLSearchParams, setTimeout, clearTimeout
+    );
+    return els.get("releaseList").innerHTML || "";
+  }
+
+  const html = runPatched("");
+  check("渲染出「不稳定」徽章", html.indexOf("badge--unstable") !== -1);
+  check("徽章文案是不稳定", html.indexOf(">不稳定<") !== -1);
+  const iUnst = html.indexOf("badge--unstable");
+  const iBeta = html.indexOf("badge--beta");
+  check("不稳定徽章排在通道徽章之前", iUnst !== -1 && iBeta !== -1 && iUnst < iBeta);
+
+  const filtered = runPatched("?nature=unstable");
+  check("按不稳定筛选能命中", filtered.indexOf("v9.9-beta-unstable") !== -1);
+  check("按不稳定筛选只有这一张卡", (filtered.split("<article").length - 1) === 1);
+  check("不稳定 + 测试版可以叠加", filtered.indexOf("badge--beta") !== -1);
+}
+
+/* 附属 mod 之前没有 hotfix / major 字段，导致切到附属时性质筛选永远是 0。
+   这里把「每个版本都带三个布尔字段」当成不变式守住。 */
+section("附属 mod 的性质字段");
+{
+  const MODS = JSON.parse(readFileSync(resolve(ROOT, "assets/data/mods.json"), "utf8"));
+  check("有收录的附属 mod", (MODS.mods || []).length > 0);
+  const missing = [];
+  (MODS.mods || []).forEach((m) => {
+    (m.releases || []).forEach((r) => {
+      if (
+        typeof r.hotfix !== "boolean" ||
+        typeof r.major !== "boolean" ||
+        typeof r.unstable !== "boolean"
+      ) {
+        missing.push(m.id + "#" + r.tag);
+      }
+    });
+  });
+  check("每个附属版本都有 hotfix/major/unstable", missing.length === 0, missing.slice(0, 3).join(","));
+  const anyHot = (MODS.mods || []).some((m) => (m.releases || []).some((r) => r.hotfix));
+  check("附属里至少识别出一个紧急修复版", anyHot);
+}
+
 console.log("");
 console.log(failures ? "RESULT: FAILED (" + failures + ")" : "RESULT: ALL GREEN");
 process.exit(failures ? 1 : 0);

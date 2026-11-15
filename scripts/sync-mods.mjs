@@ -20,6 +20,12 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  detectChannel,
+  detectHotfix,
+  detectMajor,
+  detectUnstable,
+} from "./release-labels.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..");
@@ -51,13 +57,7 @@ function stripV(tag) {
   return String(tag || "").replace(/^v/i, "").trim();
 }
 
-function detectChannel(tag, prerelease) {
-  const t = String(tag || "").toLowerCase();
-  if (/-preview\b|-alpha\b|-rc\d*\b|-snapshot\b/.test(t)) return "preview";
-  if (/-beta\b/.test(t)) return "beta";
-  if (prerelease) return "preview";
-  return "release";
-}
+/* detectChannel 等标签判定统一放在 scripts/release-labels.mjs */
 
 /** 附件归类；Gitee 自动生成的源码包要单独排除
  *  另外 -sources / -javadoc / -dev 这类 jar 不是能直接丢进 mods/ 的产物，也不收。 */
@@ -279,6 +279,7 @@ function normalizeRelease(raw, mod, ignoreRes) {
 
   const body = raw.body || "";
   const counted = assets.filter((a) => typeof a.downloads === "number");
+  const channel = detectChannel(tag, !!raw.prerelease, raw.name);
 
   return {
     id: `${mod.id}#${tag}`,
@@ -287,7 +288,11 @@ function normalizeRelease(raw, mod, ignoreRes) {
     repo: mod.repo,
     tag,
     version: stripV(tag),
-    channel: detectChannel(tag, !!raw.prerelease),
+    channel,
+    /* 四个标签和本体共用 scripts/release-labels.mjs 里的同一套规则 */
+    hotfix: detectHotfix(tag, raw.name, body),
+    major: detectMajor(tag, raw.name, body, channel),
+    unstable: detectUnstable(tag, raw.name, body),
     name: raw.name || tag,
     publishedAt: raw.published_at || raw.created_at || null,
     url: htmlUrl,
