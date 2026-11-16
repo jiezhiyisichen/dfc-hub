@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-16T09:30:28.032Z",
+  "generatedAt": "2026-11-16T20:21:51.958Z",
   "source": {
     "tool": "jiezhiyisichen/DFC-Map-Creation-Tool",
     "api": "https://api.github.com",
@@ -42,7 +42,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.9.jar",
           "kind": "tool",
           "size": 289196,
-          "downloads": 16,
+          "downloads": 17,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9/jiezhi-1.12.2-dfcmaptools-3.9.jar",
           "updatedAt": "2026-10-22T15:13:29Z",
           "mirrors": [
@@ -163,7 +163,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.9.jar",
           "kind": "tool",
           "size": 289196,
-          "downloads": 16,
+          "downloads": 17,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9/jiezhi-1.12.2-dfcmaptools-3.9.jar",
           "updatedAt": "2026-10-22T15:13:29Z",
           "mirrors": [
@@ -204,7 +204,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.9.jar",
           "kind": "tool",
           "size": 289196,
-          "downloads": 16,
+          "downloads": 17,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9/jiezhi-1.12.2-dfcmaptools-3.9.jar",
           "updatedAt": "2026-10-22T15:13:29Z",
           "mirrors": [
@@ -286,7 +286,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.9.jar",
           "kind": "tool",
           "size": 289196,
-          "downloads": 16,
+          "downloads": 17,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9/jiezhi-1.12.2-dfcmaptools-3.9.jar",
           "updatedAt": "2026-10-22T15:13:29Z",
           "mirrors": [
@@ -874,7 +874,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.4.jar",
           "kind": "tool",
           "size": 248237,
-          "downloads": 6,
+          "downloads": 7,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.4/jiezhi-1.12.2-dfcmaptools-3.4.jar",
           "updatedAt": "2026-10-16T15:07:53Z"
         }

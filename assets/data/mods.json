@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-16T09:30:33.468Z",
+  "generatedAt": "2026-11-16T20:21:55.645Z",
   "count": 2,
   "mods": [
     {
@@ -19,6 +19,66 @@
       "license": "MPL-2.0",
       "homepage": "https://dfc-hub.pages.dev/mods?mod=rbmk-monitor",
       "releases": [
+        {
+          "id": "rbmk-monitor#15.2-beta",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "15.2-beta",
+          "version": "15.2-beta",
+          "channel": "beta",
+          "hotfix": false,
+          "major": false,
+          "unstable": false,
+          "name": "v15.2-beta",
+          "publishedAt": "2026-11-16T21:19:03+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/15.2-beta",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-15.2-beta.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/15.2-beta/RBMK-Monitor-15.2-beta.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "🚀 RBMK-Monitor v15.2-beta 更新日志\n本次更新为多媒体功能加入了极其贴心且硬核的“依赖引导”机制，彻底杜绝玩家因缺失解码库而导致游戏卡死或闪退的糟糕体验。\n 🖥️ 核心新增：进游戏智能弹窗引导\n   自动检测：玩家进入世界时，客户端会自动检测是否安装了多媒体解码库（JavaCV）。\n   详尽提示：如果未安装，会弹出一个赛博风界面，明确告知玩家【不安装的后果】（无法播放音视频，仅显示 [UNSUPPORTED CODEC]，但不影响其他中控功能）。\n   一键下载：点击【立即前往 Gitee 下载】按钮，会自动唤起系统默认浏览器打开发行版页面。即使系统没有浏览器，也会在聊天栏红字提示手动访问，绝不崩溃。\n 🛡️ 极致防卡死与防打扰机制\n   全生命周期单次检测：使用 Class.forName 静态缓存和 mediaPromptChecked 标记，确保每次进入世界只检测一次，绝不卡顿。\n   “不再提示”持久化：点击“不再提示”后，状态会写入 .minecraft/config/jiezhirbmkmodmedia.properties。下次进游戏绝对不会再烦你。\n   终端指令联动：以后想安装了随时在终端输入 media install，即可重新唤出下载引导界面。\n 🐛 底层修复与细节优化\n   修复了 GUI 弹窗无法用 ESC 关闭的问题，确保玩家随时可以退回游戏。\n   修复了浏览器唤起时的潜在空指针异常，全量包裹 try-catch。\n   完善了 GuiTerminal 的指令解析逻辑，确保 media install 能无缝切换界面。\n ⚠️ 版本说明（Beta 测试）\n   本版本为 Beta 测试版，主要是为了测试新的依赖检测机制和弹窗 UI。\n   若玩家需要使用多媒体功能，请前往 Gitee 的 Release 附件中手动下载并安装 JavaCV 依赖包。\n 📦 安装与前置要求\n1. 游戏版本：Minecraft 1.12.2\n2. 加载器：Forge 14.23.5.2859+\n3. 前置模组：无强制前置（HBM NTM-CE 为可选前置）。\n4. 将下载的 .jar 文件放入 .minecraft/mods 文件夹即可。",
+          "notesHtml": "<h4>🚀 RBMK-Monitor v15.2-beta 更新日志</h4><p>本次更新为多媒体功能加入了极其贴心且硬核的“依赖引导”机制，彻底杜绝玩家因缺失解码库而导致游戏卡死或闪退的糟糕体验。</p><h4>🖥️ 核心新增：进游戏智能弹窗引导</h4><ul><li><strong>自动检测</strong>：玩家进入世界时，客户端会自动检测是否安装了多媒体解码库（JavaCV）。</li><li><strong>详尽提示</strong>：如果未安装，会弹出一个赛博风界面，明确告知玩家【不安装的后果】（无法播放音视频，仅显示 <code>[UNSUPPORTED CODEC]</code>，但不影响其他中控功能）。</li><li><strong>一键下载</strong>：点击【立即前往 Gitee 下载】按钮，会自动唤起系统默认浏览器打开发行版页面。即使系统没有浏览器，也会在聊天栏红字提示手动访问，绝不崩溃。</li></ul><h4>🛡️ 极致防卡死与防打扰机制</h4><ul><li><strong>全生命周期单次检测</strong>：使用 <code>Class.forName</code> 静态缓存和 <code>mediaPromptChecked</code> 标记，确保每次进入世界只检测一次，绝不卡顿。</li><li><strong>“不再提示”持久化</strong>：点击“不再提示”后，状态会写入 <code>.minecraft/config/jiezhirbmkmod_media.properties</code>。下次进游戏绝对不会再烦你。</li><li><strong>终端指令联动</strong>：以后想安装了随时在终端输入 <code>media install</code>，即可重新唤出下载引导界面。</li></ul><h4>🐛 底层修复与细节优化</h4><ul><li>修复了 GUI 弹窗无法用 ESC 关闭的问题，确保玩家随时可以退回游戏。</li><li>修复了浏览器唤起时的潜在空指针异常，全量包裹 <code>try-catch</code>。</li><li>完善了 <code>GuiTerminal</code> 的指令解析逻辑，确保 <code>media install</code> 能无缝切换界面。</li></ul><h4>⚠️ 版本说明（Beta 测试）</h4><ul><li>本版本为 <strong>Beta 测试版</strong>，主要是为了测试新的依赖检测机制和弹窗 UI。</li><li>若玩家需要使用多媒体功能，请前往 Gitee 的 Release 附件中手动下载并安装 <code>JavaCV</code> 依赖包。</li></ul><h4>📦 安装与前置要求</h4><p>1. 游戏版本：<strong>Minecraft 1.12.2</strong></p><p>2. 加载器：<strong>Forge 14.23.5.2859+</strong></p><p>3. 前置模组：<strong>无强制前置</strong>（HBM NTM-CE 为可选前置）。</p><p>4. 将下载的 <code>.jar</code> 文件放入 <code>.minecraft/mods</code> 文件夹即可。</p>"
+        },
+        {
+          "id": "rbmk-monitor#15.1",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "15.1",
+          "version": "15.1",
+          "channel": "release",
+          "hotfix": false,
+          "major": false,
+          "unstable": false,
+          "name": "v15.1",
+          "publishedAt": "2026-11-16T20:38:09+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/15.1",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-15.1.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/15.1/RBMK-Monitor-15.1.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "🚀 RBMK-Monitor v15.1 更新日志\n本次更新为终端系统带来了极其硬核的【远程红石超控】功能，并针对服务器性能进行了深度的防卡死重构。\n 🎛️ 核心新增：远程红石超控 (Redstone Command)\n   隔空操作：在终端输入 redstone <X <Y <Z <强度，即可直接向指定坐标输出 0-15 强度的红石信号。\n   合法性校验：严格限制 X/Z 坐标范围（±3000万）、Y 轴高度（0-255）以及红石强度（0-15），非法输入直接拦截。\n   跨维度限制：目标区块未加载时直接拒绝操作，防止服务器因强制加载区块而卡死。\n 🛡️ 史诗级防卡死保护 (Anti-Lag Protection)\n   方块更新死循环防护：使用 world.setBlockState(..., 2) 仅同步客户端，并加入 250ms 同坐标冷却机制，彻底杜绝红石连锁更新导致的服务器 TPS 暴跌。\n   防误拆/误覆盖：加入了 isRemoteRedstoneAt 记录匹配。系统只会清除或改写由屏幕自己铺设的红石，绝不破坏玩家原有的红石电路。\n   主线程安全隔离：所有远程红石操作均在 MinecraftServer.addScheduledTask() 主线程中执行，网络线程安全无隐患。\n   空指针保护：新增的 NBT 字段（RRX/RRY/RRZ/RRS）全部使用了 hasKey 和默认值兜底，防止未绑定时抛出 NPE。\n ⚠️ 终端指令说明\n   输入 redstone 100 64 -200 15：在坐标 (100, 64, -200) 处输出满格红石信号。\n   输入 redstone 100 64 -200 0：清除该坐标的红石信号。\n   输入乱码（如 redstone a b c d）时，客户端会通过 try-catch 捕获异常，只红字提示，绝不崩溃。\n 📦 安装与前置要求\n1. 游戏版本：Minecraft 1.12.2\n2. 加载器：Forge 14.23.5.2859+\n3. 前置模组：无强制前置（HBM NTM-CE 为可选前置）。\n4. 将下载的 .jar 文件放入 .minecraft/mods 文件夹即可。\n ⚖️ 开源与授权说明\n   本项目遵循 MPL-2.0 开源协议。\n   本项目基于 树上的节枝 (Jiezhi) 的源码进行二创，已保留全部授权声明。",
+          "notesHtml": "<h4>🚀 RBMK-Monitor v15.1 更新日志</h4><p>本次更新为终端系统带来了极其硬核的【远程红石超控】功能，并针对服务器性能进行了深度的防卡死重构。</p><h4>🎛️ 核心新增：远程红石超控 (Redstone Command)</h4><ul><li><strong>隔空操作</strong>：在终端输入 <code>redstone &lt;X&gt; &lt;Y&gt; &lt;Z&gt; &lt;强度&gt;</code>，即可直接向指定坐标输出 0-15 强度的红石信号。</li><li><strong>合法性校验</strong>：严格限制 X/Z 坐标范围（±3000万）、Y 轴高度（0-255）以及红石强度（0-15），非法输入直接拦截。</li><li><strong>跨维度限制</strong>：目标区块未加载时直接拒绝操作，防止服务器因强制加载区块而卡死。</li></ul><h4>🛡️ 史诗级防卡死保护 (Anti-Lag Protection)</h4><ul><li><strong>方块更新死循环防护</strong>：使用 <code>world.setBlockState(..., 2)</code> 仅同步客户端，并加入 250ms 同坐标冷却机制，彻底杜绝红石连锁更新导致的服务器 TPS 暴跌。</li><li><strong>防误拆/误覆盖</strong>：加入了 <code>isRemoteRedstoneAt</code> 记录匹配。系统只会清除或改写由屏幕自己铺设的红石，绝不破坏玩家原有的红石电路。</li><li><strong>主线程安全隔离</strong>：所有远程红石操作均在 <code>MinecraftServer.addScheduledTask()</code> 主线程中执行，网络线程安全无隐患。</li><li><strong>空指针保护</strong>：新增的 NBT 字段（RRX/RRY/RRZ/RRS）全部使用了 <code>hasKey</code> 和默认值兜底，防止未绑定时抛出 NPE。</li></ul><h4>⚠️ 终端指令说明</h4><ul><li>输入 <code>redstone 100 64 -200 15</code>：在坐标 (100, 64, -200) 处输出满格红石信号。</li><li>输入 <code>redstone 100 64 -200 0</code>：清除该坐标的红石信号。</li><li>输入乱码（如 <code>redstone a b c d</code>）时，客户端会通过 <code>try-catch</code> 捕获异常，只红字提示，绝不崩溃。</li></ul><h4>📦 安装与前置要求</h4><p>1. 游戏版本：<strong>Minecraft 1.12.2</strong></p><p>2. 加载器：<strong>Forge 14.23.5.2859+</strong></p><p>3. 前置模组：<strong>无强制前置</strong>（HBM NTM-CE 为可选前置）。</p><p>4. 将下载的 <code>.jar</code> 文件放入 <code>.minecraft/mods</code> 文件夹即可。</p><h4>⚖️ 开源与授权说明</h4><ul><li>本项目遵循 <strong>MPL-2.0</strong> 开源协议。</li><li>本项目基于 <strong>树上的节枝 (Jiezhi)</strong> 的源码进行二创，已保留全部授权声明。</li></ul>"
+        },
         {
           "id": "rbmk-monitor#15.0-beta",
           "modId": "rbmk-monitor",
@@ -831,34 +891,34 @@
         }
       ],
       "latest": {
-        "id": "rbmk-monitor#15.0-beta",
+        "id": "rbmk-monitor#15.2-beta",
         "modId": "rbmk-monitor",
         "platform": "gitee",
         "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
-        "tag": "15.0-beta",
-        "version": "15.0-beta",
+        "tag": "15.2-beta",
+        "version": "15.2-beta",
         "channel": "beta",
         "hotfix": false,
         "major": false,
         "unstable": false,
-        "name": "v15.0-beta",
-        "publishedAt": "2026-11-16T13:30:08+08:00",
-        "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/15.0-beta",
+        "name": "v15.2-beta",
+        "publishedAt": "2026-11-16T21:19:03+08:00",
+        "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/15.2-beta",
         "prerelease": false,
         "draft": false,
         "assets": [
           {
-            "name": "RBMK-Monitor-15.0.jar",
+            "name": "RBMK-Monitor-15.2-beta.jar",
             "kind": "mod",
             "size": 0,
             "downloads": null,
-            "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/15.0-beta/RBMK-Monitor-15.0.jar",
+            "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/15.2-beta/RBMK-Monitor-15.2-beta.jar",
             "mirror": null
           }
         ],
         "downloads": null,
-        "notesText": "🚀 RBMK-Monitor v15.0 正式版更新日志\n跨入 15.0 时代！本次更新将你的中控系统升级为“服务器级网络通讯终端”，并引入了硬核的防熊孩子安全锁机制。\n 💻 核心新增：跨维度文字通讯 (Msg 指令)\n   远程通讯：在终端输入 msg <玩家ID <内容，只要目标玩家附近 32 格内有你的屏幕，就能瞬间收到跨维度的加密电文。\n   安全防刷屏：单条消息严格限制在 30 个字符以内，防止恶意玩家刷屏导致服务器/客户端卡顿。\n   NBT 持久化：接收到的消息会存入屏幕的 NBT 数据中，哪怕区块卸载重载，历史消息也不会消失。\n 🛡️ 核心新增：防熊孩子安全码锁 (Password 指令)\n   终端上锁：屏幕主人可以在终端输入 password <4位数字，给屏幕加上一层专属密码。\n   黑客拦截：当其他玩家尝试使用 hack 指令黑入你的屏幕时，会被系统强制拦截。对方必须输入 auth <4位数字 通过验证，才能成功入侵。\n   空值保护：未设置密码的屏幕依然保持自由开放，且系统做了极其严格的 NBT 空指针防护，绝不崩溃。\n 🔧 底层架构与性能优化\n   线程安全隔离：新增的 MessageRbmkTerminalComm 网络包，在服务端处理时严格使用了 MinecraftServer.addScheduledTask() 调度回主线程，彻底杜绝网络线程并发修改世界的崩溃隐患。\n   异常兜底：在服务端处理中加入了 server == null 判空与完整的 try-catch，保证异常不会顺坏整个 Netty 网络线程。\n 📦 安装与前置要求\n1. 游戏版本：Minecraft 1.12.2\n2. 加载器：Forge 14.23.5.2859+\n3. 前置模组：无强制前置（HBM NTM-CE 为可选前置）。\n4. 将下载的 .jar 文件放入 .minecraft/mods 文件夹即可。",
-        "notesHtml": "<h4>🚀 RBMK-Monitor v15.0 正式版更新日志</h4><p>跨入 15.0 时代！本次更新将你的中控系统升级为“服务器级网络通讯终端”，并引入了硬核的防熊孩子安全锁机制。</p><h4>💻 核心新增：跨维度文字通讯 (Msg 指令)</h4><ul><li><strong>远程通讯</strong>：在终端输入 <code>msg &lt;玩家ID&gt; &lt;内容&gt;</code>，只要目标玩家附近 32 格内有你的屏幕，就能瞬间收到跨维度的加密电文。</li><li><strong>安全防刷屏</strong>：单条消息严格限制在 30 个字符以内，防止恶意玩家刷屏导致服务器/客户端卡顿。</li><li><strong>NBT 持久化</strong>：接收到的消息会存入屏幕的 NBT 数据中，哪怕区块卸载重载，历史消息也不会消失。</li></ul><h4>🛡️ 核心新增：防熊孩子安全码锁 (Password 指令)</h4><ul><li><strong>终端上锁</strong>：屏幕主人可以在终端输入 <code>password &lt;4位数字&gt;</code>，给屏幕加上一层专属密码。</li><li><strong>黑客拦截</strong>：当其他玩家尝试使用 <code>hack</code> 指令黑入你的屏幕时，会被系统强制拦截。对方必须输入 <code>auth &lt;4位数字&gt;</code> 通过验证，才能成功入侵。</li><li><strong>空值保护</strong>：未设置密码的屏幕依然保持自由开放，且系统做了极其严格的 NBT 空指针防护，绝不崩溃。</li></ul><h4>🔧 底层架构与性能优化</h4><ul><li><strong>线程安全隔离</strong>：新增的 <code>MessageRbmkTerminalComm</code> 网络包，在服务端处理时严格使用了 <code>MinecraftServer.addScheduledTask()</code> 调度回主线程，彻底杜绝网络线程并发修改世界的崩溃隐患。</li><li><strong>异常兜底</strong>：在服务端处理中加入了 <code>server == null</code> 判空与完整的 <code>try-catch</code>，保证异常不会顺坏整个 Netty 网络线程。</li></ul><h4>📦 安装与前置要求</h4><p>1. 游戏版本：<strong>Minecraft 1.12.2</strong></p><p>2. 加载器：<strong>Forge 14.23.5.2859+</strong></p><p>3. 前置模组：<strong>无强制前置</strong>（HBM NTM-CE 为可选前置）。</p><p>4. 将下载的 <code>.jar</code> 文件放入 <code>.minecraft/mods</code> 文件夹即可。</p>"
+        "notesText": "🚀 RBMK-Monitor v15.2-beta 更新日志\n本次更新为多媒体功能加入了极其贴心且硬核的“依赖引导”机制，彻底杜绝玩家因缺失解码库而导致游戏卡死或闪退的糟糕体验。\n 🖥️ 核心新增：进游戏智能弹窗引导\n   自动检测：玩家进入世界时，客户端会自动检测是否安装了多媒体解码库（JavaCV）。\n   详尽提示：如果未安装，会弹出一个赛博风界面，明确告知玩家【不安装的后果】（无法播放音视频，仅显示 [UNSUPPORTED CODEC]，但不影响其他中控功能）。\n   一键下载：点击【立即前往 Gitee 下载】按钮，会自动唤起系统默认浏览器打开发行版页面。即使系统没有浏览器，也会在聊天栏红字提示手动访问，绝不崩溃。\n 🛡️ 极致防卡死与防打扰机制\n   全生命周期单次检测：使用 Class.forName 静态缓存和 mediaPromptChecked 标记，确保每次进入世界只检测一次，绝不卡顿。\n   “不再提示”持久化：点击“不再提示”后，状态会写入 .minecraft/config/jiezhirbmkmodmedia.properties。下次进游戏绝对不会再烦你。\n   终端指令联动：以后想安装了随时在终端输入 media install，即可重新唤出下载引导界面。\n 🐛 底层修复与细节优化\n   修复了 GUI 弹窗无法用 ESC 关闭的问题，确保玩家随时可以退回游戏。\n   修复了浏览器唤起时的潜在空指针异常，全量包裹 try-catch。\n   完善了 GuiTerminal 的指令解析逻辑，确保 media install 能无缝切换界面。\n ⚠️ 版本说明（Beta 测试）\n   本版本为 Beta 测试版，主要是为了测试新的依赖检测机制和弹窗 UI。\n   若玩家需要使用多媒体功能，请前往 Gitee 的 Release 附件中手动下载并安装 JavaCV 依赖包。\n 📦 安装与前置要求\n1. 游戏版本：Minecraft 1.12.2\n2. 加载器：Forge 14.23.5.2859+\n3. 前置模组：无强制前置（HBM NTM-CE 为可选前置）。\n4. 将下载的 .jar 文件放入 .minecraft/mods 文件夹即可。",
+        "notesHtml": "<h4>🚀 RBMK-Monitor v15.2-beta 更新日志</h4><p>本次更新为多媒体功能加入了极其贴心且硬核的“依赖引导”机制，彻底杜绝玩家因缺失解码库而导致游戏卡死或闪退的糟糕体验。</p><h4>🖥️ 核心新增：进游戏智能弹窗引导</h4><ul><li><strong>自动检测</strong>：玩家进入世界时，客户端会自动检测是否安装了多媒体解码库（JavaCV）。</li><li><strong>详尽提示</strong>：如果未安装，会弹出一个赛博风界面，明确告知玩家【不安装的后果】（无法播放音视频，仅显示 <code>[UNSUPPORTED CODEC]</code>，但不影响其他中控功能）。</li><li><strong>一键下载</strong>：点击【立即前往 Gitee 下载】按钮，会自动唤起系统默认浏览器打开发行版页面。即使系统没有浏览器，也会在聊天栏红字提示手动访问，绝不崩溃。</li></ul><h4>🛡️ 极致防卡死与防打扰机制</h4><ul><li><strong>全生命周期单次检测</strong>：使用 <code>Class.forName</code> 静态缓存和 <code>mediaPromptChecked</code> 标记，确保每次进入世界只检测一次，绝不卡顿。</li><li><strong>“不再提示”持久化</strong>：点击“不再提示”后，状态会写入 <code>.minecraft/config/jiezhirbmkmod_media.properties</code>。下次进游戏绝对不会再烦你。</li><li><strong>终端指令联动</strong>：以后想安装了随时在终端输入 <code>media install</code>，即可重新唤出下载引导界面。</li></ul><h4>🐛 底层修复与细节优化</h4><ul><li>修复了 GUI 弹窗无法用 ESC 关闭的问题，确保玩家随时可以退回游戏。</li><li>修复了浏览器唤起时的潜在空指针异常，全量包裹 <code>try-catch</code>。</li><li>完善了 <code>GuiTerminal</code> 的指令解析逻辑，确保 <code>media install</code> 能无缝切换界面。</li></ul><h4>⚠️ 版本说明（Beta 测试）</h4><ul><li>本版本为 <strong>Beta 测试版</strong>，主要是为了测试新的依赖检测机制和弹窗 UI。</li><li>若玩家需要使用多媒体功能，请前往 Gitee 的 Release 附件中手动下载并安装 <code>JavaCV</code> 依赖包。</li></ul><h4>📦 安装与前置要求</h4><p>1. 游戏版本：<strong>Minecraft 1.12.2</strong></p><p>2. 加载器：<strong>Forge 14.23.5.2859+</strong></p><p>3. 前置模组：<strong>无强制前置</strong>（HBM NTM-CE 为可选前置）。</p><p>4. 将下载的 <code>.jar</code> 文件放入 <code>.minecraft/mods</code> 文件夹即可。</p>"
       },
       "downloads": null,
       "error": null,
@@ -882,6 +942,66 @@
       "homepage": "https://hbm-zz.ysbdwz.dpdns.org/",
       "releases": [
         {
+          "id": "hbmzz#v3.6.0",
+          "modId": "hbmzz",
+          "platform": "github",
+          "repo": "ysb-discowave/HBMZZ-MOD",
+          "tag": "v3.6.0",
+          "version": "3.6.0",
+          "channel": "release",
+          "hotfix": false,
+          "major": false,
+          "unstable": false,
+          "name": "3.6.0 — mp3 直接放，并掉一处点面板就崩的老 bug",
+          "publishedAt": "2026-11-16T14:17:33Z",
+          "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/tag/v3.6.0",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "hbmzz-3.6.0.jar",
+              "kind": "mod",
+              "size": 17054958,
+              "downloads": 1,
+              "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v3.6.0/hbmzz-3.6.0.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": 1,
+          "notesText": "这一版做了什么\nmp3 直接放。 以前 config/rsaudio/audio 里只认 .ogg，别的格式会被统计成「放不了的文件」，\n界面里明说请你先转码。这一版把 wzh3203 的 rsaudiofm 并了进来（25 个文件 / 6,000 余行，\ncom.rsaudio.formats）：mp3 与 flac 放进那个目录就能在播放器列表里选到、放出来。\n 三个和上游不一样的地方\n没有 MixinBooter。 原插件是独立模组、改不了宿主，只能靠 Mixin 注入 ClientSoundPlayer，\n玩家得额外装一个 2.4 MB 的 coremod。合并之后宿主代码就在同一枚 jar 里，钩子直接写进了播放器自己的\n五个方法（play / stop / stopAll / preview / stopPreview）：直出接管时提前返回，返回\nfalse 就照原样走原版引擎。两个 mixin 配置、加载器和那个第三方依赖一并消失。\nffmpeg.exe 没有随包。 上游那一版是 41.6 MB，其中约 35 MB 就是这份二进制，而它只服务\n「转码」这一条路。FfmpegFinder 本来就会按 config/rsaudiofm/bin → 游戏目录 → mods/ → PATH\n去找，找不到只关掉转码，直出照常。要用转码就把自己那份 ffmpeg.exe 丢进 config/rsaudiofm/bin/。\nSPI 描述符合并。 四个解码库（JLayer / mp3spi / tritonus-share / jflac，约 0.48 MB）嵌在 jar 里。\nmp3spi 与 jflac 各带一个 META-INF/services/javax.sound.sampled.spi.AudioFileReader，直接叠在一起\n会互相覆盖 —— 只有一种格式能被认出来，而且不报错、只是「读不出来」。构建里加了 formatsServices\n任务把它们并成一份。\n 顺手修掉一个从 3.1.0 起就在的崩溃\n点 2×2 吊装面板的三个填充格会抛 AbstractMethodError（点中间那格正常）。填充板要把右键转发\n给原点格，原来走 IPanelOrigin.onBlockActivated；接口里这个方法叫这个名字，实现类里那个重写却被\nreobf 改名成 func180639a，而接口声明不是 Block 的子类、映射表里没有它，名字原样保留 ——\ninvokeinterface 找到的是一个没人实现的方法。现在转发点直接按 Block 类型调用（塔塔鲁斯的\nBlockGatePart 从第一天起就是这么写的），接口里也不再声明它。\n 内置音乐\n三首 OST（How to survive? / When will it end? / ",
+          "notesHtml": "<h4>这一版做了什么</h4><p><strong>mp3 直接放。</strong> 以前 <code>config/rsaudio/audio</code> 里只认 <code>.ogg</code>，别的格式会被统计成「放不了的文件」，</p><p>界面里明说请你先转码。这一版把 <strong>wzh3203</strong> 的 <code>rsaudiofm</code> 并了进来（25 个文件 / 6,000 余行，</p><p><code>com.rsaudio.formats</code>）：<strong>mp3 与 flac 放进那个目录就能在播放器列表里选到、放出来</strong>。</p><h4>三个和上游不一样的地方</h4><p><strong>没有 MixinBooter。</strong> 原插件是独立模组、改不了宿主，只能靠 Mixin 注入 <code>ClientSoundPlayer</code>，</p><p>玩家得额外装一个 2.4 MB 的 coremod。合并之后宿主代码就在同一枚 jar 里，钩子直接写进了播放器自己的</p><p>五个方法（<code>play</code> / <code>stop</code> / <code>stopAll</code> / <code>preview</code> / <code>stopPreview</code>）：直出接管时提前返回，返回</p><p><code>false</code> 就照原样走原版引擎。两个 mixin 配置、加载器和那个第三方依赖一并消失。</p><p><strong><code>ffmpeg.exe</code> 没有随包。</strong> 上游那一版是 41.6 MB，其中约 35 MB 就是这份二进制，而它只服务</p><p>「转码」这一条路。<code>FfmpegFinder</code> 本来就会按 <code>config/rsaudiofm/bin</code> → 游戏目录 → <code>mods/</code> → <code>PATH</code></p><p>去找，找不到只关掉转码，直出照常。要用转码就把自己那份 <code>ffmpeg.exe</code> 丢进 <code>config/rsaudiofm/bin/</code>。</p><p><strong>SPI 描述符合并。</strong> 四个解码库（JLayer / mp3spi / tritonus-share / jflac，约 0.48 MB）嵌在 jar 里。</p><p>mp3spi 与 jflac 各带一个 <code>META-INF/services/javax.sound.sampled.spi.AudioFileReader</code>，直接叠在一起</p><p>会互相覆盖 —— 只有一种格式能被认出来，而且不报错、只是「读不出来」。构建里加了 <code>formatsServices</code></p><p>任务把它们并成一份。</p><h4>顺手修掉一个从 3.1.0 起就在的崩溃</h4><p>点 2×2 吊装面板的<strong>三个填充格</strong>会抛 <code>AbstractMethodError</code>（点中间那格正常）。填充板要把右键转发</p><p>给原点格，原来走 <code>IPanelOrigin.onBlockActivated</code>；接口里这个方法叫这个名字，实现类里那个重写却被</p><p>reobf 改名成 <code>func_180639_a</code>，而接口声明不是 <code>Block</code> 的子类、映射表里没有它，名字原样保留 ——</p><p><code>invokeinterface</code> 找到的是一个没人实现的方法。现在转发点直接按 <code>Block</code> 类型调用（塔塔鲁斯的</p><p><code>BlockGatePart</code> 从第一天起就是这么写的），接口里也不再声明它。</p><h4>内置音乐</h4><p>三首 OST（How to survive? / When will it end? / The ending of melting）随 jar 带，首次启动铺进</p><p><code>config/rsaudio/audio</code>，删掉不会再自己长回来。封面是<strong>烧进音频文件</strong>的：mp3 走 ID3v2.3 的 <code>APIC</code>，</p><p>ogg 走 Vorbis comment 的 <code>METADATA_BLOCK_PICTURE</code>，同一张 512² 的 OST 标。</p><h4>体积与校验</h4><ul><li><code>hbmzz-3.6.0.jar</code> — 17,054,958 B（16,155,037 → 17,054,958）</li><li><code>hbmzz-3.6.0-sources.jar</code> — 2,153,043 B（音频不进源码包）</li></ul><h4>必须说明的一件事</h4><p><strong>这一版没有进游戏验证过。</strong> 编译一次通过、<code>checkall</code> 15 项全过（含 regcheck 63 条、</p><p>statecheck、事件注解、内置 OST 资源、站点审计，以及 rbmk / cecp / term / video / linker /</p><p>reasim / gate / dfc 八项构建档检查），但本机没有 Minecraft 实例 —— 所以「mp3 真的能响」</p><p>「点面板边缘不再崩」这两件事只有编译、字节码核对和离线检查支撑。装上去之后如果哪一条不对，</p><p>请把 <code>logs/latest.log</code> 发到「HBMZZ玩家社群」（群号 1134138830）。</p>"
+        },
+        {
+          "id": "hbmzz#v3.5.2",
+          "modId": "hbmzz",
+          "platform": "github",
+          "repo": "ysb-discowave/HBMZZ-MOD",
+          "tag": "v3.5.2",
+          "version": "3.5.2",
+          "channel": "release",
+          "hotfix": false,
+          "major": false,
+          "unstable": false,
+          "name": "3.5.2 — 第一个能开机的版本：修掉启动崩溃，三处方块状态",
+          "publishedAt": "2026-11-16T09:43:02Z",
+          "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/tag/v3.5.2",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "hbmzz-3.5.2.jar",
+              "kind": "mod",
+              "size": 2295638,
+              "downloads": 8,
+              "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v3.5.2/hbmzz-3.5.2.jar",
+              "mirror": null
+            }
+          ],
+          "downloads": 8,
+          "notesText": "这一版是第一个能开机的。 3.2.0 / 3.4.0 / 3.5.0 三个发行 jar 在任何环境都加载失败——不是某个方块坏了，是模组根本进不去。原因与修法见下，装机前请把 mods/ 里的旧 jar 删掉。\n---\n 一、为什么 3.2.0–3.5.0 起不来\n冷启动时 FML 直接抛：\n \nFMLServerStoppedEvent 继承的是 FMLStateEvent，不是 Event。Forge 的\nEventBus.register 会校验 @SubscribeEvent 方法的参数类型，不合法就在注册那一刻抛\nIllegalArgumentException；而这次 register 写在 preInit 里，于是异常变成\nLoaderExceptionModCrash——模组加载失败，客户端停在主菜单之前。\n改法：去掉注解与参数，做成普通无参方法 onServerStopped()，由\nHBMZZ.serverStopping(...) 显式调用（那里本来就在给 HackRegistry 与\nDfcAutoShutdown 收尾）。行为不变——仍然是\"服务器停止时清空按维度存的爆炸记录表\"。\n为什么它能活三个版本：这个错误只在启动游戏时才会炸。编译、regcheck 的 63 条、\ncheckall 的十几项、站点审计，全都看不见它；而开发机上从 3.2.0 起就没有 Minecraft\n实例，三个版本都没有真机验证过。现在 checkall 快速档加了一条：扫全仓库的\n@SubscribeEvent，参数是 FMLEvent、没有参数、或多于一个参数都判红。\n---\n 二、三处「方块的四个状态位」写错\n1.12.2 的方块状态编号是 blockId + (getMetaFromState(state) << 12)，读回时\ngetStateById 取 meta & 15——meta 只有四位。BlockStateContainer 的内部是\nImmutableSortedMap，查状态时拼出来的键按属性名字母序。这两条各踩了一次。\n| 方块 | 问题 | 症状 |\n|---|---|---|\n| rsaudio:giantpipe | 六个布尔属性 = 64 态，getMetaFromState 返回 0..63 | 状态编号越界，存盘后读回来可能是另一块方块；注册阶段也可能直接崩 |\n| hbmzz:ctrlconsole | 变体键按声明顺序写 up,down,facing | 16 条一条都不命中 → 整块紫黑缺失模型，且不报错 |\n| hbmzz:dfcblastsensor | 同上，写成 facing=south,active=false | 这颗方块从 3.2.0 起就没显示过模型 |\n- 巨型管道：状态容器只保留水平四向（",
+          "notesHtml": "<p>&gt; <strong>这一版是第一个能开机的。</strong> 3.2.0 / 3.4.0 / 3.5.0 三个发行 jar 在任何环境都加载失败——不是某个方块坏了，是模组根本进不去。原因与修法见下，装机前请把 <code>mods/</code> 里的旧 jar 删掉。</p><p>---</p><h4>一、为什么 3.2.0–3.5.0 起不来</h4><p>冷启动时 FML 直接抛：</p><p>```</p><p>java.lang.IllegalArgumentException:</p><p>Method com.hbmzz.blast.DfcBlastWatch.onServerStopped(FMLServerStoppedEvent)</p><p>has @SubscribeEvent annotation, but takes a argument that is not an Event class</p><p>at com.hbmzz.HBMZZ.preInit(HBMZZ.java:64) → LoaderExceptionModCrash</p><p>```</p><p><code>FMLServerStoppedEvent</code> 继承的是 <code>FMLStateEvent</code>，<strong>不是</strong> <code>Event</code>。Forge 的</p><p><code>EventBus.register</code> 会校验 <code>@SubscribeEvent</code> 方法的参数类型，不合法就在注册那一刻抛</p><p><code>IllegalArgumentException</code>；而这次 register 写在 <code>preInit</code> 里，于是异常变成</p><p><code>LoaderExceptionModCrash</code>——<strong>模组加载失败，客户端停在主菜单之前</strong>。</p><p><strong>改法</strong>：去掉注解与参数，做成普通无参方法 <code>onServerStopped()</code>，由</p><p><code>HBMZZ.serverStopping(...)</code> 显式调用（那里本来就在给 <code>HackRegistry</code> 与</p><p><code>DfcAutoShutdown</code> 收尾）。行为不变——仍然是&quot;服务器停止时清空按维度存的爆炸记录表&quot;。</p><p><strong>为什么它能活三个版本</strong>：这个错误只在<strong>启动游戏</strong>时才会炸。编译、<code>regcheck</code> 的 63 条、</p><p><code>checkall</code> 的十几项、站点审计，全都看不见它；而开发机上从 3.2.0 起就没有 Minecraft</p><p>实例，三个版本都没有真机验证过。现在 <code>checkall</code> 快速档加了一条：扫全仓库的</p><p><code>@SubscribeEvent</code>，参数是 <code>FML*Event</code>、没有参数、或多于一个参数都判红。</p><p>---</p><h4>二、三处「方块的四个状态位」写错</h4><p>1.12.2 的方块状态编号是 <code>blockId + (getMetaFromState(state) &lt;&lt; 12)</code>，读回时</p><p><code>getStateById</code> 取 <code>meta &amp; 15</code>——<strong>meta 只有四位</strong>。<code>BlockStateContainer</code> 的内部是</p><p><code>ImmutableSortedMap</code>，查状态时拼出来的键按<strong>属性名字母序</strong>。这两条各踩了一次。</p><p>| 方块 | 问题 | 症状 |</p><p>|---|---|---|</p><p>| <code>rsaudio:giant_pipe</code> | 六个布尔属性 = 64 态，<code>getMetaFromState</code> 返回 0..63 | 状态编号越界，存盘后读回来可能是<strong>另一块方块</strong>；注册阶段也可能直接崩 |</p><p>| <code>hbmzz:ctrl_console</code> | 变体键按声明顺序写 <code>up,down,facing</code> | 16 条一条都不命中 → 整块<strong>紫黑缺失模型</strong>，且不报错 |</p><p>| <code>hbmzz:dfc_blast_sensor</code> | 同上，写成 <code>facing=south,active=false</code> | 这颗方块从 3.2.0 起就没显示过模型 |</p><ul><li><strong>巨型管道</strong>：状态容器只保留水平四向（16 态），纯竖直段用单一模型（mask 17），</li></ul><p>meta 只写 0..15 的序号、读回时再映射成旧掩码。<strong>64 个模型文件一个没删</strong>，只是取其中 16 个。</p><p>代价：竖直 T 形（上 + 下 + 横）不再单独绘制。</p><ul><li><strong>控制台 / 传感器</strong>：键序改成字母序。传感器那处是我们自己 3.2.0 写的。</li></ul><p>&gt; 注意判据不是&quot;状态数 ≤16&quot;：原版楼梯 24 态、<code>BlockRedstoneDelayer</code> 64 态都合法，</p><p>&gt; 因为它们的 <code>getMetaFromState</code> 收窄到 0..15，其余属性由 <code>getActualState</code> 现算。</p><p>---</p><h4>三、新增的离线闸门</h4><p>| 工具 | 查什么 |</p><p>|---|---|</p><p>| <code>tools/statecheck</code> | 变体键字母序、同文件属性集一致、变体指向的模型文件存在、<strong>进 meta 的部分 ≤4 位</strong> |</p><p>| <code>checkall</code> → <code>check_events</code> | <code>@SubscribeEvent</code> 的参数必须是 <code>Event</code> 子类 |</p><p>| <code>tools/sync/preflight.py</code> | 开工前对账：远端提交、改动目录分布、两边都改过的冲突面、受保护文件、比本地新的 Release |</p><p>把旧代码放回仓库验证过：<code>statecheck</code> 报 <code>ctrl_console</code> 键序与「<code>BlockGiantPipe</code> 64 态</p><p>meta 可达 63」两条红；<code>check_events</code> 报 <code>onServerStopped(FMLServerStoppedEvent)</code> 一条红。</p><p><code>checkall</code> 快速档 4 → 6 项，全量 14 项。</p><p>---</p><h4>四、官网</h4><p>标签里同时带了站点改动：原声第三首 <strong>The ending of melting</strong>（3:13.8、192 kbps、</p><p>4,653,433 B，ID3v2.3 + v1，<code>track=3</code>），曲目表从两首变三首；播放器显示总时长改成截断</p><p>口径，与右栏那台机器读出来的一致。</p><p>---</p><h4>五、与 <code>V3.5.1</code> 的关系</h4><p>协作者在 2026-11-16 01:33 发过一版 <strong><code>V3.5.1</code></strong>（大写 V，jar 41.6 MB），它同样修了上面</p><p>三处，并额外带了 14 种音频格式的播放管线（含内嵌 ffmpeg 与 <code>MixinBooter</code> 依赖）。</p><p><strong>那一套功能包本版没有并入</strong>——它是功能不是修复，体积从 2.3 MB 变 41.6 MB，需要单独决定。</p><p>所以现在有两条线：</p><p>| | 启动崩溃 | 三处方块状态 | 多格式音频 |</p><p>|---|---|---|---|</p><p>| <code>V3.5.1</code>（他） | 已修 | 已修 | 有 |</p><p>| <strong><code>v3.5.2</code>（本版）</strong> | <strong>已修</strong> | <strong>已修</strong> | 无 |</p><p>两边<strong>不要同时装</strong>（duplicate modid）。</p><p>---</p><h4>六、升级提示</h4><ul><li><strong>必须删掉 <code>mods/</code> 里的旧 jar</strong>。两份并存即 duplicate modid，FML 在加载阶段直接崩，</li></ul><p>报错文字不指向此事。</p><ul><li><strong>已经放下的巨型管道</strong>：如果存档里那条 meta 已经溢出过，读回来可能是错的形状。</li></ul><p>把异常的那一节拆掉重放一次即可；新放的不会再有这个问题。</p><ul><li><code>hbmzz:ctrl_console</code> 与 <code>hbmzz:dfc_blast_sensor</code> 之前是紫黑块，<strong>不需要重新放置</strong>——</li></ul><p>模型是资源侧的，重启就正常。</p><p>---</p><h4>校验</h4><p>```</p><p>hbmzz-3.5.2.jar          2,295,638 B  sha256 3a9494346473FEB2AC586C08A36A599947820F74E8B2DACF168F2ADB74F8D79A</p><p>hbmzz-3.5.2-sources.jar  2,074,666 B  sha256 B3E1EB47A3E20E4D4A0DC1E42AE25C731CB27EABA327AA6289B7B0E83B6568CE</p><p>```</p><p><code>checkall</code> 全量 14 项通过，站点审计与 <code>data.js</code> 一致性通过，<code>BUILD SUCCESSFUL in 25m 6s</code>。</p>"
+        },
+        {
           "id": "hbmzz#V3.5.1",
           "modId": "hbmzz",
           "platform": "github",
@@ -902,12 +1022,12 @@
               "name": "hbmzz-3.5.1-fix.jar",
               "kind": "mod",
               "size": 41673400,
-              "downloads": 5,
+              "downloads": 7,
               "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/V3.5.1/hbmzz-3.5.1-fix.jar",
               "mirror": null
             }
           ],
-          "downloads": 5,
+          "downloads": 7,
           "notesText": "这一版是修复版：3.5.0 的发行 jar 在 1.12.2 上任何环境都开不了机（原因见下），\n 而 3.3.0 里已经有过的三项改动（巨型管道 16 态、控制台键序、播放器多格式）在 3.5.0 里没有了。\n 3.5.1 把这两件事一起处理掉。\n---\n 一、3.5.0 起不来的原因\n \nFMLServerStoppedEvent 不是 Forge 的 Event 子类，而 @SubscribeEvent 要求参数是事件类型。\nEventBus.register 在 mod 的 preInit 阶段就抛异常，于是模组加载失败、客户端进不去。\n改法：去掉该注解，方法改为无参 onServerStop()，由已有的 HBMZZ.serverStopping(...)\n显式调用（那里本来就在给 HackRegistry / DfcAutoShutdown 收尾），行为与原来一致。\n---\n 二、被 3.5.0 丢掉的修复（3.3.0 里有）\n| 项 | 3.3.0 | 3.5.0 | 3.5.1 |\n|---|---|---|---|\n| rsaudio:giantpipe 方块状态数 | 16 | 64（启动崩） | 16 |\n| hbmzz:ctrlconsole 变体键序 | down,facing,up | up,down,facing（紫黑缺失模型） | down,facing,up |\n| 播放器支持格式 | 14 种 + ogg/oga | 只有 ogg | 14 种 + ogg/oga |\n| 内嵌 ffmpeg | 有 | 无 | 有 |\n- 巨型管道：6 个朝向属性 = 64 个状态，超出 1.12.2「每方块 16 状态」的硬上限，\n  注册阶段抛 ArrayIndexOutOfBoundsException: 63，整个模组加载失败。现压到 16 态（东西南北四向 + 竖直段）。\n- 控制台：16 个变体键必须按属性名字母序（down,facing,up）；原写法是声明顺序，\n  而查找键按字母序拼接并做纯字符串精确匹配，16 个键一个都不命中 → 方块显示紫黑缺失模型。\n---\n 三、音频播放器：14 种格式\n原本只能播 .ogg。现在：\n| 格式 | 状态 |\n|---|---|\n| wav mp3 flac aiff aifc au m4a m4b aac wma opus amr mka spx | 已实测 code=0 |\n| ogg oga | 原版引擎直通，不转码 |\n| ape wv | 未验证（本机构建没有对应编码器，造不出样本） |\n做法：有 ffmpeg 时转 128 kbps OGG Vorbis 交给原版引擎（保留混响与距离衰减）；\n拿不到 ffmpeg 时用内置解码器（Java Sound / jlayer ",
           "notesHtml": "<p>&gt; 这一版是<strong>修复版</strong>：3.5.0 的发行 jar 在 1.12.2 上<strong>任何环境都开不了机</strong>（原因见下），</p><p>&gt; 而 3.3.0 里已经有过的三项改动（巨型管道 16 态、控制台键序、播放器多格式）在 3.5.0 里没有了。</p><p>&gt; 3.5.1 把这两件事一起处理掉。</p><p>---</p><h4>一、3.5.0 起不来的原因</h4><p>```</p><p>java.lang.IllegalArgumentException:</p><p>Method com.hbmzz.blast.DfcBlastWatch.onServerStopped(FMLServerStoppedEvent)</p><p>has @SubscribeEvent annotation, but takes a argument that is not an Event class</p><p>at com.hbmzz.HBMZZ.preInit(HBMZZ.java:64) → LoaderExceptionModCrash</p><p>```</p><p><code>FMLServerStoppedEvent</code> 不是 Forge 的 <code>Event</code> 子类，而 <code>@SubscribeEvent</code> 要求参数是事件类型。</p><p><code>EventBus.register</code> 在 mod 的 preInit 阶段就抛异常，于是<strong>模组加载失败、客户端进不去</strong>。</p><p><strong>改法</strong>：去掉该注解，方法改为无参 <code>onServerStop()</code>，由已有的 <code>HBMZZ.serverStopping(...)</code></p><p>显式调用（那里本来就在给 HackRegistry / DfcAutoShutdown 收尾），行为与原来一致。</p><p>---</p><h4>二、被 3.5.0 丢掉的修复（3.3.0 里有）</h4><p>| 项 | 3.3.0 | 3.5.0 | 3.5.1 |</p><p>|---|---|---|---|</p><p>| <code>rsaudio:giant_pipe</code> 方块状态数 | 16 | <strong>64</strong>（启动崩） | <strong>16</strong> |</p><p>| <code>hbmzz:ctrl_console</code> 变体键序 | <code>down,facing,up</code> | <strong><code>up,down,facing</code></strong>（紫黑缺失模型） | <code>down,facing,up</code> |</p><p>| 播放器支持格式 | 14 种 + ogg/oga | <strong>只有 ogg</strong> | 14 种 + ogg/oga |</p><p>| 内嵌 ffmpeg | 有 | <strong>无</strong> | 有 |</p><ul><li><strong>巨型管道</strong>：6 个朝向属性 = 64 个状态，超出 1.12.2「每方块 16 状态」的硬上限，</li></ul><p>注册阶段抛 <code>ArrayIndexOutOfBoundsException: 63</code>，整个模组加载失败。现压到 16 态（东西南北四向 + 竖直段）。</p><ul><li><strong>控制台</strong>：16 个变体键必须按属性名字母序（<code>down,facing,up</code>）；原写法是声明顺序，</li></ul><p>而查找键按字母序拼接并做<strong>纯字符串精确匹配</strong>，16 个键一个都不命中 → 方块显示紫黑缺失模型。</p><p>---</p><h4>三、音频播放器：14 种格式</h4><p>原本只能播 <code>.ogg</code>。现在：</p><p>| 格式 | 状态 |</p><p>|---|---|</p><p>| <code>wav</code> <code>mp3</code> <code>flac</code> <code>aiff</code> <code>aifc</code> <code>au</code> <code>m4a</code> <code>m4b</code> <code>aac</code> <code>wma</code> <code>opus</code> <code>amr</code> <code>mka</code> <code>spx</code> | 已实测 <code>code=0</code> |</p><p>| <code>ogg</code> <code>oga</code> | 原版引擎直通，不转码 |</p><p>| <code>ape</code> <code>wv</code> | 未验证（本机构建没有对应编码器，造不出样本） |</p><p>做法：有 ffmpeg 时转 128 kbps OGG Vorbis 交给原版引擎（保留混响与距离衰减）；</p><p>拿不到 ffmpeg 时用内置解码器（Java Sound / jlayer / jflac）直出 PCM。</p><p><strong>ffmpeg 已内嵌在 jar 内</strong>，首次播放自动释放到 <code>config/rsaudiofm/bin/ffmpeg.exe</code>（105 MB，只释放一次）。</p><p>文件类型按文件头 64 字节识别（<code>fLaC</code> / <code>OggS</code> / <code>ID3</code> / <code>RIFF</code>+<code>WAVE</code> / <code>FORM</code>+<code>AIFF</code> / <code>au</code> / <code>ftyp</code>），不看扩展名。</p><p>---</p><h4>四、这一版正文之外的九处细节</h4><p>| # | 修复 |</p><p>|---|---|</p><p>| 1 | 转码结束后<strong>不再整包重建声音包</strong>（那次 <code>generate()+enableAndReload()</code> 会覆盖曲库，播放器列表只剩我们注入的几条） |</p><p>| 2 | 曲库注入<strong>幂等</strong>：改用自有记账判断，不再每 10 tick 重复注入（曾经把曲库撑到 461 条以上） |</p><p>| 3 | <strong>中文文件名</strong>重名消歧：<code>sanitize</code> 会丢掉所有非 ASCII，两首中文 mp3 都变成 <code>dj</code>，现追加文件名 SHA-1 前 8 位 |</p><p>| 4 | <strong>不再自己置 <code>scanned</code> 标记</strong>：rsaudio 只在 <code>scanned==false</code> 时扫盘，先置标记会导致整库空掉（表现为「音乐全消失」，文件其实一个没少）；另加自愈：库条数少于文件数时强制 rescan 一次 |</p><p>| 5 | <strong>拆掉播放器方块即停</strong>：每 tick 校验方块注册名，方块没了立刻停止 PCM 会话（原来会一直响） |</p><p>| 6 | 声音包<strong>搬出 <code>resourcepacks</code></strong>：生成物落在 <code>config/rsaudio/pack</code>，原位置留 NTFS junction，玩家资源包列表里不再多一个条目 |</p><p>| 7 | 声音包<strong>去重</strong>：包内 ogg 与曲库文件逐字节相同（抽查 40/40），换成硬链接——实测 <strong>868 MB → 502 MB</strong> |</p><p>| 8 | <code>IPanelOrigin.onBlockActivated</code> 与 MC 方法同名，reobf 只改实现类不改接口 → 右键监控屏 <code>AbstractMethodError</code>。接口改名 <code>panelActivate</code> + 实现类转发 |</p><p>| 9 | 启动时<strong>更正 rsaudio 自带说明</strong>：那份 <code>如何添加音乐.txt</code> 写着「只能 ogg」，现追加一节 <code>[rsaudio-formats] 多格式支持</code>（只加一次、原内容不改），并另写 <code>多格式支持说明.txt</code> |</p><p>---</p><h4>五、安装</h4><p>| 步骤 | 操作 |</p><p>|---|---|</p><p>| 1 | 去掉 <code>mods/</code> 里旧的 hbmzz jar，放进 <code>hbmzz-3.5.1-fix.jar</code> |</p><p>| 2 | **确认没有独立的 <code>rsaudio-*.jar</code>**（两份并存 = duplicate modid，加载阶段直接崩） |</p><p>| 3 | 依赖：NTM:CE（<code>[HBM的核科技社区版]</code>）≥ 2.5.0.5<strong>可选</strong> ；Forge 14.23.5.2847；MixinBooter <strong>可选</strong> |</p><p>| 4 | 音乐放 <code>config/rsaudio/audio/</code>，界面点「重新扫描」或 F3+T 生效 |</p><p><strong>MixinBooter 可选</strong>：装了才有 PCM 直出路线（拆方块即停、GUI 试听），没装只走转码路线；两种情况都能启动，</p><p>日志会写当前路线。本模组自身不依赖 Mixin。</p><p>---</p><h4>六、验证（真实客户端，非仅编译）</h4><p>| 项 | 结果 |</p><p>|---|---|</p><p>| 到主菜单 | 13.9 s，<code>fatal=0</code> |</p><p>| <code>ArrayIndexOutOfBoundsException</code> | 0 |</p><p>| <code>HBMZZ loaded</code> | 出现 |</p><p>| <code>InvalidInjectionException</code> | 0 |</p><p>| <code>MissingVariantException</code> | 0 |</p><p>| 音频自检 | <code>converted=3/3 failed=0</code>、<code>nativeReady=true ×3</code>、<code>line opened=true</code>、<code>playedSeconds=3.251</code> |</p><p>| 曲库条数 | <code>library size after sync: 12</code>（与曲库文件数一致） |</p><p>---</p><h4>七、已知问题</h4><p>| 问题 | 说明 |</p><p>|---|---|</p><p>| 竖直 T 形管道画不出来 | 16 态方案的固有代价：水平管不画上下接口、纯竖直管按竖直段渲染。南北东西四向、碰撞盒、掉落、音效不受影响 |</p><p>| <code>tartarus_gate</code> 模型报错 12 条 | <strong>上游自身缺陷</strong>：<code>tartarus_gate_open.json</code> / <code>tartarus_gate_part_open.json</code> 里写 <code>&quot;parent&quot;: &quot;block/block&quot;</code>，每次资源重载 4 条。与本版改动无关，需上游给出本意模型 |</p><p>| 右键监控屏 | 已按老办法修好接口撞名，但<strong>没有在游戏内实测</strong>（自动化摆不出 DFC 屏），需人工确认 |</p><p>| 无 ffmpeg 时 | <code>m4a / wma / opus / ape / wv / mka / amr / aac</code> 不可播；<code>mp3 / flac / wav / aiff / au</code> 仍可 |</p><p>---</p><h4>八、文件与校</h4>"
         },
@@ -932,12 +1052,12 @@
               "name": "hbmzz-3.5.0.jar",
               "kind": "mod",
               "size": 2295499,
-              "downloads": 14,
+              "downloads": 15,
               "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v3.5.0/hbmzz-3.5.0.jar",
               "mirror": null
             }
           ],
-          "downloads": 14,
+          "downloads": 15,
           "notesText": "3.5.0 — 核芯自己会降温了，地板上有了一扇 26×26 的门\n DFC 自动停机\n监视屏绑定 DFC 之后，潜行 + 右键切换开关（普通右键仍然是终端）。开关跟着绑定走：换核心、解绑、核心消失超过 10 秒，自动关闭——一台屏若在换了核心之后还记得「开着」，它就会去冷却一台操作者从没为它授权的堆。\n| 阶段 | 进入条件 | 画面 | 温度 |\n|---|---|---|---|\n| AURA | 开关打开，核心开始坍缩 | 蓝色粒子（每 5 tick）+ 能量爆发（每 40 tick） | 不碰 |\n| RETRACT | 剩余 ≤ 60 秒 | 粒子环从 7 格收到 0.6 格 | 压到 50 °C，再线性降到 0 °C |\n| HOLD | 降温走完 | 一次内爆 + 落闸声 | 钉在 0 °C 保持 5 秒 |\n| DONE | 保持结束 | — | 安静 10 秒后复位 |\n- AURA 可中止，RETRACT 不会。 温度一旦开始降就做到底：半路停在 37 °C 的核芯看着像 bug，用起来也像。\n- 温度写不进去就撤。 连续 3 tick 失败就释放并打 warn——宁可没有演出，也不让屏幕宣称一个不存在的降温。\n- 温度写入按名字试：setDFCTemperature / setDFCHeat → heat（同时写 prevHeat）→ dfcHeat / temperature；清坍缩只动白名单 setter 与字段，清不掉不是失败，只是上游把倒计时放在了我们不认识的地方。\n- 驱动者是监视屏本身：拆屏、关开关、解绑立刻停；两台屏绑同一核心只跑一份；监视屏所在区块没加载就不工作，也不会为了它去强制加载核心区块。\n DFC-TSTX\n \n核心进入坍缩的瞬间强制环绕 3 秒（60 tick，半径 16、抬高 6、4°/tick）。规则名就是大写加连字符。它是开场镜头；zdtx 是最后 5 秒的收尾镜头，两个互不抢相机。关掉规则会立刻释放。\n 塔塔鲁斯大门\nCE 的 Transition Seal（26×26、24 格高，整个 HBM 里占地面积最大、也最高的方块）放平：\n- 26×26 的 sealhatch 铺进地板，一格厚，控制器在西北角\n- 模型只是一句 cubeall 指向 hbm:blocks/sealhatch3——同一套舱板、同一张贴图，没有重画，也没有复制 CE 的美术文件\n- 关闭是整片无缝钢板；打开 26×26 全部让空、不渲染、无碰撞，可以直接掉下去\n- 每格碰撞随自己的 open 状态消失，洞是真的\n- 红石通电开、断电关（任意一格）；空手右键切换，通电时锁定\n- 拆任意一格带走整扇，只掉一件，掉在被拆的那一格\n- 安装要 26×26 空位；不够时告诉你哪一格被占了\n 门面贴图在运行时取自 hbm: 命名空间，所以",
           "notesHtml": "<h4>3.5.0 — 核芯自己会降温了，地板上有了一扇 26×26 的门</h4><h4>DFC 自动停机</h4><p>监视屏绑定 DFC 之后，<strong>潜行 + 右键</strong>切换开关（普通右键仍然是终端）。开关<strong>跟着绑定走</strong>：换核心、解绑、核心消失超过 10 秒，自动关闭——一台屏若在换了核心之后还记得「开着」，它就会去冷却一台操作者从没为它授权的堆。</p><p>| 阶段 | 进入条件 | 画面 | 温度 |</p><p>|---|---|---|---|</p><p>| <code>AURA</code> | 开关打开，核心开始坍缩 | 蓝色粒子（每 5 tick）+ 能量爆发（每 40 tick） | 不碰 |</p><p>| <code>RETRACT</code> | 剩余 ≤ 60 秒 | 粒子环从 7 格收到 0.6 格 | 压到 <strong>50 °C</strong>，再线性降到 <strong>0 °C</strong> |</p><p>| <code>HOLD</code> | 降温走完 | 一次内爆 + 落闸声 | 钉在 0 °C 保持 5 秒 |</p><p>| <code>DONE</code> | 保持结束 | — | 安静 10 秒后复位 |</p><ul><li><strong><code>AURA</code> 可中止，<code>RETRACT</code> 不会。</strong> 温度一旦开始降就做到底：半路停在 37 °C 的核芯看着像 bug，用起来也像。</li><li><strong>温度写不进去就撤。</strong> 连续 3 tick 失败就释放并打 warn——宁可没有演出，也不让屏幕宣称一个不存在的降温。</li><li>温度写入按名字试：<code>setDFCTemperature</code> / <code>setDFCHeat</code> → <code>heat</code>（同时写 <code>prevHeat</code>）→ <code>dfcHeat</code> / <code>temperature</code>；清坍缩只动白名单 setter 与字段，<strong>清不掉不是失败</strong>，只是上游把倒计时放在了我们不认识的地方。</li><li>驱动者是监视屏本身：拆屏、关开关、解绑立刻停；两台屏绑同一核心只跑一份；监视屏所在区块没加载就不工作，也不会为了它去强制加载核心区块。</li></ul><h4><code>DFC-TSTX</code></h4><p>```</p><p>/gamerule DFC-TSTX true</p><p>```</p><p>核心进入坍缩的瞬间强制环绕 <strong>3 秒</strong>（60 tick，半径 16、抬高 6、4°/tick）。规则名就是大写加连字符。它是<strong>开场</strong>镜头；<code>zd_tx</code> 是最后 5 秒的<strong>收尾</strong>镜头，两个互不抢相机。关掉规则会立刻释放。</p><h4>塔塔鲁斯大门</h4><p>CE 的 <strong>Transition Seal</strong>（26×26、24 格高，整个 HBM 里占地面积最大、也最高的方块）<strong>放平</strong>：</p><ul><li>26×26 的 <code>seal_hatch</code> 铺进地板，一格厚，控制器在西北角</li><li>模型只是一句 <code>cube_all</code> 指向 <strong><code>hbm:blocks/seal_hatch_3</code></strong>——同一套舱板、同一张贴图，没有重画，也没有复制 CE 的美术文件</li><li>关闭是整片无缝钢板；打开 26×26 全部让空、不渲染、无碰撞，<strong>可以直接掉下去</strong></li><li>每格碰撞随自己的 <code>open</code> 状态消失，洞是真的</li><li>红石通电开、断电关（任意一格）；空手右键切换，通电时锁定</li><li>拆任意一格带走整扇，只掉一件，掉在被拆的那一格</li><li>安装要 26×26 空位；不够时告诉你<strong>哪一格被占了</strong></li></ul><p>&gt; 门面贴图在运行时取自 <code>hbm:</code> 命名空间，所以这个方块要求 HBM 在场（整个模组本来 <code>after:hbm</code>）。如果你的整合包改过 <code>seal_hatch_3</code>，门会显示成紫黑块。</p><h4>验证</h4><ul><li><code>regcheck</code> <strong>63/63</strong>；<code>checkall</code> <strong>12/12</strong>（新增 <code>dfccheck</code>：26 条时序断言，从 <code>AURA</code> 一路走到 0 °C，纯离线）</li><li><code>hbmzz-3.5.0.jar</code> 2,295,499 B，sha256 <code>a38dac060a9219147eab70655a36e03dd6b9812e</code></li><li>构建 <code>BUILD SUCCESSFUL</code>，站点审计与数据一致性通过</li></ul><h4>兼容性</h4><ul><li>1.12.2 / Forge 14.23.5.2847，需要 HBM（NTM/CE）</li><li>版本号从 3.4.0 起补齐三处（<code>build.gradle</code> / <code>mcmod.info</code> / <code>HBMZZ.VERSION</code>）；<code>v3.3.0</code> 是另一条线上发的标签</li><li>老存档不需要迁移：新方块直接出现，现有方块状态不变</li></ul>"
         },
@@ -1513,36 +1633,36 @@
         }
       ],
       "latest": {
-        "id": "hbmzz#V3.5.1",
+        "id": "hbmzz#v3.6.0",
         "modId": "hbmzz",
         "platform": "github",
         "repo": "ysb-discowave/HBMZZ-MOD",
-        "tag": "V3.5.1",
-        "version": "3.5.1",
+        "tag": "v3.6.0",
+        "version": "3.6.0",
         "channel": "release",
         "hotfix": false,
         "major": false,
         "unstable": false,
-        "name": "3.5.1 — 先把 3.5.0 起不来这件事修好，再把管道、控制台和播放器接回去",
-        "publishedAt": "2026-11-16T01:33:01Z",
-        "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/tag/V3.5.1",
+        "name": "3.6.0 — mp3 直接放，并掉一处点面板就崩的老 bug",
+        "publishedAt": "2026-11-16T14:17:33Z",
+        "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/tag/v3.6.0",
         "prerelease": false,
         "draft": false,
         "assets": [
           {
-            "name": "hbmzz-3.5.1-fix.jar",
+            "name": "hbmzz-3.6.0.jar",
             "kind": "mod",
-            "size": 41673400,
-            "downloads": 5,
-            "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/V3.5.1/hbmzz-3.5.1-fix.jar",
+            "size": 17054958,
+            "downloads": 1,
+            "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v3.6.0/hbmzz-3.6.0.jar",
             "mirror": null
           }
         ],
-        "downloads": 5,
-        "notesText": "这一版是修复版：3.5.0 的发行 jar 在 1.12.2 上任何环境都开不了机（原因见下），\n 而 3.3.0 里已经有过的三项改动（巨型管道 16 态、控制台键序、播放器多格式）在 3.5.0 里没有了。\n 3.5.1 把这两件事一起处理掉。\n---\n 一、3.5.0 起不来的原因\n \nFMLServerStoppedEvent 不是 Forge 的 Event 子类，而 @SubscribeEvent 要求参数是事件类型。\nEventBus.register 在 mod 的 preInit 阶段就抛异常，于是模组加载失败、客户端进不去。\n改法：去掉该注解，方法改为无参 onServerStop()，由已有的 HBMZZ.serverStopping(...)\n显式调用（那里本来就在给 HackRegistry / DfcAutoShutdown 收尾），行为与原来一致。\n---\n 二、被 3.5.0 丢掉的修复（3.3.0 里有）\n| 项 | 3.3.0 | 3.5.0 | 3.5.1 |\n|---|---|---|---|\n| rsaudio:giantpipe 方块状态数 | 16 | 64（启动崩） | 16 |\n| hbmzz:ctrlconsole 变体键序 | down,facing,up | up,down,facing（紫黑缺失模型） | down,facing,up |\n| 播放器支持格式 | 14 种 + ogg/oga | 只有 ogg | 14 种 + ogg/oga |\n| 内嵌 ffmpeg | 有 | 无 | 有 |\n- 巨型管道：6 个朝向属性 = 64 个状态，超出 1.12.2「每方块 16 状态」的硬上限，\n  注册阶段抛 ArrayIndexOutOfBoundsException: 63，整个模组加载失败。现压到 16 态（东西南北四向 + 竖直段）。\n- 控制台：16 个变体键必须按属性名字母序（down,facing,up）；原写法是声明顺序，\n  而查找键按字母序拼接并做纯字符串精确匹配，16 个键一个都不命中 → 方块显示紫黑缺失模型。\n---\n 三、音频播放器：14 种格式\n原本只能播 .ogg。现在：\n| 格式 | 状态 |\n|---|---|\n| wav mp3 flac aiff aifc au m4a m4b aac wma opus amr mka spx | 已实测 code=0 |\n| ogg oga | 原版引擎直通，不转码 |\n| ape wv | 未验证（本机构建没有对应编码器，造不出样本） |\n做法：有 ffmpeg 时转 128 kbps OGG Vorbis 交给原版引擎（保留混响与距离衰减）；\n拿不到 ffmpeg 时用内置解码器（Java Sound / jlayer ",
-        "notesHtml": "<p>&gt; 这一版是<strong>修复版</strong>：3.5.0 的发行 jar 在 1.12.2 上<strong>任何环境都开不了机</strong>（原因见下），</p><p>&gt; 而 3.3.0 里已经有过的三项改动（巨型管道 16 态、控制台键序、播放器多格式）在 3.5.0 里没有了。</p><p>&gt; 3.5.1 把这两件事一起处理掉。</p><p>---</p><h4>一、3.5.0 起不来的原因</h4><p>```</p><p>java.lang.IllegalArgumentException:</p><p>Method com.hbmzz.blast.DfcBlastWatch.onServerStopped(FMLServerStoppedEvent)</p><p>has @SubscribeEvent annotation, but takes a argument that is not an Event class</p><p>at com.hbmzz.HBMZZ.preInit(HBMZZ.java:64) → LoaderExceptionModCrash</p><p>```</p><p><code>FMLServerStoppedEvent</code> 不是 Forge 的 <code>Event</code> 子类，而 <code>@SubscribeEvent</code> 要求参数是事件类型。</p><p><code>EventBus.register</code> 在 mod 的 preInit 阶段就抛异常，于是<strong>模组加载失败、客户端进不去</strong>。</p><p><strong>改法</strong>：去掉该注解，方法改为无参 <code>onServerStop()</code>，由已有的 <code>HBMZZ.serverStopping(...)</code></p><p>显式调用（那里本来就在给 HackRegistry / DfcAutoShutdown 收尾），行为与原来一致。</p><p>---</p><h4>二、被 3.5.0 丢掉的修复（3.3.0 里有）</h4><p>| 项 | 3.3.0 | 3.5.0 | 3.5.1 |</p><p>|---|---|---|---|</p><p>| <code>rsaudio:giant_pipe</code> 方块状态数 | 16 | <strong>64</strong>（启动崩） | <strong>16</strong> |</p><p>| <code>hbmzz:ctrl_console</code> 变体键序 | <code>down,facing,up</code> | <strong><code>up,down,facing</code></strong>（紫黑缺失模型） | <code>down,facing,up</code> |</p><p>| 播放器支持格式 | 14 种 + ogg/oga | <strong>只有 ogg</strong> | 14 种 + ogg/oga |</p><p>| 内嵌 ffmpeg | 有 | <strong>无</strong> | 有 |</p><ul><li><strong>巨型管道</strong>：6 个朝向属性 = 64 个状态，超出 1.12.2「每方块 16 状态」的硬上限，</li></ul><p>注册阶段抛 <code>ArrayIndexOutOfBoundsException: 63</code>，整个模组加载失败。现压到 16 态（东西南北四向 + 竖直段）。</p><ul><li><strong>控制台</strong>：16 个变体键必须按属性名字母序（<code>down,facing,up</code>）；原写法是声明顺序，</li></ul><p>而查找键按字母序拼接并做<strong>纯字符串精确匹配</strong>，16 个键一个都不命中 → 方块显示紫黑缺失模型。</p><p>---</p><h4>三、音频播放器：14 种格式</h4><p>原本只能播 <code>.ogg</code>。现在：</p><p>| 格式 | 状态 |</p><p>|---|---|</p><p>| <code>wav</code> <code>mp3</code> <code>flac</code> <code>aiff</code> <code>aifc</code> <code>au</code> <code>m4a</code> <code>m4b</code> <code>aac</code> <code>wma</code> <code>opus</code> <code>amr</code> <code>mka</code> <code>spx</code> | 已实测 <code>code=0</code> |</p><p>| <code>ogg</code> <code>oga</code> | 原版引擎直通，不转码 |</p><p>| <code>ape</code> <code>wv</code> | 未验证（本机构建没有对应编码器，造不出样本） |</p><p>做法：有 ffmpeg 时转 128 kbps OGG Vorbis 交给原版引擎（保留混响与距离衰减）；</p><p>拿不到 ffmpeg 时用内置解码器（Java Sound / jlayer / jflac）直出 PCM。</p><p><strong>ffmpeg 已内嵌在 jar 内</strong>，首次播放自动释放到 <code>config/rsaudiofm/bin/ffmpeg.exe</code>（105 MB，只释放一次）。</p><p>文件类型按文件头 64 字节识别（<code>fLaC</code> / <code>OggS</code> / <code>ID3</code> / <code>RIFF</code>+<code>WAVE</code> / <code>FORM</code>+<code>AIFF</code> / <code>au</code> / <code>ftyp</code>），不看扩展名。</p><p>---</p><h4>四、这一版正文之外的九处细节</h4><p>| # | 修复 |</p><p>|---|---|</p><p>| 1 | 转码结束后<strong>不再整包重建声音包</strong>（那次 <code>generate()+enableAndReload()</code> 会覆盖曲库，播放器列表只剩我们注入的几条） |</p><p>| 2 | 曲库注入<strong>幂等</strong>：改用自有记账判断，不再每 10 tick 重复注入（曾经把曲库撑到 461 条以上） |</p><p>| 3 | <strong>中文文件名</strong>重名消歧：<code>sanitize</code> 会丢掉所有非 ASCII，两首中文 mp3 都变成 <code>dj</code>，现追加文件名 SHA-1 前 8 位 |</p><p>| 4 | <strong>不再自己置 <code>scanned</code> 标记</strong>：rsaudio 只在 <code>scanned==false</code> 时扫盘，先置标记会导致整库空掉（表现为「音乐全消失」，文件其实一个没少）；另加自愈：库条数少于文件数时强制 rescan 一次 |</p><p>| 5 | <strong>拆掉播放器方块即停</strong>：每 tick 校验方块注册名，方块没了立刻停止 PCM 会话（原来会一直响） |</p><p>| 6 | 声音包<strong>搬出 <code>resourcepacks</code></strong>：生成物落在 <code>config/rsaudio/pack</code>，原位置留 NTFS junction，玩家资源包列表里不再多一个条目 |</p><p>| 7 | 声音包<strong>去重</strong>：包内 ogg 与曲库文件逐字节相同（抽查 40/40），换成硬链接——实测 <strong>868 MB → 502 MB</strong> |</p><p>| 8 | <code>IPanelOrigin.onBlockActivated</code> 与 MC 方法同名，reobf 只改实现类不改接口 → 右键监控屏 <code>AbstractMethodError</code>。接口改名 <code>panelActivate</code> + 实现类转发 |</p><p>| 9 | 启动时<strong>更正 rsaudio 自带说明</strong>：那份 <code>如何添加音乐.txt</code> 写着「只能 ogg」，现追加一节 <code>[rsaudio-formats] 多格式支持</code>（只加一次、原内容不改），并另写 <code>多格式支持说明.txt</code> |</p><p>---</p><h4>五、安装</h4><p>| 步骤 | 操作 |</p><p>|---|---|</p><p>| 1 | 去掉 <code>mods/</code> 里旧的 hbmzz jar，放进 <code>hbmzz-3.5.1-fix.jar</code> |</p><p>| 2 | **确认没有独立的 <code>rsaudio-*.jar</code>**（两份并存 = duplicate modid，加载阶段直接崩） |</p><p>| 3 | 依赖：NTM:CE（<code>[HBM的核科技社区版]</code>）≥ 2.5.0.5<strong>可选</strong> ；Forge 14.23.5.2847；MixinBooter <strong>可选</strong> |</p><p>| 4 | 音乐放 <code>config/rsaudio/audio/</code>，界面点「重新扫描」或 F3+T 生效 |</p><p><strong>MixinBooter 可选</strong>：装了才有 PCM 直出路线（拆方块即停、GUI 试听），没装只走转码路线；两种情况都能启动，</p><p>日志会写当前路线。本模组自身不依赖 Mixin。</p><p>---</p><h4>六、验证（真实客户端，非仅编译）</h4><p>| 项 | 结果 |</p><p>|---|---|</p><p>| 到主菜单 | 13.9 s，<code>fatal=0</code> |</p><p>| <code>ArrayIndexOutOfBoundsException</code> | 0 |</p><p>| <code>HBMZZ loaded</code> | 出现 |</p><p>| <code>InvalidInjectionException</code> | 0 |</p><p>| <code>MissingVariantException</code> | 0 |</p><p>| 音频自检 | <code>converted=3/3 failed=0</code>、<code>nativeReady=true ×3</code>、<code>line opened=true</code>、<code>playedSeconds=3.251</code> |</p><p>| 曲库条数 | <code>library size after sync: 12</code>（与曲库文件数一致） |</p><p>---</p><h4>七、已知问题</h4><p>| 问题 | 说明 |</p><p>|---|---|</p><p>| 竖直 T 形管道画不出来 | 16 态方案的固有代价：水平管不画上下接口、纯竖直管按竖直段渲染。南北东西四向、碰撞盒、掉落、音效不受影响 |</p><p>| <code>tartarus_gate</code> 模型报错 12 条 | <strong>上游自身缺陷</strong>：<code>tartarus_gate_open.json</code> / <code>tartarus_gate_part_open.json</code> 里写 <code>&quot;parent&quot;: &quot;block/block&quot;</code>，每次资源重载 4 条。与本版改动无关，需上游给出本意模型 |</p><p>| 右键监控屏 | 已按老办法修好接口撞名，但<strong>没有在游戏内实测</strong>（自动化摆不出 DFC 屏），需人工确认 |</p><p>| 无 ffmpeg 时 | <code>m4a / wma / opus / ape / wv / mka / amr / aac</code> 不可播；<code>mp3 / flac / wav / aiff / au</code> 仍可 |</p><p>---</p><h4>八、文件与校</h4>"
+        "downloads": 1,
+        "notesText": "这一版做了什么\nmp3 直接放。 以前 config/rsaudio/audio 里只认 .ogg，别的格式会被统计成「放不了的文件」，\n界面里明说请你先转码。这一版把 wzh3203 的 rsaudiofm 并了进来（25 个文件 / 6,000 余行，\ncom.rsaudio.formats）：mp3 与 flac 放进那个目录就能在播放器列表里选到、放出来。\n 三个和上游不一样的地方\n没有 MixinBooter。 原插件是独立模组、改不了宿主，只能靠 Mixin 注入 ClientSoundPlayer，\n玩家得额外装一个 2.4 MB 的 coremod。合并之后宿主代码就在同一枚 jar 里，钩子直接写进了播放器自己的\n五个方法（play / stop / stopAll / preview / stopPreview）：直出接管时提前返回，返回\nfalse 就照原样走原版引擎。两个 mixin 配置、加载器和那个第三方依赖一并消失。\nffmpeg.exe 没有随包。 上游那一版是 41.6 MB，其中约 35 MB 就是这份二进制，而它只服务\n「转码」这一条路。FfmpegFinder 本来就会按 config/rsaudiofm/bin → 游戏目录 → mods/ → PATH\n去找，找不到只关掉转码，直出照常。要用转码就把自己那份 ffmpeg.exe 丢进 config/rsaudiofm/bin/。\nSPI 描述符合并。 四个解码库（JLayer / mp3spi / tritonus-share / jflac，约 0.48 MB）嵌在 jar 里。\nmp3spi 与 jflac 各带一个 META-INF/services/javax.sound.sampled.spi.AudioFileReader，直接叠在一起\n会互相覆盖 —— 只有一种格式能被认出来，而且不报错、只是「读不出来」。构建里加了 formatsServices\n任务把它们并成一份。\n 顺手修掉一个从 3.1.0 起就在的崩溃\n点 2×2 吊装面板的三个填充格会抛 AbstractMethodError（点中间那格正常）。填充板要把右键转发\n给原点格，原来走 IPanelOrigin.onBlockActivated；接口里这个方法叫这个名字，实现类里那个重写却被\nreobf 改名成 func180639a，而接口声明不是 Block 的子类、映射表里没有它，名字原样保留 ——\ninvokeinterface 找到的是一个没人实现的方法。现在转发点直接按 Block 类型调用（塔塔鲁斯的\nBlockGatePart 从第一天起就是这么写的），接口里也不再声明它。\n 内置音乐\n三首 OST（How to survive? / When will it end? / ",
+        "notesHtml": "<h4>这一版做了什么</h4><p><strong>mp3 直接放。</strong> 以前 <code>config/rsaudio/audio</code> 里只认 <code>.ogg</code>，别的格式会被统计成「放不了的文件」，</p><p>界面里明说请你先转码。这一版把 <strong>wzh3203</strong> 的 <code>rsaudiofm</code> 并了进来（25 个文件 / 6,000 余行，</p><p><code>com.rsaudio.formats</code>）：<strong>mp3 与 flac 放进那个目录就能在播放器列表里选到、放出来</strong>。</p><h4>三个和上游不一样的地方</h4><p><strong>没有 MixinBooter。</strong> 原插件是独立模组、改不了宿主，只能靠 Mixin 注入 <code>ClientSoundPlayer</code>，</p><p>玩家得额外装一个 2.4 MB 的 coremod。合并之后宿主代码就在同一枚 jar 里，钩子直接写进了播放器自己的</p><p>五个方法（<code>play</code> / <code>stop</code> / <code>stopAll</code> / <code>preview</code> / <code>stopPreview</code>）：直出接管时提前返回，返回</p><p><code>false</code> 就照原样走原版引擎。两个 mixin 配置、加载器和那个第三方依赖一并消失。</p><p><strong><code>ffmpeg.exe</code> 没有随包。</strong> 上游那一版是 41.6 MB，其中约 35 MB 就是这份二进制，而它只服务</p><p>「转码」这一条路。<code>FfmpegFinder</code> 本来就会按 <code>config/rsaudiofm/bin</code> → 游戏目录 → <code>mods/</code> → <code>PATH</code></p><p>去找，找不到只关掉转码，直出照常。要用转码就把自己那份 <code>ffmpeg.exe</code> 丢进 <code>config/rsaudiofm/bin/</code>。</p><p><strong>SPI 描述符合并。</strong> 四个解码库（JLayer / mp3spi / tritonus-share / jflac，约 0.48 MB）嵌在 jar 里。</p><p>mp3spi 与 jflac 各带一个 <code>META-INF/services/javax.sound.sampled.spi.AudioFileReader</code>，直接叠在一起</p><p>会互相覆盖 —— 只有一种格式能被认出来，而且不报错、只是「读不出来」。构建里加了 <code>formatsServices</code></p><p>任务把它们并成一份。</p><h4>顺手修掉一个从 3.1.0 起就在的崩溃</h4><p>点 2×2 吊装面板的<strong>三个填充格</strong>会抛 <code>AbstractMethodError</code>（点中间那格正常）。填充板要把右键转发</p><p>给原点格，原来走 <code>IPanelOrigin.onBlockActivated</code>；接口里这个方法叫这个名字，实现类里那个重写却被</p><p>reobf 改名成 <code>func_180639_a</code>，而接口声明不是 <code>Block</code> 的子类、映射表里没有它，名字原样保留 ——</p><p><code>invokeinterface</code> 找到的是一个没人实现的方法。现在转发点直接按 <code>Block</code> 类型调用（塔塔鲁斯的</p><p><code>BlockGatePart</code> 从第一天起就是这么写的），接口里也不再声明它。</p><h4>内置音乐</h4><p>三首 OST（How to survive? / When will it end? / The ending of melting）随 jar 带，首次启动铺进</p><p><code>config/rsaudio/audio</code>，删掉不会再自己长回来。封面是<strong>烧进音频文件</strong>的：mp3 走 ID3v2.3 的 <code>APIC</code>，</p><p>ogg 走 Vorbis comment 的 <code>METADATA_BLOCK_PICTURE</code>，同一张 512² 的 OST 标。</p><h4>体积与校验</h4><ul><li><code>hbmzz-3.6.0.jar</code> — 17,054,958 B（16,155,037 → 17,054,958）</li><li><code>hbmzz-3.6.0-sources.jar</code> — 2,153,043 B（音频不进源码包）</li></ul><h4>必须说明的一件事</h4><p><strong>这一版没有进游戏验证过。</strong> 编译一次通过、<code>checkall</code> 15 项全过（含 regcheck 63 条、</p><p>statecheck、事件注解、内置 OST 资源、站点审计，以及 rbmk / cecp / term / video / linker /</p><p>reasim / gate / dfc 八项构建档检查），但本机没有 Minecraft 实例 —— 所以「mp3 真的能响」</p><p>「点面板边缘不再崩」这两件事只有编译、字节码核对和离线检查支撑。装上去之后如果哪一条不对，</p><p>请把 <code>logs/latest.log</code> 发到「HBMZZ玩家社群」（群号 1134138830）。</p>"
       },
-      "downloads": 159,
+      "downloads": 171,
       "error": null,
       "licenseSource": "repo"
     }
