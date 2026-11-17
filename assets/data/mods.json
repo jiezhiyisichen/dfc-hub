@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-16T20:21:55.645Z",
+  "generatedAt": "2026-11-17T03:44:35.563Z",
   "count": 2,
   "mods": [
     {
@@ -19,6 +19,44 @@
       "license": "MPL-2.0",
       "homepage": "https://dfc-hub.pages.dev/mods?mod=rbmk-monitor",
       "releases": [
+        {
+          "id": "rbmk-monitor#15.3",
+          "modId": "rbmk-monitor",
+          "platform": "gitee",
+          "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
+          "tag": "15.3",
+          "version": "15.3",
+          "channel": "release",
+          "hotfix": false,
+          "major": false,
+          "unstable": false,
+          "name": "v15.3",
+          "publishedAt": "2026-11-17T07:28:11+08:00",
+          "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/15.3",
+          "prerelease": false,
+          "draft": false,
+          "assets": [
+            {
+              "name": "RBMK-Monitor-15.3.jar",
+              "kind": "mod",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/15.3/RBMK-Monitor-15.3.jar",
+              "mirror": null
+            },
+            {
+              "name": "RBMK-Media-Deps-Windows.zip",
+              "kind": "pack",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/15.3/RBMK-Media-Deps-Windows.zip",
+              "mirror": null
+            }
+          ],
+          "downloads": null,
+          "notesText": "🚀 RBMK-Monitor v15.3 更新日志\n本次更新主要针对多媒体功能的跨平台兼容性进行了严谨的提示与修复，并同步了系统版本号。\n 🛡️ 跨平台兼容性优化\n   明确的系统警告：在多媒体依赖引导弹窗（GuiMediaInstallPrompt）中，新增了极其醒目的黄色警告文字：[警告] 当前多媒体解码库仅支持 Windows 64 位系统。Mac/Linux 玩家请勿下载，否则可能导致游戏崩溃。\n   UI 排版自适应：调整了弹窗高度和文字排版，确保新增的警告文字不会遮挡下方的【立即前往下载】与【暂不安装】按钮。\n   README 同步更新：在文档中明确标注了多媒体功能仅支持 Windows 64 位（x8664）。Mac/Linux 玩家虽然无法播放多媒体，但中控、红石、黑客等其他核心功能完全不受影响。\n 🐛 底层修复与细节优化\n   版本号统一：将 build.gradle、RbmkMonitorMod.java、GuiTerminal.java 中的版本号统一升级至 15.3，确保终端启动横幅与模组版本一致。\n   渲染安全：修复了文字颜色代码的渲染逻辑，确保黄色警告文字在任何分辨率下都能清晰可见。\n 📦 安装与前置要求\n1. 游戏版本：Minecraft 1.12.2\n2. 加载器：Forge 14.23.5.2859+\n3. 前置模组：无强制前置（HBM NTM-CE 为可选前置）。\n4. 多媒体依赖：Windows 玩家请前往 Release 附件下载 RBMK-Media-Deps-Windows.zip，解压后与主模组一起放入 .minecraft/mods/ 文件夹。\n ⚖️ 开源与授权说明\n   本项目遵循 MPL-2.0 开源协议。\n   本项目基于 树上的节枝 (Jiezhi) 的源码进行二创，已保留全部授权声明。",
+          "notesHtml": "<h4>🚀 RBMK-Monitor v15.3 更新日志</h4><p>本次更新主要针对多媒体功能的跨平台兼容性进行了严谨的提示与修复，并同步了系统版本号。</p><h4>🛡️ 跨平台兼容性优化</h4><ul><li><strong>明确的系统警告</strong>：在多媒体依赖引导弹窗（GuiMediaInstallPrompt）中，新增了极其醒目的黄色警告文字：<code>[警告] 当前多媒体解码库仅支持 Windows 64 位系统。Mac/Linux 玩家请勿下载，否则可能导致游戏崩溃。</code></li><li><strong>UI 排版自适应</strong>：调整了弹窗高度和文字排版，确保新增的警告文字不会遮挡下方的【立即前往下载】与【暂不安装】按钮。</li><li><strong>README 同步更新</strong>：在文档中明确标注了多媒体功能仅支持 Windows 64 位（x86_64）。Mac/Linux 玩家虽然无法播放多媒体，但中控、红石、黑客等其他核心功能完全不受影响。</li></ul><h4>🐛 底层修复与细节优化</h4><ul><li><strong>版本号统一</strong>：将 <code>build.gradle</code>、<code>RbmkMonitorMod.java</code>、<code>GuiTerminal.java</code> 中的版本号统一升级至 <code>15.3</code>，确保终端启动横幅与模组版本一致。</li><li><strong>渲染安全</strong>：修复了文字颜色代码的渲染逻辑，确保黄色警告文字在任何分辨率下都能清晰可见。</li></ul><h4>📦 安装与前置要求</h4><p>1. 游戏版本：<strong>Minecraft 1.12.2</strong></p><p>2. 加载器：<strong>Forge 14.23.5.2859+</strong></p><p>3. 前置模组：<strong>无强制前置</strong>（HBM NTM-CE 为可选前置）。</p><p>4. <strong>多媒体依赖</strong>：Windows 玩家请前往 Release 附件下载 <code>RBMK-Media-Deps-Windows.zip</code>，解压后与主模组一起放入 <code>.minecraft/mods/</code> 文件夹。</p><h4>⚖️ 开源与授权说明</h4><ul><li>本项目遵循 <strong>MPL-2.0</strong> 开源协议。</li><li>本项目基于 <strong>树上的节枝 (Jiezhi)</strong> 的源码进行二创，已保留全部授权声明。</li></ul>"
+        },
         {
           "id": "rbmk-monitor#15.2-beta",
           "modId": "rbmk-monitor",
@@ -42,6 +80,14 @@
               "size": 0,
               "downloads": null,
               "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/15.2-beta/RBMK-Monitor-15.2-beta.jar",
+              "mirror": null
+            },
+            {
+              "name": "RBMK-Media-Deps-Windows.zip",
+              "kind": "pack",
+              "size": 0,
+              "downloads": null,
+              "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/15.2-beta/RBMK-Media-Deps-Windows.zip",
               "mirror": null
             }
           ],
@@ -891,34 +937,42 @@
         }
       ],
       "latest": {
-        "id": "rbmk-monitor#15.2-beta",
+        "id": "rbmk-monitor#15.3",
         "modId": "rbmk-monitor",
         "platform": "gitee",
         "repo": "baldih/jiezhi-and-baldih-rbmk-monitor",
-        "tag": "15.2-beta",
-        "version": "15.2-beta",
-        "channel": "beta",
+        "tag": "15.3",
+        "version": "15.3",
+        "channel": "release",
         "hotfix": false,
         "major": false,
         "unstable": false,
-        "name": "v15.2-beta",
-        "publishedAt": "2026-11-16T21:19:03+08:00",
-        "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/15.2-beta",
+        "name": "v15.3",
+        "publishedAt": "2026-11-17T07:28:11+08:00",
+        "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/tag/15.3",
         "prerelease": false,
         "draft": false,
         "assets": [
           {
-            "name": "RBMK-Monitor-15.2-beta.jar",
+            "name": "RBMK-Monitor-15.3.jar",
             "kind": "mod",
             "size": 0,
             "downloads": null,
-            "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/15.2-beta/RBMK-Monitor-15.2-beta.jar",
+            "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/15.3/RBMK-Monitor-15.3.jar",
+            "mirror": null
+          },
+          {
+            "name": "RBMK-Media-Deps-Windows.zip",
+            "kind": "pack",
+            "size": 0,
+            "downloads": null,
+            "url": "https://gitee.com/baldih/jiezhi-and-baldih-rbmk-monitor/releases/download/15.3/RBMK-Media-Deps-Windows.zip",
             "mirror": null
           }
         ],
         "downloads": null,
-        "notesText": "🚀 RBMK-Monitor v15.2-beta 更新日志\n本次更新为多媒体功能加入了极其贴心且硬核的“依赖引导”机制，彻底杜绝玩家因缺失解码库而导致游戏卡死或闪退的糟糕体验。\n 🖥️ 核心新增：进游戏智能弹窗引导\n   自动检测：玩家进入世界时，客户端会自动检测是否安装了多媒体解码库（JavaCV）。\n   详尽提示：如果未安装，会弹出一个赛博风界面，明确告知玩家【不安装的后果】（无法播放音视频，仅显示 [UNSUPPORTED CODEC]，但不影响其他中控功能）。\n   一键下载：点击【立即前往 Gitee 下载】按钮，会自动唤起系统默认浏览器打开发行版页面。即使系统没有浏览器，也会在聊天栏红字提示手动访问，绝不崩溃。\n 🛡️ 极致防卡死与防打扰机制\n   全生命周期单次检测：使用 Class.forName 静态缓存和 mediaPromptChecked 标记，确保每次进入世界只检测一次，绝不卡顿。\n   “不再提示”持久化：点击“不再提示”后，状态会写入 .minecraft/config/jiezhirbmkmodmedia.properties。下次进游戏绝对不会再烦你。\n   终端指令联动：以后想安装了随时在终端输入 media install，即可重新唤出下载引导界面。\n 🐛 底层修复与细节优化\n   修复了 GUI 弹窗无法用 ESC 关闭的问题，确保玩家随时可以退回游戏。\n   修复了浏览器唤起时的潜在空指针异常，全量包裹 try-catch。\n   完善了 GuiTerminal 的指令解析逻辑，确保 media install 能无缝切换界面。\n ⚠️ 版本说明（Beta 测试）\n   本版本为 Beta 测试版，主要是为了测试新的依赖检测机制和弹窗 UI。\n   若玩家需要使用多媒体功能，请前往 Gitee 的 Release 附件中手动下载并安装 JavaCV 依赖包。\n 📦 安装与前置要求\n1. 游戏版本：Minecraft 1.12.2\n2. 加载器：Forge 14.23.5.2859+\n3. 前置模组：无强制前置（HBM NTM-CE 为可选前置）。\n4. 将下载的 .jar 文件放入 .minecraft/mods 文件夹即可。",
-        "notesHtml": "<h4>🚀 RBMK-Monitor v15.2-beta 更新日志</h4><p>本次更新为多媒体功能加入了极其贴心且硬核的“依赖引导”机制，彻底杜绝玩家因缺失解码库而导致游戏卡死或闪退的糟糕体验。</p><h4>🖥️ 核心新增：进游戏智能弹窗引导</h4><ul><li><strong>自动检测</strong>：玩家进入世界时，客户端会自动检测是否安装了多媒体解码库（JavaCV）。</li><li><strong>详尽提示</strong>：如果未安装，会弹出一个赛博风界面，明确告知玩家【不安装的后果】（无法播放音视频，仅显示 <code>[UNSUPPORTED CODEC]</code>，但不影响其他中控功能）。</li><li><strong>一键下载</strong>：点击【立即前往 Gitee 下载】按钮，会自动唤起系统默认浏览器打开发行版页面。即使系统没有浏览器，也会在聊天栏红字提示手动访问，绝不崩溃。</li></ul><h4>🛡️ 极致防卡死与防打扰机制</h4><ul><li><strong>全生命周期单次检测</strong>：使用 <code>Class.forName</code> 静态缓存和 <code>mediaPromptChecked</code> 标记，确保每次进入世界只检测一次，绝不卡顿。</li><li><strong>“不再提示”持久化</strong>：点击“不再提示”后，状态会写入 <code>.minecraft/config/jiezhirbmkmod_media.properties</code>。下次进游戏绝对不会再烦你。</li><li><strong>终端指令联动</strong>：以后想安装了随时在终端输入 <code>media install</code>，即可重新唤出下载引导界面。</li></ul><h4>🐛 底层修复与细节优化</h4><ul><li>修复了 GUI 弹窗无法用 ESC 关闭的问题，确保玩家随时可以退回游戏。</li><li>修复了浏览器唤起时的潜在空指针异常，全量包裹 <code>try-catch</code>。</li><li>完善了 <code>GuiTerminal</code> 的指令解析逻辑，确保 <code>media install</code> 能无缝切换界面。</li></ul><h4>⚠️ 版本说明（Beta 测试）</h4><ul><li>本版本为 <strong>Beta 测试版</strong>，主要是为了测试新的依赖检测机制和弹窗 UI。</li><li>若玩家需要使用多媒体功能，请前往 Gitee 的 Release 附件中手动下载并安装 <code>JavaCV</code> 依赖包。</li></ul><h4>📦 安装与前置要求</h4><p>1. 游戏版本：<strong>Minecraft 1.12.2</strong></p><p>2. 加载器：<strong>Forge 14.23.5.2859+</strong></p><p>3. 前置模组：<strong>无强制前置</strong>（HBM NTM-CE 为可选前置）。</p><p>4. 将下载的 <code>.jar</code> 文件放入 <code>.minecraft/mods</code> 文件夹即可。</p>"
+        "notesText": "🚀 RBMK-Monitor v15.3 更新日志\n本次更新主要针对多媒体功能的跨平台兼容性进行了严谨的提示与修复，并同步了系统版本号。\n 🛡️ 跨平台兼容性优化\n   明确的系统警告：在多媒体依赖引导弹窗（GuiMediaInstallPrompt）中，新增了极其醒目的黄色警告文字：[警告] 当前多媒体解码库仅支持 Windows 64 位系统。Mac/Linux 玩家请勿下载，否则可能导致游戏崩溃。\n   UI 排版自适应：调整了弹窗高度和文字排版，确保新增的警告文字不会遮挡下方的【立即前往下载】与【暂不安装】按钮。\n   README 同步更新：在文档中明确标注了多媒体功能仅支持 Windows 64 位（x8664）。Mac/Linux 玩家虽然无法播放多媒体，但中控、红石、黑客等其他核心功能完全不受影响。\n 🐛 底层修复与细节优化\n   版本号统一：将 build.gradle、RbmkMonitorMod.java、GuiTerminal.java 中的版本号统一升级至 15.3，确保终端启动横幅与模组版本一致。\n   渲染安全：修复了文字颜色代码的渲染逻辑，确保黄色警告文字在任何分辨率下都能清晰可见。\n 📦 安装与前置要求\n1. 游戏版本：Minecraft 1.12.2\n2. 加载器：Forge 14.23.5.2859+\n3. 前置模组：无强制前置（HBM NTM-CE 为可选前置）。\n4. 多媒体依赖：Windows 玩家请前往 Release 附件下载 RBMK-Media-Deps-Windows.zip，解压后与主模组一起放入 .minecraft/mods/ 文件夹。\n ⚖️ 开源与授权说明\n   本项目遵循 MPL-2.0 开源协议。\n   本项目基于 树上的节枝 (Jiezhi) 的源码进行二创，已保留全部授权声明。",
+        "notesHtml": "<h4>🚀 RBMK-Monitor v15.3 更新日志</h4><p>本次更新主要针对多媒体功能的跨平台兼容性进行了严谨的提示与修复，并同步了系统版本号。</p><h4>🛡️ 跨平台兼容性优化</h4><ul><li><strong>明确的系统警告</strong>：在多媒体依赖引导弹窗（GuiMediaInstallPrompt）中，新增了极其醒目的黄色警告文字：<code>[警告] 当前多媒体解码库仅支持 Windows 64 位系统。Mac/Linux 玩家请勿下载，否则可能导致游戏崩溃。</code></li><li><strong>UI 排版自适应</strong>：调整了弹窗高度和文字排版，确保新增的警告文字不会遮挡下方的【立即前往下载】与【暂不安装】按钮。</li><li><strong>README 同步更新</strong>：在文档中明确标注了多媒体功能仅支持 Windows 64 位（x86_64）。Mac/Linux 玩家虽然无法播放多媒体，但中控、红石、黑客等其他核心功能完全不受影响。</li></ul><h4>🐛 底层修复与细节优化</h4><ul><li><strong>版本号统一</strong>：将 <code>build.gradle</code>、<code>RbmkMonitorMod.java</code>、<code>GuiTerminal.java</code> 中的版本号统一升级至 <code>15.3</code>，确保终端启动横幅与模组版本一致。</li><li><strong>渲染安全</strong>：修复了文字颜色代码的渲染逻辑，确保黄色警告文字在任何分辨率下都能清晰可见。</li></ul><h4>📦 安装与前置要求</h4><p>1. 游戏版本：<strong>Minecraft 1.12.2</strong></p><p>2. 加载器：<strong>Forge 14.23.5.2859+</strong></p><p>3. 前置模组：<strong>无强制前置</strong>（HBM NTM-CE 为可选前置）。</p><p>4. <strong>多媒体依赖</strong>：Windows 玩家请前往 Release 附件下载 <code>RBMK-Media-Deps-Windows.zip</code>，解压后与主模组一起放入 <code>.minecraft/mods/</code> 文件夹。</p><h4>⚖️ 开源与授权说明</h4><ul><li>本项目遵循 <strong>MPL-2.0</strong> 开源协议。</li><li>本项目基于 <strong>树上的节枝 (Jiezhi)</strong> 的源码进行二创，已保留全部授权声明。</li></ul>"
       },
       "downloads": null,
       "error": null,
@@ -962,12 +1016,12 @@
               "name": "hbmzz-3.6.0.jar",
               "kind": "mod",
               "size": 17054958,
-              "downloads": 1,
+              "downloads": 2,
               "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v3.6.0/hbmzz-3.6.0.jar",
               "mirror": null
             }
           ],
-          "downloads": 1,
+          "downloads": 2,
           "notesText": "这一版做了什么\nmp3 直接放。 以前 config/rsaudio/audio 里只认 .ogg，别的格式会被统计成「放不了的文件」，\n界面里明说请你先转码。这一版把 wzh3203 的 rsaudiofm 并了进来（25 个文件 / 6,000 余行，\ncom.rsaudio.formats）：mp3 与 flac 放进那个目录就能在播放器列表里选到、放出来。\n 三个和上游不一样的地方\n没有 MixinBooter。 原插件是独立模组、改不了宿主，只能靠 Mixin 注入 ClientSoundPlayer，\n玩家得额外装一个 2.4 MB 的 coremod。合并之后宿主代码就在同一枚 jar 里，钩子直接写进了播放器自己的\n五个方法（play / stop / stopAll / preview / stopPreview）：直出接管时提前返回，返回\nfalse 就照原样走原版引擎。两个 mixin 配置、加载器和那个第三方依赖一并消失。\nffmpeg.exe 没有随包。 上游那一版是 41.6 MB，其中约 35 MB 就是这份二进制，而它只服务\n「转码」这一条路。FfmpegFinder 本来就会按 config/rsaudiofm/bin → 游戏目录 → mods/ → PATH\n去找，找不到只关掉转码，直出照常。要用转码就把自己那份 ffmpeg.exe 丢进 config/rsaudiofm/bin/。\nSPI 描述符合并。 四个解码库（JLayer / mp3spi / tritonus-share / jflac，约 0.48 MB）嵌在 jar 里。\nmp3spi 与 jflac 各带一个 META-INF/services/javax.sound.sampled.spi.AudioFileReader，直接叠在一起\n会互相覆盖 —— 只有一种格式能被认出来，而且不报错、只是「读不出来」。构建里加了 formatsServices\n任务把它们并成一份。\n 顺手修掉一个从 3.1.0 起就在的崩溃\n点 2×2 吊装面板的三个填充格会抛 AbstractMethodError（点中间那格正常）。填充板要把右键转发\n给原点格，原来走 IPanelOrigin.onBlockActivated；接口里这个方法叫这个名字，实现类里那个重写却被\nreobf 改名成 func180639a，而接口声明不是 Block 的子类、映射表里没有它，名字原样保留 ——\ninvokeinterface 找到的是一个没人实现的方法。现在转发点直接按 Block 类型调用（塔塔鲁斯的\nBlockGatePart 从第一天起就是这么写的），接口里也不再声明它。\n 内置音乐\n三首 OST（How to survive? / When will it end? / ",
           "notesHtml": "<h4>这一版做了什么</h4><p><strong>mp3 直接放。</strong> 以前 <code>config/rsaudio/audio</code> 里只认 <code>.ogg</code>，别的格式会被统计成「放不了的文件」，</p><p>界面里明说请你先转码。这一版把 <strong>wzh3203</strong> 的 <code>rsaudiofm</code> 并了进来（25 个文件 / 6,000 余行，</p><p><code>com.rsaudio.formats</code>）：<strong>mp3 与 flac 放进那个目录就能在播放器列表里选到、放出来</strong>。</p><h4>三个和上游不一样的地方</h4><p><strong>没有 MixinBooter。</strong> 原插件是独立模组、改不了宿主，只能靠 Mixin 注入 <code>ClientSoundPlayer</code>，</p><p>玩家得额外装一个 2.4 MB 的 coremod。合并之后宿主代码就在同一枚 jar 里，钩子直接写进了播放器自己的</p><p>五个方法（<code>play</code> / <code>stop</code> / <code>stopAll</code> / <code>preview</code> / <code>stopPreview</code>）：直出接管时提前返回，返回</p><p><code>false</code> 就照原样走原版引擎。两个 mixin 配置、加载器和那个第三方依赖一并消失。</p><p><strong><code>ffmpeg.exe</code> 没有随包。</strong> 上游那一版是 41.6 MB，其中约 35 MB 就是这份二进制，而它只服务</p><p>「转码」这一条路。<code>FfmpegFinder</code> 本来就会按 <code>config/rsaudiofm/bin</code> → 游戏目录 → <code>mods/</code> → <code>PATH</code></p><p>去找，找不到只关掉转码，直出照常。要用转码就把自己那份 <code>ffmpeg.exe</code> 丢进 <code>config/rsaudiofm/bin/</code>。</p><p><strong>SPI 描述符合并。</strong> 四个解码库（JLayer / mp3spi / tritonus-share / jflac，约 0.48 MB）嵌在 jar 里。</p><p>mp3spi 与 jflac 各带一个 <code>META-INF/services/javax.sound.sampled.spi.AudioFileReader</code>，直接叠在一起</p><p>会互相覆盖 —— 只有一种格式能被认出来，而且不报错、只是「读不出来」。构建里加了 <code>formatsServices</code></p><p>任务把它们并成一份。</p><h4>顺手修掉一个从 3.1.0 起就在的崩溃</h4><p>点 2×2 吊装面板的<strong>三个填充格</strong>会抛 <code>AbstractMethodError</code>（点中间那格正常）。填充板要把右键转发</p><p>给原点格，原来走 <code>IPanelOrigin.onBlockActivated</code>；接口里这个方法叫这个名字，实现类里那个重写却被</p><p>reobf 改名成 <code>func_180639_a</code>，而接口声明不是 <code>Block</code> 的子类、映射表里没有它，名字原样保留 ——</p><p><code>invokeinterface</code> 找到的是一个没人实现的方法。现在转发点直接按 <code>Block</code> 类型调用（塔塔鲁斯的</p><p><code>BlockGatePart</code> 从第一天起就是这么写的），接口里也不再声明它。</p><h4>内置音乐</h4><p>三首 OST（How to survive? / When will it end? / The ending of melting）随 jar 带，首次启动铺进</p><p><code>config/rsaudio/audio</code>，删掉不会再自己长回来。封面是<strong>烧进音频文件</strong>的：mp3 走 ID3v2.3 的 <code>APIC</code>，</p><p>ogg 走 Vorbis comment 的 <code>METADATA_BLOCK_PICTURE</code>，同一张 512² 的 OST 标。</p><h4>体积与校验</h4><ul><li><code>hbmzz-3.6.0.jar</code> — 17,054,958 B（16,155,037 → 17,054,958）</li><li><code>hbmzz-3.6.0-sources.jar</code> — 2,153,043 B（音频不进源码包）</li></ul><h4>必须说明的一件事</h4><p><strong>这一版没有进游戏验证过。</strong> 编译一次通过、<code>checkall</code> 15 项全过（含 regcheck 63 条、</p><p>statecheck、事件注解、内置 OST 资源、站点审计，以及 rbmk / cecp / term / video / linker /</p><p>reasim / gate / dfc 八项构建档检查），但本机没有 Minecraft 实例 —— 所以「mp3 真的能响」</p><p>「点面板边缘不再崩」这两件事只有编译、字节码核对和离线检查支撑。装上去之后如果哪一条不对，</p><p>请把 <code>logs/latest.log</code> 发到「HBMZZ玩家社群」（群号 1134138830）。</p>"
         },
@@ -1653,16 +1707,16 @@
             "name": "hbmzz-3.6.0.jar",
             "kind": "mod",
             "size": 17054958,
-            "downloads": 1,
+            "downloads": 2,
             "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v3.6.0/hbmzz-3.6.0.jar",
             "mirror": null
           }
         ],
-        "downloads": 1,
+        "downloads": 2,
         "notesText": "这一版做了什么\nmp3 直接放。 以前 config/rsaudio/audio 里只认 .ogg，别的格式会被统计成「放不了的文件」，\n界面里明说请你先转码。这一版把 wzh3203 的 rsaudiofm 并了进来（25 个文件 / 6,000 余行，\ncom.rsaudio.formats）：mp3 与 flac 放进那个目录就能在播放器列表里选到、放出来。\n 三个和上游不一样的地方\n没有 MixinBooter。 原插件是独立模组、改不了宿主，只能靠 Mixin 注入 ClientSoundPlayer，\n玩家得额外装一个 2.4 MB 的 coremod。合并之后宿主代码就在同一枚 jar 里，钩子直接写进了播放器自己的\n五个方法（play / stop / stopAll / preview / stopPreview）：直出接管时提前返回，返回\nfalse 就照原样走原版引擎。两个 mixin 配置、加载器和那个第三方依赖一并消失。\nffmpeg.exe 没有随包。 上游那一版是 41.6 MB，其中约 35 MB 就是这份二进制，而它只服务\n「转码」这一条路。FfmpegFinder 本来就会按 config/rsaudiofm/bin → 游戏目录 → mods/ → PATH\n去找，找不到只关掉转码，直出照常。要用转码就把自己那份 ffmpeg.exe 丢进 config/rsaudiofm/bin/。\nSPI 描述符合并。 四个解码库（JLayer / mp3spi / tritonus-share / jflac，约 0.48 MB）嵌在 jar 里。\nmp3spi 与 jflac 各带一个 META-INF/services/javax.sound.sampled.spi.AudioFileReader，直接叠在一起\n会互相覆盖 —— 只有一种格式能被认出来，而且不报错、只是「读不出来」。构建里加了 formatsServices\n任务把它们并成一份。\n 顺手修掉一个从 3.1.0 起就在的崩溃\n点 2×2 吊装面板的三个填充格会抛 AbstractMethodError（点中间那格正常）。填充板要把右键转发\n给原点格，原来走 IPanelOrigin.onBlockActivated；接口里这个方法叫这个名字，实现类里那个重写却被\nreobf 改名成 func180639a，而接口声明不是 Block 的子类、映射表里没有它，名字原样保留 ——\ninvokeinterface 找到的是一个没人实现的方法。现在转发点直接按 Block 类型调用（塔塔鲁斯的\nBlockGatePart 从第一天起就是这么写的），接口里也不再声明它。\n 内置音乐\n三首 OST（How to survive? / When will it end? / ",
         "notesHtml": "<h4>这一版做了什么</h4><p><strong>mp3 直接放。</strong> 以前 <code>config/rsaudio/audio</code> 里只认 <code>.ogg</code>，别的格式会被统计成「放不了的文件」，</p><p>界面里明说请你先转码。这一版把 <strong>wzh3203</strong> 的 <code>rsaudiofm</code> 并了进来（25 个文件 / 6,000 余行，</p><p><code>com.rsaudio.formats</code>）：<strong>mp3 与 flac 放进那个目录就能在播放器列表里选到、放出来</strong>。</p><h4>三个和上游不一样的地方</h4><p><strong>没有 MixinBooter。</strong> 原插件是独立模组、改不了宿主，只能靠 Mixin 注入 <code>ClientSoundPlayer</code>，</p><p>玩家得额外装一个 2.4 MB 的 coremod。合并之后宿主代码就在同一枚 jar 里，钩子直接写进了播放器自己的</p><p>五个方法（<code>play</code> / <code>stop</code> / <code>stopAll</code> / <code>preview</code> / <code>stopPreview</code>）：直出接管时提前返回，返回</p><p><code>false</code> 就照原样走原版引擎。两个 mixin 配置、加载器和那个第三方依赖一并消失。</p><p><strong><code>ffmpeg.exe</code> 没有随包。</strong> 上游那一版是 41.6 MB，其中约 35 MB 就是这份二进制，而它只服务</p><p>「转码」这一条路。<code>FfmpegFinder</code> 本来就会按 <code>config/rsaudiofm/bin</code> → 游戏目录 → <code>mods/</code> → <code>PATH</code></p><p>去找，找不到只关掉转码，直出照常。要用转码就把自己那份 <code>ffmpeg.exe</code> 丢进 <code>config/rsaudiofm/bin/</code>。</p><p><strong>SPI 描述符合并。</strong> 四个解码库（JLayer / mp3spi / tritonus-share / jflac，约 0.48 MB）嵌在 jar 里。</p><p>mp3spi 与 jflac 各带一个 <code>META-INF/services/javax.sound.sampled.spi.AudioFileReader</code>，直接叠在一起</p><p>会互相覆盖 —— 只有一种格式能被认出来，而且不报错、只是「读不出来」。构建里加了 <code>formatsServices</code></p><p>任务把它们并成一份。</p><h4>顺手修掉一个从 3.1.0 起就在的崩溃</h4><p>点 2×2 吊装面板的<strong>三个填充格</strong>会抛 <code>AbstractMethodError</code>（点中间那格正常）。填充板要把右键转发</p><p>给原点格，原来走 <code>IPanelOrigin.onBlockActivated</code>；接口里这个方法叫这个名字，实现类里那个重写却被</p><p>reobf 改名成 <code>func_180639_a</code>，而接口声明不是 <code>Block</code> 的子类、映射表里没有它，名字原样保留 ——</p><p><code>invokeinterface</code> 找到的是一个没人实现的方法。现在转发点直接按 <code>Block</code> 类型调用（塔塔鲁斯的</p><p><code>BlockGatePart</code> 从第一天起就是这么写的），接口里也不再声明它。</p><h4>内置音乐</h4><p>三首 OST（How to survive? / When will it end? / The ending of melting）随 jar 带，首次启动铺进</p><p><code>config/rsaudio/audio</code>，删掉不会再自己长回来。封面是<strong>烧进音频文件</strong>的：mp3 走 ID3v2.3 的 <code>APIC</code>，</p><p>ogg 走 Vorbis comment 的 <code>METADATA_BLOCK_PICTURE</code>，同一张 512² 的 OST 标。</p><h4>体积与校验</h4><ul><li><code>hbmzz-3.6.0.jar</code> — 17,054,958 B（16,155,037 → 17,054,958）</li><li><code>hbmzz-3.6.0-sources.jar</code> — 2,153,043 B（音频不进源码包）</li></ul><h4>必须说明的一件事</h4><p><strong>这一版没有进游戏验证过。</strong> 编译一次通过、<code>checkall</code> 15 项全过（含 regcheck 63 条、</p><p>statecheck、事件注解、内置 OST 资源、站点审计，以及 rbmk / cecp / term / video / linker /</p><p>reasim / gate / dfc 八项构建档检查），但本机没有 Minecraft 实例 —— 所以「mp3 真的能响」</p><p>「点面板边缘不再崩」这两件事只有编译、字节码核对和离线检查支撑。装上去之后如果哪一条不对，</p><p>请把 <code>logs/latest.log</code> 发到「HBMZZ玩家社群」（群号 1134138830）。</p>"
       },
-      "downloads": 171,
+      "downloads": 172,
       "error": null,
       "licenseSource": "repo"
     }
