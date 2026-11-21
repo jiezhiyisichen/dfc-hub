@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T03:58:47.624Z",
+  "generatedAt": "2026-11-21T09:39:38.552Z",
   "source": {
     "tool": "jiezhiyisichen/DFC-Map-Creation-Tool",
     "api": "https://api.github.com",
@@ -42,7 +42,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-5.6.jar",
           "kind": "tool",
           "size": 461545,
-          "downloads": 0,
+          "downloads": 3,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v5.6-stable/jiezhi-1.12.2-dfcmaptools-5.6.jar",
           "updatedAt": "2026-11-21T03:55:37Z",
           "mirrors": [
@@ -82,7 +82,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-4.0.jar",
           "kind": "tool",
           "size": 308744,
-          "downloads": 9,
+          "downloads": 10,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v4.0-beta/jiezhi-1.12.2-dfcmaptools-4.0.jar",
           "updatedAt": "2026-10-24T09:27:26Z",
           "mirrors": [
@@ -123,7 +123,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.9.4.jar",
           "kind": "tool",
           "size": 274154,
-          "downloads": 2,
+          "downloads": 3,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9.4-beta/jiezhi-1.12.2-dfcmaptools-3.9.4.jar",
           "updatedAt": "2026-10-20T14:58:02Z",
           "mirrors": [
@@ -163,7 +163,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-5.6.jar",
           "kind": "tool",
           "size": 461545,
-          "downloads": 0,
+          "downloads": 3,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v5.6-stable/jiezhi-1.12.2-dfcmaptools-5.6.jar",
           "updatedAt": "2026-11-21T03:55:37Z",
           "mirrors": [
@@ -204,7 +204,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-5.6.jar",
           "kind": "tool",
           "size": 461545,
-          "downloads": 0,
+          "downloads": 3,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v5.6-stable/jiezhi-1.12.2-dfcmaptools-5.6.jar",
           "updatedAt": "2026-11-21T03:55:37Z",
           "mirrors": [
@@ -246,7 +246,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-5.6.jar",
           "kind": "tool",
           "size": 461545,
-          "downloads": 0,
+          "downloads": 3,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v5.6-stable/jiezhi-1.12.2-dfcmaptools-5.6.jar",
           "updatedAt": "2026-11-21T03:55:37Z",
           "mirrors": [
@@ -286,7 +286,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-4.0.jar",
           "kind": "tool",
           "size": 308744,
-          "downloads": 9,
+          "downloads": 10,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v4.0-beta/jiezhi-1.12.2-dfcmaptools-4.0.jar",
           "updatedAt": "2026-10-24T09:27:26Z",
           "mirrors": [
@@ -326,7 +326,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.9.jar",
           "kind": "tool",
           "size": 289196,
-          "downloads": 17,
+          "downloads": 18,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9/jiezhi-1.12.2-dfcmaptools-3.9.jar",
           "updatedAt": "2026-10-22T15:13:29Z",
           "mirrors": [
@@ -366,7 +366,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.9.9.jar",
           "kind": "tool",
           "size": 289206,
-          "downloads": 2,
+          "downloads": 3,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9.9-beta/jiezhi-1.12.2-dfcmaptools-3.9.9.jar",
           "updatedAt": "2026-10-22T12:31:45Z",
           "mirrors": [
@@ -406,7 +406,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.9.8.jar",
           "kind": "tool",
           "size": 283646,
-          "downloads": 4,
+          "downloads": 5,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9.8-beta/jiezhi-1.12.2-dfcmaptools-3.9.8.jar",
           "updatedAt": "2026-10-21T14:55:03Z",
           "mirrors": [
@@ -446,7 +446,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.9.7.jar",
           "kind": "tool",
           "size": 280999,
-          "downloads": 2,
+          "downloads": 4,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9.7-beta/jiezhi-1.12.2-dfcmaptools-3.9.7.jar",
           "updatedAt": "2026-10-21T14:13:45Z",
           "mirrors": [
@@ -486,7 +486,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.9.6.jar",
           "kind": "tool",
           "size": 280816,
-          "downloads": 2,
+          "downloads": 3,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9.6-beta/jiezhi-1.12.2-dfcmaptools-3.9.6.jar",
           "updatedAt": "2026-10-21T12:56:12Z",
           "mirrors": [
@@ -526,7 +526,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.9.5.jar",
           "kind": "tool",
           "size": 274172,
-          "downloads": 4,
+          "downloads": 5,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9.5-beta/jiezhi-1.12.2-dfcmaptools-3.9.5.jar",
           "updatedAt": "2026-10-20T15:06:06Z",
           "mirrors": [
@@ -566,7 +566,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.9.4.jar",
           "kind": "tool",
           "size": 274154,
-          "downloads": 2,
+          "downloads": 3,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9.4-beta/jiezhi-1.12.2-dfcmaptools-3.9.4.jar",
           "updatedAt": "2026-10-20T14:58:02Z",
           "mirrors": [
@@ -606,7 +606,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.9.3.jar",
           "kind": "tool",
           "size": 273933,
-          "downloads": 3,
+          "downloads": 4,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9.3-beta/jiezhi-1.12.2-dfcmaptools-3.9.3.jar",
           "updatedAt": "2026-10-20T14:21:20Z",
           "mirrors": [
@@ -646,7 +646,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.9.2.jar",
           "kind": "tool",
           "size": 271467,
-          "downloads": 2,
+          "downloads": 3,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9.2-beta/jiezhi-1.12.2-dfcmaptools-3.9.2.jar",
           "updatedAt": "2026-10-20T12:39:05Z",
           "mirrors": [
@@ -686,7 +686,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.9.1.jar",
           "kind": "tool",
           "size": 269732,
-          "downloads": 2,
+          "downloads": 3,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9.1-beta/jiezhi-1.12.2-dfcmaptools-3.9.1.jar",
           "updatedAt": "2026-10-20T05:46:34Z",
           "mirrors": [
@@ -726,7 +726,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.9-beta.jar",
           "kind": "tool",
           "size": 283377,
-          "downloads": 4,
+          "downloads": 6,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.9-beta/jiezhi-1.12.2-dfcmaptools-3.9-beta.jar",
           "updatedAt": "2026-10-18T14:12:48Z",
           "mirrors": [
@@ -766,7 +766,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.8.jar",
           "kind": "tool",
           "size": 257938,
-          "downloads": 9,
+          "downloads": 10,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.8/jiezhi-1.12.2-dfcmaptools-3.8.jar",
           "updatedAt": "2026-10-18T13:42:50Z",
           "mirrors": [
@@ -806,7 +806,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.7.jar",
           "kind": "tool",
           "size": 256557,
-          "downloads": 2,
+          "downloads": 3,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.7/jiezhi-1.12.2-dfcmaptools-3.7.jar",
           "updatedAt": "2026-10-18T13:18:07Z",
           "mirrors": [
@@ -846,7 +846,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.6.jar",
           "kind": "tool",
           "size": 255931,
-          "downloads": 11,
+          "downloads": 12,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.6/jiezhi-1.12.2-dfcmaptools-3.6.jar",
           "updatedAt": "2026-10-18T04:14:10Z",
           "mirrors": [
@@ -886,7 +886,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.5.jar",
           "kind": "tool",
           "size": 255578,
-          "downloads": 28,
+          "downloads": 30,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.5/jiezhi-1.12.2-dfcmaptools-3.5.jar",
           "updatedAt": "2026-10-16T15:50:55Z"
         }
@@ -914,7 +914,7 @@
           "name": "jiezhi-1.12.2-dfcmaptools-3.4.jar",
           "kind": "tool",
           "size": 248237,
-          "downloads": 7,
+          "downloads": 8,
           "url": "https://github.com/jiezhiyisichen/DFC-Map-Creation-Tool/releases/download/v3.4/jiezhi-1.12.2-dfcmaptools-3.4.jar",
           "updatedAt": "2026-10-16T15:07:53Z"
         }
