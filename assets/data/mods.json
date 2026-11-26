@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T22:27:06.397Z",
+  "generatedAt": "2026-11-26T04:57:27.841Z",
   "count": 2,
   "mods": [
     {
@@ -1015,7 +1015,7 @@
             {
               "name": "hbmzz-5.0.0.jar",
               "kind": "mod",
-              "size": 24060442,
+              "size": 24060516,
               "downloads": 0,
               "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v5.0.0/hbmzz-5.0.0.jar",
               "mirror": null
@@ -1872,7 +1872,7 @@
           {
             "name": "hbmzz-5.0.0.jar",
             "kind": "mod",
-            "size": 24060442,
+            "size": 24060516,
             "downloads": 0,
             "url": "https://github.com/ysb-discowave/HBMZZ-MOD/releases/download/v5.0.0/hbmzz-5.0.0.jar",
             "mirror": null
